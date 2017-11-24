@@ -502,6 +502,16 @@ int main(int argc, char* argv[]){
                                 string secondParameter = s.substr(s.find('*') + 1);
                                 string result = s.substr(0,s.find('='));
 
+                                int firstParameterIndex = isInsideMatrix(matrices,firstParameter);
+                                CMatrix firstParameterTemp = matrices[firstParameterIndex];
+
+                                int secondParameterIndex = isInsideMatrix(matrices,secondParameter);
+                                CMatrix secondParameterTemp = matrices[secondParameterIndex];
+
+                                // Make the Condition Like this 
+                                // if(firstParameteTemp.getnC() != secondParameterTemp.getnR()) 
+
+
                                 if(s.find(';') == std::string::npos) {
                                         CMatrix resultMatrix = multiplyOperation(matrices,isInsideMatrix(matrices,firstParameter),isInsideMatrix(matrices,secondParameter),result);
                                         matrices.push_back(resultMatrix);
