@@ -561,7 +561,7 @@ int main(int argc, char* argv[]){
 
                                 int secondParameterIndex = isInsideMatrix(matrices,secondParameter);
                                 CMatrix secondParameterTemp = matrices[secondParameterIndex].getInverse();
-                                if(secondParameterTemp.getName() == "Invert") {
+                                if(secondParameterTemp.getName() == "Invert" || secondParameterTemp.getnC() != secondParameterTemp.getnR()) {
                                         cout << "This Operation Can't Be Made Because [ " << secondParameter << " ] Can't Be Inverted" << endl;
                                 } else {
                                         if(s.find(';') == std::string::npos) {
