@@ -838,14 +838,56 @@ void CMatrix ::copy(string s) {
 
 	*/
 	double CMatrix ::getDeterminant() {
-			if(nR!= nC) throw ("Invalid matrix dimension");
-			if(nR == 1 && nC == 1) return values[0][0];
-			double value = 0, m = 1;
-			for (int iR = 0; iR < nR; iR++) {
-				value += m * values[0][iR] * getCofactor(0, iR).getDeterminant();
-				m *= -1;
-			}
-			return value;
+		int i, j, k;
+  double **matrix;
+  double det = 1;
+  int n = this->nR;
+
+  matrix = new double *[n];
+
+  for ( i = 0; i < n; i++ )
+    matrix[i] = new double[n];
+
+  for ( i = 0; i < n; i++ ) {
+    for ( j = 0; j < n; j++ )
+      matrix[i][j] = values[i][j];
+  }
+
+  for ( k = 0; k < n; k++ ) {
+    if ( matrix[k][k] == 0 ) {
+      bool ok = false;
+
+      for ( j = k; j < n; j++ ) {
+        if ( matrix[j][k] != 0 )
+          ok = true;
+      }
+
+      if ( !ok )
+        return 0;
+
+      for ( i = k; i < n; i++ )
+        std::swap ( matrix[i][j], matrix[i][k] );
+
+      det = -det;
+    }
+
+    det *= matrix[k][k];
+
+    if ( k + 1 < n ) {
+      for ( i = k + 1; i < n; i++ ) {
+        for ( j = k + 1; j < n; j++ )
+          matrix[i][j] = matrix[i][j] - matrix[i][k] *
+          matrix[k][j] / matrix[k][k];
+      }
+    }
+  }
+
+  for ( i = 0; i < n; i++ )
+    delete [] matrix[i];
+
+  delete [] matrix;
+
+  return det;
 		}
 
 
