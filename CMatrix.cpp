@@ -576,8 +576,6 @@ void CMatrix ::copy(string s) {
 
 	*/
 	void CMatrix ::mul(const CMatrix & m) {
-		if(nC!= m.nR)
-			throw ("Invalid matrix dimension");
 		CMatrix r(nR, m.nC);
 		for (int iR = 0; iR < r.nR; iR++) {
 			for (int iC = 0; iC < r.nC; iC++) {
