@@ -883,7 +883,7 @@ void CMatrix ::copy(string s) {
 	*/
 	CMatrix CMatrix::getInverse()
 	{	if(nR != nC)
-			throw("Invertible matrix")
+			throw("Invertible matrix");
 		if(getDeterminant() != 0) {
 			CMatrix m(nR, nC);
 			for (int iR = 0; iR < m.nR; iR++)
