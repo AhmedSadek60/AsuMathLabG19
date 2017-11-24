@@ -840,6 +840,7 @@ void CMatrix ::copy(string s) {
 
 	*/
 	double CMatrix ::getDeterminant() {
+			// Try to Solve it with Another Technique
 			if(nR!= nC) throw ("Invalid matrix dimension");
 			if(nR == 1 && nC == 1) return values[0][0];
 			double value = 0, m = 1;
