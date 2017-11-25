@@ -25,7 +25,8 @@ b = [ 1 2 1; 1 4 4]
 doing some operations:
 
 ```c++
-c = b'\ ';
+c // Uninitialized Matrix
+c = b[transpose]; // Make it Like That c = b' because of single qoute escape doesn't work here 
 c    // displays c
 d = a * b    //error, invalid dimensions
 d = c * a
