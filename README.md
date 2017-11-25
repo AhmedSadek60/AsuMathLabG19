@@ -20,11 +20,11 @@ a = [1 2 3; 4 5 6];
 
 if you want to display it, leave out the semicolon:
 ```c++
-b = [ 1 2 1; 1 4 4]'
+b = [ 1 2 1; 1 4 4]
 ```
 doing some operations:
 
-```c++
+```json
 c = b';
 c    // displays c
 d = a * b    //error, invalid dimensions
