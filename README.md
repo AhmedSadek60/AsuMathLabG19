@@ -24,7 +24,7 @@ b = [ 1 2 1; 1 4 4]
 ```
 doing some operations:
 
-```json
+```javascript
 c = b';
 c    // displays c
 d = a * b    //error, invalid dimensions
