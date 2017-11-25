@@ -51,12 +51,25 @@ i = h / g   //error, g is not invertible (determinant of g is zero)
 ./matrix example.m
 ```
 ### supported operations
-- add
-- sub
-- mult
-- div
-- elementWiseDiv
+- add ( + )
+- sub ( - )
+- mult ( * )
+- div ( / )
+- elementWiseDiv ( ./ )
 
 ## debugging and enhancements
-- profiling on example.m and bigexample.m using gprof was carried out, with results stored in profilingexamplefile.txt and profilingbigexamplefile.txt
-- expected output results of bigexample.m and example.m stored in outputbigexamplefile.txt and outputexamplefile.txt
+
+### Profiling 
+- For Profiling We Use The <a href="http://gnuwin32.sourceforge.net/packages/gprof.htm">Gprof Profiler</a> <br />
+<p> You Will Find profiling results for the Two Files [ example.m , bigexample.m ] : </p>
+```code
+- profilingexamplefile.txt
+- profilingbigexamplefile.txt
+```
+
+### Outputs Form Files
+- You can Find the Output of the Two Files :
+```code
+- outputexamplefile.txt
+- outputbigexamplefile.txt
+```
