@@ -500,11 +500,6 @@ int main(int argc, char* argv[]){
                                 int secondParameterIndex = isInsideMatrix(matrices,secondParameter);
                                 CMatrix secondParameterTemp = matrices[secondParameterIndex];
 
-                                cout << firstParameterTemp;
-                                cout << secondParameterTemp;
-                                cout << firstParameterTemp.getnR() << "  " << firstParameterTemp.getnC() << endl;
-                                cout << secondParameterTemp.getnR() << "  " << secondParameterTemp.getnC() << endl;
-
 
                                 if(firstParameterTemp.getnR() != secondParameterTemp.getnR() || firstParameterTemp.getnC() != secondParameterTemp.getnC()) {
                                                 cout << "This Operation Can't be Made Because Matrices is not in Compatible Shape." << endl;
