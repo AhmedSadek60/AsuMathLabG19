@@ -60,8 +60,8 @@ i = h / g   //error, g is not invertible (determinant of g is zero)
 ## debugging and enhancements
 
 ### Profiling 
-- For Profiling We Use The <a href="http://gnuwin32.sourceforge.net/packages/gprof.htm">Gprof Profiler</a> <br />
-<p> You Will Find profiling results for the Two Files [ example.m , bigexample.m ] : </p>
+- For Profiling We Use The <a href="http://gnuwin32.sourceforge.net/packages/gprof.htm"><b>Gprof Profiler</b></a> <br />
+- You Will Find profiling results for the Two Files [ example.m , bigexample.m ] :
 ```code
 - profilingexamplefile.txt
 - profilingbigexamplefile.txt
