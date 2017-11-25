@@ -24,8 +24,8 @@ b = [ 1 2 1; 1 4 4]
 ```
 doing some operations:
 
-```javascript
-c = b';
+```c++
+c = b'\ ';
 c    // displays c
 d = a * b    //error, invalid dimensions
 d = c * a
