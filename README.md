@@ -7,8 +7,8 @@ works on linux os, tested on ubuntu 16.04 LTS
 
 ## Project phases
 - [x] creating the C/C++ matrix class, and support basic operations
-- []  adding more complex operations, and supporting concatenation
-- [] ???
+- adding more complex operations, and supporting concatenation
+- ???
 
 
 ## Code example
