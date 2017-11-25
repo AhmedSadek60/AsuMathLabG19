@@ -3,7 +3,7 @@
 
 ## Environment
 coded with c++ and compiled with g++.
-working on linux os, tested on ubuntu 16.04 LTS
+works on linux os, tested on ubuntu 16.04 LTS
 
 ## Project phases
 - [x] creating the C/C++ matrix class, and support basic operations
@@ -12,6 +12,12 @@ working on linux os, tested on ubuntu 16.04 LTS
 
 
 ## Code example
+.you can use the command line:
+
+run the executable file:
+```
+./matrix
+```
 
 creating a 2 x 3 matrix without displaying it:
 ```c++
@@ -22,11 +28,12 @@ if you want to display it, leave out the semicolon:
 ```c++
 b = [ 1 2 1; 1 4 4]
 ```
+
 doing some operations:
 
 ```c++
 c // Uninitialized Matrix
-c = b[transpose]; // Make it Like That c = b' because of single qoute escape doesn't work here 
+c = b[transpose]; // Make it Like That c = b' because of single qoute escape doesn't work here
 c    // displays c
 d = a * b    //error, invalid dimensions
 d = c * a
@@ -38,3 +45,18 @@ g = [ 1 1 1 ; 1 1 1; 1 1 1];
 h = [1 2 3; 4 5 6; 7 8 9]
 i = h / g   //error, g is not invertible (determinant of g is zero)
 ```
+
+.or you can use an input file with operations stored in it:
+```
+./matrix example.m
+```
+### supported operations
+- add
+- sub
+- mult
+- div
+- elementWiseDiv
+
+## debugging and enhancements
+- profiling on example.m and bigexample.m using gprof was carried out, with results stored in profilingexamplefile.txt and profilingbigexamplefile.txt
+- expected output results of bigexample.m and example.m stored in outputbigexamplefile.txt and outputexamplefile.txt
