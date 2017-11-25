@@ -95,3 +95,32 @@ i = h / g   //error, g is not invertible (determinant of g is zero)
 - outputexamplefile.txt
 - outputbigexamplefile.txt
 ```
+
+### Code Style 
+- if you want to be a contributer to our code please follow the same styling here the commenting styling that all contributers follow :
+- Commenting Style :
+```c++
+/*
+
+[ Function Name ] : isInsideMatrix()
+[ Returned Type ] : int
+[ inherited Function from CMatrix Class ] : getName() - [ Inside File : CMatrix.cpp , Line : 167 ]
+[ Functionality ] : To Get the Index of Parameter Matrix inside the Matrix vector so we can get the index
+                    and use the matrix in this index anywhere else
+
+*/
+
+int isInsideMatrix(vector<CMatrix> matricesArray,string target) {
+        bool found = false;
+        int index = -1;
+        for(int i =0;i < matricesArray.size();i++) {
+                if(matricesArray[i].getName() == target) {
+                        found = true;
+                        index = i;
+                }
+        }
+        return index;
+
+}
+
+```
