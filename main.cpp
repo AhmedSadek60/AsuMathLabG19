@@ -352,7 +352,7 @@ void programLoopFromFile(char* fileName){
               
 
               int secondParameterIndex = isInsideMatrix(matrices,secondParameter);
-              CMatrix secondParameterTemp = matrices[secondParameterIndex].getInverse();
+              CMatrix secondParameterTemp = matrices[secondParameterIndex];
 
               if(firstParameterTemp.getnC() != secondParameterTemp.getnR()) {
 
