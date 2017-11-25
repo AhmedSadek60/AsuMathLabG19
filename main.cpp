@@ -297,15 +297,34 @@ void programLoopFromFile(char* fileName){
               string secondParameter = operationLine.substr(operationLine.find('*') + 1);
               string result = operationLine.substr(0,operationLine.find('='));
 
-              CMatrix resultMatrix = multiplyOperation(matrices,isInsideMatrix(matrices,firstParameter),isInsideMatrix(matrices,secondParameter),result);
-              matrices.push_back(resultMatrix);
 
-              if(operationLine.find(';') == std::string::npos) {
-                      cout << resultMatrix.getName() << " = " << endl;
-                      cout << resultMatrix;
-                      cout << "######################################################" << endl;
+             int firstParameterIndex = isInsideMatrix(matrices,firstParameter);
+             CMatrix firstParameterTemp = matrices[firstParameterIndex];
 
-              }
+              
+
+              int secondParameterIndex = isInsideMatrix(matrices,secondParameter);
+              CMatrix secondParameterTemp = matrices[secondParameterIndex].getInverse();
+
+              if(firstParameterTemp.getnC() != secondParameterTemp.getnR()) {
+
+                cout << "This Operation Can't be Made Because Matrices is not in Compatible Shape." << endl;
+                cout << "######################################################" << endl;                      
+
+              } else {
+                CMatrix resultMatrix = multiplyOperation(matrices,isInsideMatrix(matrices,firstParameter),isInsideMatrix(matrices,secondParameter),result);
+                matrices.push_back(resultMatrix);
+
+                if(operationLine.find(';') == std::string::npos) {
+                        cout << resultMatrix.getName() << " = " << endl;
+                        cout << resultMatrix;
+                        cout << "######################################################" << endl;
+
+                }
+
+              }       
+
+
 
           }
 
@@ -351,12 +370,25 @@ void programLoopFromFile(char* fileName){
               string secondParameter = operationLine.substr(operationLine.find('/') + 1);
               string result = operationLine.substr(0,operationLine.find('='));
 
+             int firstParameterIndex = isInsideMatrix(matrices,firstParameter);
+             CMatrix firstParameterTemp = matrices[firstParameterIndex];
+
+              
+
               int secondParameterIndex = isInsideMatrix(matrices,secondParameter);
               CMatrix secondParameterTemp = matrices[secondParameterIndex].getInverse();
-              if(secondParameterTemp.getName() == "Invert" || secondParameterTemp.getnC() != secondParameterTemp.getnR()) {
+              if(secondParameterTemp.getName() == "Invert") {
                       cout << "This Operation Can't Be Made Because [ " << secondParameter << " ] Can't Be Inverted" << endl;
                       cout << "######################################################" << endl;
 
+              } else if( secondParameterTemp.getnC() != secondParameterTemp.getnR()) {
+                      cout << "This Operation Can't Be Made Because [ " << secondParameter << " ] not a Sqaure Matrix" << endl;
+                      cout << "######################################################" << endl;
+
+
+              } else if(firstParameterTemp.getnC() != secondParameterTemp.getnR()) {
+                      cout << "This Operation Can't be Made Because Matrices is not in Compatible Shape." << endl;
+                      cout << "######################################################" << endl;                      
               } else {
                 CMatrix resultMatrix = divideOperation(matrices,isInsideMatrix(matrices,firstParameter),isInsideMatrix(matrices,secondParameter),result);
                 matrices.push_back(resultMatrix);
@@ -510,7 +542,8 @@ int main(int argc, char* argv[]){
                                 CMatrix secondParameterTemp = matrices[secondParameterIndex];
 
                                 if( firstParameterTemp.getnC() != secondParameterTemp.getnR() ){
-                                  cout << "This Operation Can't Be Made. Invalid Dimensions" << endl;
+                                                cout << "This Operation Can't be Made Because Matrices is not in Compatible Shape." << endl;
+                                                cout << "######################################################" << endl;                      
                                 }else{
                                         if(s.find(';') == std::string::npos) {
                                                 CMatrix resultMatrix = multiplyOperation(matrices,isInsideMatrix(matrices,firstParameter),isInsideMatrix(matrices,secondParameter),result);
@@ -571,10 +604,23 @@ int main(int argc, char* argv[]){
                                 string secondParameter = s.substr(s.find('/') + 1);
                                 string result = s.substr(0,s.find('='));
 
+                                int firstParameterIndex = isInsideMatrix(matrices,firstParameter);
+                                CMatrix firstParameterTemp = matrices[firstParameterIndex];
+
                                 int secondParameterIndex = isInsideMatrix(matrices,secondParameter);
                                 CMatrix secondParameterTemp = matrices[secondParameterIndex].getInverse();
-                                if(secondParameterTemp.getName() == "Invert" || secondParameterTemp.getnC() != secondParameterTemp.getnR()) {
-                                        cout << "This Operation Can't Be Made Because [ " << secondParameter << " ] Can't Be Inverted" << endl;
+                                if(secondParameterTemp.getName() == "Invert") {
+                                        cout << "This Operation Can't Be Made Because [ " << secondParameter << " ] Can't Be Inverted or not a Square Matrix" << endl;
+                                        cout << "######################################################" << endl;
+
+                                } else if(secondParameterTemp.getnC() != secondParameterTemp.getnR()) {
+                                        cout << "This Operation Can't Be Made Because [ " << secondParameter << " ] not a Square Matrix" << endl;
+                                        cout << "######################################################" << endl;
+
+                                } else if(firstParameterTemp.getnC() != secondParameterTemp.getnR()) {
+                                        cout << "This Operation Can't be Made Because Matrices is not in Compatible Shape." << endl;
+                                        cout << "######################################################" << endl;
+                              
                                 } else {
                                         if(s.find(';') == std::string::npos) {
                                                 CMatrix resultMatrix = divideOperation(matrices,isInsideMatrix(matrices,firstParameter),isInsideMatrix(matrices,secondParameter),result);
