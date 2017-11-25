@@ -493,18 +493,42 @@ int main(int argc, char* argv[]){
                                 string firstParameter = s.substr(s.find('=') + 1, s.find('+') - (s.find('=') + 1));
                                 string secondParameter = s.substr(s.find('+') + 1);
                                 string result = s.substr(0,s.find('='));
-                                if(s.find(';') == std::string::npos) {
-                                        CMatrix resultMatrix = addOperation(matrices,isInsideMatrix(matrices,firstParameter),isInsideMatrix(matrices,secondParameter),result);
-                                        matrices.push_back(resultMatrix);
-                                        cout << resultMatrix.getName() << " = " << endl;
-                                        cout << resultMatrix;
-                                        cout << "######################################################" << endl;
+
+                                int firstParameterIndex = isInsideMatrix(matrices,firstParameter);
+                                CMatrix firstParameterTemp = matrices[firstParameterIndex];
+
+                                int secondParameterIndex = isInsideMatrix(matrices,secondParameter);
+                                CMatrix secondParameterTemp = matrices[secondParameterIndex];
+
+                                cout << firstParameterTemp;
+                                cout << secondParameterTemp;
+                                cout << firstParameterTemp.getnR() << "  " << firstParameterTemp.getnC() << endl;
+                                cout << secondParameterTemp.getnR() << "  " << secondParameterTemp.getnC() << endl;
 
 
+                                if(firstParameterTemp.getnR() != secondParameterTemp.getnR() || firstParameterTemp.getnC() != secondParameterTemp.getnC()) {
+                                                cout << "This Operation Can't be Made Because Matrices is not in Compatible Shape." << endl;
+                                                cout << "######################################################" << endl;                      
+                             
                                 } else {
-                                        CMatrix resultMatrix = addOperation(matrices,isInsideMatrix(matrices,firstParameter),isInsideMatrix(matrices,secondParameter),result);
-                                        matrices.push_back(resultMatrix);
+
+                                        if(s.find(';') == std::string::npos) {
+                                                CMatrix resultMatrix = addOperation(matrices,isInsideMatrix(matrices,firstParameter),isInsideMatrix(matrices,secondParameter),result);
+                                                matrices.push_back(resultMatrix);
+                                                cout << resultMatrix.getName() << " = " << endl;
+                                                cout << resultMatrix;
+                                                cout << "######################################################" << endl;
+
+
+                                        } else {
+                                                CMatrix resultMatrix = addOperation(matrices,isInsideMatrix(matrices,firstParameter),isInsideMatrix(matrices,secondParameter),result);
+                                                matrices.push_back(resultMatrix);
+                                        }
+
                                 }
+               
+               
+               
 
                             }
                             else if(s.find('-') != std::string::npos) {
@@ -514,18 +538,34 @@ int main(int argc, char* argv[]){
                                 string secondParameter = s.substr(s.find('-') + 1);
                                 string result = s.substr(0,s.find('='));
 
-                                if(s.find(';') == std::string::npos) {
-                                        CMatrix resultMatrix = subOperation(matrices,isInsideMatrix(matrices,firstParameter),isInsideMatrix(matrices,secondParameter),result);
-                                        matrices.push_back(resultMatrix);
-                                        cout << resultMatrix.getName() << " = " << endl;
-                                        cout << resultMatrix;
-                                        cout << "######################################################" << endl;
+                                int firstParameterIndex = isInsideMatrix(matrices,firstParameter);
+                                CMatrix firstParameterTemp = matrices[firstParameterIndex];
 
+                                int secondParameterIndex = isInsideMatrix(matrices,secondParameter);
+                                CMatrix secondParameterTemp = matrices[secondParameterIndex];
+
+                                if(firstParameterTemp.getnR() != secondParameterTemp.getnR() || firstParameterTemp.getnC() != secondParameterTemp.getnC()) {
+                                                cout << "This Operation Can't be Made Because Matrices is not in Compatible Shape." << endl;
+                                                cout << "######################################################" << endl;                      
+                             
                                 } else {
-                                        CMatrix resultMatrix = subOperation(matrices,isInsideMatrix(matrices,firstParameter),isInsideMatrix(matrices,secondParameter),result);
-                                        matrices.push_back(resultMatrix);
 
+                                        if(s.find(';') == std::string::npos) {
+                                                CMatrix resultMatrix = subOperation(matrices,isInsideMatrix(matrices,firstParameter),isInsideMatrix(matrices,secondParameter),result);
+                                                matrices.push_back(resultMatrix);
+                                                cout << resultMatrix.getName() << " = " << endl;
+                                                cout << resultMatrix;
+                                                cout << "######################################################" << endl;
+
+                                        } else {
+                                                CMatrix resultMatrix = subOperation(matrices,isInsideMatrix(matrices,firstParameter),isInsideMatrix(matrices,secondParameter),result);
+                                                matrices.push_back(resultMatrix);
+
+                                        }
                                 }
+
+
+
 
                             }
                             else if(s.find('*') != std::string::npos) {

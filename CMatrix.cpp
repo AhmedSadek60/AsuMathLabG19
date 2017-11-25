@@ -396,8 +396,6 @@ void CMatrix ::copy(string s) {
 
 	*/
 	void CMatrix ::add(const CMatrix & m) {
-		if(nR!= m.nR || nC!= m.nC)
-			throw ("Invalid matrix dimension");
 		for (int iR = 0; iR < nR; iR++)
 			for (int iC = 0; iC < nC; iC++)
 				values[iR][iC] += m.values[iR][iC];
