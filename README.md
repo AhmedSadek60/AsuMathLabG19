@@ -11,13 +11,35 @@ works on linux os, tested on ubuntu 16.04 LTS
 - ???
 
 
-## Code example
-.you can use the command line:
+## Installation & Setup
 
-run the executable file:
+- To Run the Program You can use Command Line(CMD) For Windows or Linux Users :
+```
+make 
+```
+- Previous Command Will Generate a Binary File or exe file in windows
+- You can run the executable file :
+- For Linux 
 ```
 ./matrix
 ```
+- For Windows
+```
+matrix.exe
+```
+
+- If you want to pass a file to the program :
+- For Linux : 
+```
+./matrix [filename]
+```
+- For Windows :
+```
+matrix.exe [filename]
+```
+
+
+## Code example
 
 creating a 2 x 3 matrix without displaying it:
 ```c++
