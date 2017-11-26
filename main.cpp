@@ -260,7 +260,7 @@ void programLoopFromFile(char* fileName){
           if(operationLine.find('+') != std::string::npos) {
               operationLine.erase(std::remove(operationLine.begin(), operationLine.end(), ' '), operationLine.end());
               string firstParameter = operationLine.substr(operationLine.find('=') + 1, operationLine.find('+') - (operationLine.find('=') + 1));
-              string secondParameter = operationLine.substr(operationLine.find('+') + 1);
+              string secondParameter = operationLine.substr(operationLine.find('+') + 1,1);
               string result = operationLine.substr(0,operationLine.find('='));
 
 
@@ -302,7 +302,7 @@ void programLoopFromFile(char* fileName){
           operationLine.erase(std::remove(operationLine.begin(), operationLine.end(), ' '), operationLine.end());
 
               string firstParameter = operationLine.substr(operationLine.find('=') + 1, operationLine.find('-') - (operationLine.find('=') + 1));
-              string secondParameter = operationLine.substr(operationLine.find('-') + 1);
+              string secondParameter = operationLine.substr(operationLine.find('-') + 1,1);
               string result = operationLine.substr(0,operationLine.find('='));
 
 
@@ -344,7 +344,7 @@ void programLoopFromFile(char* fileName){
           operationLine.erase(std::remove(operationLine.begin(), operationLine.end(), ' '), operationLine.end());
 
               string firstParameter = operationLine.substr(operationLine.find('=') + 1, operationLine.find('*') - (operationLine.find('=') + 1));
-              string secondParameter = operationLine.substr(operationLine.find('*') + 1);
+              string secondParameter = operationLine.substr(operationLine.find('*') + 1,1);
               string result = operationLine.substr(0,operationLine.find('='));
 
 
@@ -382,7 +382,7 @@ void programLoopFromFile(char* fileName){
             operationLine.erase(std::remove(operationLine.begin(), operationLine.end(), ' '), operationLine.end());
 
             string firstParameter = operationLine.substr(operationLine.find('=') + 1, operationLine.find("./") - (operationLine.find('=') + 1));
-            string secondParameter = operationLine.substr(operationLine.find("./") + 2);
+            string secondParameter = operationLine.substr(operationLine.find("./") + 2,1);
             string result = operationLine.substr(0,operationLine.find('='));
 
             if(checkNumeric(firstParameter)) {
@@ -417,7 +417,7 @@ void programLoopFromFile(char* fileName){
           operationLine.erase(std::remove(operationLine.begin(), operationLine.end(), ' '), operationLine.end());
 
               string firstParameter = operationLine.substr(operationLine.find('=') + 1, operationLine.find('/') - (operationLine.find('=') + 1));
-              string secondParameter = operationLine.substr(operationLine.find('/') + 1);
+              string secondParameter = operationLine.substr(operationLine.find('/') + 1,1);
               string result = operationLine.substr(0,operationLine.find('='));
 
              int firstParameterIndex = isInsideMatrix(matrices,firstParameter);
