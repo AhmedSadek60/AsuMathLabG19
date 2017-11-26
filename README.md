@@ -23,9 +23,8 @@ works on linux os, tested on ubuntu 16.04 LTS
 - <a href="http://www.mingw.org/category/wiki/download"><b>MinGW</b></a>
 
 - for tutorials to setup cygwin or mingw in your local machine you can also follow the docs in thier website or follow this youtube tutorial :
-``` 
-- https://www.youtube.com/watch?v=DAlS4hF_PbY
-```
+        - <a href="https://www.youtube.com/watch?v=DAlS4hF_PbY">https://www.youtube.com/watch?v=DAlS4hF_PbY</a>
+
 ### For Linux Users :
 - You can just open your terminal and put the following command : 
 ```
@@ -52,9 +51,8 @@ git clone https://github.com/AhmedSadek60/AsuMathLabG19
 ```
 
 - If you are a Windows User don't worry git provides tool called git bash you can download it from here : 
-```
-https://git-scm.com/downloads
-```
+        - <a href="https://git-scm.com/downloads">https://git-scm.com/downloads</a>
+
 - Then type in the git bash command : 
 ```
 git clone https://github.com/AhmedSadek60/AsuMathLabG19
@@ -119,6 +117,29 @@ i = h / g   //error, g is not invertible (determinant of g is zero)
 ```
 ./matrix example.m
 ```
+- You will Find the Outputs Seprated by Some Hashtags for both ( Command Line , Files ) Like this : 
+```
+B = 
+1.2	5.7	4.2	1.4	
+
+6.3	2.5	8.1	3.1	
+
+6.4	2.8	7.1	8.1	
+
+3.2	5.1	7.2	8.9	
+
+######################################################
+C = 
+10.1	13	8.2	3.8	
+
+8.6	9	17	6.2	
+
+11.3	6.6	9.1	15.6	
+
+13	8.5	8.2	17.8	
+```
+
+
 ### supported operations
 - add ( + )
 - sub ( - )
