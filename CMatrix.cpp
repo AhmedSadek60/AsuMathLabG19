@@ -5,6 +5,7 @@
 #include <cstring>
 #include <string.h>
 #include <stdio.h>
+#include <cmath>
 
 using namespace std;
 
@@ -920,19 +921,24 @@ void CMatrix ::copy(string s) {
 	CMatrix CMatrix::getInverse()
 	{	
 		if(getDeterminant() != 0) {
-			CMatrix m(nR, nC);
-			for (int iR = 0; iR < m.nR; iR++)
-			for (int iC = 0; iC < m.nC; iC++)
-			{
-				if (iR % 2 == 0) {
-					m.values[iR][iC] = (iC % 2 == 0) ? getCofactor(iR, iC).getDeterminant() : -getCofactor(iR, iC).getDeterminant();
+			if(exp(getDeterminant()) == 1) {
+				CMatrix m("Invert",nR,nC);
+				return m;
+			} else {
+				CMatrix m(nR, nC);
+				for (int iR = 0; iR < m.nR; iR++)
+				for (int iC = 0; iC < m.nC; iC++)
+				{
+					if (iR % 2 == 0) {
+						m.values[iR][iC] = (iC % 2 == 0) ? getCofactor(iR, iC).getDeterminant() : -getCofactor(iR, iC).getDeterminant();
+					}
+					else
+					m.values[iR][iC] = (iC % 2 == 0) ? -getCofactor(iR, iC).getDeterminant() : getCofactor(iR, iC).getDeterminant();
 				}
-				else
-				m.values[iR][iC] = (iC % 2 == 0) ? -getCofactor(iR, iC).getDeterminant() : getCofactor(iR, iC).getDeterminant();
+				m = m.getTranspose();
+				m = m * (1 / getDeterminant());
+				return m;
 			}
-			m = m.getTranspose();
-			m = m * (1 / getDeterminant());
-			return m;
 		} else {
 			CMatrix m("Invert",nR,nC);
 			return m;

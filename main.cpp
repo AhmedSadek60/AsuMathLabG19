@@ -10,6 +10,7 @@
 #include <algorithm>
 #include <iterator>
 #include <time.h>
+#include <cmath>
 using namespace std;
 
 
@@ -421,6 +422,7 @@ void programLoopFromFile(char* fileName){
              int firstParameterIndex = isInsideMatrix(matrices,firstParameter);
              CMatrix firstParameterTemp = matrices[firstParameterIndex];
 
+
               
 
               int secondParameterIndex = isInsideMatrix(matrices,secondParameter);
@@ -447,6 +449,7 @@ void programLoopFromFile(char* fileName){
 
                 }
               }
+        //1.9582e+21
 
 
 
