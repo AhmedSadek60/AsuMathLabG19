@@ -13,6 +13,53 @@ works on linux os, tested on ubuntu 16.04 LTS
 
 ## Installation & Setup
 
+- Firstly you need to have g++ or gcc or g++-gcc compiler in your local machine
+
+- If you have it, you can skip this part if not please follow it even if you are windows or linux.
+
+### For Windows Users :
+- You can download and use both g++ or gcc compilers and use it from CMD like linux by insatalling :
+- <a href="https://cygwin.com/install.html"><b>Cygwin</b></a>
+- <a href="http://www.mingw.org/category/wiki/download"><b>MinGW</b></a>
+
+- for tutorials to setup cygwin or mingw in your local machine you can also follow the docs in thier website or follow this youtube tutorial :
+``` 
+- https://www.youtube.com/watch?v=DAlS4hF_PbY
+```
+### For Linux Users :
+- You can just open your terminal and put the following command : 
+```
+sudo apt-get install g++
+```
+- if you have any errors so write the following commands : 
+```
+sudo apt-get update
+sudo apt-get install g++  // or you can type gcc iif you want
+```
+
+
+### Cloning Project : 
+- To get the porject you can just get the winrar from "Clone or Download" Button at the top
+- Or you can clone it by terminal in linux but you must have it to install it follow the following commands :
+```
+sudo apt-get update
+sudo apt-get install git
+``` 
+
+- then you can clone it in your local machine by typing in terminal :
+```
+git clone https://github.com/AhmedSadek60/AsuMathLabG19
+```
+
+- If you are a Windows User don't worry git provides tool called git bash you can download it from here : 
+```
+https://git-scm.com/downloads
+```
+- Then type in the git bash command : 
+```
+git clone https://github.com/AhmedSadek60/AsuMathLabG19
+```
+
 - To Run the Program You can use Command Line(CMD) For Windows or Linux Users :
 ```
 make 
