@@ -1,0 +1,1092 @@
+Flat profile:
+
+Each sample counts as 0.01 seconds.
+ no time accumulated
+
+  %   cumulative   self              self     total           
+ time   seconds   seconds    calls  Ts/call  Ts/call  name    
+  0.00      0.00     0.00    49994     0.00     0.00  std::char_traits<char>::eof()
+  0.00      0.00     0.00    41660     0.00     0.00  std::char_traits<char>::eq_int_type(int const&, int const&)
+  0.00      0.00     0.00    24996     0.00     0.00  std::istreambuf_iterator<char, std::char_traits<char> >::_M_get() const
+  0.00      0.00     0.00    16806     0.00     0.00  __gnu_cxx::__normal_iterator<char*, std::string>::base() const
+  0.00      0.00     0.00    16693     0.00     0.00  __gnu_cxx::__normal_iterator<char*, std::string>::operator*() const
+  0.00      0.00     0.00    16669     0.00     0.00  __gnu_cxx::__normal_iterator<char*, std::string>::operator++()
+  0.00      0.00     0.00    16666     0.00     0.00  std::istreambuf_iterator<char, std::char_traits<char> >::_M_at_eof() const
+  0.00      0.00     0.00    16645     0.00     0.00  bool __gnu_cxx::__ops::_Iter_equals_val<char const>::operator()<__gnu_cxx::__normal_iterator<char*, std::string> >(__gnu_cxx::__normal_iterator<char*, std::string>)
+  0.00      0.00     0.00    12813     0.00     0.00  CMatrix::reset()
+  0.00      0.00     0.00     8379     0.00     0.00  bool __gnu_cxx::operator!=<char*, std::string>(__gnu_cxx::__normal_iterator<char*, std::string> const&, __gnu_cxx::__normal_iterator<char*, std::string> const&)
+  0.00      0.00     0.00     8333     0.00     0.00  std::istreambuf_iterator<char, std::char_traits<char> >::equal(std::istreambuf_iterator<char, std::char_traits<char> > const&) const
+  0.00      0.00     0.00     8332     0.00     0.00  bool std::operator!=<char, std::char_traits<char> >(std::istreambuf_iterator<char, std::char_traits<char> > const&, std::istreambuf_iterator<char, std::char_traits<char> > const&)
+  0.00      0.00     0.00     8330     0.00     0.00  std::istreambuf_iterator<char, std::char_traits<char> >::operator*() const
+  0.00      0.00     0.00     8330     0.00     0.00  std::char_traits<char>::to_char_type(int const&)
+  0.00      0.00     0.00     8330     0.00     0.00  std::istreambuf_iterator<char, std::char_traits<char> >::operator++()
+  0.00      0.00     0.00     6440     0.00     0.00  CMatrix::~CMatrix()
+  0.00      0.00     0.00     4323     0.00     0.00  CMatrix::copy(CMatrix const&)
+  0.00      0.00     0.00     4224     0.00     0.00  CMatrix::setSubMatrix(int, int, CMatrix const&)
+  0.00      0.00     0.00     2209     0.00     0.00  CMatrix::CMatrix(CMatrix const&)
+  0.00      0.00     0.00     2112     0.00     0.00  CMatrix::operator=(CMatrix const&)
+  0.00      0.00     0.00     2112     0.00     0.00  int const& std::max<int>(int const&, int const&)
+  0.00      0.00     0.00     2111     0.00     0.00  bool std::operator==<char, std::char_traits<char>, std::allocator<char> >(std::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, char const*)
+  0.00      0.00     0.00     2052     0.00     0.00  CMatrix::CMatrix(int, int, int, double)
+  0.00      0.00     0.00     2048     0.00     0.00  CMatrix::copy(double)
+  0.00      0.00     0.00     2048     0.00     0.00  CMatrix::addColumn(CMatrix const&)
+  0.00      0.00     0.00     2048     0.00     0.00  CMatrix::CMatrix(double)
+  0.00      0.00     0.00      178     0.00     0.00  __gnu_cxx::__normal_iterator<CMatrix const*, std::vector<CMatrix, std::allocator<CMatrix> > >::base() const
+  0.00      0.00     0.00      161     0.00     0.00  CMatrix* std::__addressof<CMatrix>(CMatrix&)
+  0.00      0.00     0.00      112     0.00     0.00  std::vector<CMatrix, std::allocator<CMatrix> >::size() const
+  0.00      0.00     0.00       89     0.00     0.00  bool __gnu_cxx::operator!=<CMatrix const*, std::vector<CMatrix, std::allocator<CMatrix> > >(__gnu_cxx::__normal_iterator<CMatrix const*, std::vector<CMatrix, std::allocator<CMatrix> > > const&, __gnu_cxx::__normal_iterator<CMatrix const*, std::vector<CMatrix, std::allocator<CMatrix> > > const&)
+  0.00      0.00     0.00       84     0.00     0.00  void std::_Destroy<CMatrix>(CMatrix*)
+  0.00      0.00     0.00       84     0.00     0.00  operator new(unsigned int, void*)
+  0.00      0.00     0.00       77     0.00     0.00  std::vector<CMatrix, std::allocator<CMatrix> >::operator[](unsigned int)
+  0.00      0.00     0.00       77     0.00     0.00  void std::_Construct<CMatrix, CMatrix>(CMatrix*, CMatrix const&)
+  0.00      0.00     0.00       70     0.00     0.00  __gnu_cxx::__normal_iterator<CMatrix const*, std::vector<CMatrix, std::allocator<CMatrix> > >::operator++()
+  0.00      0.00     0.00       70     0.00     0.00  __gnu_cxx::__normal_iterator<CMatrix const*, std::vector<CMatrix, std::allocator<CMatrix> > >::operator*() const
+  0.00      0.00     0.00       67     0.00     0.00  CMatrix::getName()
+  0.00      0.00     0.00       65     0.00     0.00  CMatrix::CMatrix(std::string, int, int, int, double)
+  0.00      0.00     0.00       64     0.00     0.00  CMatrix::addRow(CMatrix const&)
+  0.00      0.00     0.00       64     0.00     0.00  CMatrix::CMatrix()
+  0.00      0.00     0.00       61     0.00     0.00  std::char_traits<char>::compare(char const*, char const*, unsigned int)
+  0.00      0.00     0.00       61     0.00     0.00  __gnu_cxx::__enable_if<std::__is_char<char>::__value, bool>::__type std::operator==<char>(std::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)
+  0.00      0.00     0.00       51     0.00     0.00  std::_Vector_base<CMatrix, std::allocator<CMatrix> >::_M_get_Tp_allocator()
+  0.00      0.00     0.00       38     0.00     0.00  __gnu_cxx::__normal_iterator<CMatrix const*, std::vector<CMatrix, std::allocator<CMatrix> > >::__normal_iterator(CMatrix const* const&)
+  0.00      0.00     0.00       31     0.00     0.00  __gnu_cxx::new_allocator<CMatrix>::max_size() const
+  0.00      0.00     0.00       27     0.00     0.00  std::_Vector_base<CMatrix, std::allocator<CMatrix> >::_M_get_Tp_allocator() const
+  0.00      0.00     0.00       24     0.00     0.00  void std::_Destroy_aux<false>::__destroy<CMatrix*>(CMatrix*, CMatrix*)
+  0.00      0.00     0.00       24     0.00     0.00  std::_Vector_base<CMatrix, std::allocator<CMatrix> >::_M_deallocate(CMatrix*, unsigned int)
+  0.00      0.00     0.00       24     0.00     0.00  void std::_Destroy<CMatrix*>(CMatrix*, CMatrix*)
+  0.00      0.00     0.00       24     0.00     0.00  void std::_Destroy<CMatrix*, CMatrix>(CMatrix*, CMatrix*, std::allocator<CMatrix>&)
+  0.00      0.00     0.00       23     0.00     0.00  __gnu_cxx::new_allocator<CMatrix>::deallocate(CMatrix*, unsigned int)
+  0.00      0.00     0.00       23     0.00     0.00  __gnu_cxx::new_allocator<CMatrix>::allocate(unsigned int, void const*)
+  0.00      0.00     0.00       23     0.00     0.00  __gnu_cxx::__alloc_traits<std::allocator<CMatrix> >::deallocate(std::allocator<CMatrix>&, CMatrix*, unsigned int)
+  0.00      0.00     0.00       23     0.00     0.00  __gnu_cxx::__alloc_traits<std::allocator<CMatrix> >::allocate(std::allocator<CMatrix>&, unsigned int)
+  0.00      0.00     0.00       23     0.00     0.00  std::_Vector_base<CMatrix, std::allocator<CMatrix> >::_M_allocate(unsigned int)
+  0.00      0.00     0.00       20     0.00     0.00  __gnu_cxx::new_allocator<CMatrix>::~new_allocator()
+  0.00      0.00     0.00       20     0.00     0.00  std::allocator<CMatrix>::~allocator()
+  0.00      0.00     0.00       20     0.00     0.00  std::_Vector_base<CMatrix, std::allocator<CMatrix> >::_Vector_impl::~_Vector_impl()
+  0.00      0.00     0.00       20     0.00     0.00  std::_Vector_base<CMatrix, std::allocator<CMatrix> >::~_Vector_base()
+  0.00      0.00     0.00       20     0.00     0.00  std::vector<CMatrix, std::allocator<CMatrix> >::~vector()
+  0.00      0.00     0.00       19     0.00     0.00  __gnu_cxx::new_allocator<CMatrix>::new_allocator(__gnu_cxx::new_allocator<CMatrix> const&)
+  0.00      0.00     0.00       19     0.00     0.00  __gnu_cxx::__alloc_traits<std::allocator<CMatrix> >::_S_select_on_copy(std::allocator<CMatrix> const&)
+  0.00      0.00     0.00       19     0.00     0.00  std::vector<CMatrix, std::allocator<CMatrix> >::end() const
+  0.00      0.00     0.00       19     0.00     0.00  std::vector<CMatrix, std::allocator<CMatrix> >::begin() const
+  0.00      0.00     0.00       19     0.00     0.00  std::allocator<CMatrix>::allocator(std::allocator<CMatrix> const&)
+  0.00      0.00     0.00       19     0.00     0.00  std::_Vector_base<CMatrix, std::allocator<CMatrix> >::_Vector_impl::_Vector_impl(std::allocator<CMatrix> const&)
+  0.00      0.00     0.00       19     0.00     0.00  std::_Vector_base<CMatrix, std::allocator<CMatrix> >::_M_create_storage(unsigned int)
+  0.00      0.00     0.00       19     0.00     0.00  std::_Vector_base<CMatrix, std::allocator<CMatrix> >::_Vector_base(unsigned int, std::allocator<CMatrix> const&)
+  0.00      0.00     0.00       19     0.00     0.00  CMatrix* std::__uninitialized_copy<false>::__uninit_copy<__gnu_cxx::__normal_iterator<CMatrix const*, std::vector<CMatrix, std::allocator<CMatrix> > >, CMatrix*>(__gnu_cxx::__normal_iterator<CMatrix const*, std::vector<CMatrix, std::allocator<CMatrix> > >, __gnu_cxx::__normal_iterator<CMatrix const*, std::vector<CMatrix, std::allocator<CMatrix> > >, CMatrix*)
+  0.00      0.00     0.00       19     0.00     0.00  std::vector<CMatrix, std::allocator<CMatrix> >::vector(std::vector<CMatrix, std::allocator<CMatrix> > const&)
+  0.00      0.00     0.00       19     0.00     0.00  CMatrix* std::uninitialized_copy<__gnu_cxx::__normal_iterator<CMatrix const*, std::vector<CMatrix, std::allocator<CMatrix> > >, CMatrix*>(__gnu_cxx::__normal_iterator<CMatrix const*, std::vector<CMatrix, std::allocator<CMatrix> > >, __gnu_cxx::__normal_iterator<CMatrix const*, std::vector<CMatrix, std::allocator<CMatrix> > >, CMatrix*)
+  0.00      0.00     0.00       19     0.00     0.00  CMatrix* std::__uninitialized_copy_a<__gnu_cxx::__normal_iterator<CMatrix const*, std::vector<CMatrix, std::allocator<CMatrix> > >, CMatrix*, CMatrix>(__gnu_cxx::__normal_iterator<CMatrix const*, std::vector<CMatrix, std::allocator<CMatrix> > >, __gnu_cxx::__normal_iterator<CMatrix const*, std::vector<CMatrix, std::allocator<CMatrix> > >, CMatrix*, std::allocator<CMatrix>&)
+  0.00      0.00     0.00       16     0.00     0.00  isInsideMatrix(std::vector<CMatrix, std::allocator<CMatrix> >, std::string)
+  0.00      0.00     0.00       16     0.00     0.00  __gnu_cxx::__normal_iterator<CMatrix*, std::vector<CMatrix, std::allocator<CMatrix> > >::base() const
+  0.00      0.00     0.00       14     0.00     0.00  __gnu_cxx::__normal_iterator<char*, std::string>::difference_type __gnu_cxx::operator-<char*, std::string>(__gnu_cxx::__normal_iterator<char*, std::string> const&, __gnu_cxx::__normal_iterator<char*, std::string> const&)
+  0.00      0.00     0.00       11     0.00     0.00  __gnu_cxx::__ops::_Iter_equals_val<char const>::_Iter_equals_val(char const&)
+  0.00      0.00     0.00       11     0.00     0.00  __gnu_cxx::__ops::_Iter_equals_val<char const> __gnu_cxx::__ops::__iter_equals_val<char const>(char const&)
+  0.00      0.00     0.00       10     0.00     0.00  bool __gnu_cxx::operator==<char*, std::string>(__gnu_cxx::__normal_iterator<char*, std::string> const&, __gnu_cxx::__normal_iterator<char*, std::string> const&)
+  0.00      0.00     0.00       10     0.00     0.00  __gnu_cxx::__normal_iterator<char*, std::string> std::__remove_if<__gnu_cxx::__normal_iterator<char*, std::string>, __gnu_cxx::__ops::_Iter_equals_val<char const> >(__gnu_cxx::__normal_iterator<char*, std::string>, __gnu_cxx::__normal_iterator<char*, std::string>, __gnu_cxx::__ops::_Iter_equals_val<char const>)
+  0.00      0.00     0.00       10     0.00     0.00  std::iterator_traits<__gnu_cxx::__normal_iterator<char*, std::string> >::iterator_category std::__iterator_category<__gnu_cxx::__normal_iterator<char*, std::string> >(__gnu_cxx::__normal_iterator<char*, std::string> const&)
+  0.00      0.00     0.00       10     0.00     0.00  __gnu_cxx::__normal_iterator<char*, std::string> std::remove<__gnu_cxx::__normal_iterator<char*, std::string>, char>(__gnu_cxx::__normal_iterator<char*, std::string>, __gnu_cxx::__normal_iterator<char*, std::string>, char const&)
+  0.00      0.00     0.00       10     0.00     0.00  __gnu_cxx::__normal_iterator<char*, std::string> std::__find_if<__gnu_cxx::__normal_iterator<char*, std::string>, __gnu_cxx::__ops::_Iter_equals_val<char const> >(__gnu_cxx::__normal_iterator<char*, std::string>, __gnu_cxx::__normal_iterator<char*, std::string>, __gnu_cxx::__ops::_Iter_equals_val<char const>)
+  0.00      0.00     0.00       10     0.00     0.00  __gnu_cxx::__normal_iterator<char*, std::string> std::__find_if<__gnu_cxx::__normal_iterator<char*, std::string>, __gnu_cxx::__ops::_Iter_equals_val<char const> >(__gnu_cxx::__normal_iterator<char*, std::string>, __gnu_cxx::__normal_iterator<char*, std::string>, __gnu_cxx::__ops::_Iter_equals_val<char const>, std::random_access_iterator_tag)
+  0.00      0.00     0.00        8     0.00     0.00  __gnu_cxx::__alloc_traits<std::allocator<CMatrix> >::max_size(std::allocator<CMatrix> const&)
+  0.00      0.00     0.00        8     0.00     0.00  __gnu_cxx::__normal_iterator<CMatrix*, std::vector<CMatrix, std::allocator<CMatrix> > >::__normal_iterator(CMatrix* const&)
+  0.00      0.00     0.00        8     0.00     0.00  std::vector<CMatrix, std::allocator<CMatrix> >::max_size() const
+  0.00      0.00     0.00        8     0.00     0.00  CMatrix* std::__uninitialized_copy<false>::__uninit_copy<CMatrix*, CMatrix*>(CMatrix*, CMatrix*, CMatrix*)
+  0.00      0.00     0.00        8     0.00     0.00  CMatrix* std::uninitialized_copy<CMatrix*, CMatrix*>(CMatrix*, CMatrix*, CMatrix*)
+  0.00      0.00     0.00        8     0.00     0.00  CMatrix* std::__uninitialized_copy_a<CMatrix*, CMatrix*, CMatrix>(CMatrix*, CMatrix*, CMatrix*, std::allocator<CMatrix>&)
+  0.00      0.00     0.00        8     0.00     0.00  CMatrix* std::__uninitialized_move_if_noexcept_a<CMatrix*, CMatrix*, std::allocator<CMatrix> >(CMatrix*, CMatrix*, CMatrix*, std::allocator<CMatrix>&)
+  0.00      0.00     0.00        7     0.00     0.00  __gnu_cxx::new_allocator<CMatrix>::construct(CMatrix*, CMatrix const&)
+  0.00      0.00     0.00        7     0.00     0.00  void __gnu_cxx::__alloc_traits<std::allocator<CMatrix> >::construct<CMatrix>(std::allocator<CMatrix>&, CMatrix*, CMatrix const&)
+  0.00      0.00     0.00        7     0.00     0.00  std::vector<CMatrix, std::allocator<CMatrix> >::push_back(CMatrix const&)
+  0.00      0.00     0.00        6     0.00     0.00  CMatrix::getnC()
+  0.00      0.00     0.00        6     0.00     0.00  CMatrix::getnR()
+  0.00      0.00     0.00        5     0.00     0.00  CMatrix::setName(std::string)
+  0.00      0.00     0.00        5     0.00     0.00  CMatrix::getString()
+  0.00      0.00     0.00        5     0.00     0.00  operator<<(std::ostream&, CMatrix&)
+  0.00      0.00     0.00        4     0.00     0.00  __gnu_cxx::__normal_iterator<CMatrix*, std::vector<CMatrix, std::allocator<CMatrix> > >::difference_type __gnu_cxx::operator-<CMatrix*, std::vector<CMatrix, std::allocator<CMatrix> > >(__gnu_cxx::__normal_iterator<CMatrix*, std::vector<CMatrix, std::allocator<CMatrix> > > const&, __gnu_cxx::__normal_iterator<CMatrix*, std::vector<CMatrix, std::allocator<CMatrix> > > const&)
+  0.00      0.00     0.00        4     0.00     0.00  std::vector<CMatrix, std::allocator<CMatrix> >::_M_check_len(unsigned int, char const*) const
+  0.00      0.00     0.00        4     0.00     0.00  std::vector<CMatrix, std::allocator<CMatrix> >::_M_insert_aux(__gnu_cxx::__normal_iterator<CMatrix*, std::vector<CMatrix, std::allocator<CMatrix> > >, CMatrix const&)
+  0.00      0.00     0.00        4     0.00     0.00  std::vector<CMatrix, std::allocator<CMatrix> >::end()
+  0.00      0.00     0.00        4     0.00     0.00  std::vector<CMatrix, std::allocator<CMatrix> >::begin()
+  0.00      0.00     0.00        4     0.00     0.00  unsigned int const& std::max<unsigned int>(unsigned int const&, unsigned int const&)
+  0.00      0.00     0.00        4     0.00     0.00  void std::swap<double>(double&, double&)
+  0.00      0.00     0.00        2     0.00     0.00  CMatrix::getDeterminant()
+  0.00      0.00     0.00        2     0.00     0.00  CMatrix::copy(std::string)
+  0.00      0.00     0.00        2     0.00     0.00  CMatrix::CMatrix(std::string, std::string)
+  0.00      0.00     0.00        2     0.00     0.00  std::iterator<std::input_iterator_tag, char, long long, char*, char&>::iterator()
+  0.00      0.00     0.00        1     0.00     0.00  addOperation(std::vector<CMatrix, std::allocator<CMatrix> >, int, int, std::string)
+  0.00      0.00     0.00        1     0.00     0.00  checkNumeric(std::string const&)
+  0.00      0.00     0.00        1     0.00     0.00  subOperation(std::vector<CMatrix, std::allocator<CMatrix> >, int, int, std::string)
+  0.00      0.00     0.00        1     0.00     0.00  multiplyOperation(std::vector<CMatrix, std::allocator<CMatrix> >, int, int, std::string)
+  0.00      0.00     0.00        1     0.00     0.00  transposeOperation(std::vector<CMatrix, std::allocator<CMatrix> >&, int, std::string)
+  0.00      0.00     0.00        1     0.00     0.00  programLoopFromFile(char*)
+  0.00      0.00     0.00        1     0.00     0.00  elmentWiseDivOperationNumber(std::vector<CMatrix, std::allocator<CMatrix> >&, int, std::string, std::string)
+  0.00      0.00     0.00        1     0.00     0.00  CMatrix::getInverse()
+  0.00      0.00     0.00        1     0.00     0.00  CMatrix::getTranspose()
+  0.00      0.00     0.00        1     0.00     0.00  CMatrix::elementWiseDiv(CMatrix const&)
+  0.00      0.00     0.00        1     0.00     0.00  CMatrix::add(CMatrix const&)
+  0.00      0.00     0.00        1     0.00     0.00  CMatrix::mul(CMatrix const&)
+  0.00      0.00     0.00        1     0.00     0.00  CMatrix::sub(CMatrix const&)
+  0.00      0.00     0.00        1     0.00     0.00  CMatrix::operator-=(CMatrix const&)
+  0.00      0.00     0.00        1     0.00     0.00  CMatrix::operator*=(CMatrix const&)
+  0.00      0.00     0.00        1     0.00     0.00  CMatrix::operator-(CMatrix const&)
+  0.00      0.00     0.00        1     0.00     0.00  CMatrix::operator*(CMatrix const&)
+  0.00      0.00     0.00        1     0.00     0.00  CMatrix::operator+=(CMatrix const&)
+  0.00      0.00     0.00        1     0.00     0.00  CMatrix::operator+(CMatrix const&)
+  0.00      0.00     0.00        1     0.00     0.00  __gnu_cxx::new_allocator<CMatrix>::new_allocator()
+  0.00      0.00     0.00        1     0.00     0.00  std::allocator<CMatrix>::allocator()
+  0.00      0.00     0.00        1     0.00     0.00  char* std::string::_S_construct<std::istreambuf_iterator<char, std::char_traits<char> > >(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::allocator<char> const&)
+  0.00      0.00     0.00        1     0.00     0.00  char* std::string::_S_construct<std::istreambuf_iterator<char, std::char_traits<char> > >(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::allocator<char> const&, std::input_iterator_tag)
+  0.00      0.00     0.00        1     0.00     0.00  char* std::string::_S_construct_aux<std::istreambuf_iterator<char, std::char_traits<char> > >(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::allocator<char> const&, std::__false_type)
+  0.00      0.00     0.00        1     0.00     0.00  std::basic_string<char, std::char_traits<char>, std::allocator<char> >::basic_string<std::istreambuf_iterator<char, std::char_traits<char> > >(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::allocator<char> const&)
+  0.00      0.00     0.00        1     0.00     0.00  std::_Vector_base<CMatrix, std::allocator<CMatrix> >::_Vector_impl::_Vector_impl()
+  0.00      0.00     0.00        1     0.00     0.00  std::_Vector_base<CMatrix, std::allocator<CMatrix> >::_Vector_base()
+  0.00      0.00     0.00        1     0.00     0.00  std::istreambuf_iterator<char, std::char_traits<char> >::istreambuf_iterator(std::istream&)
+  0.00      0.00     0.00        1     0.00     0.00  std::istreambuf_iterator<char, std::char_traits<char> >::istreambuf_iterator()
+  0.00      0.00     0.00        1     0.00     0.00  std::vector<CMatrix, std::allocator<CMatrix> >::vector()
+  0.00      0.00     0.00        1     0.00     0.00  std::iterator_traits<__gnu_cxx::__normal_iterator<char*, std::string> >::difference_type std::__count_if<__gnu_cxx::__normal_iterator<char*, std::string>, __gnu_cxx::__ops::_Iter_equals_val<char const> >(__gnu_cxx::__normal_iterator<char*, std::string>, __gnu_cxx::__normal_iterator<char*, std::string>, __gnu_cxx::__ops::_Iter_equals_val<char const>)
+  0.00      0.00     0.00        1     0.00     0.00  std::iterator_traits<__gnu_cxx::__normal_iterator<char*, std::string> >::difference_type std::count<__gnu_cxx::__normal_iterator<char*, std::string>, char>(__gnu_cxx::__normal_iterator<char*, std::string>, __gnu_cxx::__normal_iterator<char*, std::string>, char const&)
+  0.00      0.00     0.00        1     0.00     0.00  bool std::operator==<char, std::char_traits<char> >(std::istreambuf_iterator<char, std::char_traits<char> > const&, std::istreambuf_iterator<char, std::char_traits<char> > const&)
+
+ %         the percentage of the total running time of the
+time       program used by this function.
+
+cumulative a running sum of the number of seconds accounted
+ seconds   for by this function and those listed above it.
+
+ self      the number of seconds accounted for by this
+seconds    function alone.  This is the major sort for this
+           listing.
+
+calls      the number of times this function was invoked, if
+           this function is profiled, else blank.
+ 
+ self      the average number of milliseconds spent in this
+ms/call    function per call, if this function is profiled,
+	   else blank.
+
+ total     the average number of milliseconds spent in this
+ms/call    function and its descendents per call, if this 
+	   function is profiled, else blank.
+
+name       the name of the function.  This is the minor sort
+           for this listing. The index shows the location of
+	   the function in the gprof listing. If the index is
+	   in parenthesis it shows where it would appear in
+	   the gprof listing if it were to be printed.
+
+Copyright (C) 2012-2014 Free Software Foundation, Inc.
+
+Copying and distribution of this file, with or without modification,
+are permitted in any medium without royalty provided the copyright
+notice and this notice are preserved.
+
+		     Call graph (explanation follows)
+
+
+granularity: each sample hit covers 4 byte(s) no time propagated
+
+index % time    self  children    called     name
+                0.00    0.00       1/49994       std::istreambuf_iterator<char, std::char_traits<char> >::istreambuf_iterator(std::istream&) [138]
+                0.00    0.00       1/49994       std::istreambuf_iterator<char, std::char_traits<char> >::istreambuf_iterator() [139]
+                0.00    0.00    8330/49994       std::istreambuf_iterator<char, std::char_traits<char> >::operator++() [16]
+                0.00    0.00   16666/49994       std::istreambuf_iterator<char, std::char_traits<char> >::_M_at_eof() const [8]
+                0.00    0.00   24996/49994       std::istreambuf_iterator<char, std::char_traits<char> >::_M_get() const [4]
+[2]      0.0    0.00    0.00   49994         std::char_traits<char>::eof() [2]
+-----------------------------------------------
+                0.00    0.00   16666/41660       std::istreambuf_iterator<char, std::char_traits<char> >::_M_at_eof() const [8]
+                0.00    0.00   24994/41660       std::istreambuf_iterator<char, std::char_traits<char> >::_M_get() const [4]
+[3]      0.0    0.00    0.00   41660         std::char_traits<char>::eq_int_type(int const&, int const&) [3]
+-----------------------------------------------
+                0.00    0.00    8330/24996       std::istreambuf_iterator<char, std::char_traits<char> >::operator*() const [14]
+                0.00    0.00   16666/24996       std::istreambuf_iterator<char, std::char_traits<char> >::_M_at_eof() const [8]
+[4]      0.0    0.00    0.00   24996         std::istreambuf_iterator<char, std::char_traits<char> >::_M_get() const [4]
+                0.00    0.00   24996/49994       std::char_traits<char>::eof() [2]
+                0.00    0.00   24994/41660       std::char_traits<char>::eq_int_type(int const&, int const&) [3]
+-----------------------------------------------
+                0.00    0.00      20/16806       bool __gnu_cxx::operator==<char*, std::string>(__gnu_cxx::__normal_iterator<char*, std::string> const&, __gnu_cxx::__normal_iterator<char*, std::string> const&) [79]
+                0.00    0.00      28/16806       __gnu_cxx::__normal_iterator<char*, std::string>::difference_type __gnu_cxx::operator-<char*, std::string>(__gnu_cxx::__normal_iterator<char*, std::string> const&, __gnu_cxx::__normal_iterator<char*, std::string> const&) [76]
+                0.00    0.00   16758/16806       bool __gnu_cxx::operator!=<char*, std::string>(__gnu_cxx::__normal_iterator<char*, std::string> const&, __gnu_cxx::__normal_iterator<char*, std::string> const&) [11]
+[5]      0.0    0.00    0.00   16806         __gnu_cxx::__normal_iterator<char*, std::string>::base() const [5]
+-----------------------------------------------
+                0.00    0.00      48/16693       __gnu_cxx::__normal_iterator<char*, std::string> std::__remove_if<__gnu_cxx::__normal_iterator<char*, std::string>, __gnu_cxx::__ops::_Iter_equals_val<char const> >(__gnu_cxx::__normal_iterator<char*, std::string>, __gnu_cxx::__normal_iterator<char*, std::string>, __gnu_cxx::__ops::_Iter_equals_val<char const>) [80]
+                0.00    0.00   16645/16693       bool __gnu_cxx::__ops::_Iter_equals_val<char const>::operator()<__gnu_cxx::__normal_iterator<char*, std::string> >(__gnu_cxx::__normal_iterator<char*, std::string>) [9]
+[6]      0.0    0.00    0.00   16693         __gnu_cxx::__normal_iterator<char*, std::string>::operator*() const [6]
+-----------------------------------------------
+                0.00    0.00      72/16669       __gnu_cxx::__normal_iterator<char*, std::string> std::__remove_if<__gnu_cxx::__normal_iterator<char*, std::string>, __gnu_cxx::__ops::_Iter_equals_val<char const> >(__gnu_cxx::__normal_iterator<char*, std::string>, __gnu_cxx::__normal_iterator<char*, std::string>, __gnu_cxx::__ops::_Iter_equals_val<char const>) [80]
+                0.00    0.00    8267/16669       __gnu_cxx::__normal_iterator<char*, std::string> std::__find_if<__gnu_cxx::__normal_iterator<char*, std::string>, __gnu_cxx::__ops::_Iter_equals_val<char const> >(__gnu_cxx::__normal_iterator<char*, std::string>, __gnu_cxx::__normal_iterator<char*, std::string>, __gnu_cxx::__ops::_Iter_equals_val<char const>, std::random_access_iterator_tag) [84]
+                0.00    0.00    8330/16669       std::iterator_traits<__gnu_cxx::__normal_iterator<char*, std::string> >::difference_type std::__count_if<__gnu_cxx::__normal_iterator<char*, std::string>, __gnu_cxx::__ops::_Iter_equals_val<char const> >(__gnu_cxx::__normal_iterator<char*, std::string>, __gnu_cxx::__normal_iterator<char*, std::string>, __gnu_cxx::__ops::_Iter_equals_val<char const>) [141]
+[7]      0.0    0.00    0.00   16669         __gnu_cxx::__normal_iterator<char*, std::string>::operator++() [7]
+-----------------------------------------------
+                0.00    0.00   16666/16666       std::istreambuf_iterator<char, std::char_traits<char> >::equal(std::istreambuf_iterator<char, std::char_traits<char> > const&) const [12]
+[8]      0.0    0.00    0.00   16666         std::istreambuf_iterator<char, std::char_traits<char> >::_M_at_eof() const [8]
+                0.00    0.00   16666/49994       std::char_traits<char>::eof() [2]
+                0.00    0.00   16666/24996       std::istreambuf_iterator<char, std::char_traits<char> >::_M_get() const [4]
+                0.00    0.00   16666/41660       std::char_traits<char>::eq_int_type(int const&, int const&) [3]
+-----------------------------------------------
+                0.00    0.00      40/16645       __gnu_cxx::__normal_iterator<char*, std::string> std::__remove_if<__gnu_cxx::__normal_iterator<char*, std::string>, __gnu_cxx::__ops::_Iter_equals_val<char const> >(__gnu_cxx::__normal_iterator<char*, std::string>, __gnu_cxx::__normal_iterator<char*, std::string>, __gnu_cxx::__ops::_Iter_equals_val<char const>) [80]
+                0.00    0.00    8275/16645       __gnu_cxx::__normal_iterator<char*, std::string> std::__find_if<__gnu_cxx::__normal_iterator<char*, std::string>, __gnu_cxx::__ops::_Iter_equals_val<char const> >(__gnu_cxx::__normal_iterator<char*, std::string>, __gnu_cxx::__normal_iterator<char*, std::string>, __gnu_cxx::__ops::_Iter_equals_val<char const>, std::random_access_iterator_tag) [84]
+                0.00    0.00    8330/16645       std::iterator_traits<__gnu_cxx::__normal_iterator<char*, std::string> >::difference_type std::__count_if<__gnu_cxx::__normal_iterator<char*, std::string>, __gnu_cxx::__ops::_Iter_equals_val<char const> >(__gnu_cxx::__normal_iterator<char*, std::string>, __gnu_cxx::__normal_iterator<char*, std::string>, __gnu_cxx::__ops::_Iter_equals_val<char const>) [141]
+[9]      0.0    0.00    0.00   16645         bool __gnu_cxx::__ops::_Iter_equals_val<char const>::operator()<__gnu_cxx::__normal_iterator<char*, std::string> >(__gnu_cxx::__normal_iterator<char*, std::string>) [9]
+                0.00    0.00   16645/16693       __gnu_cxx::__normal_iterator<char*, std::string>::operator*() const [6]
+-----------------------------------------------
+                0.00    0.00       2/12813       CMatrix::copy(std::string) [108]
+                0.00    0.00    2048/12813       CMatrix::copy(double) [25]
+                0.00    0.00    4323/12813       CMatrix::copy(CMatrix const&) [18]
+                0.00    0.00    6440/12813       CMatrix::~CMatrix() [17]
+[10]     0.0    0.00    0.00   12813         CMatrix::reset() [10]
+-----------------------------------------------
+                0.00    0.00      48/8379        __gnu_cxx::__normal_iterator<char*, std::string> std::__remove_if<__gnu_cxx::__normal_iterator<char*, std::string>, __gnu_cxx::__ops::_Iter_equals_val<char const> >(__gnu_cxx::__normal_iterator<char*, std::string>, __gnu_cxx::__normal_iterator<char*, std::string>, __gnu_cxx::__ops::_Iter_equals_val<char const>) [80]
+                0.00    0.00    8331/8379        std::iterator_traits<__gnu_cxx::__normal_iterator<char*, std::string> >::difference_type std::__count_if<__gnu_cxx::__normal_iterator<char*, std::string>, __gnu_cxx::__ops::_Iter_equals_val<char const> >(__gnu_cxx::__normal_iterator<char*, std::string>, __gnu_cxx::__normal_iterator<char*, std::string>, __gnu_cxx::__ops::_Iter_equals_val<char const>) [141]
+[11]     0.0    0.00    0.00    8379         bool __gnu_cxx::operator!=<char*, std::string>(__gnu_cxx::__normal_iterator<char*, std::string> const&, __gnu_cxx::__normal_iterator<char*, std::string> const&) [11]
+                0.00    0.00   16758/16806       __gnu_cxx::__normal_iterator<char*, std::string>::base() const [5]
+-----------------------------------------------
+                0.00    0.00       1/8333        bool std::operator==<char, std::char_traits<char> >(std::istreambuf_iterator<char, std::char_traits<char> > const&, std::istreambuf_iterator<char, std::char_traits<char> > const&) [143]
+                0.00    0.00    8332/8333        bool std::operator!=<char, std::char_traits<char> >(std::istreambuf_iterator<char, std::char_traits<char> > const&, std::istreambuf_iterator<char, std::char_traits<char> > const&) [13]
+[12]     0.0    0.00    0.00    8333         std::istreambuf_iterator<char, std::char_traits<char> >::equal(std::istreambuf_iterator<char, std::char_traits<char> > const&) const [12]
+                0.00    0.00   16666/16666       std::istreambuf_iterator<char, std::char_traits<char> >::_M_at_eof() const [8]
+-----------------------------------------------
+                0.00    0.00    8332/8332        char* std::string::_S_construct<std::istreambuf_iterator<char, std::char_traits<char> > >(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::allocator<char> const&, std::input_iterator_tag) [133]
+[13]     0.0    0.00    0.00    8332         bool std::operator!=<char, std::char_traits<char> >(std::istreambuf_iterator<char, std::char_traits<char> > const&, std::istreambuf_iterator<char, std::char_traits<char> > const&) [13]
+                0.00    0.00    8332/8333        std::istreambuf_iterator<char, std::char_traits<char> >::equal(std::istreambuf_iterator<char, std::char_traits<char> > const&) const [12]
+-----------------------------------------------
+                0.00    0.00    8330/8330        char* std::string::_S_construct<std::istreambuf_iterator<char, std::char_traits<char> > >(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::allocator<char> const&, std::input_iterator_tag) [133]
+[14]     0.0    0.00    0.00    8330         std::istreambuf_iterator<char, std::char_traits<char> >::operator*() const [14]
+                0.00    0.00    8330/24996       std::istreambuf_iterator<char, std::char_traits<char> >::_M_get() const [4]
+                0.00    0.00    8330/8330        std::char_traits<char>::to_char_type(int const&) [15]
+-----------------------------------------------
+                0.00    0.00    8330/8330        std::istreambuf_iterator<char, std::char_traits<char> >::operator*() const [14]
+[15]     0.0    0.00    0.00    8330         std::char_traits<char>::to_char_type(int const&) [15]
+-----------------------------------------------
+                0.00    0.00    8330/8330        char* std::string::_S_construct<std::istreambuf_iterator<char, std::char_traits<char> > >(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::allocator<char> const&, std::input_iterator_tag) [133]
+[16]     0.0    0.00    0.00    8330         std::istreambuf_iterator<char, std::char_traits<char> >::operator++() [16]
+                0.00    0.00    8330/49994       std::char_traits<char>::eof() [2]
+-----------------------------------------------
+                0.00    0.00       1/6440        _fu81___ZTIPKc [458]
+                0.00    0.00       1/6440        CMatrix::mul(CMatrix const&) [122]
+                0.00    0.00       1/6440        CMatrix::getInverse() [118]
+                0.00    0.00       1/6440        _fu23___ZSt4cout [394]
+                0.00    0.00       1/6440        _fu38___ZSt4cout [410]
+                0.00    0.00       2/6440        elmentWiseDivOperationNumber(std::vector<CMatrix, std::allocator<CMatrix> >&, int, std::string, std::string) [117]
+                0.00    0.00       2/6440        _fu5___ZSt4cout [434]
+                0.00    0.00       2/6440        _fu35___ZSt4cout [407]
+                0.00    0.00       3/6440        _fu10___ZSt4cout [380]
+                0.00    0.00       3/6440        _fu15___ZSt4cout [385]
+                0.00    0.00       3/6440        _fu20___ZSt4cout [391]
+                0.00    0.00      84/6440        void std::_Destroy<CMatrix>(CMatrix*) [32]
+                0.00    0.00     128/6440        CMatrix::addRow(CMatrix const&) [40]
+                0.00    0.00    2112/6440        CMatrix::copy(std::string) [108]
+                0.00    0.00    4096/6440        CMatrix::addColumn(CMatrix const&) [26]
+[17]     0.0    0.00    0.00    6440         CMatrix::~CMatrix() [17]
+                0.00    0.00    6440/12813       CMatrix::reset() [10]
+-----------------------------------------------
+                0.00    0.00       1/4323        _fu81___ZTIPKc [458]
+                0.00    0.00       1/4323        CMatrix::mul(CMatrix const&) [122]
+                0.00    0.00    2112/4323        CMatrix::operator=(CMatrix const&) [21]
+                0.00    0.00    2209/4323        CMatrix::CMatrix(CMatrix const&) [20]
+[18]     0.0    0.00    0.00    4323         CMatrix::copy(CMatrix const&) [18]
+                0.00    0.00    4323/12813       CMatrix::reset() [10]
+-----------------------------------------------
+                0.00    0.00     128/4224        CMatrix::addRow(CMatrix const&) [40]
+                0.00    0.00    4096/4224        CMatrix::addColumn(CMatrix const&) [26]
+[19]     0.0    0.00    0.00    4224         CMatrix::setSubMatrix(int, int, CMatrix const&) [19]
+-----------------------------------------------
+                0.00    0.00       1/2209        CMatrix::operator+(CMatrix const&) [129]
+                0.00    0.00       1/2209        CMatrix::operator-(CMatrix const&) [126]
+                0.00    0.00       1/2209        _fu81___ZTIPKc [458]
+                0.00    0.00       1/2209        CMatrix::operator*(CMatrix const&) [127]
+                0.00    0.00       1/2209        CMatrix::getInverse() [118]
+                0.00    0.00       1/2209        elmentWiseDivOperationNumber(std::vector<CMatrix, std::allocator<CMatrix> >&, int, std::string, std::string) [117]
+                0.00    0.00       1/2209        _fu26___ZSt4cout [397]
+                0.00    0.00       2/2209        _fu5___ZSt4cout [434]
+                0.00    0.00       2/2209        _fu10___ZSt4cout [380]
+                0.00    0.00       2/2209        _fu15___ZSt4cout [385]
+                0.00    0.00       7/2209        __gnu_cxx::new_allocator<CMatrix>::construct(CMatrix*, CMatrix const&) [92]
+                0.00    0.00      77/2209        void std::_Construct<CMatrix, CMatrix>(CMatrix*, CMatrix const&) [35]
+                0.00    0.00    2112/2209        CMatrix::operator=(CMatrix const&) [21]
+[20]     0.0    0.00    0.00    2209         CMatrix::CMatrix(CMatrix const&) [20]
+                0.00    0.00    2209/4323        CMatrix::copy(CMatrix const&) [18]
+-----------------------------------------------
+                0.00    0.00      64/2112        CMatrix::addRow(CMatrix const&) [40]
+                0.00    0.00    2048/2112        CMatrix::addColumn(CMatrix const&) [26]
+[21]     0.0    0.00    0.00    2112         CMatrix::operator=(CMatrix const&) [21]
+                0.00    0.00    2112/4323        CMatrix::copy(CMatrix const&) [18]
+                0.00    0.00    2112/2209        CMatrix::CMatrix(CMatrix const&) [20]
+-----------------------------------------------
+                0.00    0.00      64/2112        CMatrix::addRow(CMatrix const&) [40]
+                0.00    0.00    2048/2112        CMatrix::addColumn(CMatrix const&) [26]
+[22]     0.0    0.00    0.00    2112         int const& std::max<int>(int const&, int const&) [22]
+-----------------------------------------------
+                0.00    0.00       1/2111        _fu26___ZSt4cout [397]
+                0.00    0.00    2110/2111        CMatrix::copy(std::string) [108]
+[23]     0.0    0.00    0.00    2111         bool std::operator==<char, std::char_traits<char>, std::allocator<char> >(std::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, char const*) [23]
+-----------------------------------------------
+                0.00    0.00       1/2052        _fu81___ZTIPKc [458]
+                0.00    0.00       1/2052        CMatrix::mul(CMatrix const&) [122]
+                0.00    0.00       1/2052        CMatrix::getTranspose() [119]
+                0.00    0.00       1/2052        elmentWiseDivOperationNumber(std::vector<CMatrix, std::allocator<CMatrix> >&, int, std::string, std::string) [117]
+                0.00    0.00    2048/2052        CMatrix::addColumn(CMatrix const&) [26]
+[24]     0.0    0.00    0.00    2052         CMatrix::CMatrix(int, int, int, double) [24]
+-----------------------------------------------
+                0.00    0.00    2048/2048        CMatrix::CMatrix(double) [27]
+[25]     0.0    0.00    0.00    2048         CMatrix::copy(double) [25]
+                0.00    0.00    2048/12813       CMatrix::reset() [10]
+-----------------------------------------------
+                0.00    0.00    2048/2048        CMatrix::copy(std::string) [108]
+[26]     0.0    0.00    0.00    2048         CMatrix::addColumn(CMatrix const&) [26]
+                0.00    0.00    4096/4224        CMatrix::setSubMatrix(int, int, CMatrix const&) [19]
+                0.00    0.00    4096/6440        CMatrix::~CMatrix() [17]
+                0.00    0.00    2048/2112        int const& std::max<int>(int const&, int const&) [22]
+                0.00    0.00    2048/2052        CMatrix::CMatrix(int, int, int, double) [24]
+                0.00    0.00    2048/2112        CMatrix::operator=(CMatrix const&) [21]
+-----------------------------------------------
+                0.00    0.00    2048/2048        CMatrix::copy(std::string) [108]
+[27]     0.0    0.00    0.00    2048         CMatrix::CMatrix(double) [27]
+                0.00    0.00    2048/2048        CMatrix::copy(double) [25]
+-----------------------------------------------
+                0.00    0.00     178/178         bool __gnu_cxx::operator!=<CMatrix const*, std::vector<CMatrix, std::allocator<CMatrix> > >(__gnu_cxx::__normal_iterator<CMatrix const*, std::vector<CMatrix, std::allocator<CMatrix> > > const&, __gnu_cxx::__normal_iterator<CMatrix const*, std::vector<CMatrix, std::allocator<CMatrix> > > const&) [31]
+[28]     0.0    0.00    0.00     178         __gnu_cxx::__normal_iterator<CMatrix const*, std::vector<CMatrix, std::allocator<CMatrix> > >::base() const [28]
+-----------------------------------------------
+                0.00    0.00       7/161         CMatrix* std::__uninitialized_copy<false>::__uninit_copy<CMatrix*, CMatrix*>(CMatrix*, CMatrix*, CMatrix*) [88]
+                0.00    0.00      70/161         CMatrix* std::__uninitialized_copy<false>::__uninit_copy<__gnu_cxx::__normal_iterator<CMatrix const*, std::vector<CMatrix, std::allocator<CMatrix> > >, CMatrix*>(__gnu_cxx::__normal_iterator<CMatrix const*, std::vector<CMatrix, std::allocator<CMatrix> > >, __gnu_cxx::__normal_iterator<CMatrix const*, std::vector<CMatrix, std::allocator<CMatrix> > >, CMatrix*) [70]
+                0.00    0.00      84/161         void std::_Destroy_aux<false>::__destroy<CMatrix*>(CMatrix*, CMatrix*) [48]
+[29]     0.0    0.00    0.00     161         CMatrix* std::__addressof<CMatrix>(CMatrix&) [29]
+-----------------------------------------------
+                0.00    0.00      16/112         std::vector<CMatrix, std::allocator<CMatrix> >::_M_check_len(unsigned int, char const*) const [101]
+                0.00    0.00      19/112         std::vector<CMatrix, std::allocator<CMatrix> >::vector(std::vector<CMatrix, std::allocator<CMatrix> > const&) [71]
+                0.00    0.00      77/112         isInsideMatrix(std::vector<CMatrix, std::allocator<CMatrix> >, std::string) [74]
+[30]     0.0    0.00    0.00     112         std::vector<CMatrix, std::allocator<CMatrix> >::size() const [30]
+-----------------------------------------------
+                0.00    0.00      89/89          CMatrix* std::__uninitialized_copy<false>::__uninit_copy<__gnu_cxx::__normal_iterator<CMatrix const*, std::vector<CMatrix, std::allocator<CMatrix> > >, CMatrix*>(__gnu_cxx::__normal_iterator<CMatrix const*, std::vector<CMatrix, std::allocator<CMatrix> > >, __gnu_cxx::__normal_iterator<CMatrix const*, std::vector<CMatrix, std::allocator<CMatrix> > >, CMatrix*) [70]
+[31]     0.0    0.00    0.00      89         bool __gnu_cxx::operator!=<CMatrix const*, std::vector<CMatrix, std::allocator<CMatrix> > >(__gnu_cxx::__normal_iterator<CMatrix const*, std::vector<CMatrix, std::allocator<CMatrix> > > const&, __gnu_cxx::__normal_iterator<CMatrix const*, std::vector<CMatrix, std::allocator<CMatrix> > > const&) [31]
+                0.00    0.00     178/178         __gnu_cxx::__normal_iterator<CMatrix const*, std::vector<CMatrix, std::allocator<CMatrix> > >::base() const [28]
+-----------------------------------------------
+                0.00    0.00      84/84          void std::_Destroy_aux<false>::__destroy<CMatrix*>(CMatrix*, CMatrix*) [48]
+[32]     0.0    0.00    0.00      84         void std::_Destroy<CMatrix>(CMatrix*) [32]
+                0.00    0.00      84/6440        CMatrix::~CMatrix() [17]
+-----------------------------------------------
+                0.00    0.00       7/84          __gnu_cxx::new_allocator<CMatrix>::construct(CMatrix*, CMatrix const&) [92]
+                0.00    0.00      77/84          void std::_Construct<CMatrix, CMatrix>(CMatrix*, CMatrix const&) [35]
+[33]     0.0    0.00    0.00      84         operator new(unsigned int, void*) [33]
+-----------------------------------------------
+                0.00    0.00       1/77          transposeOperation(std::vector<CMatrix, std::allocator<CMatrix> >&, int, std::string) [115]
+                0.00    0.00       1/77          elmentWiseDivOperationNumber(std::vector<CMatrix, std::allocator<CMatrix> >&, int, std::string, std::string) [117]
+                0.00    0.00       2/77          addOperation(std::vector<CMatrix, std::allocator<CMatrix> >, int, int, std::string) [111]
+                0.00    0.00       2/77          subOperation(std::vector<CMatrix, std::allocator<CMatrix> >, int, int, std::string) [113]
+                0.00    0.00       2/77          multiplyOperation(std::vector<CMatrix, std::allocator<CMatrix> >, int, int, std::string) [114]
+                0.00    0.00       2/77          _fu5___ZSt4cout [434]
+                0.00    0.00       2/77          _fu10___ZSt4cout [380]
+                0.00    0.00       2/77          _fu15___ZSt4cout [385]
+                0.00    0.00       2/77          _fu26___ZSt4cout [397]
+                0.00    0.00      61/77          isInsideMatrix(std::vector<CMatrix, std::allocator<CMatrix> >, std::string) [74]
+[34]     0.0    0.00    0.00      77         std::vector<CMatrix, std::allocator<CMatrix> >::operator[](unsigned int) [34]
+-----------------------------------------------
+                0.00    0.00       7/77          CMatrix* std::__uninitialized_copy<false>::__uninit_copy<CMatrix*, CMatrix*>(CMatrix*, CMatrix*, CMatrix*) [88]
+                0.00    0.00      70/77          CMatrix* std::__uninitialized_copy<false>::__uninit_copy<__gnu_cxx::__normal_iterator<CMatrix const*, std::vector<CMatrix, std::allocator<CMatrix> > >, CMatrix*>(__gnu_cxx::__normal_iterator<CMatrix const*, std::vector<CMatrix, std::allocator<CMatrix> > >, __gnu_cxx::__normal_iterator<CMatrix const*, std::vector<CMatrix, std::allocator<CMatrix> > >, CMatrix*) [70]
+[35]     0.0    0.00    0.00      77         void std::_Construct<CMatrix, CMatrix>(CMatrix*, CMatrix const&) [35]
+                0.00    0.00      77/84          operator new(unsigned int, void*) [33]
+                0.00    0.00      77/2209        CMatrix::CMatrix(CMatrix const&) [20]
+-----------------------------------------------
+                0.00    0.00      70/70          CMatrix* std::__uninitialized_copy<false>::__uninit_copy<__gnu_cxx::__normal_iterator<CMatrix const*, std::vector<CMatrix, std::allocator<CMatrix> > >, CMatrix*>(__gnu_cxx::__normal_iterator<CMatrix const*, std::vector<CMatrix, std::allocator<CMatrix> > >, __gnu_cxx::__normal_iterator<CMatrix const*, std::vector<CMatrix, std::allocator<CMatrix> > >, CMatrix*) [70]
+[36]     0.0    0.00    0.00      70         __gnu_cxx::__normal_iterator<CMatrix const*, std::vector<CMatrix, std::allocator<CMatrix> > >::operator++() [36]
+-----------------------------------------------
+                0.00    0.00      70/70          CMatrix* std::__uninitialized_copy<false>::__uninit_copy<__gnu_cxx::__normal_iterator<CMatrix const*, std::vector<CMatrix, std::allocator<CMatrix> > >, CMatrix*>(__gnu_cxx::__normal_iterator<CMatrix const*, std::vector<CMatrix, std::allocator<CMatrix> > >, __gnu_cxx::__normal_iterator<CMatrix const*, std::vector<CMatrix, std::allocator<CMatrix> > >, CMatrix*) [70]
+[37]     0.0    0.00    0.00      70         __gnu_cxx::__normal_iterator<CMatrix const*, std::vector<CMatrix, std::allocator<CMatrix> > >::operator*() const [37]
+-----------------------------------------------
+                0.00    0.00       1/67          _fu7___ZSt4cout [456]
+                0.00    0.00       1/67          _fu12___ZSt4cout [382]
+                0.00    0.00       1/67          _fu17___ZSt4cout [387]
+                0.00    0.00       1/67          _fu20___ZSt4cout [391]
+                0.00    0.00       1/67          _fu26___ZSt4cout [397]
+                0.00    0.00       1/67          _fu35___ZSt4cout [407]
+                0.00    0.00      61/67          isInsideMatrix(std::vector<CMatrix, std::allocator<CMatrix> >, std::string) [74]
+[38]     0.0    0.00    0.00      67         CMatrix::getName() [38]
+-----------------------------------------------
+                0.00    0.00       1/65          CMatrix::getInverse() [118]
+                0.00    0.00      64/65          CMatrix::addRow(CMatrix const&) [40]
+[39]     0.0    0.00    0.00      65         CMatrix::CMatrix(std::string, int, int, int, double) [39]
+-----------------------------------------------
+                0.00    0.00      64/64          CMatrix::copy(std::string) [108]
+[40]     0.0    0.00    0.00      64         CMatrix::addRow(CMatrix const&) [40]
+                0.00    0.00     128/4224        CMatrix::setSubMatrix(int, int, CMatrix const&) [19]
+                0.00    0.00     128/6440        CMatrix::~CMatrix() [17]
+                0.00    0.00      64/2112        int const& std::max<int>(int const&, int const&) [22]
+                0.00    0.00      64/65          CMatrix::CMatrix(std::string, int, int, int, double) [39]
+                0.00    0.00      64/2112        CMatrix::operator=(CMatrix const&) [21]
+-----------------------------------------------
+                0.00    0.00      64/64          CMatrix::copy(std::string) [108]
+[41]     0.0    0.00    0.00      64         CMatrix::CMatrix() [41]
+-----------------------------------------------
+                0.00    0.00      61/61          __gnu_cxx::__enable_if<std::__is_char<char>::__value, bool>::__type std::operator==<char>(std::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [43]
+[42]     0.0    0.00    0.00      61         std::char_traits<char>::compare(char const*, char const*, unsigned int) [42]
+-----------------------------------------------
+                0.00    0.00      61/61          isInsideMatrix(std::vector<CMatrix, std::allocator<CMatrix> >, std::string) [74]
+[43]     0.0    0.00    0.00      61         __gnu_cxx::__enable_if<std::__is_char<char>::__value, bool>::__type std::operator==<char>(std::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [43]
+                0.00    0.00      61/61          std::char_traits<char>::compare(char const*, char const*, unsigned int) [42]
+-----------------------------------------------
+                0.00    0.00      12/51          std::vector<CMatrix, std::allocator<CMatrix> >::_M_insert_aux(__gnu_cxx::__normal_iterator<CMatrix*, std::vector<CMatrix, std::allocator<CMatrix> > >, CMatrix const&) [102]
+                0.00    0.00      19/51          std::vector<CMatrix, std::allocator<CMatrix> >::vector(std::vector<CMatrix, std::allocator<CMatrix> > const&) [71]
+                0.00    0.00      20/51          std::vector<CMatrix, std::allocator<CMatrix> >::~vector() [61]
+[44]     0.0    0.00    0.00      51         std::_Vector_base<CMatrix, std::allocator<CMatrix> >::_M_get_Tp_allocator() [44]
+-----------------------------------------------
+                0.00    0.00      19/38          std::vector<CMatrix, std::allocator<CMatrix> >::end() const [64]
+                0.00    0.00      19/38          std::vector<CMatrix, std::allocator<CMatrix> >::begin() const [65]
+[45]     0.0    0.00    0.00      38         __gnu_cxx::__normal_iterator<CMatrix const*, std::vector<CMatrix, std::allocator<CMatrix> > >::__normal_iterator(CMatrix const* const&) [45]
+-----------------------------------------------
+                0.00    0.00       8/31          __gnu_cxx::__alloc_traits<std::allocator<CMatrix> >::max_size(std::allocator<CMatrix> const&) [85]
+                0.00    0.00      23/31          __gnu_cxx::new_allocator<CMatrix>::allocate(unsigned int, void const*) [53]
+[46]     0.0    0.00    0.00      31         __gnu_cxx::new_allocator<CMatrix>::max_size() const [46]
+-----------------------------------------------
+                0.00    0.00       8/27          std::vector<CMatrix, std::allocator<CMatrix> >::max_size() const [87]
+                0.00    0.00      19/27          std::vector<CMatrix, std::allocator<CMatrix> >::vector(std::vector<CMatrix, std::allocator<CMatrix> > const&) [71]
+[47]     0.0    0.00    0.00      27         std::_Vector_base<CMatrix, std::allocator<CMatrix> >::_M_get_Tp_allocator() const [47]
+-----------------------------------------------
+                0.00    0.00      24/24          void std::_Destroy<CMatrix*>(CMatrix*, CMatrix*) [50]
+[48]     0.0    0.00    0.00      24         void std::_Destroy_aux<false>::__destroy<CMatrix*>(CMatrix*, CMatrix*) [48]
+                0.00    0.00      84/161         CMatrix* std::__addressof<CMatrix>(CMatrix&) [29]
+                0.00    0.00      84/84          void std::_Destroy<CMatrix>(CMatrix*) [32]
+-----------------------------------------------
+                0.00    0.00       4/24          std::vector<CMatrix, std::allocator<CMatrix> >::_M_insert_aux(__gnu_cxx::__normal_iterator<CMatrix*, std::vector<CMatrix, std::allocator<CMatrix> > >, CMatrix const&) [102]
+                0.00    0.00      20/24          std::_Vector_base<CMatrix, std::allocator<CMatrix> >::~_Vector_base() [60]
+[49]     0.0    0.00    0.00      24         std::_Vector_base<CMatrix, std::allocator<CMatrix> >::_M_deallocate(CMatrix*, unsigned int) [49]
+                0.00    0.00      23/23          __gnu_cxx::__alloc_traits<std::allocator<CMatrix> >::deallocate(std::allocator<CMatrix>&, CMatrix*, unsigned int) [54]
+-----------------------------------------------
+                0.00    0.00      24/24          void std::_Destroy<CMatrix*, CMatrix>(CMatrix*, CMatrix*, std::allocator<CMatrix>&) [51]
+[50]     0.0    0.00    0.00      24         void std::_Destroy<CMatrix*>(CMatrix*, CMatrix*) [50]
+                0.00    0.00      24/24          void std::_Destroy_aux<false>::__destroy<CMatrix*>(CMatrix*, CMatrix*) [48]
+-----------------------------------------------
+                0.00    0.00       4/24          std::vector<CMatrix, std::allocator<CMatrix> >::_M_insert_aux(__gnu_cxx::__normal_iterator<CMatrix*, std::vector<CMatrix, std::allocator<CMatrix> > >, CMatrix const&) [102]
+                0.00    0.00      20/24          std::vector<CMatrix, std::allocator<CMatrix> >::~vector() [61]
+[51]     0.0    0.00    0.00      24         void std::_Destroy<CMatrix*, CMatrix>(CMatrix*, CMatrix*, std::allocator<CMatrix>&) [51]
+                0.00    0.00      24/24          void std::_Destroy<CMatrix*>(CMatrix*, CMatrix*) [50]
+-----------------------------------------------
+                0.00    0.00      23/23          __gnu_cxx::__alloc_traits<std::allocator<CMatrix> >::deallocate(std::allocator<CMatrix>&, CMatrix*, unsigned int) [54]
+[52]     0.0    0.00    0.00      23         __gnu_cxx::new_allocator<CMatrix>::deallocate(CMatrix*, unsigned int) [52]
+-----------------------------------------------
+                0.00    0.00      23/23          __gnu_cxx::__alloc_traits<std::allocator<CMatrix> >::allocate(std::allocator<CMatrix>&, unsigned int) [55]
+[53]     0.0    0.00    0.00      23         __gnu_cxx::new_allocator<CMatrix>::allocate(unsigned int, void const*) [53]
+                0.00    0.00      23/31          __gnu_cxx::new_allocator<CMatrix>::max_size() const [46]
+-----------------------------------------------
+                0.00    0.00      23/23          std::_Vector_base<CMatrix, std::allocator<CMatrix> >::_M_deallocate(CMatrix*, unsigned int) [49]
+[54]     0.0    0.00    0.00      23         __gnu_cxx::__alloc_traits<std::allocator<CMatrix> >::deallocate(std::allocator<CMatrix>&, CMatrix*, unsigned int) [54]
+                0.00    0.00      23/23          __gnu_cxx::new_allocator<CMatrix>::deallocate(CMatrix*, unsigned int) [52]
+-----------------------------------------------
+                0.00    0.00      23/23          std::_Vector_base<CMatrix, std::allocator<CMatrix> >::_M_allocate(unsigned int) [56]
+[55]     0.0    0.00    0.00      23         __gnu_cxx::__alloc_traits<std::allocator<CMatrix> >::allocate(std::allocator<CMatrix>&, unsigned int) [55]
+                0.00    0.00      23/23          __gnu_cxx::new_allocator<CMatrix>::allocate(unsigned int, void const*) [53]
+-----------------------------------------------
+                0.00    0.00       4/23          std::vector<CMatrix, std::allocator<CMatrix> >::_M_insert_aux(__gnu_cxx::__normal_iterator<CMatrix*, std::vector<CMatrix, std::allocator<CMatrix> > >, CMatrix const&) [102]
+                0.00    0.00      19/23          std::_Vector_base<CMatrix, std::allocator<CMatrix> >::_M_create_storage(unsigned int) [68]
+[56]     0.0    0.00    0.00      23         std::_Vector_base<CMatrix, std::allocator<CMatrix> >::_M_allocate(unsigned int) [56]
+                0.00    0.00      23/23          __gnu_cxx::__alloc_traits<std::allocator<CMatrix> >::allocate(std::allocator<CMatrix>&, unsigned int) [55]
+-----------------------------------------------
+                0.00    0.00      20/20          std::allocator<CMatrix>::~allocator() [58]
+[57]     0.0    0.00    0.00      20         __gnu_cxx::new_allocator<CMatrix>::~new_allocator() [57]
+-----------------------------------------------
+                0.00    0.00      20/20          std::_Vector_base<CMatrix, std::allocator<CMatrix> >::_Vector_impl::~_Vector_impl() [59]
+[58]     0.0    0.00    0.00      20         std::allocator<CMatrix>::~allocator() [58]
+                0.00    0.00      20/20          __gnu_cxx::new_allocator<CMatrix>::~new_allocator() [57]
+-----------------------------------------------
+                0.00    0.00      20/20          std::_Vector_base<CMatrix, std::allocator<CMatrix> >::~_Vector_base() [60]
+[59]     0.0    0.00    0.00      20         std::_Vector_base<CMatrix, std::allocator<CMatrix> >::_Vector_impl::~_Vector_impl() [59]
+                0.00    0.00      20/20          std::allocator<CMatrix>::~allocator() [58]
+-----------------------------------------------
+                0.00    0.00      20/20          std::vector<CMatrix, std::allocator<CMatrix> >::~vector() [61]
+[60]     0.0    0.00    0.00      20         std::_Vector_base<CMatrix, std::allocator<CMatrix> >::~_Vector_base() [60]
+                0.00    0.00      20/24          std::_Vector_base<CMatrix, std::allocator<CMatrix> >::_M_deallocate(CMatrix*, unsigned int) [49]
+                0.00    0.00      20/20          std::_Vector_base<CMatrix, std::allocator<CMatrix> >::_Vector_impl::~_Vector_impl() [59]
+-----------------------------------------------
+                0.00    0.00       1/20          _fu20___ZSt4cout [391]
+                0.00    0.00       1/20          _fu35___ZSt4cout [407]
+                0.00    0.00       1/20          _fu38___ZSt4cout [410]
+                0.00    0.00       2/20          _fu5___ZSt4cout [434]
+                0.00    0.00       2/20          _fu10___ZSt4cout [380]
+                0.00    0.00       2/20          _fu15___ZSt4cout [385]
+                0.00    0.00       2/20          _fu26___ZSt4cout [397]
+                0.00    0.00       3/20          _fu7___ZSt4cout [456]
+                0.00    0.00       3/20          _fu12___ZSt4cout [382]
+                0.00    0.00       3/20          _fu17___ZSt4cout [387]
+[61]     0.0    0.00    0.00      20         std::vector<CMatrix, std::allocator<CMatrix> >::~vector() [61]
+                0.00    0.00      20/51          std::_Vector_base<CMatrix, std::allocator<CMatrix> >::_M_get_Tp_allocator() [44]
+                0.00    0.00      20/24          void std::_Destroy<CMatrix*, CMatrix>(CMatrix*, CMatrix*, std::allocator<CMatrix>&) [51]
+                0.00    0.00      20/20          std::_Vector_base<CMatrix, std::allocator<CMatrix> >::~_Vector_base() [60]
+-----------------------------------------------
+                0.00    0.00      19/19          std::allocator<CMatrix>::allocator(std::allocator<CMatrix> const&) [66]
+[62]     0.0    0.00    0.00      19         __gnu_cxx::new_allocator<CMatrix>::new_allocator(__gnu_cxx::new_allocator<CMatrix> const&) [62]
+-----------------------------------------------
+                0.00    0.00      19/19          std::vector<CMatrix, std::allocator<CMatrix> >::vector(std::vector<CMatrix, std::allocator<CMatrix> > const&) [71]
+[63]     0.0    0.00    0.00      19         __gnu_cxx::__alloc_traits<std::allocator<CMatrix> >::_S_select_on_copy(std::allocator<CMatrix> const&) [63]
+-----------------------------------------------
+                0.00    0.00      19/19          std::vector<CMatrix, std::allocator<CMatrix> >::vector(std::vector<CMatrix, std::allocator<CMatrix> > const&) [71]
+[64]     0.0    0.00    0.00      19         std::vector<CMatrix, std::allocator<CMatrix> >::end() const [64]
+                0.00    0.00      19/38          __gnu_cxx::__normal_iterator<CMatrix const*, std::vector<CMatrix, std::allocator<CMatrix> > >::__normal_iterator(CMatrix const* const&) [45]
+-----------------------------------------------
+                0.00    0.00      19/19          std::vector<CMatrix, std::allocator<CMatrix> >::vector(std::vector<CMatrix, std::allocator<CMatrix> > const&) [71]
+[65]     0.0    0.00    0.00      19         std::vector<CMatrix, std::allocator<CMatrix> >::begin() const [65]
+                0.00    0.00      19/38          __gnu_cxx::__normal_iterator<CMatrix const*, std::vector<CMatrix, std::allocator<CMatrix> > >::__normal_iterator(CMatrix const* const&) [45]
+-----------------------------------------------
+                0.00    0.00      19/19          std::_Vector_base<CMatrix, std::allocator<CMatrix> >::_Vector_impl::_Vector_impl(std::allocator<CMatrix> const&) [67]
+[66]     0.0    0.00    0.00      19         std::allocator<CMatrix>::allocator(std::allocator<CMatrix> const&) [66]
+                0.00    0.00      19/19          __gnu_cxx::new_allocator<CMatrix>::new_allocator(__gnu_cxx::new_allocator<CMatrix> const&) [62]
+-----------------------------------------------
+                0.00    0.00      19/19          std::_Vector_base<CMatrix, std::allocator<CMatrix> >::_Vector_base(unsigned int, std::allocator<CMatrix> const&) [69]
+[67]     0.0    0.00    0.00      19         std::_Vector_base<CMatrix, std::allocator<CMatrix> >::_Vector_impl::_Vector_impl(std::allocator<CMatrix> const&) [67]
+                0.00    0.00      19/19          std::allocator<CMatrix>::allocator(std::allocator<CMatrix> const&) [66]
+-----------------------------------------------
+                0.00    0.00      19/19          std::_Vector_base<CMatrix, std::allocator<CMatrix> >::_Vector_base(unsigned int, std::allocator<CMatrix> const&) [69]
+[68]     0.0    0.00    0.00      19         std::_Vector_base<CMatrix, std::allocator<CMatrix> >::_M_create_storage(unsigned int) [68]
+                0.00    0.00      19/23          std::_Vector_base<CMatrix, std::allocator<CMatrix> >::_M_allocate(unsigned int) [56]
+-----------------------------------------------
+                0.00    0.00      19/19          std::vector<CMatrix, std::allocator<CMatrix> >::vector(std::vector<CMatrix, std::allocator<CMatrix> > const&) [71]
+[69]     0.0    0.00    0.00      19         std::_Vector_base<CMatrix, std::allocator<CMatrix> >::_Vector_base(unsigned int, std::allocator<CMatrix> const&) [69]
+                0.00    0.00      19/19          std::_Vector_base<CMatrix, std::allocator<CMatrix> >::_Vector_impl::_Vector_impl(std::allocator<CMatrix> const&) [67]
+                0.00    0.00      19/19          std::_Vector_base<CMatrix, std::allocator<CMatrix> >::_M_create_storage(unsigned int) [68]
+-----------------------------------------------
+                0.00    0.00      19/19          CMatrix* std::uninitialized_copy<__gnu_cxx::__normal_iterator<CMatrix const*, std::vector<CMatrix, std::allocator<CMatrix> > >, CMatrix*>(__gnu_cxx::__normal_iterator<CMatrix const*, std::vector<CMatrix, std::allocator<CMatrix> > >, __gnu_cxx::__normal_iterator<CMatrix const*, std::vector<CMatrix, std::allocator<CMatrix> > >, CMatrix*) [72]
+[70]     0.0    0.00    0.00      19         CMatrix* std::__uninitialized_copy<false>::__uninit_copy<__gnu_cxx::__normal_iterator<CMatrix const*, std::vector<CMatrix, std::allocator<CMatrix> > >, CMatrix*>(__gnu_cxx::__normal_iterator<CMatrix const*, std::vector<CMatrix, std::allocator<CMatrix> > >, __gnu_cxx::__normal_iterator<CMatrix const*, std::vector<CMatrix, std::allocator<CMatrix> > >, CMatrix*) [70]
+                0.00    0.00      89/89          bool __gnu_cxx::operator!=<CMatrix const*, std::vector<CMatrix, std::allocator<CMatrix> > >(__gnu_cxx::__normal_iterator<CMatrix const*, std::vector<CMatrix, std::allocator<CMatrix> > > const&, __gnu_cxx::__normal_iterator<CMatrix const*, std::vector<CMatrix, std::allocator<CMatrix> > > const&) [31]
+                0.00    0.00      70/70          __gnu_cxx::__normal_iterator<CMatrix const*, std::vector<CMatrix, std::allocator<CMatrix> > >::operator*() const [37]
+                0.00    0.00      70/161         CMatrix* std::__addressof<CMatrix>(CMatrix&) [29]
+                0.00    0.00      70/77          void std::_Construct<CMatrix, CMatrix>(CMatrix*, CMatrix const&) [35]
+                0.00    0.00      70/70          __gnu_cxx::__normal_iterator<CMatrix const*, std::vector<CMatrix, std::allocator<CMatrix> > >::operator++() [36]
+-----------------------------------------------
+                0.00    0.00       1/19          _fu20___ZSt4cout [391]
+                0.00    0.00       1/19          _fu35___ZSt4cout [407]
+                0.00    0.00       2/19          _fu5___ZSt4cout [434]
+                0.00    0.00       2/19          _fu10___ZSt4cout [380]
+                0.00    0.00       2/19          _fu15___ZSt4cout [385]
+                0.00    0.00       2/19          _fu26___ZSt4cout [397]
+                0.00    0.00       3/19          _fu7___ZSt4cout [456]
+                0.00    0.00       3/19          _fu12___ZSt4cout [382]
+                0.00    0.00       3/19          _fu17___ZSt4cout [387]
+[71]     0.0    0.00    0.00      19         std::vector<CMatrix, std::allocator<CMatrix> >::vector(std::vector<CMatrix, std::allocator<CMatrix> > const&) [71]
+                0.00    0.00      19/27          std::_Vector_base<CMatrix, std::allocator<CMatrix> >::_M_get_Tp_allocator() const [47]
+                0.00    0.00      19/19          __gnu_cxx::__alloc_traits<std::allocator<CMatrix> >::_S_select_on_copy(std::allocator<CMatrix> const&) [63]
+                0.00    0.00      19/112         std::vector<CMatrix, std::allocator<CMatrix> >::size() const [30]
+                0.00    0.00      19/19          std::_Vector_base<CMatrix, std::allocator<CMatrix> >::_Vector_base(unsigned int, std::allocator<CMatrix> const&) [69]
+                0.00    0.00      19/51          std::_Vector_base<CMatrix, std::allocator<CMatrix> >::_M_get_Tp_allocator() [44]
+                0.00    0.00      19/19          std::vector<CMatrix, std::allocator<CMatrix> >::end() const [64]
+                0.00    0.00      19/19          std::vector<CMatrix, std::allocator<CMatrix> >::begin() const [65]
+                0.00    0.00      19/19          CMatrix* std::__uninitialized_copy_a<__gnu_cxx::__normal_iterator<CMatrix const*, std::vector<CMatrix, std::allocator<CMatrix> > >, CMatrix*, CMatrix>(__gnu_cxx::__normal_iterator<CMatrix const*, std::vector<CMatrix, std::allocator<CMatrix> > >, __gnu_cxx::__normal_iterator<CMatrix const*, std::vector<CMatrix, std::allocator<CMatrix> > >, CMatrix*, std::allocator<CMatrix>&) [73]
+-----------------------------------------------
+                0.00    0.00      19/19          CMatrix* std::__uninitialized_copy_a<__gnu_cxx::__normal_iterator<CMatrix const*, std::vector<CMatrix, std::allocator<CMatrix> > >, CMatrix*, CMatrix>(__gnu_cxx::__normal_iterator<CMatrix const*, std::vector<CMatrix, std::allocator<CMatrix> > >, __gnu_cxx::__normal_iterator<CMatrix const*, std::vector<CMatrix, std::allocator<CMatrix> > >, CMatrix*, std::allocator<CMatrix>&) [73]
+[72]     0.0    0.00    0.00      19         CMatrix* std::uninitialized_copy<__gnu_cxx::__normal_iterator<CMatrix const*, std::vector<CMatrix, std::allocator<CMatrix> > >, CMatrix*>(__gnu_cxx::__normal_iterator<CMatrix const*, std::vector<CMatrix, std::allocator<CMatrix> > >, __gnu_cxx::__normal_iterator<CMatrix const*, std::vector<CMatrix, std::allocator<CMatrix> > >, CMatrix*) [72]
+                0.00    0.00      19/19          CMatrix* std::__uninitialized_copy<false>::__uninit_copy<__gnu_cxx::__normal_iterator<CMatrix const*, std::vector<CMatrix, std::allocator<CMatrix> > >, CMatrix*>(__gnu_cxx::__normal_iterator<CMatrix const*, std::vector<CMatrix, std::allocator<CMatrix> > >, __gnu_cxx::__normal_iterator<CMatrix const*, std::vector<CMatrix, std::allocator<CMatrix> > >, CMatrix*) [70]
+-----------------------------------------------
+                0.00    0.00      19/19          std::vector<CMatrix, std::allocator<CMatrix> >::vector(std::vector<CMatrix, std::allocator<CMatrix> > const&) [71]
+[73]     0.0    0.00    0.00      19         CMatrix* std::__uninitialized_copy_a<__gnu_cxx::__normal_iterator<CMatrix const*, std::vector<CMatrix, std::allocator<CMatrix> > >, CMatrix*, CMatrix>(__gnu_cxx::__normal_iterator<CMatrix const*, std::vector<CMatrix, std::allocator<CMatrix> > >, __gnu_cxx::__normal_iterator<CMatrix const*, std::vector<CMatrix, std::allocator<CMatrix> > >, CMatrix*, std::allocator<CMatrix>&) [73]
+                0.00    0.00      19/19          CMatrix* std::uninitialized_copy<__gnu_cxx::__normal_iterator<CMatrix const*, std::vector<CMatrix, std::allocator<CMatrix> > >, CMatrix*>(__gnu_cxx::__normal_iterator<CMatrix const*, std::vector<CMatrix, std::allocator<CMatrix> > >, __gnu_cxx::__normal_iterator<CMatrix const*, std::vector<CMatrix, std::allocator<CMatrix> > >, CMatrix*) [72]
+-----------------------------------------------
+                0.00    0.00       1/16          _fu20___ZSt4cout [391]
+                0.00    0.00       1/16          _fu35___ZSt4cout [407]
+                0.00    0.00       2/16          _fu5___ZSt4cout [434]
+                0.00    0.00       2/16          _fu7___ZSt4cout [456]
+                0.00    0.00       2/16          _fu10___ZSt4cout [380]
+                0.00    0.00       2/16          _fu12___ZSt4cout [382]
+                0.00    0.00       2/16          _fu15___ZSt4cout [385]
+                0.00    0.00       2/16          _fu17___ZSt4cout [387]
+                0.00    0.00       2/16          _fu26___ZSt4cout [397]
+[74]     0.0    0.00    0.00      16         isInsideMatrix(std::vector<CMatrix, std::allocator<CMatrix> >, std::string) [74]
+                0.00    0.00      77/112         std::vector<CMatrix, std::allocator<CMatrix> >::size() const [30]
+                0.00    0.00      61/77          std::vector<CMatrix, std::allocator<CMatrix> >::operator[](unsigned int) [34]
+                0.00    0.00      61/67          CMatrix::getName() [38]
+                0.00    0.00      61/61          __gnu_cxx::__enable_if<std::__is_char<char>::__value, bool>::__type std::operator==<char>(std::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [43]
+-----------------------------------------------
+                0.00    0.00       8/16          __gnu_cxx::__normal_iterator<CMatrix*, std::vector<CMatrix, std::allocator<CMatrix> > >::difference_type __gnu_cxx::operator-<CMatrix*, std::vector<CMatrix, std::allocator<CMatrix> > >(__gnu_cxx::__normal_iterator<CMatrix*, std::vector<CMatrix, std::allocator<CMatrix> > > const&, __gnu_cxx::__normal_iterator<CMatrix*, std::vector<CMatrix, std::allocator<CMatrix> > > const&) [100]
+                0.00    0.00       8/16          std::vector<CMatrix, std::allocator<CMatrix> >::_M_insert_aux(__gnu_cxx::__normal_iterator<CMatrix*, std::vector<CMatrix, std::allocator<CMatrix> > >, CMatrix const&) [102]
+[75]     0.0    0.00    0.00      16         __gnu_cxx::__normal_iterator<CMatrix*, std::vector<CMatrix, std::allocator<CMatrix> > >::base() const [75]
+-----------------------------------------------
+                0.00    0.00      14/14          __gnu_cxx::__normal_iterator<char*, std::string> std::__find_if<__gnu_cxx::__normal_iterator<char*, std::string>, __gnu_cxx::__ops::_Iter_equals_val<char const> >(__gnu_cxx::__normal_iterator<char*, std::string>, __gnu_cxx::__normal_iterator<char*, std::string>, __gnu_cxx::__ops::_Iter_equals_val<char const>, std::random_access_iterator_tag) [84]
+[76]     0.0    0.00    0.00      14         __gnu_cxx::__normal_iterator<char*, std::string>::difference_type __gnu_cxx::operator-<char*, std::string>(__gnu_cxx::__normal_iterator<char*, std::string> const&, __gnu_cxx::__normal_iterator<char*, std::string> const&) [76]
+                0.00    0.00      28/16806       __gnu_cxx::__normal_iterator<char*, std::string>::base() const [5]
+-----------------------------------------------
+                0.00    0.00      11/11          __gnu_cxx::__ops::_Iter_equals_val<char const> __gnu_cxx::__ops::__iter_equals_val<char const>(char const&) [78]
+[77]     0.0    0.00    0.00      11         __gnu_cxx::__ops::_Iter_equals_val<char const>::_Iter_equals_val(char const&) [77]
+-----------------------------------------------
+                0.00    0.00       1/11          std::iterator_traits<__gnu_cxx::__normal_iterator<char*, std::string> >::difference_type std::count<__gnu_cxx::__normal_iterator<char*, std::string>, char>(__gnu_cxx::__normal_iterator<char*, std::string>, __gnu_cxx::__normal_iterator<char*, std::string>, char const&) [142]
+                0.00    0.00      10/11          __gnu_cxx::__normal_iterator<char*, std::string> std::remove<__gnu_cxx::__normal_iterator<char*, std::string>, char>(__gnu_cxx::__normal_iterator<char*, std::string>, __gnu_cxx::__normal_iterator<char*, std::string>, char const&) [82]
+[78]     0.0    0.00    0.00      11         __gnu_cxx::__ops::_Iter_equals_val<char const> __gnu_cxx::__ops::__iter_equals_val<char const>(char const&) [78]
+                0.00    0.00      11/11          __gnu_cxx::__ops::_Iter_equals_val<char const>::_Iter_equals_val(char const&) [77]
+-----------------------------------------------
+                0.00    0.00      10/10          __gnu_cxx::__normal_iterator<char*, std::string> std::__remove_if<__gnu_cxx::__normal_iterator<char*, std::string>, __gnu_cxx::__ops::_Iter_equals_val<char const> >(__gnu_cxx::__normal_iterator<char*, std::string>, __gnu_cxx::__normal_iterator<char*, std::string>, __gnu_cxx::__ops::_Iter_equals_val<char const>) [80]
+[79]     0.0    0.00    0.00      10         bool __gnu_cxx::operator==<char*, std::string>(__gnu_cxx::__normal_iterator<char*, std::string> const&, __gnu_cxx::__normal_iterator<char*, std::string> const&) [79]
+                0.00    0.00      20/16806       __gnu_cxx::__normal_iterator<char*, std::string>::base() const [5]
+-----------------------------------------------
+                0.00    0.00      10/10          __gnu_cxx::__normal_iterator<char*, std::string> std::remove<__gnu_cxx::__normal_iterator<char*, std::string>, char>(__gnu_cxx::__normal_iterator<char*, std::string>, __gnu_cxx::__normal_iterator<char*, std::string>, char const&) [82]
+[80]     0.0    0.00    0.00      10         __gnu_cxx::__normal_iterator<char*, std::string> std::__remove_if<__gnu_cxx::__normal_iterator<char*, std::string>, __gnu_cxx::__ops::_Iter_equals_val<char const> >(__gnu_cxx::__normal_iterator<char*, std::string>, __gnu_cxx::__normal_iterator<char*, std::string>, __gnu_cxx::__ops::_Iter_equals_val<char const>) [80]
+                0.00    0.00      72/16669       __gnu_cxx::__normal_iterator<char*, std::string>::operator++() [7]
+                0.00    0.00      48/16693       __gnu_cxx::__normal_iterator<char*, std::string>::operator*() const [6]
+                0.00    0.00      48/8379        bool __gnu_cxx::operator!=<char*, std::string>(__gnu_cxx::__normal_iterator<char*, std::string> const&, __gnu_cxx::__normal_iterator<char*, std::string> const&) [11]
+                0.00    0.00      40/16645       bool __gnu_cxx::__ops::_Iter_equals_val<char const>::operator()<__gnu_cxx::__normal_iterator<char*, std::string> >(__gnu_cxx::__normal_iterator<char*, std::string>) [9]
+                0.00    0.00      10/10          __gnu_cxx::__normal_iterator<char*, std::string> std::__find_if<__gnu_cxx::__normal_iterator<char*, std::string>, __gnu_cxx::__ops::_Iter_equals_val<char const> >(__gnu_cxx::__normal_iterator<char*, std::string>, __gnu_cxx::__normal_iterator<char*, std::string>, __gnu_cxx::__ops::_Iter_equals_val<char const>) [83]
+                0.00    0.00      10/10          bool __gnu_cxx::operator==<char*, std::string>(__gnu_cxx::__normal_iterator<char*, std::string> const&, __gnu_cxx::__normal_iterator<char*, std::string> const&) [79]
+-----------------------------------------------
+                0.00    0.00      10/10          __gnu_cxx::__normal_iterator<char*, std::string> std::__find_if<__gnu_cxx::__normal_iterator<char*, std::string>, __gnu_cxx::__ops::_Iter_equals_val<char const> >(__gnu_cxx::__normal_iterator<char*, std::string>, __gnu_cxx::__normal_iterator<char*, std::string>, __gnu_cxx::__ops::_Iter_equals_val<char const>) [83]
+[81]     0.0    0.00    0.00      10         std::iterator_traits<__gnu_cxx::__normal_iterator<char*, std::string> >::iterator_category std::__iterator_category<__gnu_cxx::__normal_iterator<char*, std::string> >(__gnu_cxx::__normal_iterator<char*, std::string> const&) [81]
+-----------------------------------------------
+                0.00    0.00       1/10          _fu5___ZSt4cout [434]
+                0.00    0.00       1/10          _fu10___ZSt4cout [380]
+                0.00    0.00       1/10          _fu15___ZSt4cout [385]
+                0.00    0.00       1/10          _fu20___ZSt4cout [391]
+                0.00    0.00       1/10          _fu26___ZSt4cout [397]
+                0.00    0.00       1/10          _fu35___ZSt4cout [407]
+                0.00    0.00       4/10          programLoopFromFile(char*) [116]
+[82]     0.0    0.00    0.00      10         __gnu_cxx::__normal_iterator<char*, std::string> std::remove<__gnu_cxx::__normal_iterator<char*, std::string>, char>(__gnu_cxx::__normal_iterator<char*, std::string>, __gnu_cxx::__normal_iterator<char*, std::string>, char const&) [82]
+                0.00    0.00      10/11          __gnu_cxx::__ops::_Iter_equals_val<char const> __gnu_cxx::__ops::__iter_equals_val<char const>(char const&) [78]
+                0.00    0.00      10/10          __gnu_cxx::__normal_iterator<char*, std::string> std::__remove_if<__gnu_cxx::__normal_iterator<char*, std::string>, __gnu_cxx::__ops::_Iter_equals_val<char const> >(__gnu_cxx::__normal_iterator<char*, std::string>, __gnu_cxx::__normal_iterator<char*, std::string>, __gnu_cxx::__ops::_Iter_equals_val<char const>) [80]
+-----------------------------------------------
+                0.00    0.00      10/10          __gnu_cxx::__normal_iterator<char*, std::string> std::__remove_if<__gnu_cxx::__normal_iterator<char*, std::string>, __gnu_cxx::__ops::_Iter_equals_val<char const> >(__gnu_cxx::__normal_iterator<char*, std::string>, __gnu_cxx::__normal_iterator<char*, std::string>, __gnu_cxx::__ops::_Iter_equals_val<char const>) [80]
+[83]     0.0    0.00    0.00      10         __gnu_cxx::__normal_iterator<char*, std::string> std::__find_if<__gnu_cxx::__normal_iterator<char*, std::string>, __gnu_cxx::__ops::_Iter_equals_val<char const> >(__gnu_cxx::__normal_iterator<char*, std::string>, __gnu_cxx::__normal_iterator<char*, std::string>, __gnu_cxx::__ops::_Iter_equals_val<char const>) [83]
+                0.00    0.00      10/10          std::iterator_traits<__gnu_cxx::__normal_iterator<char*, std::string> >::iterator_category std::__iterator_category<__gnu_cxx::__normal_iterator<char*, std::string> >(__gnu_cxx::__normal_iterator<char*, std::string> const&) [81]
+                0.00    0.00      10/10          __gnu_cxx::__normal_iterator<char*, std::string> std::__find_if<__gnu_cxx::__normal_iterator<char*, std::string>, __gnu_cxx::__ops::_Iter_equals_val<char const> >(__gnu_cxx::__normal_iterator<char*, std::string>, __gnu_cxx::__normal_iterator<char*, std::string>, __gnu_cxx::__ops::_Iter_equals_val<char const>, std::random_access_iterator_tag) [84]
+-----------------------------------------------
+                0.00    0.00      10/10          __gnu_cxx::__normal_iterator<char*, std::string> std::__find_if<__gnu_cxx::__normal_iterator<char*, std::string>, __gnu_cxx::__ops::_Iter_equals_val<char const> >(__gnu_cxx::__normal_iterator<char*, std::string>, __gnu_cxx::__normal_iterator<char*, std::string>, __gnu_cxx::__ops::_Iter_equals_val<char const>) [83]
+[84]     0.0    0.00    0.00      10         __gnu_cxx::__normal_iterator<char*, std::string> std::__find_if<__gnu_cxx::__normal_iterator<char*, std::string>, __gnu_cxx::__ops::_Iter_equals_val<char const> >(__gnu_cxx::__normal_iterator<char*, std::string>, __gnu_cxx::__normal_iterator<char*, std::string>, __gnu_cxx::__ops::_Iter_equals_val<char const>, std::random_access_iterator_tag) [84]
+                0.00    0.00    8275/16645       bool __gnu_cxx::__ops::_Iter_equals_val<char const>::operator()<__gnu_cxx::__normal_iterator<char*, std::string> >(__gnu_cxx::__normal_iterator<char*, std::string>) [9]
+                0.00    0.00    8267/16669       __gnu_cxx::__normal_iterator<char*, std::string>::operator++() [7]
+                0.00    0.00      14/14          __gnu_cxx::__normal_iterator<char*, std::string>::difference_type __gnu_cxx::operator-<char*, std::string>(__gnu_cxx::__normal_iterator<char*, std::string> const&, __gnu_cxx::__normal_iterator<char*, std::string> const&) [76]
+-----------------------------------------------
+                0.00    0.00       8/8           std::vector<CMatrix, std::allocator<CMatrix> >::max_size() const [87]
+[85]     0.0    0.00    0.00       8         __gnu_cxx::__alloc_traits<std::allocator<CMatrix> >::max_size(std::allocator<CMatrix> const&) [85]
+                0.00    0.00       8/31          __gnu_cxx::new_allocator<CMatrix>::max_size() const [46]
+-----------------------------------------------
+                0.00    0.00       4/8           std::vector<CMatrix, std::allocator<CMatrix> >::end() [103]
+                0.00    0.00       4/8           std::vector<CMatrix, std::allocator<CMatrix> >::begin() [104]
+[86]     0.0    0.00    0.00       8         __gnu_cxx::__normal_iterator<CMatrix*, std::vector<CMatrix, std::allocator<CMatrix> > >::__normal_iterator(CMatrix* const&) [86]
+-----------------------------------------------
+                0.00    0.00       8/8           std::vector<CMatrix, std::allocator<CMatrix> >::_M_check_len(unsigned int, char const*) const [101]
+[87]     0.0    0.00    0.00       8         std::vector<CMatrix, std::allocator<CMatrix> >::max_size() const [87]
+                0.00    0.00       8/27          std::_Vector_base<CMatrix, std::allocator<CMatrix> >::_M_get_Tp_allocator() const [47]
+                0.00    0.00       8/8           __gnu_cxx::__alloc_traits<std::allocator<CMatrix> >::max_size(std::allocator<CMatrix> const&) [85]
+-----------------------------------------------
+                0.00    0.00       8/8           CMatrix* std::uninitialized_copy<CMatrix*, CMatrix*>(CMatrix*, CMatrix*, CMatrix*) [89]
+[88]     0.0    0.00    0.00       8         CMatrix* std::__uninitialized_copy<false>::__uninit_copy<CMatrix*, CMatrix*>(CMatrix*, CMatrix*, CMatrix*) [88]
+                0.00    0.00       7/161         CMatrix* std::__addressof<CMatrix>(CMatrix&) [29]
+                0.00    0.00       7/77          void std::_Construct<CMatrix, CMatrix>(CMatrix*, CMatrix const&) [35]
+-----------------------------------------------
+                0.00    0.00       8/8           CMatrix* std::__uninitialized_copy_a<CMatrix*, CMatrix*, CMatrix>(CMatrix*, CMatrix*, CMatrix*, std::allocator<CMatrix>&) [90]
+[89]     0.0    0.00    0.00       8         CMatrix* std::uninitialized_copy<CMatrix*, CMatrix*>(CMatrix*, CMatrix*, CMatrix*) [89]
+                0.00    0.00       8/8           CMatrix* std::__uninitialized_copy<false>::__uninit_copy<CMatrix*, CMatrix*>(CMatrix*, CMatrix*, CMatrix*) [88]
+-----------------------------------------------
+                0.00    0.00       8/8           CMatrix* std::__uninitialized_move_if_noexcept_a<CMatrix*, CMatrix*, std::allocator<CMatrix> >(CMatrix*, CMatrix*, CMatrix*, std::allocator<CMatrix>&) [91]
+[90]     0.0    0.00    0.00       8         CMatrix* std::__uninitialized_copy_a<CMatrix*, CMatrix*, CMatrix>(CMatrix*, CMatrix*, CMatrix*, std::allocator<CMatrix>&) [90]
+                0.00    0.00       8/8           CMatrix* std::uninitialized_copy<CMatrix*, CMatrix*>(CMatrix*, CMatrix*, CMatrix*) [89]
+-----------------------------------------------
+                0.00    0.00       8/8           std::vector<CMatrix, std::allocator<CMatrix> >::_M_insert_aux(__gnu_cxx::__normal_iterator<CMatrix*, std::vector<CMatrix, std::allocator<CMatrix> > >, CMatrix const&) [102]
+[91]     0.0    0.00    0.00       8         CMatrix* std::__uninitialized_move_if_noexcept_a<CMatrix*, CMatrix*, std::allocator<CMatrix> >(CMatrix*, CMatrix*, CMatrix*, std::allocator<CMatrix>&) [91]
+                0.00    0.00       8/8           CMatrix* std::__uninitialized_copy_a<CMatrix*, CMatrix*, CMatrix>(CMatrix*, CMatrix*, CMatrix*, std::allocator<CMatrix>&) [90]
+-----------------------------------------------
+                0.00    0.00       7/7           void __gnu_cxx::__alloc_traits<std::allocator<CMatrix> >::construct<CMatrix>(std::allocator<CMatrix>&, CMatrix*, CMatrix const&) [93]
+[92]     0.0    0.00    0.00       7         __gnu_cxx::new_allocator<CMatrix>::construct(CMatrix*, CMatrix const&) [92]
+                0.00    0.00       7/84          operator new(unsigned int, void*) [33]
+                0.00    0.00       7/2209        CMatrix::CMatrix(CMatrix const&) [20]
+-----------------------------------------------
+                0.00    0.00       3/7           std::vector<CMatrix, std::allocator<CMatrix> >::push_back(CMatrix const&) [94]
+                0.00    0.00       4/7           std::vector<CMatrix, std::allocator<CMatrix> >::_M_insert_aux(__gnu_cxx::__normal_iterator<CMatrix*, std::vector<CMatrix, std::allocator<CMatrix> > >, CMatrix const&) [102]
+[93]     0.0    0.00    0.00       7         void __gnu_cxx::__alloc_traits<std::allocator<CMatrix> >::construct<CMatrix>(std::allocator<CMatrix>&, CMatrix*, CMatrix const&) [93]
+                0.00    0.00       7/7           __gnu_cxx::new_allocator<CMatrix>::construct(CMatrix*, CMatrix const&) [92]
+-----------------------------------------------
+                0.00    0.00       1/7           _fu7___ZSt4cout [456]
+                0.00    0.00       1/7           _fu12___ZSt4cout [382]
+                0.00    0.00       1/7           _fu17___ZSt4cout [387]
+                0.00    0.00       1/7           _fu20___ZSt4cout [391]
+                0.00    0.00       1/7           _fu35___ZSt4cout [407]
+                0.00    0.00       2/7           programLoopFromFile(char*) [116]
+[94]     0.0    0.00    0.00       7         std::vector<CMatrix, std::allocator<CMatrix> >::push_back(CMatrix const&) [94]
+                0.00    0.00       4/4           std::vector<CMatrix, std::allocator<CMatrix> >::end() [103]
+                0.00    0.00       4/4           std::vector<CMatrix, std::allocator<CMatrix> >::_M_insert_aux(__gnu_cxx::__normal_iterator<CMatrix*, std::vector<CMatrix, std::allocator<CMatrix> > >, CMatrix const&) [102]
+                0.00    0.00       3/7           void __gnu_cxx::__alloc_traits<std::allocator<CMatrix> >::construct<CMatrix>(std::allocator<CMatrix>&, CMatrix*, CMatrix const&) [93]
+-----------------------------------------------
+                0.00    0.00       1/6           elmentWiseDivOperationNumber(std::vector<CMatrix, std::allocator<CMatrix> >&, int, std::string, std::string) [117]
+                0.00    0.00       1/6           _fu15___ZSt4cout [385]
+                0.00    0.00       2/6           _fu5___ZSt4cout [434]
+                0.00    0.00       2/6           _fu10___ZSt4cout [380]
+[95]     0.0    0.00    0.00       6         CMatrix::getnC() [95]
+-----------------------------------------------
+                0.00    0.00       1/6           elmentWiseDivOperationNumber(std::vector<CMatrix, std::allocator<CMatrix> >&, int, std::string, std::string) [117]
+                0.00    0.00       1/6           _fu15___ZSt4cout [385]
+                0.00    0.00       2/6           _fu5___ZSt4cout [434]
+                0.00    0.00       2/6           _fu10___ZSt4cout [380]
+[96]     0.0    0.00    0.00       6         CMatrix::getnR() [96]
+-----------------------------------------------
+                0.00    0.00       1/5           addOperation(std::vector<CMatrix, std::allocator<CMatrix> >, int, int, std::string) [111]
+                0.00    0.00       1/5           subOperation(std::vector<CMatrix, std::allocator<CMatrix> >, int, int, std::string) [113]
+                0.00    0.00       1/5           multiplyOperation(std::vector<CMatrix, std::allocator<CMatrix> >, int, int, std::string) [114]
+                0.00    0.00       1/5           transposeOperation(std::vector<CMatrix, std::allocator<CMatrix> >&, int, std::string) [115]
+                0.00    0.00       1/5           elmentWiseDivOperationNumber(std::vector<CMatrix, std::allocator<CMatrix> >&, int, std::string, std::string) [117]
+[97]     0.0    0.00    0.00       5         CMatrix::setName(std::string) [97]
+-----------------------------------------------
+                0.00    0.00       5/5           operator<<(std::ostream&, CMatrix&) [99]
+[98]     0.0    0.00    0.00       5         CMatrix::getString() [98]
+-----------------------------------------------
+                0.00    0.00       1/5           _fu9___ZSt4cout [466]
+                0.00    0.00       1/5           _fu14___ZSt4cout [384]
+                0.00    0.00       1/5           _fu19___ZSt4cout [389]
+                0.00    0.00       1/5           _fu22___ZSt4cout [393]
+                0.00    0.00       1/5           _fu37___ZSt4cout [409]
+[99]     0.0    0.00    0.00       5         operator<<(std::ostream&, CMatrix&) [99]
+                0.00    0.00       5/5           CMatrix::getString() [98]
+-----------------------------------------------
+                0.00    0.00       4/4           std::vector<CMatrix, std::allocator<CMatrix> >::_M_insert_aux(__gnu_cxx::__normal_iterator<CMatrix*, std::vector<CMatrix, std::allocator<CMatrix> > >, CMatrix const&) [102]
+[100]    0.0    0.00    0.00       4         __gnu_cxx::__normal_iterator<CMatrix*, std::vector<CMatrix, std::allocator<CMatrix> > >::difference_type __gnu_cxx::operator-<CMatrix*, std::vector<CMatrix, std::allocator<CMatrix> > >(__gnu_cxx::__normal_iterator<CMatrix*, std::vector<CMatrix, std::allocator<CMatrix> > > const&, __gnu_cxx::__normal_iterator<CMatrix*, std::vector<CMatrix, std::allocator<CMatrix> > > const&) [100]
+                0.00    0.00       8/16          __gnu_cxx::__normal_iterator<CMatrix*, std::vector<CMatrix, std::allocator<CMatrix> > >::base() const [75]
+-----------------------------------------------
+                0.00    0.00       4/4           std::vector<CMatrix, std::allocator<CMatrix> >::_M_insert_aux(__gnu_cxx::__normal_iterator<CMatrix*, std::vector<CMatrix, std::allocator<CMatrix> > >, CMatrix const&) [102]
+[101]    0.0    0.00    0.00       4         std::vector<CMatrix, std::allocator<CMatrix> >::_M_check_len(unsigned int, char const*) const [101]
+                0.00    0.00      16/112         std::vector<CMatrix, std::allocator<CMatrix> >::size() const [30]
+                0.00    0.00       8/8           std::vector<CMatrix, std::allocator<CMatrix> >::max_size() const [87]
+                0.00    0.00       4/4           unsigned int const& std::max<unsigned int>(unsigned int const&, unsigned int const&) [105]
+-----------------------------------------------
+                0.00    0.00       4/4           std::vector<CMatrix, std::allocator<CMatrix> >::push_back(CMatrix const&) [94]
+[102]    0.0    0.00    0.00       4         std::vector<CMatrix, std::allocator<CMatrix> >::_M_insert_aux(__gnu_cxx::__normal_iterator<CMatrix*, std::vector<CMatrix, std::allocator<CMatrix> > >, CMatrix const&) [102]
+                0.00    0.00      12/51          std::_Vector_base<CMatrix, std::allocator<CMatrix> >::_M_get_Tp_allocator() [44]
+                0.00    0.00       8/16          __gnu_cxx::__normal_iterator<CMatrix*, std::vector<CMatrix, std::allocator<CMatrix> > >::base() const [75]
+                0.00    0.00       8/8           CMatrix* std::__uninitialized_move_if_noexcept_a<CMatrix*, CMatrix*, std::allocator<CMatrix> >(CMatrix*, CMatrix*, CMatrix*, std::allocator<CMatrix>&) [91]
+                0.00    0.00       4/4           std::vector<CMatrix, std::allocator<CMatrix> >::_M_check_len(unsigned int, char const*) const [101]
+                0.00    0.00       4/4           std::vector<CMatrix, std::allocator<CMatrix> >::begin() [104]
+                0.00    0.00       4/4           __gnu_cxx::__normal_iterator<CMatrix*, std::vector<CMatrix, std::allocator<CMatrix> > >::difference_type __gnu_cxx::operator-<CMatrix*, std::vector<CMatrix, std::allocator<CMatrix> > >(__gnu_cxx::__normal_iterator<CMatrix*, std::vector<CMatrix, std::allocator<CMatrix> > > const&, __gnu_cxx::__normal_iterator<CMatrix*, std::vector<CMatrix, std::allocator<CMatrix> > > const&) [100]
+                0.00    0.00       4/23          std::_Vector_base<CMatrix, std::allocator<CMatrix> >::_M_allocate(unsigned int) [56]
+                0.00    0.00       4/7           void __gnu_cxx::__alloc_traits<std::allocator<CMatrix> >::construct<CMatrix>(std::allocator<CMatrix>&, CMatrix*, CMatrix const&) [93]
+                0.00    0.00       4/24          void std::_Destroy<CMatrix*, CMatrix>(CMatrix*, CMatrix*, std::allocator<CMatrix>&) [51]
+                0.00    0.00       4/24          std::_Vector_base<CMatrix, std::allocator<CMatrix> >::_M_deallocate(CMatrix*, unsigned int) [49]
+-----------------------------------------------
+                0.00    0.00       4/4           std::vector<CMatrix, std::allocator<CMatrix> >::push_back(CMatrix const&) [94]
+[103]    0.0    0.00    0.00       4         std::vector<CMatrix, std::allocator<CMatrix> >::end() [103]
+                0.00    0.00       4/8           __gnu_cxx::__normal_iterator<CMatrix*, std::vector<CMatrix, std::allocator<CMatrix> > >::__normal_iterator(CMatrix* const&) [86]
+-----------------------------------------------
+                0.00    0.00       4/4           std::vector<CMatrix, std::allocator<CMatrix> >::_M_insert_aux(__gnu_cxx::__normal_iterator<CMatrix*, std::vector<CMatrix, std::allocator<CMatrix> > >, CMatrix const&) [102]
+[104]    0.0    0.00    0.00       4         std::vector<CMatrix, std::allocator<CMatrix> >::begin() [104]
+                0.00    0.00       4/8           __gnu_cxx::__normal_iterator<CMatrix*, std::vector<CMatrix, std::allocator<CMatrix> > >::__normal_iterator(CMatrix* const&) [86]
+-----------------------------------------------
+                0.00    0.00       4/4           std::vector<CMatrix, std::allocator<CMatrix> >::_M_check_len(unsigned int, char const*) const [101]
+[105]    0.0    0.00    0.00       4         unsigned int const& std::max<unsigned int>(unsigned int const&, unsigned int const&) [105]
+-----------------------------------------------
+                0.00    0.00       4/4           CMatrix::getDeterminant() [107]
+[106]    0.0    0.00    0.00       4         void std::swap<double>(double&, double&) [106]
+-----------------------------------------------
+                0.00    0.00       2/2           CMatrix::getInverse() [118]
+[107]    0.0    0.00    0.00       2         CMatrix::getDeterminant() [107]
+                0.00    0.00       4/4           void std::swap<double>(double&, double&) [106]
+-----------------------------------------------
+                0.00    0.00       2/2           CMatrix::CMatrix(std::string, std::string) [109]
+[108]    0.0    0.00    0.00       2         CMatrix::copy(std::string) [108]
+                0.00    0.00    2112/6440        CMatrix::~CMatrix() [17]
+                0.00    0.00    2110/2111        bool std::operator==<char, std::char_traits<char>, std::allocator<char> >(std::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, char const*) [23]
+                0.00    0.00    2048/2048        CMatrix::CMatrix(double) [27]
+                0.00    0.00    2048/2048        CMatrix::addColumn(CMatrix const&) [26]
+                0.00    0.00      64/64          CMatrix::CMatrix() [41]
+                0.00    0.00      64/64          CMatrix::addRow(CMatrix const&) [40]
+                0.00    0.00       2/12813       CMatrix::reset() [10]
+-----------------------------------------------
+                0.00    0.00       2/2           programLoopFromFile(char*) [116]
+[109]    0.0    0.00    0.00       2         CMatrix::CMatrix(std::string, std::string) [109]
+                0.00    0.00       2/2           CMatrix::copy(std::string) [108]
+-----------------------------------------------
+                0.00    0.00       1/2           std::istreambuf_iterator<char, std::char_traits<char> >::istreambuf_iterator(std::istream&) [138]
+                0.00    0.00       1/2           std::istreambuf_iterator<char, std::char_traits<char> >::istreambuf_iterator() [139]
+[110]    0.0    0.00    0.00       2         std::iterator<std::input_iterator_tag, char, long long, char*, char&>::iterator() [110]
+-----------------------------------------------
+                0.00    0.00       1/1           _fu7___ZSt4cout [456]
+[111]    0.0    0.00    0.00       1         addOperation(std::vector<CMatrix, std::allocator<CMatrix> >, int, int, std::string) [111]
+                0.00    0.00       2/77          std::vector<CMatrix, std::allocator<CMatrix> >::operator[](unsigned int) [34]
+                0.00    0.00       1/1           CMatrix::operator+(CMatrix const&) [129]
+                0.00    0.00       1/5           CMatrix::setName(std::string) [97]
+-----------------------------------------------
+                0.00    0.00       1/1           _fu20___ZSt4cout [391]
+[112]    0.0    0.00    0.00       1         checkNumeric(std::string const&) [112]
+-----------------------------------------------
+                0.00    0.00       1/1           _fu12___ZSt4cout [382]
+[113]    0.0    0.00    0.00       1         subOperation(std::vector<CMatrix, std::allocator<CMatrix> >, int, int, std::string) [113]
+                0.00    0.00       2/77          std::vector<CMatrix, std::allocator<CMatrix> >::operator[](unsigned int) [34]
+                0.00    0.00       1/1           CMatrix::operator-(CMatrix const&) [126]
+                0.00    0.00       1/5           CMatrix::setName(std::string) [97]
+-----------------------------------------------
+                0.00    0.00       1/1           _fu17___ZSt4cout [387]
+[114]    0.0    0.00    0.00       1         multiplyOperation(std::vector<CMatrix, std::allocator<CMatrix> >, int, int, std::string) [114]
+                0.00    0.00       2/77          std::vector<CMatrix, std::allocator<CMatrix> >::operator[](unsigned int) [34]
+                0.00    0.00       1/1           CMatrix::operator*(CMatrix const&) [127]
+                0.00    0.00       1/5           CMatrix::setName(std::string) [97]
+-----------------------------------------------
+                0.00    0.00       1/1           _fu35___ZSt4cout [407]
+[115]    0.0    0.00    0.00       1         transposeOperation(std::vector<CMatrix, std::allocator<CMatrix> >&, int, std::string) [115]
+                0.00    0.00       1/77          std::vector<CMatrix, std::allocator<CMatrix> >::operator[](unsigned int) [34]
+                0.00    0.00       1/1           CMatrix::getTranspose() [119]
+                0.00    0.00       1/5           CMatrix::setName(std::string) [97]
+-----------------------------------------------
+                0.00    0.00       1/1           main [502]
+[116]    0.0    0.00    0.00       1         programLoopFromFile(char*) [116]
+                0.00    0.00       4/10          __gnu_cxx::__normal_iterator<char*, std::string> std::remove<__gnu_cxx::__normal_iterator<char*, std::string>, char>(__gnu_cxx::__normal_iterator<char*, std::string>, __gnu_cxx::__normal_iterator<char*, std::string>, char const&) [82]
+                0.00    0.00       2/2           CMatrix::CMatrix(std::string, std::string) [109]
+                0.00    0.00       2/7           std::vector<CMatrix, std::allocator<CMatrix> >::push_back(CMatrix const&) [94]
+                0.00    0.00       1/1           std::vector<CMatrix, std::allocator<CMatrix> >::vector() [140]
+                0.00    0.00       1/1           std::istreambuf_iterator<char, std::char_traits<char> >::istreambuf_iterator() [139]
+                0.00    0.00       1/1           std::istreambuf_iterator<char, std::char_traits<char> >::istreambuf_iterator(std::istream&) [138]
+                0.00    0.00       1/1           std::basic_string<char, std::char_traits<char>, std::allocator<char> >::basic_string<std::istreambuf_iterator<char, std::char_traits<char> > >(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::allocator<char> const&) [135]
+                0.00    0.00       1/1           std::iterator_traits<__gnu_cxx::__normal_iterator<char*, std::string> >::difference_type std::count<__gnu_cxx::__normal_iterator<char*, std::string>, char>(__gnu_cxx::__normal_iterator<char*, std::string>, __gnu_cxx::__normal_iterator<char*, std::string>, char const&) [142]
+-----------------------------------------------
+                0.00    0.00       1/1           _fu20___ZSt4cout [391]
+[117]    0.0    0.00    0.00       1         elmentWiseDivOperationNumber(std::vector<CMatrix, std::allocator<CMatrix> >&, int, std::string, std::string) [117]
+                0.00    0.00       2/6440        CMatrix::~CMatrix() [17]
+                0.00    0.00       1/77          std::vector<CMatrix, std::allocator<CMatrix> >::operator[](unsigned int) [34]
+                0.00    0.00       1/2209        CMatrix::CMatrix(CMatrix const&) [20]
+                0.00    0.00       1/6           CMatrix::getnC() [95]
+                0.00    0.00       1/6           CMatrix::getnR() [96]
+                0.00    0.00       1/2052        CMatrix::CMatrix(int, int, int, double) [24]
+                0.00    0.00       1/1           CMatrix::elementWiseDiv(CMatrix const&) [120]
+                0.00    0.00       1/5           CMatrix::setName(std::string) [97]
+-----------------------------------------------
+                0.00    0.00       1/1           _fu26___ZSt4cout [397]
+[118]    0.0    0.00    0.00       1         CMatrix::getInverse() [118]
+                0.00    0.00       2/2           CMatrix::getDeterminant() [107]
+                0.00    0.00       1/65          CMatrix::CMatrix(std::string, int, int, int, double) [39]
+                0.00    0.00       1/2209        CMatrix::CMatrix(CMatrix const&) [20]
+                0.00    0.00       1/6440        CMatrix::~CMatrix() [17]
+-----------------------------------------------
+                0.00    0.00       1/1           transposeOperation(std::vector<CMatrix, std::allocator<CMatrix> >&, int, std::string) [115]
+[119]    0.0    0.00    0.00       1         CMatrix::getTranspose() [119]
+                0.00    0.00       1/2052        CMatrix::CMatrix(int, int, int, double) [24]
+-----------------------------------------------
+                0.00    0.00       1/1           elmentWiseDivOperationNumber(std::vector<CMatrix, std::allocator<CMatrix> >&, int, std::string, std::string) [117]
+[120]    0.0    0.00    0.00       1         CMatrix::elementWiseDiv(CMatrix const&) [120]
+-----------------------------------------------
+                0.00    0.00       1/1           CMatrix::operator+=(CMatrix const&) [128]
+[121]    0.0    0.00    0.00       1         CMatrix::add(CMatrix const&) [121]
+-----------------------------------------------
+                0.00    0.00       1/1           CMatrix::operator*=(CMatrix const&) [125]
+[122]    0.0    0.00    0.00       1         CMatrix::mul(CMatrix const&) [122]
+                0.00    0.00       1/2052        CMatrix::CMatrix(int, int, int, double) [24]
+                0.00    0.00       1/4323        CMatrix::copy(CMatrix const&) [18]
+                0.00    0.00       1/6440        CMatrix::~CMatrix() [17]
+-----------------------------------------------
+                0.00    0.00       1/1           CMatrix::operator-=(CMatrix const&) [124]
+[123]    0.0    0.00    0.00       1         CMatrix::sub(CMatrix const&) [123]
+-----------------------------------------------
+                0.00    0.00       1/1           CMatrix::operator-(CMatrix const&) [126]
+[124]    0.0    0.00    0.00       1         CMatrix::operator-=(CMatrix const&) [124]
+                0.00    0.00       1/1           CMatrix::sub(CMatrix const&) [123]
+-----------------------------------------------
+                0.00    0.00       1/1           CMatrix::operator*(CMatrix const&) [127]
+[125]    0.0    0.00    0.00       1         CMatrix::operator*=(CMatrix const&) [125]
+                0.00    0.00       1/1           CMatrix::mul(CMatrix const&) [122]
+-----------------------------------------------
+                0.00    0.00       1/1           subOperation(std::vector<CMatrix, std::allocator<CMatrix> >, int, int, std::string) [113]
+[126]    0.0    0.00    0.00       1         CMatrix::operator-(CMatrix const&) [126]
+                0.00    0.00       1/2209        CMatrix::CMatrix(CMatrix const&) [20]
+                0.00    0.00       1/1           CMatrix::operator-=(CMatrix const&) [124]
+-----------------------------------------------
+                0.00    0.00       1/1           multiplyOperation(std::vector<CMatrix, std::allocator<CMatrix> >, int, int, std::string) [114]
+[127]    0.0    0.00    0.00       1         CMatrix::operator*(CMatrix const&) [127]
+                0.00    0.00       1/2209        CMatrix::CMatrix(CMatrix const&) [20]
+                0.00    0.00       1/1           CMatrix::operator*=(CMatrix const&) [125]
+-----------------------------------------------
+                0.00    0.00       1/1           CMatrix::operator+(CMatrix const&) [129]
+[128]    0.0    0.00    0.00       1         CMatrix::operator+=(CMatrix const&) [128]
+                0.00    0.00       1/1           CMatrix::add(CMatrix const&) [121]
+-----------------------------------------------
+                0.00    0.00       1/1           addOperation(std::vector<CMatrix, std::allocator<CMatrix> >, int, int, std::string) [111]
+[129]    0.0    0.00    0.00       1         CMatrix::operator+(CMatrix const&) [129]
+                0.00    0.00       1/2209        CMatrix::CMatrix(CMatrix const&) [20]
+                0.00    0.00       1/1           CMatrix::operator+=(CMatrix const&) [128]
+-----------------------------------------------
+                0.00    0.00       1/1           std::allocator<CMatrix>::allocator() [131]
+[130]    0.0    0.00    0.00       1         __gnu_cxx::new_allocator<CMatrix>::new_allocator() [130]
+-----------------------------------------------
+                0.00    0.00       1/1           std::_Vector_base<CMatrix, std::allocator<CMatrix> >::_Vector_impl::_Vector_impl() [136]
+[131]    0.0    0.00    0.00       1         std::allocator<CMatrix>::allocator() [131]
+                0.00    0.00       1/1           __gnu_cxx::new_allocator<CMatrix>::new_allocator() [130]
+-----------------------------------------------
+                0.00    0.00       1/1           std::basic_string<char, std::char_traits<char>, std::allocator<char> >::basic_string<std::istreambuf_iterator<char, std::char_traits<char> > >(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::allocator<char> const&) [135]
+[132]    0.0    0.00    0.00       1         char* std::string::_S_construct<std::istreambuf_iterator<char, std::char_traits<char> > >(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::allocator<char> const&) [132]
+                0.00    0.00       1/1           char* std::string::_S_construct_aux<std::istreambuf_iterator<char, std::char_traits<char> > >(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::allocator<char> const&, std::__false_type) [134]
+-----------------------------------------------
+                0.00    0.00       1/1           char* std::string::_S_construct_aux<std::istreambuf_iterator<char, std::char_traits<char> > >(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::allocator<char> const&, std::__false_type) [134]
+[133]    0.0    0.00    0.00       1         char* std::string::_S_construct<std::istreambuf_iterator<char, std::char_traits<char> > >(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::allocator<char> const&, std::input_iterator_tag) [133]
+                0.00    0.00    8332/8332        bool std::operator!=<char, std::char_traits<char> >(std::istreambuf_iterator<char, std::char_traits<char> > const&, std::istreambuf_iterator<char, std::char_traits<char> > const&) [13]
+                0.00    0.00    8330/8330        std::istreambuf_iterator<char, std::char_traits<char> >::operator*() const [14]
+                0.00    0.00    8330/8330        std::istreambuf_iterator<char, std::char_traits<char> >::operator++() [16]
+                0.00    0.00       1/1           bool std::operator==<char, std::char_traits<char> >(std::istreambuf_iterator<char, std::char_traits<char> > const&, std::istreambuf_iterator<char, std::char_traits<char> > const&) [143]
+-----------------------------------------------
+                0.00    0.00       1/1           char* std::string::_S_construct<std::istreambuf_iterator<char, std::char_traits<char> > >(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::allocator<char> const&) [132]
+[134]    0.0    0.00    0.00       1         char* std::string::_S_construct_aux<std::istreambuf_iterator<char, std::char_traits<char> > >(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::allocator<char> const&, std::__false_type) [134]
+                0.00    0.00       1/1           char* std::string::_S_construct<std::istreambuf_iterator<char, std::char_traits<char> > >(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::allocator<char> const&, std::input_iterator_tag) [133]
+-----------------------------------------------
+                0.00    0.00       1/1           programLoopFromFile(char*) [116]
+[135]    0.0    0.00    0.00       1         std::basic_string<char, std::char_traits<char>, std::allocator<char> >::basic_string<std::istreambuf_iterator<char, std::char_traits<char> > >(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::allocator<char> const&) [135]
+                0.00    0.00       1/1           char* std::string::_S_construct<std::istreambuf_iterator<char, std::char_traits<char> > >(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::allocator<char> const&) [132]
+-----------------------------------------------
+                0.00    0.00       1/1           std::_Vector_base<CMatrix, std::allocator<CMatrix> >::_Vector_base() [137]
+[136]    0.0    0.00    0.00       1         std::_Vector_base<CMatrix, std::allocator<CMatrix> >::_Vector_impl::_Vector_impl() [136]
+                0.00    0.00       1/1           std::allocator<CMatrix>::allocator() [131]
+-----------------------------------------------
+                0.00    0.00       1/1           std::vector<CMatrix, std::allocator<CMatrix> >::vector() [140]
+[137]    0.0    0.00    0.00       1         std::_Vector_base<CMatrix, std::allocator<CMatrix> >::_Vector_base() [137]
+                0.00    0.00       1/1           std::_Vector_base<CMatrix, std::allocator<CMatrix> >::_Vector_impl::_Vector_impl() [136]
+-----------------------------------------------
+                0.00    0.00       1/1           programLoopFromFile(char*) [116]
+[138]    0.0    0.00    0.00       1         std::istreambuf_iterator<char, std::char_traits<char> >::istreambuf_iterator(std::istream&) [138]
+                0.00    0.00       1/2           std::iterator<std::input_iterator_tag, char, long long, char*, char&>::iterator() [110]
+                0.00    0.00       1/49994       std::char_traits<char>::eof() [2]
+-----------------------------------------------
+                0.00    0.00       1/1           programLoopFromFile(char*) [116]
+[139]    0.0    0.00    0.00       1         std::istreambuf_iterator<char, std::char_traits<char> >::istreambuf_iterator() [139]
+                0.00    0.00       1/2           std::iterator<std::input_iterator_tag, char, long long, char*, char&>::iterator() [110]
+                0.00    0.00       1/49994       std::char_traits<char>::eof() [2]
+-----------------------------------------------
+                0.00    0.00       1/1           programLoopFromFile(char*) [116]
+[140]    0.0    0.00    0.00       1         std::vector<CMatrix, std::allocator<CMatrix> >::vector() [140]
+                0.00    0.00       1/1           std::_Vector_base<CMatrix, std::allocator<CMatrix> >::_Vector_base() [137]
+-----------------------------------------------
+                0.00    0.00       1/1           std::iterator_traits<__gnu_cxx::__normal_iterator<char*, std::string> >::difference_type std::count<__gnu_cxx::__normal_iterator<char*, std::string>, char>(__gnu_cxx::__normal_iterator<char*, std::string>, __gnu_cxx::__normal_iterator<char*, std::string>, char const&) [142]
+[141]    0.0    0.00    0.00       1         std::iterator_traits<__gnu_cxx::__normal_iterator<char*, std::string> >::difference_type std::__count_if<__gnu_cxx::__normal_iterator<char*, std::string>, __gnu_cxx::__ops::_Iter_equals_val<char const> >(__gnu_cxx::__normal_iterator<char*, std::string>, __gnu_cxx::__normal_iterator<char*, std::string>, __gnu_cxx::__ops::_Iter_equals_val<char const>) [141]
+                0.00    0.00    8331/8379        bool __gnu_cxx::operator!=<char*, std::string>(__gnu_cxx::__normal_iterator<char*, std::string> const&, __gnu_cxx::__normal_iterator<char*, std::string> const&) [11]
+                0.00    0.00    8330/16645       bool __gnu_cxx::__ops::_Iter_equals_val<char const>::operator()<__gnu_cxx::__normal_iterator<char*, std::string> >(__gnu_cxx::__normal_iterator<char*, std::string>) [9]
+                0.00    0.00    8330/16669       __gnu_cxx::__normal_iterator<char*, std::string>::operator++() [7]
+-----------------------------------------------
+                0.00    0.00       1/1           programLoopFromFile(char*) [116]
+[142]    0.0    0.00    0.00       1         std::iterator_traits<__gnu_cxx::__normal_iterator<char*, std::string> >::difference_type std::count<__gnu_cxx::__normal_iterator<char*, std::string>, char>(__gnu_cxx::__normal_iterator<char*, std::string>, __gnu_cxx::__normal_iterator<char*, std::string>, char const&) [142]
+                0.00    0.00       1/11          __gnu_cxx::__ops::_Iter_equals_val<char const> __gnu_cxx::__ops::__iter_equals_val<char const>(char const&) [78]
+                0.00    0.00       1/1           std::iterator_traits<__gnu_cxx::__normal_iterator<char*, std::string> >::difference_type std::__count_if<__gnu_cxx::__normal_iterator<char*, std::string>, __gnu_cxx::__ops::_Iter_equals_val<char const> >(__gnu_cxx::__normal_iterator<char*, std::string>, __gnu_cxx::__normal_iterator<char*, std::string>, __gnu_cxx::__ops::_Iter_equals_val<char const>) [141]
+-----------------------------------------------
+                0.00    0.00       1/1           char* std::string::_S_construct<std::istreambuf_iterator<char, std::char_traits<char> > >(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::allocator<char> const&, std::input_iterator_tag) [133]
+[143]    0.0    0.00    0.00       1         bool std::operator==<char, std::char_traits<char> >(std::istreambuf_iterator<char, std::char_traits<char> > const&, std::istreambuf_iterator<char, std::char_traits<char> > const&) [143]
+                0.00    0.00       1/8333        std::istreambuf_iterator<char, std::char_traits<char> >::equal(std::istreambuf_iterator<char, std::char_traits<char> > const&) const [12]
+-----------------------------------------------
+
+ This table describes the call tree of the program, and was sorted by
+ the total amount of time spent in each function and its children.
+
+ Each entry in this table consists of several lines.  The line with the
+ index number at the left hand margin lists the current function.
+ The lines above it list the functions that called this function,
+ and the lines below it list the functions this one called.
+ This line lists:
+     index	A unique number given to each element of the table.
+		Index numbers are sorted numerically.
+		The index number is printed next to every function name so
+		it is easier to look up where the function is in the table.
+
+     % time	This is the percentage of the `total' time that was spent
+		in this function and its children.  Note that due to
+		different viewpoints, functions excluded by options, etc,
+		these numbers will NOT add up to 100%.
+
+     self	This is the total amount of time spent in this function.
+
+     children	This is the total amount of time propagated into this
+		function by its children.
+
+     called	This is the number of times the function was called.
+		If the function called itself recursively, the number
+		only includes non-recursive calls, and is followed by
+		a `+' and the number of recursive calls.
+
+     name	The name of the current function.  The index number is
+		printed after it.  If the function is a member of a
+		cycle, the cycle number is printed between the
+		function's name and the index number.
+
+
+ For the function's parents, the fields have the following meanings:
+
+     self	This is the amount of time that was propagated directly
+		from the function into this parent.
+
+     children	This is the amount of time that was propagated from
+		the function's children into this parent.
+
+     called	This is the number of times this parent called the
+		function `/' the total number of times the function
+		was called.  Recursive calls to the function are not
+		included in the number after the `/'.
+
+     name	This is the name of the parent.  The parent's index
+		number is printed after it.  If the parent is a
+		member of a cycle, the cycle number is printed between
+		the name and the index number.
+
+ If the parents of the function cannot be determined, the word
+ `<spontaneous>' is printed in the `name' field, and all the other
+ fields are blank.
+
+ For the function's children, the fields have the following meanings:
+
+     self	This is the amount of time that was propagated directly
+		from the child into the function.
+
+     children	This is the amount of time that was propagated from the
+		child's children to the function.
+
+     called	This is the number of times the function called
+		this child `/' the total number of times the child
+		was called.  Recursive calls by the child are not
+		listed in the number after the `/'.
+
+     name	This is the name of the child.  The child's index
+		number is printed after it.  If the child is a
+		member of a cycle, the cycle number is printed
+		between the name and the index number.
+
+ If there are any cycles (circles) in the call graph, there is an
+ entry for the cycle-as-a-whole.  This entry shows who called the
+ cycle (as parents) and the members of the cycle (as children.)
+ The `+' recursive calls entry shows the number of function calls that
+ were internal to the cycle, and the calls entry for each member shows,
+ for that member, how many times it was called from other members of
+ the cycle.
+
+Copyright (C) 2012-2014 Free Software Foundation, Inc.
+
+Copying and distribution of this file, with or without modification,
+are permitted in any medium without royalty provided the copyright
+notice and this notice are preserved.
+
+Index by function name
+
+ [111] addOperation(std::vector<CMatrix, std::allocator<CMatrix> >, int, int, std::string) [63] __gnu_cxx::__alloc_traits<std::allocator<CMatrix> >::_S_select_on_copy(std::allocator<CMatrix> const&) [49] std::_Vector_base<CMatrix, std::allocator<CMatrix> >::_M_deallocate(CMatrix*, unsigned int)
+ [112] checkNumeric(std::string const&) [55] __gnu_cxx::__alloc_traits<std::allocator<CMatrix> >::allocate(std::allocator<CMatrix>&, unsigned int) [68] std::_Vector_base<CMatrix, std::allocator<CMatrix> >::_M_create_storage(unsigned int)
+ [113] subOperation(std::vector<CMatrix, std::allocator<CMatrix> >, int, int, std::string) [85] __gnu_cxx::__alloc_traits<std::allocator<CMatrix> >::max_size(std::allocator<CMatrix> const&) [44] std::_Vector_base<CMatrix, std::allocator<CMatrix> >::_M_get_Tp_allocator()
+  [74] isInsideMatrix(std::vector<CMatrix, std::allocator<CMatrix> >, std::string) [93] void __gnu_cxx::__alloc_traits<std::allocator<CMatrix> >::construct<CMatrix>(std::allocator<CMatrix>&, CMatrix*, CMatrix const&) [69] std::_Vector_base<CMatrix, std::allocator<CMatrix> >::_Vector_base(unsigned int, std::allocator<CMatrix> const&)
+ [114] multiplyOperation(std::vector<CMatrix, std::allocator<CMatrix> >, int, int, std::string) [86] __gnu_cxx::__normal_iterator<CMatrix*, std::vector<CMatrix, std::allocator<CMatrix> > >::__normal_iterator(CMatrix* const&) [137] std::_Vector_base<CMatrix, std::allocator<CMatrix> >::_Vector_base()
+ [115] transposeOperation(std::vector<CMatrix, std::allocator<CMatrix> >&, int, std::string) [45] __gnu_cxx::__normal_iterator<CMatrix const*, std::vector<CMatrix, std::allocator<CMatrix> > >::__normal_iterator(CMatrix const* const&) [60] std::_Vector_base<CMatrix, std::allocator<CMatrix> >::~_Vector_base()
+ [116] programLoopFromFile(char*) [36] __gnu_cxx::__normal_iterator<CMatrix const*, std::vector<CMatrix, std::allocator<CMatrix> > >::operator++() [138] std::istreambuf_iterator<char, std::char_traits<char> >::istreambuf_iterator(std::istream&)
+ [117] elmentWiseDivOperationNumber(std::vector<CMatrix, std::allocator<CMatrix> >&, int, std::string, std::string) [7] __gnu_cxx::__normal_iterator<char*, std::string>::operator++() [139] std::istreambuf_iterator<char, std::char_traits<char> >::istreambuf_iterator()
+ [118] CMatrix::getInverse()  [77] __gnu_cxx::__ops::_Iter_equals_val<char const>::_Iter_equals_val(char const&) [16] std::istreambuf_iterator<char, std::char_traits<char> >::operator++()
+ [119] CMatrix::getTranspose() [9] bool __gnu_cxx::__ops::_Iter_equals_val<char const>::operator()<__gnu_cxx::__normal_iterator<char*, std::string> >(__gnu_cxx::__normal_iterator<char*, std::string>) [70] CMatrix* std::__uninitialized_copy<false>::__uninit_copy<__gnu_cxx::__normal_iterator<CMatrix const*, std::vector<CMatrix, std::allocator<CMatrix> > >, CMatrix*>(__gnu_cxx::__normal_iterator<CMatrix const*, std::vector<CMatrix, std::allocator<CMatrix> > >, __gnu_cxx::__normal_iterator<CMatrix const*, std::vector<CMatrix, std::allocator<CMatrix> > >, CMatrix*)
+  [19] CMatrix::setSubMatrix(int, int, CMatrix const&) [78] __gnu_cxx::__ops::_Iter_equals_val<char const> __gnu_cxx::__ops::__iter_equals_val<char const>(char const&) [88] CMatrix* std::__uninitialized_copy<false>::__uninit_copy<CMatrix*, CMatrix*>(CMatrix*, CMatrix*, CMatrix*)
+ [120] CMatrix::elementWiseDiv(CMatrix const&) [79] bool __gnu_cxx::operator==<char*, std::string>(__gnu_cxx::__normal_iterator<char*, std::string> const&, __gnu_cxx::__normal_iterator<char*, std::string> const&) [102] std::vector<CMatrix, std::allocator<CMatrix> >::_M_insert_aux(__gnu_cxx::__normal_iterator<CMatrix*, std::vector<CMatrix, std::allocator<CMatrix> > >, CMatrix const&)
+ [107] CMatrix::getDeterminant() [100] __gnu_cxx::__normal_iterator<CMatrix*, std::vector<CMatrix, std::allocator<CMatrix> > >::difference_type __gnu_cxx::operator-<CMatrix*, std::vector<CMatrix, std::allocator<CMatrix> > >(__gnu_cxx::__normal_iterator<CMatrix*, std::vector<CMatrix, std::allocator<CMatrix> > > const&, __gnu_cxx::__normal_iterator<CMatrix*, std::vector<CMatrix, std::allocator<CMatrix> > > const&) [103] std::vector<CMatrix, std::allocator<CMatrix> >::end()
+ [121] CMatrix::add(CMatrix const&) [76] __gnu_cxx::__normal_iterator<char*, std::string>::difference_type __gnu_cxx::operator-<char*, std::string>(__gnu_cxx::__normal_iterator<char*, std::string> const&, __gnu_cxx::__normal_iterator<char*, std::string> const&) [104] std::vector<CMatrix, std::allocator<CMatrix> >::begin()
+ [122] CMatrix::mul(CMatrix const&) [31] bool __gnu_cxx::operator!=<CMatrix const*, std::vector<CMatrix, std::allocator<CMatrix> > >(__gnu_cxx::__normal_iterator<CMatrix const*, std::vector<CMatrix, std::allocator<CMatrix> > > const&, __gnu_cxx::__normal_iterator<CMatrix const*, std::vector<CMatrix, std::allocator<CMatrix> > > const&) [94] std::vector<CMatrix, std::allocator<CMatrix> >::push_back(CMatrix const&)
+ [123] CMatrix::sub(CMatrix const&) [11] bool __gnu_cxx::operator!=<char*, std::string>(__gnu_cxx::__normal_iterator<char*, std::string> const&, __gnu_cxx::__normal_iterator<char*, std::string> const&) [71] std::vector<CMatrix, std::allocator<CMatrix> >::vector(std::vector<CMatrix, std::allocator<CMatrix> > const&)
+  [18] CMatrix::copy(CMatrix const&) [46] __gnu_cxx::new_allocator<CMatrix>::max_size() const [140] std::vector<CMatrix, std::allocator<CMatrix> >::vector()
+ [108] CMatrix::copy(std::string) [75] __gnu_cxx::__normal_iterator<CMatrix*, std::vector<CMatrix, std::allocator<CMatrix> > >::base() const [61] std::vector<CMatrix, std::allocator<CMatrix> >::~vector()
+  [25] CMatrix::copy(double)  [28] __gnu_cxx::__normal_iterator<CMatrix const*, std::vector<CMatrix, std::allocator<CMatrix> > >::base() const [34] std::vector<CMatrix, std::allocator<CMatrix> >::operator[](unsigned int)
+  [95] CMatrix::getnC()       [37] __gnu_cxx::__normal_iterator<CMatrix const*, std::vector<CMatrix, std::allocator<CMatrix> > >::operator*() const [110] std::iterator<std::input_iterator_tag, char, long long, char*, char&>::iterator()
+  [96] CMatrix::getnR()        [5] __gnu_cxx::__normal_iterator<char*, std::string>::base() const [35] void std::_Construct<CMatrix, CMatrix>(CMatrix*, CMatrix const&)
+  [10] CMatrix::reset()        [6] __gnu_cxx::__normal_iterator<char*, std::string>::operator*() const [141] std::iterator_traits<__gnu_cxx::__normal_iterator<char*, std::string> >::difference_type std::__count_if<__gnu_cxx::__normal_iterator<char*, std::string>, __gnu_cxx::__ops::_Iter_equals_val<char const> >(__gnu_cxx::__normal_iterator<char*, std::string>, __gnu_cxx::__normal_iterator<char*, std::string>, __gnu_cxx::__ops::_Iter_equals_val<char const>)
+  [40] CMatrix::addRow(CMatrix const&) [47] std::_Vector_base<CMatrix, std::allocator<CMatrix> >::_M_get_Tp_allocator() const [29] CMatrix* std::__addressof<CMatrix>(CMatrix&)
+  [38] CMatrix::getName()     [12] std::istreambuf_iterator<char, std::char_traits<char> >::equal(std::istreambuf_iterator<char, std::char_traits<char> > const&) const [80] __gnu_cxx::__normal_iterator<char*, std::string> std::__remove_if<__gnu_cxx::__normal_iterator<char*, std::string>, __gnu_cxx::__ops::_Iter_equals_val<char const> >(__gnu_cxx::__normal_iterator<char*, std::string>, __gnu_cxx::__normal_iterator<char*, std::string>, __gnu_cxx::__ops::_Iter_equals_val<char const>)
+  [97] CMatrix::setName(std::string) [4] std::istreambuf_iterator<char, std::char_traits<char> >::_M_get() const [72] CMatrix* std::uninitialized_copy<__gnu_cxx::__normal_iterator<CMatrix const*, std::vector<CMatrix, std::allocator<CMatrix> > >, CMatrix*>(__gnu_cxx::__normal_iterator<CMatrix const*, std::vector<CMatrix, std::allocator<CMatrix> > >, __gnu_cxx::__normal_iterator<CMatrix const*, std::vector<CMatrix, std::allocator<CMatrix> > >, CMatrix*)
+  [26] CMatrix::addColumn(CMatrix const&) [8] std::istreambuf_iterator<char, std::char_traits<char> >::_M_at_eof() const [89] CMatrix* std::uninitialized_copy<CMatrix*, CMatrix*>(CMatrix*, CMatrix*, CMatrix*)
+  [98] CMatrix::getString()   [14] std::istreambuf_iterator<char, std::char_traits<char> >::operator*() const [81] std::iterator_traits<__gnu_cxx::__normal_iterator<char*, std::string> >::iterator_category std::__iterator_category<__gnu_cxx::__normal_iterator<char*, std::string> >(__gnu_cxx::__normal_iterator<char*, std::string> const&)
+ [109] CMatrix::CMatrix(std::string, std::string) [101] std::vector<CMatrix, std::allocator<CMatrix> >::_M_check_len(unsigned int, char const*) const [73] CMatrix* std::__uninitialized_copy_a<__gnu_cxx::__normal_iterator<CMatrix const*, std::vector<CMatrix, std::allocator<CMatrix> > >, CMatrix*, CMatrix>(__gnu_cxx::__normal_iterator<CMatrix const*, std::vector<CMatrix, std::allocator<CMatrix> > >, __gnu_cxx::__normal_iterator<CMatrix const*, std::vector<CMatrix, std::allocator<CMatrix> > >, CMatrix*, std::allocator<CMatrix>&)
+  [27] CMatrix::CMatrix(double) [64] std::vector<CMatrix, std::allocator<CMatrix> >::end() const [90] CMatrix* std::__uninitialized_copy_a<CMatrix*, CMatrix*, CMatrix>(CMatrix*, CMatrix*, CMatrix*, std::allocator<CMatrix>&)
+  [20] CMatrix::CMatrix(CMatrix const&) [30] std::vector<CMatrix, std::allocator<CMatrix> >::size() const [91] CMatrix* std::__uninitialized_move_if_noexcept_a<CMatrix*, CMatrix*, std::allocator<CMatrix> >(CMatrix*, CMatrix*, CMatrix*, std::allocator<CMatrix>&)
+  [39] CMatrix::CMatrix(std::string, int, int, int, double) [65] std::vector<CMatrix, std::allocator<CMatrix> >::begin() const [22] int const& std::max<int>(int const&, int const&)
+  [24] CMatrix::CMatrix(int, int, int, double) [87] std::vector<CMatrix, std::allocator<CMatrix> >::max_size() const [105] unsigned int const& std::max<unsigned int>(unsigned int const&, unsigned int const&)
+  [41] CMatrix::CMatrix()     [66] std::allocator<CMatrix>::allocator(std::allocator<CMatrix> const&) [106] void std::swap<double>(double&, double&)
+  [17] CMatrix::~CMatrix()   [131] std::allocator<CMatrix>::allocator() [142] std::iterator_traits<__gnu_cxx::__normal_iterator<char*, std::string> >::difference_type std::count<__gnu_cxx::__normal_iterator<char*, std::string>, char>(__gnu_cxx::__normal_iterator<char*, std::string>, __gnu_cxx::__normal_iterator<char*, std::string>, char const&)
+  [21] CMatrix::operator=(CMatrix const&) [58] std::allocator<CMatrix>::~allocator() [82] __gnu_cxx::__normal_iterator<char*, std::string> std::remove<__gnu_cxx::__normal_iterator<char*, std::string>, char>(__gnu_cxx::__normal_iterator<char*, std::string>, __gnu_cxx::__normal_iterator<char*, std::string>, char const&)
+ [124] CMatrix::operator-=(CMatrix const&) [132] char* std::string::_S_construct<std::istreambuf_iterator<char, std::char_traits<char> > >(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::allocator<char> const&) [32] void std::_Destroy<CMatrix>(CMatrix*)
+ [125] CMatrix::operator*=(CMatrix const&) [133] char* std::string::_S_construct<std::istreambuf_iterator<char, std::char_traits<char> > >(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::allocator<char> const&, std::input_iterator_tag) [50] void std::_Destroy<CMatrix*>(CMatrix*, CMatrix*)
+ [126] CMatrix::operator-(CMatrix const&) [134] char* std::string::_S_construct_aux<std::istreambuf_iterator<char, std::char_traits<char> > >(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::allocator<char> const&, std::__false_type) [51] void std::_Destroy<CMatrix*, CMatrix>(CMatrix*, CMatrix*, std::allocator<CMatrix>&)
+ [127] CMatrix::operator*(CMatrix const&) [135] std::basic_string<char, std::char_traits<char>, std::allocator<char> >::basic_string<std::istreambuf_iterator<char, std::char_traits<char> > >(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::allocator<char> const&) [83] __gnu_cxx::__normal_iterator<char*, std::string> std::__find_if<__gnu_cxx::__normal_iterator<char*, std::string>, __gnu_cxx::__ops::_Iter_equals_val<char const> >(__gnu_cxx::__normal_iterator<char*, std::string>, __gnu_cxx::__normal_iterator<char*, std::string>, __gnu_cxx::__ops::_Iter_equals_val<char const>)
+ [128] CMatrix::operator+=(CMatrix const&) [3] std::char_traits<char>::eq_int_type(int const&, int const&) [84] __gnu_cxx::__normal_iterator<char*, std::string> std::__find_if<__gnu_cxx::__normal_iterator<char*, std::string>, __gnu_cxx::__ops::_Iter_equals_val<char const> >(__gnu_cxx::__normal_iterator<char*, std::string>, __gnu_cxx::__normal_iterator<char*, std::string>, __gnu_cxx::__ops::_Iter_equals_val<char const>, std::random_access_iterator_tag)
+ [129] CMatrix::operator+(CMatrix const&) [15] std::char_traits<char>::to_char_type(int const&) [43] __gnu_cxx::__enable_if<std::__is_char<char>::__value, bool>::__type std::operator==<char>(std::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)
+  [52] __gnu_cxx::new_allocator<CMatrix>::deallocate(CMatrix*, unsigned int) [2] std::char_traits<char>::eof() [143] bool std::operator==<char, std::char_traits<char> >(std::istreambuf_iterator<char, std::char_traits<char> > const&, std::istreambuf_iterator<char, std::char_traits<char> > const&)
+  [53] __gnu_cxx::new_allocator<CMatrix>::allocate(unsigned int, void const*) [42] std::char_traits<char>::compare(char const*, char const*, unsigned int) [23] bool std::operator==<char, std::char_traits<char>, std::allocator<char> >(std::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, char const*)
+  [92] __gnu_cxx::new_allocator<CMatrix>::construct(CMatrix*, CMatrix const&) [48] void std::_Destroy_aux<false>::__destroy<CMatrix*>(CMatrix*, CMatrix*) [13] bool std::operator!=<char, std::char_traits<char> >(std::istreambuf_iterator<char, std::char_traits<char> > const&, std::istreambuf_iterator<char, std::char_traits<char> > const&)
+  [62] __gnu_cxx::new_allocator<CMatrix>::new_allocator(__gnu_cxx::new_allocator<CMatrix> const&) [56] std::_Vector_base<CMatrix, std::allocator<CMatrix> >::_M_allocate(unsigned int) [99] operator<<(std::ostream&, CMatrix&)
+ [130] __gnu_cxx::new_allocator<CMatrix>::new_allocator() [67] std::_Vector_base<CMatrix, std::allocator<CMatrix> >::_Vector_impl::_Vector_impl(std::allocator<CMatrix> const&) [33] operator new(unsigned int, void*)
+  [57] __gnu_cxx::new_allocator<CMatrix>::~new_allocator() [136] std::_Vector_base<CMatrix, std::allocator<CMatrix> >::_Vector_impl::_Vector_impl()
+  [54] __gnu_cxx::__alloc_traits<std::allocator<CMatrix> >::deallocate(std::allocator<CMatrix>&, CMatrix*, unsigned int) [59] std::_Vector_base<CMatrix, std::allocator<CMatrix> >::_Vector_impl::~_Vector_impl()
