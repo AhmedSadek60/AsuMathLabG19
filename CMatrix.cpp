@@ -834,6 +834,8 @@ void CMatrix ::copy(string s) {
 	[ functionality ] : returns the determinant of the caller matrix.
 
 	*/
+	/*
+
 	double CMatrix ::getDeterminant() {
 		int i, j, k;
   double **matrix;
@@ -887,6 +889,92 @@ void CMatrix ::copy(string s) {
   return det;
 		}
 
+*/
+
+		double CMatrix::getDeterminant(){
+			// decomposition
+			int N = nR;
+			double Tol = 0.0000001;
+			double **A;
+			int *P = new int[N+1];
+
+			A = new double *[N];
+
+		  for ( int i = 0; i < N; i++ )
+		    A[i] = new double[N];
+
+		  for ( int i = 0; i < N; i++ ) {
+		    for ( int j = 0; j < N; j++ )
+		      A[i][j] = values[i][j];
+		  }
+
+			int i, j, k, imax;
+	    double maxA, *ptr, absA;
+
+	    for (i = 0; i <= N; i++)
+	        P[i] = i; //Unit permutation matrix, P[N] initialized with N
+
+	    for (i = 0; i < N; i++) {
+	        maxA = 0.0;
+	        imax = i;
+
+	        for (k = i; k < N; k++)
+	            if ((absA = fabs(A[k][i])) > maxA) {
+	                maxA = absA;
+	                imax = k;
+	            }
+
+	        if (maxA < Tol) return 0; //failure, matrix is degenerate
+
+	        if (imax != i) {
+	            //pivoting P
+	            j = P[i];
+	            P[i] = P[imax];
+	            P[imax] = j;
+
+	            //pivoting rows of A
+	            ptr = A[i];
+	            A[i] = A[imax];
+	            A[imax] = ptr;
+
+	            //counting pivots starting from N (for determinant)
+	            P[N]++;
+	        }
+
+	        for (j = i + 1; j < N; j++) {
+	            A[j][i] /= A[i][i];
+
+	            for (k = i + 1; k < N; k++)
+	                A[j][k] -= A[j][i] * A[i][k];
+	        }
+}
+					// decompition done
+
+					// calculating determinant:
+					// det(A) = det(P^-1)*det(L)*det(U)
+					// det(P^-1) = (-1)^S, S is the num of row echanges in the decompition
+					double det = A[0][0];
+
+			    for (int i = 1; i < N; i++)
+			        det *= A[i][i];
+
+					for ( i = 0; i < N; i++ )
+						delete [] A[i];
+					delete [] A;
+
+
+			    if ((P[N] - N) % 2 == 0){
+							delete[] P;
+			        return det;
+						}
+			    else{
+							delete[] P;
+			        return -det;
+						}
+
+
+
+			}
 
 		/* ############################################################################# */
 
@@ -918,13 +1006,12 @@ void CMatrix ::copy(string s) {
 	[ functionality ] : returns the inverse of the caller matrix if valid, otherwise returns a matrix with name "Invert"
 
 	*/
+
+
 	CMatrix CMatrix::getInverse()
-	{	
+	{
 		if(getDeterminant() != 0) {
-			if(exp(getDeterminant()) == 1) {
-				CMatrix m("Invert",nR,nC);
-				return m;
-			} else {
+
 				CMatrix m(nR, nC);
 				for (int iR = 0; iR < m.nR; iR++)
 				for (int iC = 0; iC < m.nC; iC++)
@@ -938,12 +1025,33 @@ void CMatrix ::copy(string s) {
 				m = m.getTranspose();
 				m = m * (1 / getDeterminant());
 				return m;
-			}
+
 		} else {
 			CMatrix m("Invert",nR,nC);
 			return m;
 		}
 }
+
+
+
+
+/*
+CMatrix CMatrix::getInverse()
+{
+	if(getDeterminant() != 0) {
+		if(exp(getDeterminant()) == 1) {
+			CMatrix m("Invert",nR,nC);
+			return m;
+		} else {
+
+
+
+
+
+}
+*/
+
+
 /* ############################################################################# */
 
 /*
