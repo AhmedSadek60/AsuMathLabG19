@@ -230,6 +230,7 @@ void programLoopFromFile(char* fileName){
           matrixData = content.substr(0,content.find(']') + 1);
           matrixName = matrixData.substr(0,content.find('='));
           matrixName.erase(std::remove(matrixName.begin(),matrixName.end(),' '),matrixName.end());
+          matrixName.erase(std::remove(matrixName.begin(), matrixName.end(), '\n'), matrixName.end());
           matrixData.erase(0,matrixData.find('['));
           matrixData.erase(std::remove(matrixData.begin(), matrixData.end(), '\n'), matrixData.end());
 
