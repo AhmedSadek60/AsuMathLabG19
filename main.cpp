@@ -835,6 +835,52 @@ int main(int argc, char* argv[]){
                   //
                   // cout<< "inverse is"<<endl<<i<<endl;
 
+                  /* Test For Parsing New File */
+                  /*
+                    string s5 = "[1.2 2.3 4.7;[1.3 2.4;4.6 1.3],[3.2;7.8]]";
+                int countSquareBracket = count(s5.begin() , s5.end() , '[');
+                string firstMatrix = s5.substr(0,s5.find(';')) + "]";
+                string secondMatrix = s5.substr(s5.find('[' , s5.find(';')),s5.find(']') + 1 - s5.find('[' , s5.find(';')));
+                s5.erase(0,s5.find(']') + 2);
+                s5.erase(s5.length() - 1);
+                string thirdMatrix = s5;
+                CMatrix A("A",firstMatrix);
+                CMatrix B("B",secondMatrix);
+                CMatrix C("C",thirdMatrix);
+                B.addColumn(C);
+                A.addRow(B);
+
+
+
+                // String Parsing Next Level ==> Done
+                // Must Be A New Line to make the Concatentation of the Row
+                string s7 = "[[A [3.4; 2.1; 2]]\n 1 2 10  1.2]";
+                int countBrackets = std::count(s7.begin(),s7.end(),'['); 
+                int countCommas = std::count(s7.begin(),s7.end(),',');
+                if(countCommas == 0) {
+                        string firstMatrix = s7.substr(s7.find('[',1) , s7.find(' ',s7.find('[',1)));
+                        string rowMatrix = "[" + s7.substr(s7.find('\n') + 1);
+                        CMatrix B("rowTemp",rowMatrix);
+                        string thirdMatrix = s7.substr(s7.find(' ') + 1,s7.find(']') - s7.find(' '));
+                        CMatrix C("temp2",thirdMatrix);
+                        A.addColumn(C);
+                        A.addRow(rowMatrix);
+                        cout << A;
+                } else {
+                        string firstMatrix = s7.substr(s7.find('[',1) , s7.find(',',s7.find('[',1)));
+                        cout << firstMatrix << endl;
+                        string rowMatrix = "[" + s7.substr(s7.find('\n') + 1);
+                        cout << rowMatrix << endl;
+                        string thirdMatrix = s7.substr(s7.find(',') + 1,s7.find(']') - 1);
+                        cout << thirdMatrix << endl;
+                }
+
+                  
+                  
+                  
+                  
+                   */ 
+
 
 
 
