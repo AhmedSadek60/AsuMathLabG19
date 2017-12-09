@@ -154,7 +154,26 @@ CMatrix transposeOperation(vector<CMatrix> &matricesArray,int a,string target) {
 [ functionality ] : converts the first parameter (that is number) of type string to float and constructs a full matrix with it,
                     then performs element wise division with the second parameter (that is a matrix given by the user)
 
-*/
+/*#################################################################################*/
+
+CMatrix ZEROSFunction(string rowsNumber, string columnsNumber, string target)
+{
+        int numR= atof(rowsNumber.c_str());
+        int numC = atof(columnsNumber.c_str());
+        CMatrix returnedResult = CMatrix(target, numR, numC, CMatrix::MI_ZEROS, 0.0);
+        return returnedResult;
+}
+/*#################################################################################*/
+
+CMatrix ONESFunction(string rowsNumber, string columnsNumber, string target)
+{
+        CMatrix temp;
+
+        CMatrix returnedResult(target,atof(rowsNumber.c_str()),atof(columnsNumber.c_str()),CMatrix::MI_ONES, 0.0);
+        return returnedResult;
+}
+/*#################################################################################*/
+
 
 CMatrix elmentWiseDivOperationNumber(vector<CMatrix> &matricesArray,int a,string number,string target) {
 
@@ -474,11 +493,10 @@ void programLoopFromFile(char* fileName){
 
 
 
+
   } // End Of While
 
 } // End of Program Function
-
-
 
 
 int main(int argc, char* argv[]){
@@ -758,6 +776,51 @@ int main(int argc, char* argv[]){
 
                           }
 
+                          else if(s.find("zero") != std::string::npos)
+                            {
+                                s.erase(std::remove(s.begin(), s.end(), ' '), s.end());
+                                string result = s.substr(0,s.find('='));
+                                string rowsNumber = s.substr(s.find('(') + 1, s.find(',') - (s.find('(') + 1));
+                                string columnsNumber = s.substr(s.find(',') + 1, s.find(')') - (s.find(',') + 1));
+
+
+                                if(s.find(';') == std::string::npos)
+                                {
+                                       CMatrix resultMatrix = ZEROSFunction(rowsNumber, columnsNumber, result);
+                                       matrices.push_back(resultMatrix);
+                                        cout << resultMatrix.getName() << " = " << endl;
+                                        cout << resultMatrix;
+                                        cout << "######################################################" << endl;
+                                }
+                                else
+                                {
+                                        CMatrix resultMatrix = ZEROSFunction(rowsNumber, columnsNumber, result);
+                                        matrices.push_back(resultMatrix);
+                                }
+                            }
+
+                            else if(s.find("ones") != std::string::npos)
+                            {
+                                s.erase(std::remove(s.begin(), s.end(), ' '), s.end());
+                                string result = s.substr(0,s.find('='));
+                                string rowsNumber = s.substr(s.find('(') + 1, s.find(',') - (s.find('(') + 1));
+                                string columnsNumber = s.substr(s.find(',') + 1, s.find(')') - (s.find(',') + 1));
+                                  if(s.find(';') == std::string::npos)
+                                {
+                                       CMatrix resultMatrix = ONESFunction(rowsNumber, columnsNumber, result);
+                                       matrices.push_back(resultMatrix);
+                                        cout << resultMatrix.getName() << " = " << endl;
+                                        cout << resultMatrix;
+                                        cout << "######################################################" << endl;
+                                }
+                                else
+                                {
+                                        CMatrix resultMatrix = ONESFunction(rowsNumber, columnsNumber, result);
+                                        matrices.push_back(resultMatrix);
+                                }
+                            }
+
+
                         }
 
 
@@ -855,7 +918,7 @@ int main(int argc, char* argv[]){
                 // String Parsing Next Level ==> Done
                 // Must Be A New Line to make the Concatentation of the Row
                 string s7 = "[[A [3.4; 2.1; 2]]\n 1 2 10  1.2]";
-                int countBrackets = std::count(s7.begin(),s7.end(),'['); 
+                int countBrackets = std::count(s7.begin(),s7.end(),'[');
                 int countCommas = std::count(s7.begin(),s7.end(),',');
                 if(countCommas == 0) {
                         string firstMatrix = s7.substr(s7.find('[',1) , s7.find(' ',s7.find('[',1)));
@@ -875,11 +938,11 @@ int main(int argc, char* argv[]){
                         cout << thirdMatrix << endl;
                 }
 
-                  
-                  
-                  
-                  
-                   */ 
+
+
+
+
+                   */
 
 
 

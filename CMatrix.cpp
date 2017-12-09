@@ -789,7 +789,7 @@ void CMatrix ::copy(string s) {
 	}
 	/* ############################################################################# */
 
-	/*
+/*
 
 	[ function name] : addRow
 	[ return type] : void
@@ -1088,3 +1088,4 @@ CMatrix CMatrix::getInverse()
 		os << m.getString();
 		return os;
 	}
+
