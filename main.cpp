@@ -512,7 +512,51 @@ void programLoopFromFile(char* fileName){
 
           }
 
+          else if(s.find("rand") != std::string::npos)
+                            {
+                                s.erase(std::remove(s.begin(), s.end(), ' '), s.end());
+                                string result = s.substr(0,s.find('='));
+                                string rowsNumber = s.substr(s.find('(') + 1, s.find(',') - (s.find('(') + 1));
+                                string columnsNumber = s.substr(s.find(',') + 1, s.find(')') - (s.find(',') + 1));
 
+
+                                if(s.find(';') == std::string::npos) 
+                                {
+                                       CMatrix resultMatrix = randFunction(rowsNumber, columnsNumber, result); 
+                                       matrices.push_back(resultMatrix);
+                                        cout << resultMatrix.getName() << " = " << endl;
+                                        cout << resultMatrix;
+                                        cout << "######################################################" << endl;
+                                } 
+                                else 
+                                {
+                                        CMatrix resultMatrix = randFunction(rowsNumber, columnsNumber, result);
+                                        matrices.push_back(resultMatrix);
+                                }
+                            }
+
+                            else if(s.find("eye") != std::string::npos)
+                            {
+                                s.erase(std::remove(s.begin(), s.end(), ' '), s.end());
+                                string result = s.substr(0,s.find('='));
+                                string rowsNumber = s.substr(s.find('(') + 1, s.find(',') - (s.find('(') + 1));
+                                string columnsNumber = s.substr(s.find(',') + 1, s.find(')') - (s.find(',') + 1));
+
+
+                                if(s.find(';') == std::string::npos) 
+                                {
+                                       CMatrix resultMatrix = eyeFunction(rowsNumber, columnsNumber, result); 
+                                       matrices.push_back(resultMatrix);
+                                        cout << resultMatrix.getName() << " = " << endl;
+                                        cout << resultMatrix;
+                                        cout << "######################################################" << endl;
+                                } 
+                                else 
+                                {
+                                        CMatrix resultMatrix = eyeFunction(rowsNumber, columnsNumber, result);
+                                        matrices.push_back(resultMatrix);
+                                } 
+                            }  
 
   } // End Of While
 
