@@ -486,6 +486,43 @@ void programLoopFromFile(char* fileName){
 
 
           }
+          
+        else if(operationLine.find("log") != std::string::npos) {
+                operationLine.erase(std::remove(operationLine.begin(), operationLine.end(), ' '), operationLine.end());
+                string result = operationLine.substr(0,operationLine.find('='));
+                string targetMatrix = operationLine.substr(operationLine.find('(') + 1, operationLine.find(')') - (operationLine.find('(') + 1));
+
+                if(operationLine.find(';') == std::string::npos) 
+                {
+                        CMatrix resultMatrix = logOperation(matrices, isInsideMatrix(matrices,targetMatrix), result); 
+                        matrices.push_back(resultMatrix);
+                        cout << resultMatrix.getName() << " = " << endl;
+                        cout << resultMatrix;
+                        cout << "######################################################" << endl;
+                } else {
+                CMatrix resultMatrix = logOperation(matrices, isInsideMatrix(matrices,targetMatrix), result);
+                matrices.push_back(resultMatrix);
+                } 
+        }
+
+        else if(operationLine.find("ln") != std::string::npos){
+                operationLine.erase(std::remove(operationLine.begin(), operationLine.end(), ' '), operationLine.end());
+                string result = operationLine.substr(0,operationLine.find('='));
+                string targetMatrix = operationLine.substr(operationLine.find('(') + 1, operationLine.find(')') - (operationLine.find('(') + 1));
+
+                if(operationLine.find(';') == std::string::npos) 
+                {
+                        CMatrix resultMatrix = lnOperation(matrices, isInsideMatrix(matrices,targetMatrix), result); 
+                        matrices.push_back(resultMatrix);
+                        cout << resultMatrix.getName() << " = " << endl;
+                        cout << resultMatrix;
+                        cout << "######################################################" << endl;
+                } else {
+                        CMatrix resultMatrix = lnOperation(matrices, isInsideMatrix(matrices,targetMatrix), result);
+                        matrices.push_back(resultMatrix);
+                } 
+        }
+
           else if(operationLine.find("'") != std::string::npos) {
                   operationLine.erase(std::remove(operationLine.begin(), operationLine.end(), ' '), operationLine.end());
                   string firstParameter = operationLine.substr(operationLine.find('=') + 1,1);
