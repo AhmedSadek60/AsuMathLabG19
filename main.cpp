@@ -11,6 +11,8 @@
 #include <iterator>
 #include <time.h>
 #include <cmath>
+#include <math.h> 
+
 using namespace std;
 
 
@@ -39,6 +41,57 @@ int isInsideMatrix(vector<CMatrix> matricesArray,string target) {
 }
 
 /* ############################################################################# */
+/*
+[ Function Name ] : sinOperation
+[ Returned Type ] : CMatrix
+[ inherited Function or Operators from CMatrix Class ] :
+                                                - setName() - [ Inside File : CMatrix.cpp , Line : 167 ]
+                                                - sin Operator - [ Inside File : CMatrix.cpp , Line : 318 ] ==> uses += & add Function in the Same File
+[ Functionality ] : To Make sinOperation to one Matrix we just pass the whole matrices vector and indeces of the target matrices,
+                    and return a matrix that have the result
+*/
+
+CMatrix sinOperation(vector<CMatrix> matricesArray,int a ,string target) {
+        CMatrix returnedResult = sin(matricesArray[a]);
+        returnedResult.setName(target);
+        return returnedResult;
+
+}
+
+/*
+[ Function Name ] : cosOperation
+[ Returned Type ] : CMatrix
+[ inherited Function or Operators from CMatrix Class ] :
+                                                - setName() - [ Inside File : CMatrix.cpp , Line :  ]
+                                                - cos Operator - [ Inside File : CMatrix.cpp , Line :  ] 
+[ Functionality ] : To Make cosOperation to one Matrix we just pass the whole matrices vector and indeces of the target matrices,
+                    and return a matrix that have the result
+*/
+
+CMatrix cosOperation(vector<CMatrix> matricesArray,int a ,string target) {
+        CMatrix returnedResult = cos(matricesArray[a]);
+        returnedResult.setName(target);
+        return returnedResult;
+
+}
+
+/*
+[ Function Name ] : tanOperation
+[ Returned Type ] : CMatrix
+[ inherited Function or Operators from CMatrix Class ] :
+                                                - setName() - [ Inside File : CMatrix.cpp , Line :  ]
+                                                - tan Operator - [ Inside File : CMatrix.cpp , Line :  ] 
+[ Functionality ] : To Make tanOperation to Two Matrices we just pass the whole matrices vector and indeces of the  target matrices,
+                    and return a matrix that have the result
+*/
+
+CMatrix tanOperation(vector<CMatrix> matricesArray,int a ,string target) {
+        CMatrix returnedResult = tan(matricesArray[a]);
+        returnedResult.setName(target);
+        return returnedResult;
+}
+
+
 /*
 
 [ Function Name ] : addOperation
