@@ -6,6 +6,8 @@
 #include <algorithm>
 #include <stdio.h>
 #include <iostream>
+#include <math.h> 
+#define PI 3.14159265
 
 using namespace std;
 
@@ -59,6 +61,15 @@ public:
 	CMatrix operator * (const CMatrix & m);
 	CMatrix operator * (double d);
 	CMatrix elementWiseDiv(const CMatrix& m);
+
+
+	void sin(const CMatrix & m) ;
+	void operator sin(const CMatrix & m);
+	void cos(const CMatrix & m) ;
+	void operator cos(const CMatrix & m);
+	void tan(const CMatrix & m);
+	void CMatrix ::operator tan(const CMatrix & m);
+
 	/*void div(CMatrix & m);
 	void operator /= (cmatrix & m);
 	void operator /= (double d);
