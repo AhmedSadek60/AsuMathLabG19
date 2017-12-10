@@ -14,6 +14,24 @@
 using namespace std;
 
 /*
+[ function name] : insert
+[ return type] : string
+[ inherited function/operation ] : -substr() string implemented function
+                                   -length() string implemented function
+
+[ functionality ] : insert a string i between another string
+
+[ example ]   string a = "ahmad";
+              insert(a, 1, "eb")
+              return  aebhmad
+*/
+
+string insert(string s, int index, string insertS)
+{
+        return s.substr(0, index) + insertS + s.substr(index, s.length());
+}
+
+/*
 [ function name] : split
 [ return type] : vector of type string
 [ inherited function/operation ] : -find() string implemented function
