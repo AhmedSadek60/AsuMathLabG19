@@ -1088,3 +1088,65 @@ CMatrix CMatrix::getInverse()
 		os << m.getString();
 		return os;
 	}
+//###################################################################################################
+//Roots and Powers
+/*[ function name] : ^
+[ return type] : CMatrix
+[ inherited function/operation ] : *=  and =
+[ functionality ] raises the power of the matrix 
+*/
+CMatrix CMatrix ::operator ^ (int m) {
+	CMatrix r = *this;
+	CMatrix m= r;
+	int i ;
+	for (i=1;i<m;i++){
+	m *= r;
+	}
+	return r;
+}
+
+/*[ function name] : ^
+[ return type] : CMatrix
+[ inherited function/operation ] : pow() cmath function
+[ functionality ] raises the power of the matrix (float powers if 1*1)
+*/
+CMatrix CMatrix ::operator ^ (float m) {
+	if(m.nR != 1 && m.nC != 1 )
+			throw("Invalid matrix dimension");
+	CMatrix r = *this;
+	r.values[0][0] = pow((r.values[0][0]),m);
+	return r;
+}
+
+
+/*[ function name] : elementWisePow
+[ return type] : CMatrix
+[ inherited function/operation ] : Pow Cmath library
+[ functionality ] raise the power of each element in the matrix individually 
+*/
+CMatrix CMatrix ::elementWisePow(double P) {
+	CMatrix r = *this;
+	cmatrix m;
+	for (int iR = 0; iR < nR; iR++)
+			for (int iC = 0; iC < nC; iC++)
+				m.values[iR][iC] = pow((r.values[iR][iC]),P);
+	return m;
+}
+
+/*[ function name] : sqrt
+[ return type] : CMatrix
+[ inherited function/operation ] : sqrt() from the cmath library
+[ functionality ] returns the square root of a 1*1 matrix 
+*/
+
+CMatrix CMatrix::sqrt(CMatrix & m) {
+	if(m.nR != 1 && m.nC != 1 )
+			throw("Invalid matrix dimension");
+	CMatrix r ;
+	r.values[0][0] = sqrt(m.values[0][0]);
+	return r;	
+}
+
+
+
+
