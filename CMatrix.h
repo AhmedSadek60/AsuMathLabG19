@@ -36,7 +36,7 @@ public:
 	void copy(string s);
 	void reset();
 	CMatrix CMatrix::getLog();
-	CMatrix CMatrix::getLn()
+	CMatrix CMatrix::getLn();
 	void getValues();
 	string getString();
 	string getName();

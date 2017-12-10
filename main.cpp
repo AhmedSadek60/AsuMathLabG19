@@ -776,6 +776,26 @@ int main(int argc, char* argv[]){
                                         matrices.push_back(resultMatrix);
                                 } 
                             }
+                            else if(s.find("ln") != std::string::npos)
+                            {
+                                s.erase(std::remove(s.begin(), s.end(), ' '), s.end());
+                                string result = s.substr(0,s.find('='));
+                                string targetMatrix = s.substr(s.find('(') + 1, s.find(')') - (s.find('(') + 1));
+
+                                if(s.find(';') == std::string::npos) 
+                                {
+                                       CMatrix resultMatrix = lnOperation(matrices, isInsideMatrix(matrices,targetMatrix), result); 
+                                       matrices.push_back(resultMatrix);
+                                        cout << resultMatrix.getName() << " = " << endl;
+                                        cout << resultMatrix;
+                                        cout << "######################################################" << endl;
+                                } 
+                                else 
+                                {
+                                        CMatrix resultMatrix = lnOperation(matrices, isInsideMatrix(matrices,targetMatrix), result);
+                                        matrices.push_back(resultMatrix);
+                                } 
+                            }
                             else if(s.find("'") != std::string::npos) {
                                 s.erase(std::remove(s.begin(), s.end(), ' '), s.end());
                                 string firstParameter = s.substr(s.find('=') + 1,1);
