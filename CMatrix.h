@@ -98,6 +98,12 @@ public:
 	double getDeterminant();
 	CMatrix getTranspose();
 	CMatrix getInverse();
+	//###################################################################################################
+	//roots and powers
+	CMatrix operator ^ (int m);
+	CMatrix operator ^ (float m);
+	CMatrix elementWisePow(double P);
+	CMatrix sqrt(CMatrix & x);
 };
 
 #endif
