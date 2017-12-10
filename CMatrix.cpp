@@ -6,7 +6,9 @@
 #include <string.h>
 #include <stdio.h>
 #include <cmath>
-/* test */
+#include <math.h> 
+
+
 using namespace std;
 
 	CMatrix::CMatrix() {
@@ -387,6 +389,62 @@ void CMatrix ::copy(string s) {
 	}
 
 	/* ############################################################################# */
+
+/*
+
+	[ function name] : sin
+	[ return type] : void
+	[ inherited function/operation ] : none
+	[ functionality ] : get sine of the passed matrix to the caller matrix.
+
+*/
+void CMatrix ::sin(const CMatrix & m) {
+  for (int iR = 0; iR < nR; iR++)
+   for (int iC = 0; iC < nC; iC++)
+     values[iR][iC] =sin(m.values[iR][iC]*PI/180);
+}
+
+void CMatrix ::operator sin(const CMatrix & m){
+ 	sin(m);
+}
+
+/*
+	[ function name] : cos
+	[ return type] : void
+	[ inherited function/operation ] : none
+	[ functionality ] : get cos of the passed matrix to the caller matrix.
+
+*/
+
+void CMatrix ::cos(const CMatrix & m) {
+		for (int iR = 0; iR < nR; iR++)
+			for (int iC = 0; iC < nC; iC++)
+				values[iR][iC] =cos(m.values[iR][iC]*PI/180);
+}
+
+void CMatrix ::operator cos(const CMatrix & m){
+	cos(m);
+}
+
+/*
+
+	[ function name] : tan
+	[ return type] : void
+	[ inherited function/operation ] : none
+	[ functionality ] : get tan of the passed matrix to the caller matrix. 
+
+*/
+
+void CMatrix ::tan(const CMatrix & m) {
+		for (int iR = 0; iR < nR; iR++)
+			for (int iC = 0; iC < nC; iC++)
+				if( ( (m.values[iR][iC]*PI/180) - 180 )!= 90 || ( (m.values[iR][iC]*PI/180) - 180 ) != -90 || ( (m.values[iR][iC]*PI/180) + 180 )!= 90 || ( (m.values[iR][iC]*PI/180) + 180 ) != -90)
+					values[iR][iC] =tan(m.values[iR][iC]*PI/180);
+}
+
+void CMatrix ::operator tan(const CMatrix & m){
+	tan(m);
+}
 
 	/*
 
