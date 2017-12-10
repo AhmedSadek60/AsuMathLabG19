@@ -297,6 +297,46 @@ void CMatrix::reset() {
 
 /*
 
+[ function name] : getLog
+[ return type] : CMatrix
+[ inherited function/operation ] : CMatrix a(nC, nR)
+[ functionality ] : Calculates the log of a matrix
+
+*/
+
+CMatrix CMatrix::getLog() {
+	CMatrix a(nC, nR);
+	for (int iR = 0; iR < a.nR; iR++)
+		for (int iC = 0; iC < a.nC; iC++)
+			a.values[iR][iC] = log10(values[iC][iR]);
+
+	return a;
+}
+
+/* ############################################################################# */
+
+/*
+
+[ function name] : getLn
+[ return type] : CMatrix
+[ inherited function/operation ] : CMatrix a(nC, nR)
+[ functionality ] : Calculates the log of a matrix
+
+*/
+
+CMatrix CMatrix::getLn() {
+	CMatrix a(nC, nR);
+	for (int iR = 0; iR < a.nR; iR++)
+		for (int iC = 0; iC < a.nC; iC++)
+			a.values[iR][iC] = log(values[iC][iR]);
+
+	return a;
+}
+
+/* ############################################################################# */
+
+/*
+
 [ function name] : getString
 [ return type] : string
 [ inherited function/operation ] : none

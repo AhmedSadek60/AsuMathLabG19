@@ -189,6 +189,37 @@ CMatrix elmentWiseDivOperationNormal(vector<CMatrix> &matricesArray,int a,int b,
 
 }
 
+/* ############################################################################# */
+
+/*
+[ function name] : logOperation
+[ return type] : CMatrix
+[ inherited function/operation ] : getLog() [CMatrix.cpp, line: ]
+[ functionality ] : Performs Log operation on Matrices
+*/
+
+CMatrix logOperation(vector<CMatrix> &matricesArray,int a,string target)
+{
+        CMatrix returnedResult = matricesArray[a].getLog();
+        returnedResult.setName(target);
+        return returnedResult;
+}
+
+/* ############################################################################# */
+
+/*
+[ function name] : lnOperation
+[ return type] : CMatrix
+[ inherited function/operation ] : getLn() [CMatrix.cpp, line: ]
+[ functionality ] : Performs Log operation on Matrices
+*/
+
+CMatrix lnOperation(vector<CMatrix> &matricesArray,int a,string target)
+{
+        CMatrix returnedResult = matricesArray[a].getLn();
+        returnedResult.setName(target);
+        return returnedResult;
+}
 
 /* ############################################################################# */
 
@@ -495,11 +526,13 @@ int main(int argc, char* argv[]){
                         string semicolonCheck;
                         while(1) {
                           getline(cin, s);
-
+                        //cout << s << endl;
                           if(s.find('[') != string::npos && s.find(']') == string::npos ) {
                               getline(cin,line, ']');
+                              //cout << line << endl;
                               string name = "";
                               name += s[0];
+                              //cout << name << endl;
                               CMatrix temp(name, line);
                               matrices.push_back(temp);
 
@@ -722,6 +755,26 @@ int main(int argc, char* argv[]){
                                         }
                                 }
 
+                            }
+                            else if(s.find("log") != std::string::npos)
+                            {
+                                s.erase(std::remove(s.begin(), s.end(), ' '), s.end());
+                                string result = s.substr(0,s.find('='));
+                                string targetMatrix = s.substr(s.find('(') + 1, s.find(')') - (s.find('(') + 1));
+
+                                if(s.find(';') == std::string::npos) 
+                                {
+                                       CMatrix resultMatrix = logOperation(matrices, isInsideMatrix(matrices,targetMatrix), result); 
+                                       matrices.push_back(resultMatrix);
+                                        cout << resultMatrix.getName() << " = " << endl;
+                                        cout << resultMatrix;
+                                        cout << "######################################################" << endl;
+                                } 
+                                else 
+                                {
+                                        CMatrix resultMatrix = logOperation(matrices, isInsideMatrix(matrices,targetMatrix), result);
+                                        matrices.push_back(resultMatrix);
+                                } 
                             }
                             else if(s.find("'") != std::string::npos) {
                                 s.erase(std::remove(s.begin(), s.end(), ' '), s.end());
