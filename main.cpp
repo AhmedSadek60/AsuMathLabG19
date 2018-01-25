@@ -55,7 +55,7 @@ public:
 /*
 
 [ Function Name ] : isInsideMatrix()
-[ Returned Type ] : int
+[ Returned Type ] : int*
 [ inherited Function from CMatrix Class ] : getName() - [ Inside File : CMatrix.cpp , Line : 167 ]
 [ Functionality ] : To Get the Index of Parameter Matrix inside the Matrix vector so we can get the index
                     and use the matrix in this index anywhere else
@@ -202,6 +202,46 @@ CMatrix transposeOperation(vector<CMatrix> &matricesArray,int a,string target) {
         return returnedResult;
 
 }
+
+/* ############################################################################# */
+
+/*
+
+[ function name] : randFunction
+[ return type] : CMatrix
+[ inherited function/operation ] : -CMatrix Constructor [CMatrix.cpp, line: 22]
+[ functionality ] : Initializes a matrix of Random-value elements with given number of rows & columns  User input ex: rand(4, 4)
+
+*/
+
+CMatrix randFunction(string rowsNumber, string columnsNumber, string target)
+{
+        int numR= atof(rowsNumber.c_str());
+        int numC = atof(columnsNumber.c_str());
+        CMatrix returnedResult = CMatrix(target, numR, numC, CMatrix::MI_RAND, 0.0);
+        return returnedResult;
+}
+
+/* ############################################################################# */
+
+/*
+
+[ function name] : eyeFunction
+[ return type] : CMatrix
+[ inherited function/operation ] : -CMatrix Constructor [CMatrix.cpp, line: 22]
+[ functionality ] : Initializes a matrix of UNITY with given number of rows & columns  User input ex: eye(4, 4)
+
+*/
+
+CMatrix eyeFunction(string rowsNumber, string columnsNumber, string target)
+{
+        int numR= atof(rowsNumber.c_str());
+        int numC = atof(columnsNumber.c_str());
+        CMatrix returnedResult = CMatrix(target, numR, numC, CMatrix::MI_EYE, 0.0);
+        return returnedResult;
+}
+
+
 /* ############################################################################# */
 
 /*
@@ -263,11 +303,11 @@ CMatrix elmentWiseDivOperationNormal(vector<CMatrix> &matricesArray,int a,int b,
 */
 
 bool checkNumeric(const string &str) {
-	bool allDigits = true;
-	for (int i = 0; i < str.size(); i++)
-		if (!isdigit(str[i]) && str[i] != '.')
-				allDigits = false;
-	return allDigits;
+    bool allDigits = true;
+    for (int i = 0; i < str.size(); i++)
+        if (!isdigit(str[i]) && str[i] != '.')
+                allDigits = false;
+    return allDigits;
 }
 
 /* ############################################################################# */
@@ -868,6 +908,51 @@ cout<<endl;
 
 //              int firstParameterIndex = isInsideMatrix(matrices,firstParameter);
 //              CMatrix firstParameterTemp = matrices[firstParameterIndex];
+              // else if(s.find("rand") != std::string::npos)
+              //                   {
+              //                       s.erase(std::remove(s.begin(), s.end(), ' '), s.end());
+              //                       string result = s.substr(0,s.find('='));
+              //                       string rowsNumber = s.substr(s.find('(') + 1, s.find(',') - (s.find('(') + 1));
+              //                       string columnsNumber = s.substr(s.find(',') + 1, s.find(')') - (s.find(',') + 1));
+              //
+              //
+              //                       if(s.find(';') == std::string::npos)
+              //                       {
+              //                              CMatrix resultMatrix = randFunction(rowsNumber, columnsNumber, result);
+              //                              matrices.push_back(resultMatrix);
+              //                               cout << resultMatrix.getName() << " = " << endl;
+              //                               cout << resultMatrix;
+              //                               cout << "######################################################" << endl;
+              //                       }
+              //                       else
+              //                       {
+              //                               CMatrix resultMatrix = randFunction(rowsNumber, columnsNumber, result);
+              //                               matrices.push_back(resultMatrix);
+              //                       }
+              //                   }
+              //
+              //                   else if(s.find("eye") != std::string::npos)
+              //                   {
+              //                       s.erase(std::remove(s.begin(), s.end(), ' '), s.end());
+              //                       string result = s.substr(0,s.find('='));
+              //                       string rowsNumber = s.substr(s.find('(') + 1, s.find(',') - (s.find('(') + 1));
+              //                       string columnsNumber = s.substr(s.find(',') + 1, s.find(')') - (s.find(',') + 1));
+              //
+              //
+              //                       if(s.find(';') == std::string::npos)
+              //                       {
+              //                              CMatrix resultMatrix = eyeFunction(rowsNumber, columnsNumber, result);
+              //                              matrices.push_back(resultMatrix);
+              //                               cout << resultMatrix.getName() << " = " << endl;
+              //                               cout << resultMatrix;
+              //                               cout << "######################################################" << endl;
+              //                       }
+              //                       else
+              //                       {
+              //                               CMatrix resultMatrix = eyeFunction(rowsNumber, columnsNumber, result);
+              //                               matrices.push_back(resultMatrix);
+              //                       }
+              //                   }
 
 
 
@@ -1190,6 +1275,51 @@ int main(int argc, char* argv[]){
 
                 //             }
 
+                            // else if(s.find("rand") != std::string::npos)
+                            // {
+                            //     s.erase(std::remove(s.begin(), s.end(), ' '), s.end());
+                            //     string result = s.substr(0,s.find('='));
+                            //     string rowsNumber = s.substr(s.find('(') + 1, s.find(',') - (s.find('(') + 1));
+                            //     string columnsNumber = s.substr(s.find(',') + 1, s.find(')') - (s.find(',') + 1));
+                            //
+                            //
+                            //     if(s.find(';') == std::string::npos)
+                            //     {
+                            //            CMatrix resultMatrix = randFunction(rowsNumber, columnsNumber, result);
+                            //            matrices.push_back(resultMatrix);
+                            //             cout << resultMatrix.getName() << " = " << endl;
+                            //             cout << resultMatrix;
+                            //             cout << "######################################################" << endl;
+                            //     }
+                            //     else
+                            //     {
+                            //             CMatrix resultMatrix = randFunction(rowsNumber, columnsNumber, result);
+                            //             matrices.push_back(resultMatrix);
+                            //     }
+                            // }
+                            //
+                            // else if(s.find("eye") != std::string::npos)
+                            // {
+                            //     s.erase(std::remove(s.begin(), s.end(), ' '), s.end());
+                            //     string result = s.substr(0,s.find('='));
+                            //     string rowsNumber = s.substr(s.find('(') + 1, s.find(',') - (s.find('(') + 1));
+                            //     string columnsNumber = s.substr(s.find(',') + 1, s.find(')') - (s.find(',') + 1));
+                            //
+                            //
+                            //     if(s.find(';') == std::string::npos)
+                            //     {
+                            //            CMatrix resultMatrix = eyeFunction(rowsNumber, columnsNumber, result);
+                            //            matrices.push_back(resultMatrix);
+                            //             cout << resultMatrix.getName() << " = " << endl;
+                            //             cout << resultMatrix;
+                            //             cout << "######################################################" << endl;
+                            //     }
+                            //     else
+                            //     {
+                            //             CMatrix resultMatrix = eyeFunction(rowsNumber, columnsNumber, result);
+                            //             matrices.push_back(resultMatrix);
+                            //     }
+                            // }
 
                 //           } else if(s.find("=") == string::npos && s != "") {
                 //             int matrixIndex = isInsideMatrix(matrices,s);
@@ -1202,7 +1332,8 @@ int main(int argc, char* argv[]){
 
                 //             }
 
-                //           }
+                //           }          // conflict
+                          // }          // conflict
 
                 //         }
 
@@ -1342,6 +1473,8 @@ int main(int argc, char* argv[]){
             "A = 5.5 + 12 * sin(0.4) + 2.2^4",
             "B = [1.2 2.3 A;[1.3 2.4;4.6 1.3],[3.2;7.8]]",
             "C = [[B [3.4; 2.1; 3.5+9.1]];    1.2^3 3+1.2 15/(2.1+10*sin(0.12)) 1.2]",
+            "D = rand(4,4)",
+            "E = eye(3,3)"
         //     "D = [1.2^3 3+1.2 15/(2.1+10*sin(0.12)) 1.2;1.4 1.2 1.6 1.1]",
         //     "E = [1.2 1.5;1.6 1.8]",
         //     "F = [1.2+1;1.9*2]",
@@ -1392,6 +1525,53 @@ int main(int argc, char* argv[]){
         associateValues.push_back(temp);
         cout << temp.getName() << " = " << temp.getValue() << endl;
     }
+
+     if(content.find("rand") != std::string::npos)
+    {
+        content.erase(std::remove(content.begin(), content.end(), ' '), content.end());
+        string result = content.substr(0,content.find('='));
+        string rowsNumber = content.substr(content.find('(') + 1, content.find(',') - (content.find('(') + 1));
+        string columnsNumber = content.substr(content.find(',') + 1, content.find(')') - (content.find(',') + 1));
+
+
+        if(content.find(';') == std::string::npos)
+        {
+               CMatrix resultMatrix = randFunction(rowsNumber, columnsNumber, result);
+               matrices.push_back(resultMatrix);
+                cout << resultMatrix.getName() << " = " << endl;
+                cout << resultMatrix;
+                cout << "######################################################" << endl;
+        }
+        else
+        {
+                CMatrix resultMatrix = randFunction(rowsNumber, columnsNumber, result);
+                matrices.push_back(resultMatrix);
+        }
+    }
+    else if(content.find("eye") != std::string::npos)
+    {
+        content.erase(std::remove(content.begin(), content.end(), ' '), content.end());
+        string result = content.substr(0,content.find('='));
+        string rowsNumber = content.substr(content.find('(') + 1, content.find(',') - (content.find('(') + 1));
+        string columnsNumber = content.substr(content.find(',') + 1, content.find(')') - (content.find(',') + 1));
+
+
+        if(content.find(';') == std::string::npos)
+        {
+               CMatrix resultMatrix = eyeFunction(rowsNumber, columnsNumber, result);
+               matrices.push_back(resultMatrix);
+                cout << resultMatrix.getName() << " = " << endl;
+                cout << resultMatrix;
+                cout << "######################################################" << endl;
+        }
+        else
+        {
+                CMatrix resultMatrix = eyeFunction(rowsNumber, columnsNumber, result);
+                matrices.push_back(resultMatrix);
+        }
+    }
+
+
 
 
 }
@@ -1455,5 +1635,6 @@ int main(int argc, char* argv[]){
 
 
 
-        return 0;
+
+                return 0;
 }
