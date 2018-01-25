@@ -98,6 +98,8 @@ public:
 	double getDeterminant();
 	CMatrix getTranspose();
 	CMatrix getInverse();
+	string getMatrixForm();
+	double getOneValue();
 };
 
 #endif

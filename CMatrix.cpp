@@ -238,7 +238,7 @@ void CMatrix ::copy(string s) {
 	reset();
 	char * buffer = new char[s.length() + 1];
 	strcpy(buffer, s.c_str());
-	const char * lineSeparators = ";";
+	const char * lineSeparators = ";%";
 	char * line = strtok(buffer, lineSeparators);
 	while (line) {
 			CMatrix row;
@@ -1031,7 +1031,30 @@ void CMatrix ::copy(string s) {
 			return m;
 		}
 }
+	/* ############################################################################# */
+/*
+	[ Function Name ] : getMatrixForm() 
+	[ Function Returned Type ] : string
+	[ Inheritd Functions ] : 
+	[ Functionality ] :
+ */
 
+string CMatrix::getMatrixForm() {
+
+string matrixForm = "[ ";
+for(int i = 0; i < nR; i++){
+	for(int j = 0; j < nC; j++){
+			matrixForm += std::to_string(values[i][j]) + " ";
+	}
+	if(i == nR - 1) {
+		break;
+	}
+	matrixForm += ";";
+}
+matrixForm += "]";
+
+	return matrixForm;
+}
 
 
 
@@ -1088,3 +1111,9 @@ CMatrix CMatrix::getInverse()
 		os << m.getString();
 		return os;
 	}
+
+
+	double CMatrix::getOneValue() {
+		return values[0][0];
+	}
+
