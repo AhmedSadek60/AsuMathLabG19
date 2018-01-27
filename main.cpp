@@ -16,6 +16,7 @@
 #include <regex>
 #include "prefixevaluatormatrix.cpp"
 #include <assert.h>
+#include <math.h>
 
 #endif
 
@@ -100,6 +101,59 @@ int isInsideAssociate(vector<AssociativeNumber> associateArray,string target) {
 }
 
 /* ############################################################################# */
+/*
+[ Function Name ] : sinOperation
+[ Returned Type ] : CMatrix
+[ inherited Function or Operators from CMatrix Class ] :
+                                                - setName() - [ Inside File : CMatrix.cpp , Line : 167 ]
+                                                - sin Operator - [ Inside File : CMatrix.cpp , Line : 318 ] ==> uses += & add Function in the Same File
+[ Functionality ] : To Make sinOperation to one Matrix we just pass the whole matrices vector and indeces of the target matrices,
+                    and return a matrix that have the result
+*/
+
+CMatrix sinOperation(vector<CMatrix> &matricesArray,int a ,string target) {
+  cout << target << endl;
+        cout << a << endl;
+        cout << matricesArray[0] << endl;
+        CMatrix returnedResult = matricesArray[a].sin();
+        returnedResult.setName(target);
+        return returnedResult;
+}
+
+/*
+[ Function Name ] : cosOperation
+[ Returned Type ] : CMatrix
+[ inherited Function or Operators from CMatrix Class ] :
+                                                - setName() - [ Inside File : CMatrix.cpp , Line :  ]
+                                                - cos Operator - [ Inside File : CMatrix.cpp , Line :  ]
+[ Functionality ] : To Make cosOperation to one Matrix we just pass the whole matrices vector and indeces of the target matrices,
+                    and return a matrix that have the result
+*/
+
+CMatrix cosOperation(vector<CMatrix> matricesArray,int a ,string target) {
+        CMatrix returnedResult = matricesArray[a].cos();
+        returnedResult.setName(target);
+        return returnedResult;
+
+}
+
+/*
+[ Function Name ] : tanOperation
+[ Returned Type ] : CMatrix
+[ inherited Function or Operators from CMatrix Class ] :
+                                                - setName() - [ Inside File : CMatrix.cpp , Line :  ]
+                                                - tan Operator - [ Inside File : CMatrix.cpp , Line :  ]
+[ Functionality ] : To Make tanOperation to Two Matrices we just pass the whole matrices vector and indeces of the  target matrices,
+                    and return a matrix that have the result
+*/
+
+CMatrix tanOperation(vector<CMatrix> matricesArray,int a ,string target) {
+        CMatrix returnedResult = matricesArray[a].tan();
+        returnedResult.setName(target);
+        return returnedResult;
+}
+
+
 /*
 
 [ Function Name ] : addOperation
@@ -1474,7 +1528,8 @@ int main(int argc, char* argv[]){
             "B = [1.2 2.3 A;[1.3 2.4;4.6 1.3],[3.2;7.8]]",
             "C = [[B [3.4; 2.1; 3.5+9.1]];    1.2^3 3+1.2 15/(2.1+10*sin(0.12)) 1.2]",
             "D = rand(4,4)",
-            "E = eye(3,3)"
+            "E = eye(3,3)",
+            "F = tan(E)",
         //     "D = [1.2^3 3+1.2 15/(2.1+10*sin(0.12)) 1.2;1.4 1.2 1.6 1.1]",
         //     "E = [1.2 1.5;1.6 1.8]",
         //     "F = [1.2+1;1.9*2]",
@@ -1485,6 +1540,8 @@ int main(int argc, char* argv[]){
         //     "M = 1 + 20 + -25"
     };
 
+    cout << sin(0) << endl;
+    cout << sin(1) << endl;
     vector<CMatrix> matrices;
     vector<AssociativeNumber> associateValues;
 
@@ -1529,14 +1586,13 @@ int main(int argc, char* argv[]){
      if(content.find("rand") != std::string::npos)
     {
         content.erase(std::remove(content.begin(), content.end(), ' '), content.end());
-        string result = content.substr(0,content.find('='));
         string rowsNumber = content.substr(content.find('(') + 1, content.find(',') - (content.find('(') + 1));
         string columnsNumber = content.substr(content.find(',') + 1, content.find(')') - (content.find(',') + 1));
 
 
         if(content.find(';') == std::string::npos)
         {
-               CMatrix resultMatrix = randFunction(rowsNumber, columnsNumber, result);
+               CMatrix resultMatrix = randFunction(rowsNumber, columnsNumber, name);
                matrices.push_back(resultMatrix);
                 cout << resultMatrix.getName() << " = " << endl;
                 cout << resultMatrix;
@@ -1544,39 +1600,56 @@ int main(int argc, char* argv[]){
         }
         else
         {
-                CMatrix resultMatrix = randFunction(rowsNumber, columnsNumber, result);
+                CMatrix resultMatrix = randFunction(rowsNumber, columnsNumber, name);
                 matrices.push_back(resultMatrix);
         }
     }
     else if(content.find("eye") != std::string::npos)
     {
         content.erase(std::remove(content.begin(), content.end(), ' '), content.end());
-        string result = content.substr(0,content.find('='));
         string rowsNumber = content.substr(content.find('(') + 1, content.find(',') - (content.find('(') + 1));
         string columnsNumber = content.substr(content.find(',') + 1, content.find(')') - (content.find(',') + 1));
 
 
         if(content.find(';') == std::string::npos)
         {
-               CMatrix resultMatrix = eyeFunction(rowsNumber, columnsNumber, result);
+               CMatrix resultMatrix = eyeFunction(rowsNumber, columnsNumber, name);
                matrices.push_back(resultMatrix);
-                cout << resultMatrix.getName() << " = " << endl;
-                cout << resultMatrix;
-                cout << "######################################################" << endl;
+               cout << resultMatrix.getName() << " = " << endl;
+               cout << resultMatrix;
+               cout << "######################################################" << endl;
         }
         else
         {
-                CMatrix resultMatrix = eyeFunction(rowsNumber, columnsNumber, result);
+                CMatrix resultMatrix = eyeFunction(rowsNumber, columnsNumber, name);
                 matrices.push_back(resultMatrix);
         }
     }
+        else if(content.find("tan") != std::string::npos)
+        {
+            content.erase(std::remove(content.begin(), content.end(), ' '), content.end());
+            string firstParameter = content.substr( content.find('tan(') + 1, content.find(')') -  content.find('tan(') - 1 ) ;
+            if(isdigit(firstParameter[0])) {
+              continue;
+            } else {
+                CMatrix resultMatrix = tanOperation(matrices, isInsideMatrix(matrices, firstParameter), name);
+                matrices.push_back(resultMatrix);
 
+                if(content.find(';') == std::string::npos) {
+                    cout << resultMatrix.getName() << " = " << endl;
+                    cout << resultMatrix;
+                    cout << "######################################################" << endl;
+                }
 
+            }
+            // cout<<name<<endl;
+            // cout<<firstParameter<<endl;
+            // cout<<isInsideMatrix(matrices, firstParameter)<<endl;
 
+            // cout<<matrices[0]<<endl;
+      }
 
 }
-
-
 
         cout << endl;
         cout << endl;
@@ -1628,13 +1701,5 @@ int main(int argc, char* argv[]){
 
 
 
-
-
-
-
-
-
-
-
-                return 0;
+  return 0;
 }

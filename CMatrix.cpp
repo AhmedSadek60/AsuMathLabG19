@@ -6,6 +6,8 @@
 #include <string.h>
 #include <stdio.h>
 #include <cmath>
+#include <math.h>
+
 
 using namespace std;
 
@@ -387,6 +389,75 @@ void CMatrix ::copy(string s) {
 	}
 
 	/* ############################################################################# */
+
+/*
+
+	[ function name] : sin
+	[ return type] : void
+	[ inherited function/operation ] : none
+	[ functionality ] : get sine of the passed matrix to the caller matrix.
+
+*/
+CMatrix CMatrix ::sin() {
+	CMatrix temp(this->nR , this->nC);
+  for (int iR = 0; iR < nR; iR++)
+   for (int iC = 0; iC < nC; iC++)
+     temp.values[iR][iC] = std::sin(values[iR][iC]);
+  return temp;
+}
+
+// CMatrix CMatrix ::operator sin(){
+// 	CMatrix temp(*this);
+//  	temp.sinFunc();
+// 	return temp;
+// }
+
+/*
+	[ function name] : cos
+	[ return type] : void
+	[ inherited function/operation ] : none
+	[ functionality ] : get cos of the passed matrix to the caller matrix.
+
+*/
+
+CMatrix CMatrix ::cos() {
+	CMatrix temp(*this);
+	for (int iR = 0; iR < nR; iR++)
+		for (int iC = 0; iC < nC; iC++)
+			temp.values[iR][iC] = std::cos(values[iR][iC]);
+	return temp;
+}
+
+// CMatrix CMatrix ::operator cos(){
+// 	CMatrix temp(*this);
+//  	temp.cosFunc();
+// 	return temp;
+// }
+
+/*
+
+	[ function name] : tan
+	[ return type] : void
+	[ inherited function/operation ] : none
+	[ functionality ] : get tan of the passed matrix to the caller matrix.
+
+*/
+
+CMatrix CMatrix ::tan() {  // to throw error in case of undefined result
+	CMatrix temp(*this);
+	for (int iR = 0; iR < nR; iR++)
+		for (int iC = 0; iC < nC; iC++)
+			if( ( (values[iR][iC]*180/PI) - 180 ) != 90 || ( (values[iR][iC]*180/PI) - 180 ) != -90 ||
+			 		 ( (values[iR][iC]*180/PI) + 180 )!= 90 || ( (values[iR][iC]*180/PI) + 180 ) != -90)
+				temp.values[iR][iC] = std::tan(values[iR][iC]);
+	return temp;
+}
+
+// CMatrix CMatrix ::operator tan(){
+// 	CMatrix temp(*this);
+//  	temp.tanFunc();
+// 	return temp;
+// }
 
 	/*
 
@@ -1033,9 +1104,9 @@ void CMatrix ::copy(string s) {
 }
 	/* ############################################################################# */
 /*
-	[ Function Name ] : getMatrixForm() 
+	[ Function Name ] : getMatrixForm()
 	[ Function Returned Type ] : string
-	[ Inheritd Functions ] : 
+	[ Inheritd Functions ] :
 	[ Functionality ] :
  */
 
@@ -1116,4 +1187,3 @@ CMatrix CMatrix::getInverse()
 	double CMatrix::getOneValue() {
 		return values[0][0];
 	}
-
