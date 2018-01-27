@@ -860,7 +860,7 @@ CMatrix CMatrix ::tan() {  // to throw error in case of undefined result
 	}
 	/* ############################################################################# */
 
-	/*
+/*
 
 	[ function name] : addRow
 	[ return type] : void

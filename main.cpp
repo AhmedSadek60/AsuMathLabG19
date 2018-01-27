@@ -309,7 +309,25 @@ CMatrix eyeFunction(string rowsNumber, string columnsNumber, string target)
 [ functionality ] : converts the first parameter (that is number) of type string to float and constructs a full matrix with it,
                     then performs element wise division with the second parameter (that is a matrix given by the user)
 
-*/
+/*#################################################################################*/
+
+CMatrix ZEROSFunction(string rowsNumber, string columnsNumber, string target)
+{
+        int numR= atof(rowsNumber.c_str());
+        int numC = atof(columnsNumber.c_str());
+        CMatrix returnedResult = CMatrix(target, numR, numC, CMatrix::MI_ZEROS, 0.0);
+        return returnedResult;
+}
+/*#################################################################################*/
+
+CMatrix ONESFunction(string rowsNumber, string columnsNumber, string target)
+{
+        CMatrix temp;
+        CMatrix returnedResult(target,atof(rowsNumber.c_str()),atof(columnsNumber.c_str()),CMatrix::MI_ONES, 0.0);
+        return returnedResult;
+}
+/*#################################################################################*/
+
 
 CMatrix elmentWiseDivOperationNumber(vector<CMatrix> &matricesArray,int a,string number,string target) {
 
@@ -1527,8 +1545,8 @@ int main(int argc, char* argv[]){
             "A = 5.5 + 12 * sin(0.4) + 2.2^4",
             "B = [1.2 2.3 A;[1.3 2.4;4.6 1.3],[3.2;7.8]]",
             "C = [[B [3.4; 2.1; 3.5+9.1]];    1.2^3 3+1.2 15/(2.1+10*sin(0.12)) 1.2]",
-            "D = rand(4,4)",
-            "E = eye(3,3)",
+            "D = ones(4,4)",
+            "E = zeros(3,3)",
             "F = tan(E)",
         //     "D = [1.2^3 3+1.2 15/(2.1+10*sin(0.12)) 1.2;1.4 1.2 1.6 1.1]",
         //     "E = [1.2 1.5;1.6 1.8]",
@@ -1583,7 +1601,7 @@ int main(int argc, char* argv[]){
         cout << temp.getName() << " = " << temp.getValue() << endl;
     }
 
-     if(content.find("rand") != std::string::npos)
+     if(content.find("ones") != std::string::npos)
     {
         content.erase(std::remove(content.begin(), content.end(), ' '), content.end());
         string rowsNumber = content.substr(content.find('(') + 1, content.find(',') - (content.find('(') + 1));
@@ -1592,7 +1610,7 @@ int main(int argc, char* argv[]){
 
         if(content.find(';') == std::string::npos)
         {
-               CMatrix resultMatrix = randFunction(rowsNumber, columnsNumber, name);
+               CMatrix resultMatrix = ONESFunction(rowsNumber, columnsNumber, name);
                matrices.push_back(resultMatrix);
                 cout << resultMatrix.getName() << " = " << endl;
                 cout << resultMatrix;
@@ -1600,11 +1618,11 @@ int main(int argc, char* argv[]){
         }
         else
         {
-                CMatrix resultMatrix = randFunction(rowsNumber, columnsNumber, name);
+                CMatrix resultMatrix = ONESFunction(rowsNumber, columnsNumber, name);
                 matrices.push_back(resultMatrix);
         }
     }
-    else if(content.find("eye") != std::string::npos)
+    else if(content.find("zeros") != std::string::npos)
     {
         content.erase(std::remove(content.begin(), content.end(), ' '), content.end());
         string rowsNumber = content.substr(content.find('(') + 1, content.find(',') - (content.find('(') + 1));
@@ -1613,7 +1631,7 @@ int main(int argc, char* argv[]){
 
         if(content.find(';') == std::string::npos)
         {
-               CMatrix resultMatrix = eyeFunction(rowsNumber, columnsNumber, name);
+               CMatrix resultMatrix = ZEROSFunction(rowsNumber, columnsNumber, name);
                matrices.push_back(resultMatrix);
                cout << resultMatrix.getName() << " = " << endl;
                cout << resultMatrix;
@@ -1621,7 +1639,7 @@ int main(int argc, char* argv[]){
         }
         else
         {
-                CMatrix resultMatrix = eyeFunction(rowsNumber, columnsNumber, name);
+                CMatrix resultMatrix = ZEROSFunction(rowsNumber, columnsNumber, name);
                 matrices.push_back(resultMatrix);
         }
     }
