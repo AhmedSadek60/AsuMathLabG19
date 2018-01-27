@@ -176,6 +176,46 @@ CMatrix addOperation(vector<CMatrix> matricesArray,int a,int b,string target) {
 
 /*
 
+[ Function Name ] : addOperation
+[ Returned Type ] : CMatrix
+[ inherited Function or Operators from CMatrix Class ] :
+                                                - getName() - [ Inside File : CMatrix.cpp , Line : 167 ]
+                                                - + Operator - [ Inside File : CMatrix.cpp , Line : 318 ] ==> uses += & add Function in the Same File
+[ Functionality ] : To Make addOperation to Two Matrices we just pass the whole matrices vector and indeces of the two target matrices,
+                    and return a matrix that have the result
+
+*/
+
+CMatrix powOperation(vector<CMatrix> matricesArray, int a, string powerValue,string target) {
+        CMatrix returnedResult = matricesArray[a] ^ atoi(powerValue.c_str());
+        returnedResult.setName(target);
+        return returnedResult;
+
+}
+/* ############################################################################# */
+
+CMatrix elementWisePower(vector<CMatrix> matricesArray, int a, string powerValue,string target) {
+    CMatrix result = matricesArray[a].elementWisePow(atof(powerValue.c_str()));
+    result.setName(target);
+
+    return result;
+
+
+
+}
+/* ############################################################################# */
+CMatrix sqrtOperation(vector<CMatrix> matricesArray, int a,string target) {
+    CMatrix result = matricesArray[a].sqrt();
+    result.setName(target);
+
+    return result;
+}
+
+
+
+/* ############################################################################# */
+/*
+
 [ Function Name ] : subOperation
 [ Returned Type ] : CMatrix
 [ inherited Function or Operators from CMatrix Class ] :
@@ -1573,12 +1613,13 @@ int main(int argc, char* argv[]){
                    /* Test regex in the Matrix Class */
                    clock_t tStart = clock();
     string testcases[] = {
-            "A = 5.5 + 12 * sin(0.4) + 2.2^4",
+            // "A = 5.5 + 12 * sin(0.4) + 2.2^4",
             "B = [1.2 2.3 A;[1.3 2.4;4.6 1.3],[3.2;7.8]]",
-            "C = [[B [3.4; 2.1; 3.5+9.1]];    1.2^3 3+1.2 15/(2.1+10*sin(0.12)) 1.2]",
+            // "C = [[B [3.4; 2.1; 3.5+9.1]];    1.2^3 3+1.2 15/(2.1+10*sin(0.12)) 1.2]",
             "D = ones(4,4)",
-            "E = eye(3,3)",
-            "F = log(E)",
+            "E = [1 2 3; 1 2 3; 1 2 3]",
+            "F = sqrt(E)",
+
         //     "D = [1.2^3 3+1.2 15/(2.1+10*sin(0.12)) 1.2;1.4 1.2 1.6 1.1]",
         //     "E = [1.2 1.5;1.6 1.8]",
         //     "F = [1.2+1;1.9*2]",
@@ -1691,12 +1732,74 @@ int main(int argc, char* argv[]){
                 }
 
             }
-            // cout<<name<<endl;
-            // cout<<firstParameter<<endl;
-            // cout<<isInsideMatrix(matrices, firstParameter)<<endl;
 
-            // cout<<matrices[0]<<endl;
       }
+
+      else if (content.find("^") != std::string::npos){
+        content.erase(std::remove(content.begin(), content.end(), ' '), content.end());
+        string firstParameter = content.substr( 0, content.find('^'));
+        string secondParameter = content.substr(content.find('^') + 1);
+
+        cout<<firstParameter<<endl;
+        cout<<secondParameter<<endl;
+        cout<<name<<endl;
+
+        CMatrix resultMatrix = powOperation(matrices, isInsideMatrix(matrices, firstParameter), secondParameter, name );
+        matrices.push_back(resultMatrix);
+
+        if(content.find(';') == std::string::npos) {
+            cout << resultMatrix.getName() << " = " << endl;
+            cout << resultMatrix;
+            cout << "######################################################" << endl;
+        }
+
+
+
+      }
+
+            else if (content.find("&") != std::string::npos){
+              content.erase(std::remove(content.begin(), content.end(), ' '), content.end());
+              string firstParameter = content.substr( 0, content.find('&'));
+              string secondParameter = content.substr(content.find('&') + 1);
+              //
+              // cout<<firstParameter<<endl;
+              // cout<<secondParameter<<endl;
+              // cout<<name<<endl;
+
+              CMatrix resultMatrix = elementWisePower(matrices, isInsideMatrix(matrices, firstParameter), secondParameter, name );
+              matrices.push_back(resultMatrix);
+
+              if(content.find(';') == std::string::npos) {
+                  cout << resultMatrix.getName() << " = " << endl;
+                  cout << resultMatrix;
+                  cout << "######################################################" << endl;
+              }
+
+
+
+            }
+            else if (content.find("sqrt") != std::string::npos){
+              content.erase(std::remove(content.begin(), content.end(), ' '), content.end());
+              string firstParameter = content.substr( content.find('sqrt(') + 1, content.find(')') -  content.find('log(') - 1 ) ;
+              if(isdigit(firstParameter[0])) {
+                continue;
+              } else {
+                  CMatrix resultMatrix = sqrtOperation(matrices, isInsideMatrix(matrices, firstParameter), name);
+                  matrices.push_back(resultMatrix);
+
+                  if(content.find(';') == std::string::npos) {
+                      cout << resultMatrix.getName() << " = " << endl;
+                      cout << resultMatrix;
+                      cout << "######################################################" << endl;
+                  }
+
+              }  //
+              // cout<<firstParameter<<endl;
+              // cout<<secondParameter<<endl;
+              // cout<<name<<endl;
+
+
+            }
 
 }
 

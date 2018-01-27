@@ -114,6 +114,12 @@ public:
 	CMatrix getInverse();
 	string getMatrixForm();
 	double getOneValue();
+	//###################################################################################################
+	//roots and powers
+	CMatrix operator ^ (int m);
+	// CMatrix operator ^ (float m);
+	CMatrix elementWisePow(double P);
+	CMatrix sqrt();
 };
 
 #endif
