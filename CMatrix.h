@@ -37,6 +37,8 @@ public:
 	void copy(double d);
 	void copy(string s);
 	void reset();
+	CMatrix CMatrix::getLog();
+	CMatrix CMatrix::getLn();
 	void getValues();
 	string getString();
 	string getName();

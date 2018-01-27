@@ -362,6 +362,37 @@ CMatrix elmentWiseDivOperationNormal(vector<CMatrix> &matricesArray,int a,int b,
 
 }
 
+/* ############################################################################# */
+
+/*
+[ function name] : logOperation
+[ return type] : CMatrix
+[ inherited function/operation ] : getLog() [CMatrix.cpp, line: ]
+[ functionality ] : Performs Log operation on Matrices
+*/
+
+CMatrix logOperation(vector<CMatrix> &matricesArray,int a,string target)
+{
+        CMatrix returnedResult = matricesArray[a].getLog();
+        returnedResult.setName(target);
+        return returnedResult;
+}
+
+/* ############################################################################# */
+
+/*
+[ function name] : lnOperation
+[ return type] : CMatrix
+[ inherited function/operation ] : getLn() [CMatrix.cpp, line: ]
+[ functionality ] : Performs Log operation on Matrices
+*/
+
+CMatrix lnOperation(vector<CMatrix> &matricesArray,int a,string target)
+{
+        CMatrix returnedResult = matricesArray[a].getLn();
+        returnedResult.setName(target);
+        return returnedResult;
+}
 
 /* ############################################################################# */
 
@@ -1546,8 +1577,8 @@ int main(int argc, char* argv[]){
             "B = [1.2 2.3 A;[1.3 2.4;4.6 1.3],[3.2;7.8]]",
             "C = [[B [3.4; 2.1; 3.5+9.1]];    1.2^3 3+1.2 15/(2.1+10*sin(0.12)) 1.2]",
             "D = ones(4,4)",
-            "E = zeros(3,3)",
-            "F = tan(E)",
+            "E = eye(3,3)",
+            "F = log(E)",
         //     "D = [1.2^3 3+1.2 15/(2.1+10*sin(0.12)) 1.2;1.4 1.2 1.6 1.1]",
         //     "E = [1.2 1.5;1.6 1.8]",
         //     "F = [1.2+1;1.9*2]",
@@ -1622,7 +1653,7 @@ int main(int argc, char* argv[]){
                 matrices.push_back(resultMatrix);
         }
     }
-    else if(content.find("zeros") != std::string::npos)
+    else if(content.find("eye") != std::string::npos)
     {
         content.erase(std::remove(content.begin(), content.end(), ' '), content.end());
         string rowsNumber = content.substr(content.find('(') + 1, content.find(',') - (content.find('(') + 1));
@@ -1631,7 +1662,7 @@ int main(int argc, char* argv[]){
 
         if(content.find(';') == std::string::npos)
         {
-               CMatrix resultMatrix = ZEROSFunction(rowsNumber, columnsNumber, name);
+               CMatrix resultMatrix = eyeFunction(rowsNumber, columnsNumber, name);
                matrices.push_back(resultMatrix);
                cout << resultMatrix.getName() << " = " << endl;
                cout << resultMatrix;
@@ -1643,14 +1674,14 @@ int main(int argc, char* argv[]){
                 matrices.push_back(resultMatrix);
         }
     }
-        else if(content.find("tan") != std::string::npos)
+        else if(content.find("log") != std::string::npos)
         {
             content.erase(std::remove(content.begin(), content.end(), ' '), content.end());
-            string firstParameter = content.substr( content.find('tan(') + 1, content.find(')') -  content.find('tan(') - 1 ) ;
+            string firstParameter = content.substr( content.find('log(') + 1, content.find(')') -  content.find('log(') - 1 ) ;
             if(isdigit(firstParameter[0])) {
               continue;
             } else {
-                CMatrix resultMatrix = tanOperation(matrices, isInsideMatrix(matrices, firstParameter), name);
+                CMatrix resultMatrix = logOperation(matrices, isInsideMatrix(matrices, firstParameter), name);
                 matrices.push_back(resultMatrix);
 
                 if(content.find(';') == std::string::npos) {
