@@ -18,6 +18,8 @@
 #include <assert.h>
 #include <math.h>
 #include <ctype.h>
+#include "concat.cpp"
+
 
 #endif
 
@@ -647,15 +649,17 @@ while ((pos = content.find(" ")) != std::string::npos )
 
             }
 
-
+           
             content.erase(0, pos + 1);
 
         }
-
         finalMatrixString += ";";
 
 
     }
+
+
+        finalMatrixString.erase(finalMatrixString.length() - 1);
 
         return finalMatrixString;
 }
@@ -682,70 +686,182 @@ while ((pos = content.find(" ")) != std::string::npos )
 */
 
 CMatrix concatMatrices(string content,string name,vector<CMatrix> matricesArray,vector<AssociativeNumber> associateValuesArray) {
-        CMatrix matrixConcat;
-//     content.erase(0,1);
-//     content.erase(content.length() - 1);
-    for(int i = 0 ; i < content.length() - 1;i++) {
-        if(content[i] == '[' && i != 0) {
-            for(int j = i + 1;j < i - content.find(']',i);j++) {
-                if(content[j] == ']') {
-                    break;
-                }
-                if(content[j] == ';') {
-                    content[j] = '%';
-                }
+//         CMatrix matrixConcat;
+// //     content.erase(0,1);
+// //     content.erase(content.length() - 1);
+//     for(int i = 0 ; i < content.length() - 1;i++) {
+//         if(content[i] == '[' && i != 0) {
+//             for(int j = i + 1;j < i - content.find(']',i);j++) {
+//                 if(content[j] == ']') {
+//                     break;
+//                 }
+//                 if(content[j] == ';') {
+//                     content[j] = '%';
+//                 }
 
-            }
+//             }
+//         }
+
+//     }
+
+//     // Start the Concatentation
+
+
+
+//     regex re("[;\\n]+");
+//     string tempTest = content;
+//     sregex_token_iterator it(tempTest.begin(), tempTest.end(), re, -1);
+//     sregex_token_iterator reg_end;
+//     for (; it != reg_end; ++it) {
+//             string tempTokenizing = it->str();
+//             if(std::count(tempTokenizing.begin() , tempTokenizing.end() , '[') > 1) {
+//                 vector<CMatrix> matrixConcatCols;
+//                 regex re2("[\\[\\],]+");
+//                 sregex_token_iterator it2(tempTokenizing.begin(), tempTokenizing.end(), re2, -1);
+//                 sregex_token_iterator reg_end2;
+//                 for(;it2 != reg_end2;++it2) {
+//                     string testString = it2->str();
+//                     string secondTempString = testString;
+//                     secondTempString = tokenizingMatrix(secondTempString,matricesArray,associateValuesArray);
+//                     CMatrix temp(secondTempString);
+//                     if(temp.getnC() != 0 && temp.getnR() != 0) {
+//                         matrixConcatCols.push_back(temp);
+//                     }
+//                 }
+//                 for(int i = 0; i < matrixConcatCols.size();i++) {
+//                         CMatrix first = matrixConcatCols.back();
+//                         matrixConcatCols.pop_back();
+//                         CMatrix second = matrixConcatCols.back();
+//                         matrixConcatCols.pop_back();
+//                         second.addColumn(first);
+//                         matrixConcatCols.push_back(second);
+//                 }
+//                 matrixConcat.addRow(matrixConcatCols[0]);
+//                 matrixConcatCols.pop_back();
+
+//             } else {
+//                     tempTokenizing = tokenizingMatrix(tempTokenizing,matricesArray,associateValuesArray);
+//                     CMatrix temp(tempTokenizing);
+//                     matrixConcat.addRow(temp);
+//             }
+
+//     }
+
+
+//     matrixConcat.setName(name);
+//     return matrixConcat;
+
+
+    vector<CMatrix> matrixConcat;
+    vector<string> matricesConcatStrings;
+    for(int i = 0 ;i < content.size();i++) {
+        if(content[i] == ']' && content[i + 1] == ' ') {
+            content[i + 1] = ',';
+        }
+    }
+
+    ExpConcat* tree = strToExpConcat(content);
+    content = "";
+    content += tree->print();
+
+        regex re3("[$]+");    
+        sregex_token_iterator it3(content.begin(), content.end(), re3, -1);
+        sregex_token_iterator reg_end3;
+        for(;it3 != reg_end3;++it3) {
+                string tempString = it3->str();
+                matricesConcatStrings.push_back(tempString);
         }
 
-    }
+        for(int i = 0; i < matricesConcatStrings.size();i++) {
+                if(matricesConcatStrings[i].length() == 0) {
+                        matricesConcatStrings.erase(matricesConcatStrings.begin() + i);
+                        i--;
+                } else {
+                        if(matricesConcatStrings[i] == ";") {
+                                continue;
+                        } else {
+                                if(matricesConcatStrings[i][0] == ';' || matricesConcatStrings[i][matricesConcatStrings[i].length() - 1] == ';') {
+                                        matricesConcatStrings[i] = tokenizingMatrix(matricesConcatStrings[i] , matricesArray,associateValuesArray);
+                                        matricesConcatStrings[i] += ";";
+                                } else {
+                                        matricesConcatStrings[i] = tokenizingMatrix(matricesConcatStrings[i] , matricesArray,associateValuesArray);
+                                }
+                                cout << matricesConcatStrings[i] << endl;
+                        }
+                } 
+        }
 
-    // Start the Concatentation
 
+        // LOGIC
+        for(int i = 0 ; i < matricesConcatStrings.size();i++) {
+                string matrixTemp = matricesConcatStrings[i];
+                if(matrixTemp[0] == ';' || matrixTemp[matrixTemp.length() - 1] == ';') {
+                        if(matrixTemp == ";") {
+                                matricesConcatStrings.erase(matricesConcatStrings.begin() + i);
+                                i--;
+                        }
+                        cout << "Inside First If" << endl;
+                        cout << "i inside first if : " << i << endl;
+                        cout << "First in First If : " << matricesConcatStrings[i] << endl;
+                        continue;
 
-
-    regex re("[;\\n]+");
-    string tempTest = content;
-    sregex_token_iterator it(tempTest.begin(), tempTest.end(), re, -1);
-    sregex_token_iterator reg_end;
-    for (; it != reg_end; ++it) {
-            string tempTokenizing = it->str();
-            if(std::count(tempTokenizing.begin() , tempTokenizing.end() , '[') > 1) {
-                vector<CMatrix> matrixConcatCols;
-                regex re2("[\\[\\],]+");
-                sregex_token_iterator it2(tempTokenizing.begin(), tempTokenizing.end(), re2, -1);
-                sregex_token_iterator reg_end2;
-                for(;it2 != reg_end2;++it2) {
-                    string testString = it2->str();
-                    string secondTempString = testString;
-                    secondTempString = tokenizingMatrix(secondTempString,matricesArray,associateValuesArray);
-                    CMatrix temp(secondTempString);
-                    if(temp.getnC() != 0 && temp.getnR() != 0) {
-                        matrixConcatCols.push_back(temp);
-                    }
+                } else {
+                        int countEraseElements = 0;
+                        for(int j = i; j < matricesConcatStrings.size() - i;j++) {
+                                string matrixTemp2 = matricesConcatStrings[j];
+                                string matrixTemp3;
+                                if(j + 1 < matricesConcatStrings.size()) {
+                                        matrixTemp3 = matricesConcatStrings[j + 1];
+                                }
+                                if(matrixTemp2[0] == ';' || matrixTemp2[matrixTemp2.length() - 1] == ';' || matrixTemp3[0] == ';' || matrixTemp3[matrixTemp3.length() - 1] == ';') {
+                                        cout << "Inside Second If" << endl;
+                                        j = matricesConcatStrings.size() - i;
+                                } else {
+                                        CMatrix first(matrixTemp2);
+                                        CMatrix second(matrixTemp3);
+                                        first.addColumn(second);
+                                        matricesConcatStrings[j] = first.getMatrixForm();
+                                        matricesConcatStrings.erase(matricesConcatStrings.begin() + j + 1);
+                                        countEraseElements++;
+                                        cout << "First : " << endl << first << endl;
+                                        j = i - 1;
+                                }
+                        }
+                        cout << matricesConcatStrings[i] << endl;
+                        cout << "i = " << i << endl;
                 }
-                for(int i = 0; i < matrixConcatCols.size();i++) {
-                        CMatrix first = matrixConcatCols.back();
-                        matrixConcatCols.pop_back();
-                        CMatrix second = matrixConcatCols.back();
-                        matrixConcatCols.pop_back();
-                        second.addColumn(first);
-                        matrixConcatCols.push_back(second);
+        }
+
+        for(int i = 0; i < matricesConcatStrings.size();i++) {
+                        cout << "i = " << i << " " <<  matricesConcatStrings[i] << endl;
+        }
+
+        cout << "Size : " << matricesConcatStrings.size() << endl;
+        if(matricesConcatStrings.size() > 1) {
+                for(int i = (matricesConcatStrings.size() - 1);i > 0;i--) {
+                                CMatrix first(matricesConcatStrings.back());
+                                matricesConcatStrings.pop_back();
+                                CMatrix second(matricesConcatStrings.back());
+                                matricesConcatStrings.pop_back();
+                                cout << "Size : " << matricesConcatStrings.size() << endl;
+                                cout << "i = " << i << endl;
+                                second.addRow(first);
+                                cout << "Second : " << endl << second << endl;
+                                string tempConcat = second.getMatrixForm();
+                                cout << "String Format : " << tempConcat << endl;
+                                matricesConcatStrings.push_back(tempConcat);
                 }
-                matrixConcat.addRow(matrixConcatCols[0]);
-                matrixConcatCols.pop_back();
 
-            } else {
-                    tempTokenizing = tokenizingMatrix(tempTokenizing,matricesArray,associateValuesArray);
-                    CMatrix temp(tempTokenizing);
-                    matrixConcat.addRow(temp);
-            }
+                CMatrix matrixConcatFinal(matricesConcatStrings[0]);
+                matrixConcatFinal.setName(name);
+                cout << "Final :" << endl << matrixConcatFinal << endl;
+                return matrixConcatFinal;
 
-    }
-
-
-    matrixConcat.setName(name);
-    return matrixConcat;
+        } else {
+                CMatrix matrixConcatFinal(matricesConcatStrings[0]);
+                matrixConcatFinal.setName(name);
+                return matrixConcatFinal;        
+        }
 
 
 
@@ -1659,13 +1775,15 @@ int main(int argc, char* argv[]){
                    /* Test regex in the Matrix Class */
                    clock_t tStart = clock();
     string testcases[] = {
-            // "A = 5.5 + 12 * sin(0.4) + 2.2^4",
-        //     "B = [1.2 2.3 A;[1.3 2.4;4.6 1.3],[3.2;7.8]]",
+            "A = 5.5 + 12 * sin(0.4) + 2.2^4",
+            "B = [1.2 2.3 A;[1.3 2.4;4.6 1.3],[3.2;7.8]]",
             // "C = [[B [3.4; 2.1; 3.5+9.1]];    1.2^3 3+1.2 15/(2.1+10*sin(0.12)) 1.2]",
             "D = ones(4,4)",
             "E = [1 2 3; 1 2 3; 1 2 3]",
             "F = sqrt(E)",
-            "M = 4"
+            "M = 4",
+            "I = [[1.2 2.3; 3 2.3;[1.3 2.4;4.6 1.3]], [3.2;-7.8;-3.2; 1.2]]",
+            "N = [[B,[3.4; 2.1; 3.5+9.1]];1.2^3 3+1.2 15/(2.1+10*sin(0.12)) 1.2]"
         //     "D = [1.2^3 3+1.2 15/(2.1+10*sin(0.12)) 1.2;1.4 1.2 1.6 1.1]",
         //     "E = [1.2 1.5;1.6 1.8]",
         //     "F = [1.2+1;1.9*2]",
@@ -1676,8 +1794,6 @@ int main(int argc, char* argv[]){
         //     "M = 1 + 20 + -25"
     };
 
-    cout << sin(0) << endl;
-    cout << sin(1) << endl;
     vector<CMatrix> matrices;
     vector<AssociativeNumber> associateValues;
 
@@ -1896,6 +2012,17 @@ int main(int argc, char* argv[]){
         string contentExpression = "( 2.5 * (1.2 + 4.4 / (2.4 + 3.3)) + 12 * sin(0.4) + 2.2^4 / (M.^3 + M.^2 - 5) ).^(-1.4 + 5)";
         string result = tokenizingexpression(contentExpression , matrices , associateValues);
 
+
+
+        /* Testing Concatenation in Matrices */
+        // string content = "[[[1 2 3;2 3 4];6 7 8],[6;7;5]]"; // Done
+        // string content = "[1 2 3;[[1;1],[1;2]],[1;3];[4 5 6]]"; // Done
+        // string content = "[1 2 3 4;[1 2;1 2],[1;2] [3;4];[1 2 3;1 2 3],[1;5];[1 3 5 9]]"; // Done
+        // string content = "[[[1.2 2.3 33.55;1.3 2.4 3.2;4.6 1.3 7.8] [3.4; 2.1; 3.5+9.1]];1.2 3 15  1.2]"; // Done
+        // string content = "[[1.2 2.3; 3 2.3;[1.3 2.4;4.6 1.3]], [3.2;-7.8;-3.2; 1.2]]"; // Done
+        // CMatrix finalMatrix = concatMatrices(content,"I",matrices,associateValues);
+        // cout << finalMatrix.getName() << " = " << endl;
+        // cout << finalMatrix << endl;
 
         cout << result << endl;
         cout << "Execution Program Time :" << endl;
