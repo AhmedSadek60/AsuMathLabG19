@@ -813,6 +813,9 @@ CMatrix concatMatrices(string content,string name,vector<CMatrix> matricesArray,
                                 if(j + 1 < matricesConcatStrings.size()) {
                                         matrixTemp3 = matricesConcatStrings[j + 1];
                                 }
+                                if(matricesConcatStrings.size() == 1) {
+                                        break;
+                                }
                                 if(matrixTemp2[0] == ';' || matrixTemp2[matrixTemp2.length() - 1] == ';' || matrixTemp3[0] == ';' || matrixTemp3[matrixTemp3.length() - 1] == ';') {
                                         cout << "Inside Second If" << endl;
                                         j = matricesConcatStrings.size() - i;
@@ -821,9 +824,15 @@ CMatrix concatMatrices(string content,string name,vector<CMatrix> matricesArray,
                                         CMatrix second(matrixTemp3);
                                         first.addColumn(second);
                                         matricesConcatStrings[j] = first.getMatrixForm();
+                                        cout << "String of First FOrmat : " << first.getMatrixForm() << endl;
+                                        cout << "String in Vector :" <<  matricesConcatStrings[j] << endl;
                                         matricesConcatStrings.erase(matricesConcatStrings.begin() + j + 1);
+                                        cout << "After :" << endl;
+                                        cout << "String of First FOrmat : " << first.getMatrixForm() << " j : " << j <<endl;
+                                        cout << "String in Vector :" <<  matricesConcatStrings[j] << " j : " << j << endl;
                                         countEraseElements++;
                                         cout << "First : " << endl << first << endl;
+                                        cout << "Size : " << matricesConcatStrings.size() << endl;
                                         j = i - 1;
                                 }
                         }
@@ -858,8 +867,10 @@ CMatrix concatMatrices(string content,string name,vector<CMatrix> matricesArray,
                 return matrixConcatFinal;
 
         } else {
+                cout << "String : " << matricesConcatStrings[0] << endl;
                 CMatrix matrixConcatFinal(matricesConcatStrings[0]);
                 matrixConcatFinal.setName(name);
+                cout << "Final : " << matrixConcatFinal << endl;
                 return matrixConcatFinal;        
         }
 
@@ -1783,7 +1794,8 @@ int main(int argc, char* argv[]){
             "F = sqrt(E)",
             "M = 4",
             "I = [[1.2 2.3; 3 2.3;[1.3 2.4;4.6 1.3]], [3.2;-7.8;-3.2; 1.2]]",
-            "N = [[B,[3.4; 2.1; 3.5+9.1]];1.2^3 3+1.2 15/(2.1+10*sin(0.12)) 1.2]"
+            "N = [[B,[3.4; 2.1; 3.5+9.1]];1.2^3 3+1.2 15/(2.1+10*sin(0.12)) 1.2]",
+            "K = ( 2.5 * (1.2 + 4.4 / (2.4 + 3.3)) + 12 * sin(0.4) + 2.2^4 / (M.^3 + M.^2 - 5) ).^(-1.4 + 5)"
         //     "D = [1.2^3 3+1.2 15/(2.1+10*sin(0.12)) 1.2;1.4 1.2 1.6 1.1]",
         //     "E = [1.2 1.5;1.6 1.8]",
         //     "F = [1.2+1;1.9*2]",
@@ -1830,6 +1842,7 @@ int main(int argc, char* argv[]){
         cout << normalMatrix.getName() << " = " << endl;
         cout << normalMatrix;
     } else if(countBracketsForConcatenation == 0) { // Case Of Operation
+    content = tokenizingexpression(content , matrices , associateValues);
         AssociativeNumber temp(name,getEvaluation(content));
         associateValues.push_back(temp);
         cout << temp.getName() << " = " << temp.getValue() << endl;
