@@ -17,6 +17,7 @@
 #include "prefixevaluatormatrix.cpp"
 #include <assert.h>
 #include <math.h>
+#include <ctype.h>
 
 #endif
 
@@ -539,6 +540,51 @@ double getEvaluation(string token) {
         }
 
 }
+
+
+
+/* ################################################################################### */ 
+
+
+/*
+        [ Function Name ] : tokenizingexpression
+        [ Function Returned Type ] : string , Or String with Matrix at the start of it
+        [ inherited Function ] : - Regex Search Function from Regex library in the c++11 std
+        [ Functionality ] : 
+ */ 
+string tokenizingexpression(string expression , vector<CMatrix> matrices,vector<AssociativeNumber> associative) {
+   smatch m;
+    string tempString = expression;
+    string secondTempString = expression;
+    bool result = regex_search(tempString,m,regex("[A-Za-z]+"));
+    if(result == 1) {
+        while(regex_search(secondTempString,m,regex("[A-Za-z]+"))) {
+            string d = m[0];
+            if(d == "sin" || d == "cos" || d == "log" || d == "ln" || d == "sqrt" || d == "tan") {
+                secondTempString = m.suffix().str();
+                continue;
+            } else {
+                int isMatrix = isInsideMatrix(matrices , d);
+                int isAssociative = isInsideAssociate(associative , d);
+                if(isAssociative != -1) {
+                        string number = std::to_string(associative[isAssociative].getValue());
+                        expression.replace(expression.find(m[0]),m.length(0),number);
+
+                } else if(isMatrix != -1) {
+                        // Send to Function in PrefixEvaluatorMatrix
+                        // TODO ::
+                }
+                secondTempString = m.suffix().str();
+            }
+        }
+    }
+
+
+    return expression;
+
+
+}
+
 
 /* ############################################################################# */
 /*
@@ -1614,12 +1660,12 @@ int main(int argc, char* argv[]){
                    clock_t tStart = clock();
     string testcases[] = {
             // "A = 5.5 + 12 * sin(0.4) + 2.2^4",
-            "B = [1.2 2.3 A;[1.3 2.4;4.6 1.3],[3.2;7.8]]",
+        //     "B = [1.2 2.3 A;[1.3 2.4;4.6 1.3],[3.2;7.8]]",
             // "C = [[B [3.4; 2.1; 3.5+9.1]];    1.2^3 3+1.2 15/(2.1+10*sin(0.12)) 1.2]",
             "D = ones(4,4)",
             "E = [1 2 3; 1 2 3; 1 2 3]",
             "F = sqrt(E)",
-
+            "M = 4"
         //     "D = [1.2^3 3+1.2 15/(2.1+10*sin(0.12)) 1.2;1.4 1.2 1.6 1.1]",
         //     "E = [1.2 1.5;1.6 1.8]",
         //     "F = [1.2+1;1.9*2]",
@@ -1735,71 +1781,71 @@ int main(int argc, char* argv[]){
 
       }
 
-      else if (content.find("^") != std::string::npos){
-        content.erase(std::remove(content.begin(), content.end(), ' '), content.end());
-        string firstParameter = content.substr( 0, content.find('^'));
-        string secondParameter = content.substr(content.find('^') + 1);
+//       else if (content.find("^") != std::string::npos){
+//         content.erase(std::remove(content.begin(), content.end(), ' '), content.end());
+//         string firstParameter = content.substr( 0, content.find('^'));
+//         string secondParameter = content.substr(content.find('^') + 1);
 
-        cout<<firstParameter<<endl;
-        cout<<secondParameter<<endl;
-        cout<<name<<endl;
+//         cout<<firstParameter<<endl;
+//         cout<<secondParameter<<endl;
+//         cout<<name<<endl;
 
-        CMatrix resultMatrix = powOperation(matrices, isInsideMatrix(matrices, firstParameter), secondParameter, name );
-        matrices.push_back(resultMatrix);
+//         CMatrix resultMatrix = powOperation(matrices, isInsideMatrix(matrices, firstParameter), secondParameter, name );
+//         matrices.push_back(resultMatrix);
 
-        if(content.find(';') == std::string::npos) {
-            cout << resultMatrix.getName() << " = " << endl;
-            cout << resultMatrix;
-            cout << "######################################################" << endl;
-        }
-
-
-
-      }
-
-            else if (content.find("&") != std::string::npos){
-              content.erase(std::remove(content.begin(), content.end(), ' '), content.end());
-              string firstParameter = content.substr( 0, content.find('&'));
-              string secondParameter = content.substr(content.find('&') + 1);
-              //
-              // cout<<firstParameter<<endl;
-              // cout<<secondParameter<<endl;
-              // cout<<name<<endl;
-
-              CMatrix resultMatrix = elementWisePower(matrices, isInsideMatrix(matrices, firstParameter), secondParameter, name );
-              matrices.push_back(resultMatrix);
-
-              if(content.find(';') == std::string::npos) {
-                  cout << resultMatrix.getName() << " = " << endl;
-                  cout << resultMatrix;
-                  cout << "######################################################" << endl;
-              }
+//         if(content.find(';') == std::string::npos) {
+//             cout << resultMatrix.getName() << " = " << endl;
+//             cout << resultMatrix;
+//             cout << "######################################################" << endl;
+//         }
 
 
 
-            }
-            else if (content.find("sqrt") != std::string::npos){
-              content.erase(std::remove(content.begin(), content.end(), ' '), content.end());
-              string firstParameter = content.substr( content.find('sqrt(') + 1, content.find(')') -  content.find('log(') - 1 ) ;
-              if(isdigit(firstParameter[0])) {
-                continue;
-              } else {
-                  CMatrix resultMatrix = sqrtOperation(matrices, isInsideMatrix(matrices, firstParameter), name);
-                  matrices.push_back(resultMatrix);
+//       }
 
-                  if(content.find(';') == std::string::npos) {
-                      cout << resultMatrix.getName() << " = " << endl;
-                      cout << resultMatrix;
-                      cout << "######################################################" << endl;
-                  }
+//             else if (content.find("&") != std::string::npos){
+//               content.erase(std::remove(content.begin(), content.end(), ' '), content.end());
+//               string firstParameter = content.substr( 0, content.find('&'));
+//               string secondParameter = content.substr(content.find('&') + 1);
+//               //
+//               // cout<<firstParameter<<endl;
+//               // cout<<secondParameter<<endl;
+//               // cout<<name<<endl;
 
-              }  //
-              // cout<<firstParameter<<endl;
-              // cout<<secondParameter<<endl;
-              // cout<<name<<endl;
+//               CMatrix resultMatrix = elementWisePower(matrices, isInsideMatrix(matrices, firstParameter), secondParameter, name );
+//               matrices.push_back(resultMatrix);
+
+//               if(content.find(';') == std::string::npos) {
+//                   cout << resultMatrix.getName() << " = " << endl;
+//                   cout << resultMatrix;
+//                   cout << "######################################################" << endl;
+//               }
 
 
-            }
+
+//             }
+//             else if (content.find("sqrt") != std::string::npos){
+//               content.erase(std::remove(content.begin(), content.end(), ' '), content.end());
+//               string firstParameter = content.substr( content.find('sqrt(') + 1, content.find(')') -  content.find('log(') - 1 ) ;
+//               if(isdigit(firstParameter[0])) {
+//                 continue;
+//               } else {
+//                   CMatrix resultMatrix = sqrtOperation(matrices, isInsideMatrix(matrices, firstParameter), name);
+//                   matrices.push_back(resultMatrix);
+
+//                   if(content.find(';') == std::string::npos) {
+//                       cout << resultMatrix.getName() << " = " << endl;
+//                       cout << resultMatrix;
+//                       cout << "######################################################" << endl;
+//                   }
+
+//               }  //
+//               // cout<<firstParameter<<endl;
+//               // cout<<secondParameter<<endl;
+//               // cout<<name<<endl;
+
+
+//             }
 
 }
 
@@ -1847,7 +1893,11 @@ int main(int argc, char* argv[]){
         // cout << finalMatrix.getName() << endl;
         // cout << finalMatrix;
 
+        string contentExpression = "( 2.5 * (1.2 + 4.4 / (2.4 + 3.3)) + 12 * sin(0.4) + 2.2^4 / (M.^3 + M.^2 - 5) ).^(-1.4 + 5)";
+        string result = tokenizingexpression(contentExpression , matrices , associateValues);
 
+
+        cout << result << endl;
         cout << "Execution Program Time :" << endl;
         cout << ((double)(clock() - tStart) / CLOCKS_PER_SEC) * 1000 << "ms" << endl;
 
