@@ -137,7 +137,7 @@ string replaceNegativeNumbers(string expression) {
 
     bool isOperator(string str)
     {
-        if((str == "+") || (str == "-") || (str == "*") || (str == "/") || (str == "^") )
+        if((str == "+") || (str == "-") || (str == "*") || (str == "/") || (str == "^") || (str == "&") || (str == "$") || (str == "#") || (str == "?") || (str == "@"))
             return true;
         else
             return false;
@@ -146,18 +146,24 @@ string replaceNegativeNumbers(string expression) {
     double compute(string oper, double val1, double val2)
     {
         
-        if(oper == "+")
+        if(oper == "+" || oper == "@") {
             return (val1 + val2);
-        else if(oper == "*")
+        }
+        else if(oper == "*" || oper == "#") {
             return (val1 * val2);
-        else if(oper == "-")
+        }
+        else if(oper == "-" || oper == "?") {
             return (val1 - val2);
-        else if(oper == "/")
+        }
+        else if(oper == "/" || oper == "$") {
             return (val1 / val2); 
-        else if(oper == "^")
+        }
+        else if(oper == "^" || oper == "&") {
             return pow(val1,val2);
-        else
+        }
+        else {
             return 0;
+        }
     }
 
     double evalPrefix(vector<string>& expression)
@@ -175,6 +181,8 @@ string replaceNegativeNumbers(string expression) {
                 numStack.pop_back();
                 num2 = numStack.back();
                 numStack.pop_back();
+                cout << expression[i] << endl;
+                cout << compute(expression[i], num1, num2) << endl;
                 numStack.push_back(compute(expression[i], num1, num2));
             }
             else
