@@ -511,18 +511,15 @@ double getEvaluation(string token) {
         token = replaceTriagomtric(token);
         token = replaceNegativeNumbers(token);
 
-        cout << token << endl;
 
 
         Exp *finalResult = strToExp(token);
         string tempFinal;
         tempFinal += finalResult->print();
-        cout << tempFinal << endl;
         vector<string> tokens;
         tokens.clear();
         tokenize(tempFinal, tokens);
         if(tokens.size()) {
-                cout << evalPrefix(tokens) << endl;
                 return evalPrefix(tokens);
         }
 
@@ -548,24 +545,19 @@ string tokenizingexpression(string expression , vector<CMatrix> matrices,vector<
     if(result == 1) {
         while(regex_search(secondTempString,m,regex("[A-Za-z]+"))) {
             string d = m[0];
-            if(d == "sin" || d == "cos" || d == "log" || d == "ln" || d == "sqrt" || d == "tan") {
+            if(d == "sin" || d == "cos" || d == "log" || d == "ln" || d == "sqrt" || d == "tan" || d == "rand" || d == "zeros" || d == "ones" || d == "eye") {
                 secondTempString = m.suffix().str();
                 continue;
             } else {
-                cout << d << endl;
                 int isMatrix = isInsideMatrix(matrices , d);
                 int isAssociative = isInsideAssociate(associative , d);
                 if(isAssociative != -1) {
-                        cout << d << endl;
-                        cout << isAssociative << endl;
                         string number = std::to_string(associative[isAssociative].getValue());
-                        cout << number << endl;
                         expression.replace(expression.find(m[0]),m.length(0),number);
 
                 } else if(isMatrix != -1) {
                         // Send to Function in PrefixEvaluatorMatrix
                         // TODO ::
-                        cout << "Is Matrix!" << endl;
                         isMatrixOperations = true;
                 }
                 secondTempString = m.suffix().str();
@@ -573,8 +565,13 @@ string tokenizingexpression(string expression , vector<CMatrix> matrices,vector<
         }
     }
 
+    if(expression.find("eye") != std::string::npos || expression.find("rand") != std::string::npos || expression.find("zeros") != std::string::npos || expression.find("ones") != std::string::npos) {
+            expression = getExpressionFromMain(expression, matrices);
+
+    }
+
     if(isMatrixOperations == true) {
-        //     expression.erase(remove_if(expression.begin(), expression.end(), ::isspace), expression.end());
+            cout << "Inside isMatrix" << endl;
             cout << expression << endl;
             expression = getExpressionFromMain(expression, matrices);
     }
@@ -1761,17 +1758,20 @@ int main(int argc, char* argv[]){
                    /* Test regex in the Matrix Class */
                    clock_t tStart = clock();
     string testcases[] = {
-            "A = 5.5 + 12 * sin(0.4) + 2.2^4",
-            "B = [1.2 2.3 A;[1.3 2.4;4.6 1.3],[3.2;7.8]]",
-            "C = [[B [3.4; 2.1; 3.5+9.1]];1.2^3 3+1.2 15/(2.1+10*sin(0.12)) 1.2]",
-            "D = rand(4,4)",
-            "E = [1 2 3 3; 1 2 3 3; 1 2 3 3;1 2 3 3]",
-            "F = sqrt(E)",
-            "M = 4",
-            "I = [[1.2 2.3; 3 2.3;[1.3 2.4;4.6 1.3]], [3.2;-7.8;-3.2; 1.2]]",
-            "N = [[B,[3.4; 2.1; 3.5+9.1]];1.2^3 3+1.2 15/(2.1+10*sin(0.12)) 1.2]",
-            "K = ( 2.5 * (1.2 + 4.4 / (2.4 + 3.3)) + 12 * sin(0.4) + 2.2^4 / (M.^3 + M.^2 - 5) ).^(-1.4 + 5)",
-            "Y = C^3 * sin(E)",
+        //     "A = 5.5 + 12 * sin(0.4) + 2.2^4",
+        //     "B = [1.2 2.3 A;[1.3 2.4;4.6 1.3],[3.2;7.8]]",
+        //     "C = [[B [3.4; 2.1; 3.5+9.1]];1.2^3 3+1.2 15/(2.1+10*sin(0.12)) 1.2]",
+        //     "D = rand(4,4)",
+        //     "E = [1 2 3 3; 1 2 3 3; 1 2 3 3;1 2 3 3]",
+        //     "F = sqrt(E)",
+        //     "M = 4",
+        //     "I = [[1.2 2.3; 3 2.3;[1.3 2.4;4.6 1.3]], [3.2;-7.8;-3.2; 1.2]]",
+        //     "N = [[B,[3.4; 2.1; 3.5+9.1]];1.2^3 3+1.2 15/(2.1+10*sin(0.12)) 1.2]",
+        //     "K = ( 2.5 * (1.2 + 4.4 / (2.4 + 3.3)) + 12 * sin(0.4) + 2.2^4 / (M.^3 + M.^2 - 5) ).^(-1.4 + 5)",
+        //     "Y = C^3 * sin(E)",
+        //     "U = eye(4,4)",
+        //     "O = ones(4,4)",
+        //     "W = zeros(4,4)"
         //     "D = [1.2^3 3+1.2 15/(2.1+10*sin(0.12)) 1.2;1.4 1.2 1.6 1.1]",
         //     "E = [1.2 1.5;1.6 1.8]",
         //     "F = [1.2+1;1.9*2]",
@@ -1780,6 +1780,16 @@ int main(int argc, char* argv[]){
         //     "L = (1.2 + 3.4 - 5.6)/(2.1*3.2 + 4.6) - 12.1*3.1 + (1.2 + 5.2)^(4/(3.2+5.6))",
         //     "N = -3 + 1",
         //     "M = 1 + 20 + -25"
+                "A = 5.5 + 12 * sin(0.4) + 2.2^4",
+                "B = [1.2 2.3 A;[1.3 2.4;4.6 1.3],[3.2;7.8]]",
+                "C = [[B [3.4; 2.1; 3.5+9.1]];1.2^3 3+1.2 15/(2.1+10*sin(0.12))  1.2]",
+                "D = rand(4,4)",
+                "E = eye(4, 4)",
+                "F = zeros(2, 3)",
+                "G = ones(3, 6)",
+                "L = (1.2 + 3.4 - 5.6)/(2.1*3.2 + 4.6) - 12.1*3.1 + (1.2 + 5.2)^(4/(3.2+5.6))",
+                "X = ((C*D .+ 4)./2.1 + sqrt(D))./C.^2",
+                "Y = C^3 * sin(1./D)",
     };
 
     vector<CMatrix> matrices;
@@ -1833,67 +1843,67 @@ int main(int argc, char* argv[]){
         }
     }
 
-     if(content.find("ones") != std::string::npos)
-    {
-        content.erase(std::remove(content.begin(), content.end(), ' '), content.end());
-        string rowsNumber = content.substr(content.find('(') + 1, content.find(',') - (content.find('(') + 1));
-        string columnsNumber = content.substr(content.find(',') + 1, content.find(')') - (content.find(',') + 1));
+//      if(content.find("ones") != std::string::npos)
+//     {
+//         content.erase(std::remove(content.begin(), content.end(), ' '), content.end());
+//         string rowsNumber = content.substr(content.find('(') + 1, content.find(',') - (content.find('(') + 1));
+//         string columnsNumber = content.substr(content.find(',') + 1, content.find(')') - (content.find(',') + 1));
 
 
-        if(content.find(';') == std::string::npos)
-        {
-               CMatrix resultMatrix = ONESFunction(rowsNumber, columnsNumber, name);
-               matrices.push_back(resultMatrix);
-                cout << resultMatrix.getName() << " = " << endl;
-                cout << resultMatrix;
-                cout << "######################################################" << endl;
-        }
-        else
-        {
-                CMatrix resultMatrix = ONESFunction(rowsNumber, columnsNumber, name);
-                matrices.push_back(resultMatrix);
-        }
-    }
-    else if(content.find("eye") != std::string::npos)
-    {
-        content.erase(std::remove(content.begin(), content.end(), ' '), content.end());
-        string rowsNumber = content.substr(content.find('(') + 1, content.find(',') - (content.find('(') + 1));
-        string columnsNumber = content.substr(content.find(',') + 1, content.find(')') - (content.find(',') + 1));
+//         if(content.find(';') == std::string::npos)
+//         {
+//                CMatrix resultMatrix = ONESFunction(rowsNumber, columnsNumber, name);
+//                matrices.push_back(resultMatrix);
+//                 cout << resultMatrix.getName() << " = " << endl;
+//                 cout << resultMatrix;
+//                 cout << "######################################################" << endl;
+//         }
+//         else
+//         {
+//                 CMatrix resultMatrix = ONESFunction(rowsNumber, columnsNumber, name);
+//                 matrices.push_back(resultMatrix);
+//         }
+//     }
+//     else if(content.find("eye") != std::string::npos)
+//     {
+//         content.erase(std::remove(content.begin(), content.end(), ' '), content.end());
+//         string rowsNumber = content.substr(content.find('(') + 1, content.find(',') - (content.find('(') + 1));
+//         string columnsNumber = content.substr(content.find(',') + 1, content.find(')') - (content.find(',') + 1));
 
 
-        if(content.find(';') == std::string::npos)
-        {
-               CMatrix resultMatrix = eyeFunction(rowsNumber, columnsNumber, name);
-               matrices.push_back(resultMatrix);
-               cout << resultMatrix.getName() << " = " << endl;
-               cout << resultMatrix;
-               cout << "######################################################" << endl;
-        }
-        else
-        {
-                CMatrix resultMatrix = ZEROSFunction(rowsNumber, columnsNumber, name);
-                matrices.push_back(resultMatrix);
-        }
-    }
-        else if(content.find("log") != std::string::npos)
-        {
-            content.erase(std::remove(content.begin(), content.end(), ' '), content.end());
-            string firstParameter = content.substr( content.find('log(') + 1, content.find(')') -  content.find('log(') - 1 ) ;
-            if(isdigit(firstParameter[0])) {
-              continue;
-            } else {
-                CMatrix resultMatrix = logOperation(matrices, isInsideMatrix(matrices, firstParameter), name);
-                matrices.push_back(resultMatrix);
+//         if(content.find(';') == std::string::npos)
+//         {
+//                CMatrix resultMatrix = eyeFunction(rowsNumber, columnsNumber, name);
+//                matrices.push_back(resultMatrix);
+//                cout << resultMatrix.getName() << " = " << endl;
+//                cout << resultMatrix;
+//                cout << "######################################################" << endl;
+//         }
+//         else
+//         {
+//                 CMatrix resultMatrix = ZEROSFunction(rowsNumber, columnsNumber, name);
+//                 matrices.push_back(resultMatrix);
+//         }
+//     }
+//         else if(content.find("log") != std::string::npos)
+//         {
+//             content.erase(std::remove(content.begin(), content.end(), ' '), content.end());
+//             string firstParameter = content.substr( content.find('log(') + 1, content.find(')') -  content.find('log(') - 1 ) ;
+//             if(isdigit(firstParameter[0])) {
+//               continue;
+//             } else {
+//                 CMatrix resultMatrix = logOperation(matrices, isInsideMatrix(matrices, firstParameter), name);
+//                 matrices.push_back(resultMatrix);
 
-                if(content.find(';') == std::string::npos) {
-                    cout << resultMatrix.getName() << " = " << endl;
-                    cout << resultMatrix;
-                    cout << "######################################################" << endl;
-                }
+//                 if(content.find(';') == std::string::npos) {
+//                     cout << resultMatrix.getName() << " = " << endl;
+//                     cout << resultMatrix;
+//                     cout << "######################################################" << endl;
+//                 }
 
-            }
+//             }
 
-      }
+//       }
 
 //       else if (content.find("^") != std::string::npos){
 //         content.erase(std::remove(content.begin(), content.end(), ' '), content.end());

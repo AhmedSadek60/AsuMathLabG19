@@ -202,7 +202,7 @@ bool isOperatorForMatrix(string str)
 CMatrix computeForMatrix(string oper, CMatrix val1, CMatrix val2)
 {
 
-    if (oper == "+")
+    if (oper == "+" || oper == "@")
     {
         if (val2.getName() == "Number")
         {
@@ -215,7 +215,7 @@ CMatrix computeForMatrix(string oper, CMatrix val1, CMatrix val2)
             return tempMatrix;
         }
     }
-    else if (oper == "*")
+    else if (oper == "*" || oper == "#")
     {
         if (val2.getName() == "Number")
         {
@@ -228,7 +228,7 @@ CMatrix computeForMatrix(string oper, CMatrix val1, CMatrix val2)
             return tempMatrix;
         }
     }
-    else if (oper == "-")
+    else if (oper == "-" || oper == "?")
     {
         if (val2.getName() == "Number")
         {
@@ -255,6 +255,24 @@ CMatrix computeForMatrix(string oper, CMatrix val1, CMatrix val2)
             return tempMatrix;
         }
         
+    } else if(oper == "&") {
+        CMatrix tempMatrix = val1.elementWisePow(val2.getOneValue());
+        return tempMatrix;
+    } else if(oper == "$") {
+        if(val1.getName() == "Number") {
+            CMatrix dMatrix(val2.getnR(),val2.getnC(),CMatrix::MI_VALUE,val1.getOneValue());
+            CMatrix tempMatrix = dMatrix.elementWiseDiv(val2);
+            return tempMatrix;
+
+        } else if(val2.getName() == "Number") {
+            CMatrix dMatrix(val1.getnR(),val1.getnC(),CMatrix::MI_VALUE,val2.getOneValue());
+            CMatrix tempMatrix = val1.elementWiseDiv(dMatrix);
+            return tempMatrix;
+
+        } else {
+            CMatrix tempMatrix = val1.elementWiseDiv(val2);
+            return tempMatrix;
+        }
     }
     else
         return 0;
@@ -271,7 +289,7 @@ CMatrix evalPrefixForMatrix(vector<string> &expression, vector<CMatrix> matrices
 
         if (isOperatorForMatrix(expression[i]))
         {
-            cout << "Operation" << endl;
+            cout << "Operation" << expression[i] << endl;
             num1 = numStack.back();
             numStack.pop_back();
             num2 = numStack.back();
@@ -285,7 +303,8 @@ CMatrix evalPrefixForMatrix(vector<string> &expression, vector<CMatrix> matrices
             bool isNumber = regex_search(expression[i], s, regex("[A-Za-z]+"));
             if (isNumber == 0)
             {
-                int num = atof(expression[i].c_str());
+                cout << "Number" << expression[i] << endl;
+                double num = atof(expression[i].c_str());
                 CMatrix dMatrix(1, 1, CMatrix::MI_VALUE, num);
                 dMatrix.setName("Number");
                 numStack.push_back(dMatrix);
@@ -324,7 +343,7 @@ string replaceTriagomtricForMatrix(string &expression, vector<CMatrix> &matrices
     string testString = expression;
     bool result = regex_search(testString, m, regex("(sin|cos|sqrt|tan|ln|log).{1,10}.[)]"));
     string tempString = expression;
-    int count = 0;
+    double count = (rand() % 1000000) / 1000000.0;
     if (result == 1)
     {
         while (regex_search(tempString, m, regex("(sin|cos|sqrt|tan|ln|log).{1,10}.[)]")))
@@ -346,7 +365,7 @@ string replaceTriagomtricForMatrix(string &expression, vector<CMatrix> &matrices
                 d.erase(0, d.find('(') + 1);
                 cout << d << endl;
                 smatch checkOp;
-                bool checkOperation = regex_search(d, checkOp, regex("[/*^+-]+"));
+                bool checkOperation = regex_search(d, checkOp, regex("[\/*^+$&@#-]+"));
                 CMatrix tempResult;
                 if (checkOperation == 1)
                 {
@@ -409,7 +428,7 @@ string replaceTriagomtricForMatrix(string &expression, vector<CMatrix> &matrices
                 d.erase(d.length() - 1);
                 d.erase(0, d.find('(') + 1);
                 smatch checkOp;
-                bool checkOperation = regex_search(d, checkOp, regex("[/*^+-]+"));
+                bool checkOperation = regex_search(d, checkOp, regex("[\/*^+$&@#-]+"));
                 CMatrix tempResult;
                 if (checkOperation == 1)
                 {
@@ -469,7 +488,7 @@ string replaceTriagomtricForMatrix(string &expression, vector<CMatrix> &matrices
                 d.erase(d.length() - 1);
                 d.erase(0, d.find('(') + 1);
                 smatch checkOp;
-                bool checkOperation = regex_search(d, checkOp, regex("[/*^+-]+"));
+                bool checkOperation = regex_search(d, checkOp, regex("[\/*^+$&@#-]+"));
                 CMatrix tempResult;
                 if (checkOperation == 1)
                 {
@@ -519,6 +538,7 @@ string replaceTriagomtricForMatrix(string &expression, vector<CMatrix> &matrices
             }
             else if (d.find("sqrt") != string::npos)
             {
+                cout << "Inside Sqrt" << endl;
                 bool additionPar = false;
                 size_t countLeftPar = std::count(d.begin(), d.end(), '(');
                 size_t countRightPar = std::count(d.begin(), d.end(), ')');
@@ -529,16 +549,19 @@ string replaceTriagomtricForMatrix(string &expression, vector<CMatrix> &matrices
                 d.erase(d.length() - 1);
                 d.erase(0, d.find('(') + 1);
                 smatch checkOp;
-                bool checkOperation = regex_search(d, checkOp, regex("[/*^+-]+"));
+                bool checkOperation = regex_search(d, checkOp, regex("[\/*^+$&@#-]+"));
                 CMatrix tempResult;
+                cout << checkOperation << endl;
                 if (checkOperation == 1)
                 {
                     d = replaceMatrixOperator(d);
                     d = replaceNegativeNumbersForMatrix(d);
                     d = replaceTriagomtricForMatrix(d, matrices);
+                    cout << "d : " << d << endl; 
                     Exp *tree = strToExp(d);
                     string temp;
                     temp += tree->print();
+                    cout << "Expression : " << temp << endl;
                     vector<string> tokens;
                     tokens.clear();
                     tokenize(temp, tokens);
@@ -547,16 +570,24 @@ string replaceTriagomtricForMatrix(string &expression, vector<CMatrix> &matrices
                         tempResult = evalPrefixForMatrix(tokens, matrices);
                     }
                     tempResult = tempResult.sqrt();
+                    cout << tempResult << endl;
                     tempResult.setName("S" + std::to_string(count));
                     matrices.push_back(tempResult);
                     count++;
                 }
                 else
                 {
+                    cout << "Inside Else" << endl;
+                    d.erase(std::remove(d.begin(), d.end(), ')'), d.end());
+                    d.erase(std::remove(d.begin(), d.end(), '('), d.end());
+                    cout << "D : " << d << endl;
                     int isMatrix = isInsideMatrixForMatrix(matrices, d);
                     if (isMatrix != -1)
                     {
+                        cout << matrices[isMatrix] << endl;
+
                         tempResult = matrices[isMatrix].sqrt();
+                    cout << tempResult << endl;
                         tempResult.setName("S" + std::to_string(count));
                         matrices.push_back(tempResult);
                         count++;
@@ -589,7 +620,7 @@ string replaceTriagomtricForMatrix(string &expression, vector<CMatrix> &matrices
                 d.erase(d.length() - 1);
                 d.erase(0, d.find('(') + 1);
                 smatch checkOp;
-                bool checkOperation = regex_search(d, checkOp, regex("[/*^+-]+"));
+                bool checkOperation = regex_search(d, checkOp, regex("[\/*^+$&@#-]+"));
                 CMatrix tempResult;
                 if (checkOperation == 1)
                 {
@@ -649,7 +680,7 @@ string replaceTriagomtricForMatrix(string &expression, vector<CMatrix> &matrices
                 d.erase(d.length() - 1);
                 d.erase(0, d.find('(') + 1);
                 smatch checkOp;
-                bool checkOperation = regex_search(d, checkOp, regex("[/*^+-]+"));
+                bool checkOperation = regex_search(d, checkOp, regex("[\/*^+$&@#-]+"));
                 CMatrix tempResult;
                 if (checkOperation == 1)
                 {
@@ -706,34 +737,80 @@ string replaceTriagomtricForMatrix(string &expression, vector<CMatrix> &matrices
 
 string getExpressionFromMain(string content, vector<CMatrix> matrices)
 {
-    CMatrix result;
-    content.erase(remove_if(content.begin(), content.end(), ::isspace), content.end());
-    content = replaceNegativeNumbersForMatrix(content);
-    content = replaceTriagomtricForMatrix(content, matrices);
+    if(content.find("rand") != std::string::npos){
+        content.erase(std::remove(content.begin(), content.end(), ' '), content.end());
+        string rowsNumber = content.substr(content.find('(') + 1, content.find(',') - (content.find('(') + 1));
+        string columnsNumber = content.substr(content.find(',') + 1, content.find(')') - (content.find(',') + 1));
 
-    cout << "Inside Get : " << content << endl;
-    cout << "Size Matrices : " << matrices.size() << endl; 
-    Exp *tree = strToExp(content);
-    string temp;
-    temp += tree->print();
-    cout << "Expression : " << temp << endl;
-    vector<string> tokens;
-    tokens.clear();
-    tokenize(temp, tokens);
-    if (tokens.size())
+        int numR = atof(rowsNumber.c_str());
+        int numC = atof(columnsNumber.c_str());
+        CMatrix result = CMatrix(numR, numC, CMatrix::MI_RAND, 0.0);
+        result.setName(result.getMatrixForm());
+
+        return result.getName();
+
+    }
+    else if(content.find("eye") != std::string::npos)
     {
-        result = evalPrefixForMatrix(tokens, matrices);
+        content.erase(std::remove(content.begin(), content.end(), ' '), content.end());
+        string rowsNumber = content.substr(content.find('(') + 1, content.find(',') - (content.find('(') + 1));
+        string columnsNumber = content.substr(content.find(',') + 1, content.find(')') - (content.find(',') + 1));
+
+        int numR = atof(rowsNumber.c_str());
+        int numC = atof(columnsNumber.c_str());
+        CMatrix result = CMatrix(numR,numC,CMatrix::MI_EYE, 0.0);
+        result.setName(result.getMatrixForm());
+
+        return result.getName();
+
+    } else if(content.find("ones") != std::string::npos) {
+        content.erase(std::remove(content.begin(), content.end(), ' '), content.end());
+        string rowsNumber = content.substr(content.find('(') + 1, content.find(',') - (content.find('(') + 1));
+        string columnsNumber = content.substr(content.find(',') + 1, content.find(')') - (content.find(',') + 1));
+
+        int numR = atof(rowsNumber.c_str());
+        int numC = atof(columnsNumber.c_str());
+        CMatrix result = CMatrix(numR,numC,CMatrix::MI_ONES, 0.0);
+        result.setName(result.getMatrixForm());
+
+        return result.getName();
+    } else if(content.find("zeros") != std::string::npos) {
+        content.erase(std::remove(content.begin(), content.end(), ' '), content.end());
+        string rowsNumber = content.substr(content.find('(') + 1, content.find(',') - (content.find('(') + 1));
+        string columnsNumber = content.substr(content.find(',') + 1, content.find(')') - (content.find(',') + 1));
+
+        int numR = atof(rowsNumber.c_str());
+        int numC = atof(columnsNumber.c_str());
+        CMatrix result = CMatrix(numR, numC, CMatrix::MI_ZEROS, 0.0);
+        result.setName(result.getMatrixForm());
+
+        return result.getName();
+
+    } else {
+        CMatrix result;
+        content.erase(remove_if(content.begin(), content.end(), ::isspace), content.end());
+        content = replaceNegativeNumbersForMatrix(content);
+        content = replaceTriagomtricForMatrix(content, matrices);
+
+        string temp;
+        cout << "Expression : " << content << endl;
+        Exp *tree = strToExp(content);
+        temp += tree->print();
+        cout << "After Prefixing : " << temp << endl; 
+        vector<string> tokens;
+        tokens.clear();
+        tokenize(temp, tokens);
+        if (tokens.size())
+        {
+            result = evalPrefixForMatrix(tokens, matrices);
+        }
+
+        result.setName(result.getMatrixForm());
+
+        return result.getName();
+
     }
-    cout << result << endl;
 
-    for(int i = 0 ; i < matrices.size();i++) {
-        cout << matrices[i] << endl;
-        cout << "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$" << endl;
-    }
-
-    result.setName(result.getMatrixForm());
-
-    return result.getName();
 }
 
 
