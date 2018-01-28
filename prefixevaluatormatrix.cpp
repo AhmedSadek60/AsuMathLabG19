@@ -289,7 +289,6 @@ CMatrix evalPrefixForMatrix(vector<string> &expression, vector<CMatrix> matrices
 
         if (isOperatorForMatrix(expression[i]))
         {
-            cout << "Operation" << expression[i] << endl;
             num1 = numStack.back();
             numStack.pop_back();
             num2 = numStack.back();
@@ -303,7 +302,6 @@ CMatrix evalPrefixForMatrix(vector<string> &expression, vector<CMatrix> matrices
             bool isNumber = regex_search(expression[i], s, regex("[A-Za-z]+"));
             if (isNumber == 0)
             {
-                cout << "Number" << expression[i] << endl;
                 double num = atof(expression[i].c_str());
                 CMatrix dMatrix(1, 1, CMatrix::MI_VALUE, num);
                 dMatrix.setName("Number");
@@ -311,7 +309,6 @@ CMatrix evalPrefixForMatrix(vector<string> &expression, vector<CMatrix> matrices
             }
             else
             {
-                cout << "Matrix" << endl;
                 int getMatrix = isInsideMatrixForMatrix(matricesArray, expression[i]);
                 if (getMatrix != -1)
                 {
@@ -338,7 +335,6 @@ CMatrix evalPrefixForMatrix(vector<string> &expression, vector<CMatrix> matrices
 string replaceTriagomtricForMatrix(string &expression, vector<CMatrix> &matrices)
 {
     // For Trigrometric Function COnversion
-    cout << "Inside ReplaceTri" << endl;
     smatch m;
     string testString = expression;
     bool result = regex_search(testString, m, regex("(sin|cos|sqrt|tan|ln|log).{1,10}.[)]"));
@@ -351,8 +347,6 @@ string replaceTriagomtricForMatrix(string &expression, vector<CMatrix> &matrices
             string d = m[0];
             if (d.find("sin") != string::npos)
             {
-                cout << d << endl;
-                cout << "Inside Sin" << endl;
                 bool additionPar = false;
                 size_t countLeftPar = std::count(d.begin(), d.end(), '(');
                 size_t countRightPar = std::count(d.begin(), d.end(), ')');
@@ -360,10 +354,8 @@ string replaceTriagomtricForMatrix(string &expression, vector<CMatrix> &matrices
                 {
                     additionPar = true;
                 }
-                cout << d << endl;
                 d.erase(d.length() - 1);
                 d.erase(0, d.find('(') + 1);
-                cout << d << endl;
                 smatch checkOp;
                 bool checkOperation = regex_search(d, checkOp, regex("[\/*^+$&@#-]+"));
                 CMatrix tempResult;
@@ -384,19 +376,16 @@ string replaceTriagomtricForMatrix(string &expression, vector<CMatrix> &matrices
                     }
                     tempResult = tempResult.sin();
                     tempResult.setName("S" + std::to_string(count));
-                    cout << tempResult << endl;                    
                     matrices.push_back(tempResult);
                     count++;
                 }
                 else
                 {
-                    cout << "I'm a Matrix" << endl;
                     int isMatrix = isInsideMatrixForMatrix(matrices, d);
                     if (isMatrix != -1)
                     {
                         tempResult = matrices[isMatrix].sin();
                         tempResult.setName("S" + std::to_string(count));
-                        cout << "Matrix Inside Sin : " << endl << tempResult << endl;
                         matrices.push_back(tempResult);
                         count++;
                     }
@@ -538,7 +527,6 @@ string replaceTriagomtricForMatrix(string &expression, vector<CMatrix> &matrices
             }
             else if (d.find("sqrt") != string::npos)
             {
-                cout << "Inside Sqrt" << endl;
                 bool additionPar = false;
                 size_t countLeftPar = std::count(d.begin(), d.end(), '(');
                 size_t countRightPar = std::count(d.begin(), d.end(), ')');
@@ -551,17 +539,14 @@ string replaceTriagomtricForMatrix(string &expression, vector<CMatrix> &matrices
                 smatch checkOp;
                 bool checkOperation = regex_search(d, checkOp, regex("[\/*^+$&@#-]+"));
                 CMatrix tempResult;
-                cout << checkOperation << endl;
                 if (checkOperation == 1)
                 {
                     d = replaceMatrixOperator(d);
                     d = replaceNegativeNumbersForMatrix(d);
                     d = replaceTriagomtricForMatrix(d, matrices);
-                    cout << "d : " << d << endl; 
                     Exp *tree = strToExp(d);
                     string temp;
                     temp += tree->print();
-                    cout << "Expression : " << temp << endl;
                     vector<string> tokens;
                     tokens.clear();
                     tokenize(temp, tokens);
@@ -570,24 +555,19 @@ string replaceTriagomtricForMatrix(string &expression, vector<CMatrix> &matrices
                         tempResult = evalPrefixForMatrix(tokens, matrices);
                     }
                     tempResult = tempResult.sqrt();
-                    cout << tempResult << endl;
                     tempResult.setName("S" + std::to_string(count));
                     matrices.push_back(tempResult);
                     count++;
                 }
                 else
                 {
-                    cout << "Inside Else" << endl;
                     d.erase(std::remove(d.begin(), d.end(), ')'), d.end());
                     d.erase(std::remove(d.begin(), d.end(), '('), d.end());
-                    cout << "D : " << d << endl;
                     int isMatrix = isInsideMatrixForMatrix(matrices, d);
                     if (isMatrix != -1)
                     {
-                        cout << matrices[isMatrix] << endl;
 
                         tempResult = matrices[isMatrix].sqrt();
-                    cout << tempResult << endl;
                         tempResult.setName("S" + std::to_string(count));
                         matrices.push_back(tempResult);
                         count++;
@@ -793,10 +773,8 @@ string getExpressionFromMain(string content, vector<CMatrix> matrices)
         content = replaceTriagomtricForMatrix(content, matrices);
 
         string temp;
-        cout << "Expression : " << content << endl;
         Exp *tree = strToExp(content);
         temp += tree->print();
-        cout << "After Prefixing : " << temp << endl; 
         vector<string> tokens;
         tokens.clear();
         tokenize(temp, tokens);

@@ -181,8 +181,6 @@ string replaceNegativeNumbers(string expression) {
                 numStack.pop_back();
                 num2 = numStack.back();
                 numStack.pop_back();
-                cout << expression[i] << endl;
-                cout << compute(expression[i], num1, num2) << endl;
                 numStack.push_back(compute(expression[i], num1, num2));
             }
             else

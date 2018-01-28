@@ -636,7 +636,7 @@ while ((pos = content.find(" ")) != std::string::npos )
 
                 } else if(isInAssociate == -1 && isInMatrix != -1) { // Inside Matrix
                         string matrixForm = matricesArray[isInMatrix].getMatrixForm();
-                        return matrixForm;
+                        finalMatrixString += matrixForm;
 
                 } else { // Not Found
 
@@ -756,12 +756,10 @@ CMatrix concatMatrices(string content,string name,vector<CMatrix> matricesArray,
                 content[i + 1] = ',';
         }
     }
-
-
+ 
     ExpConcat* tree = strToExpConcat(content);
     content = "";
     content += tree->print();
-
         regex re3("[$]+");    
         sregex_token_iterator it3(content.begin(), content.end(), re3, -1);
         sregex_token_iterator reg_end3;
@@ -769,7 +767,6 @@ CMatrix concatMatrices(string content,string name,vector<CMatrix> matricesArray,
                 string tempString = it3->str();
                 matricesConcatStrings.push_back(tempString);
         }
-
         for(int i = 0; i < matricesConcatStrings.size();i++) {
                 if(matricesConcatStrings[i].length() == 0) {
                         matricesConcatStrings.erase(matricesConcatStrings.begin() + i);
@@ -1790,6 +1787,10 @@ int main(int argc, char* argv[]){
                 "L = (1.2 + 3.4 - 5.6)/(2.1*3.2 + 4.6) - 12.1*3.1 + (1.2 + 5.2)^(4/(3.2+5.6))",
                 "X = ((C*D .+ 4)./2.1 + sqrt(D))./C.^2",
                 "Y = C^3 * sin(1./D)",
+                "M = 4",
+                "A = ( 2.5 * (1.2 + 4.4 / (2.4 + 3.3)) + 12 * sin(0.4) + 2.2^4 / (M.^3 + M.^2 - 5) ).^(-1.4 + 5)",
+                "B = [1.3 2.4;4.6 1.3]",
+                "B = [[1.2 2.3; A 2.3; B], [3.2;-7.8;-3.2; 1.2]]"
     };
 
     vector<CMatrix> matrices;
@@ -1814,7 +1815,6 @@ int main(int argc, char* argv[]){
 
     if(countBracketsForConcatenation > 1) {
         // Case of Concatenation
-        cout << "Concatenated Matrix : " << endl;
         CMatrix finalMatrix = concatMatrices(content,name,matrices,associateValues);
         matrices.push_back(finalMatrix);
         cout << finalMatrix.getName() << " = " << endl;
