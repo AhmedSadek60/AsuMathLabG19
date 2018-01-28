@@ -165,6 +165,26 @@ CMatrix tanOperation(vector<CMatrix> matricesArray,int a ,string target) {
                     and return a matrix that have the result
 
 */
+//ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
+
+
+Matrix expOperation(vector<CMatrix> matricesArray,int a ,string target) {
+        CMatrix returnedResult = matricesArray[a].exp();
+        returnedResult.setName(target);
+        return returnedResult;
+}
+
+
+/*
+
+[ Function Name ] : expOperation
+[ Returned Type ] : CMatrix
+[ inherited Function or Operators from CMatrix Class ] : the Same File
+[ Functionality ] : To Make expOperation to Two Matrices we just pass the whole matrices vector and indeces of the two target matrices,
+                    and return a matrix that have the result
+
+*/
+//ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
 
 CMatrix addOperation(vector<CMatrix> matricesArray,int a,int b,string target) {
         CMatrix returnedResult = matricesArray[a] + matricesArray[b];
@@ -1723,6 +1743,27 @@ int main(int argc, char* argv[]){
               continue;
             } else {
                 CMatrix resultMatrix = logOperation(matrices, isInsideMatrix(matrices, firstParameter), name);
+                matrices.push_back(resultMatrix);
+
+                if(content.find(';') == std::string::npos) {
+                    cout << resultMatrix.getName() << " = " << endl;
+                    cout << resultMatrix;
+                    cout << "######################################################" << endl;
+                }
+
+            }
+
+      }
+
+
+      else if(content.find("exp") != std::string::npos)
+        {
+            content.erase(std::remove(content.begin(), content.end(), ' '), content.end());
+            string firstParameter = content.substr( content.find('exp(') + 1, content.find(')') -  content.find('exp(') - 1 ) ;
+            if(isdigit(firstParameter[0])) {
+              continue;
+            } else {
+                CMatrix resultMatrix = expOperation(matrices, isInsideMatrix(matrices, firstParameter), name);
                 matrices.push_back(resultMatrix);
 
                 if(content.find(';') == std::string::npos) {

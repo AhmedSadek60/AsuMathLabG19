@@ -69,6 +69,13 @@ public:
 	CMatrix cos();
 	CMatrix tan();
 
+//ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
+
+	CMatrix exp();
+
+//ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
+
+
 	// CMatrix operator sin();
 	// CMatrix operator cos();
 	// CMatrix operator tan();

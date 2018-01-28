@@ -486,6 +486,29 @@ CMatrix CMatrix ::sin() {
 	[ functionality ] : get cos of the passed matrix to the caller matrix.
 
 */
+//ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss 3lshan law 3'alat tsheelooh XD
+
+CMatrix CMatrix ::exp() {
+	CMatrix temp(this->nR , this->nC);
+  for (int iR = 0; iR < nR; iR++)
+   for (int iC = 0; iC < nC; iC++)
+     temp.values[iR][iC] = std::exp(values[iR][iC]);
+  return temp;
+}
+
+// CMatrix CMatrix ::operator exp(){
+// 	CMatrix temp(*this);
+//  	temp.expFunc();
+// 	return temp;
+// }
+
+/*
+	[ function name] : exp
+	[ return type] : void
+	[ inherited function/operation ] : none
+	[ functionality ] : get cos of the passed matrix to the caller matrix.
+
+*/ //sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
 
 CMatrix CMatrix ::cos() {
 	CMatrix temp(*this);
