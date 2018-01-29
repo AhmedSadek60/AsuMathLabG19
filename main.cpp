@@ -481,7 +481,7 @@ string tokenizingexpression(string expression , vector<CMatrix> matrices,vector<
                                           - regex_search
                                           - to_string
                                           - IsInsideAssociateArray
-        [ Functionality ] : tokenize Matrix if it has any Matrix inside it or any variables or any operations or expressions ==> and Return a string containing the result matrix 
+        [ Functionality ] : tokenize Matrix if it has any Matrix inside it or any variables or any operations or expressions ==> and Return a string containing the result matrix
 */
 
 string tokenizingMatrix(string data,vector<CMatrix> matricesArray,vector<AssociativeNumber> associateValuesArray) {
@@ -684,7 +684,7 @@ CMatrix concatMatrices(string content,string name,vector<CMatrix> matricesArray,
 /*
 
         [ Function Name ] : readjustingNewLines(char* fileName)
-        [ Function Return Type ] : string 
+        [ Function Return Type ] : string
         [ Inherited Function ] : - length
                                  - isspace
                                  - isdigit
@@ -714,7 +714,7 @@ string readjustingNewLines(char* fileName){
 /*
 
         [ Function Name ] : parse( string line, string &variableName, string &operationLine, bool &verbose )
-        [ Function Return Type ] : Void Function [ None ] 
+        [ Function Return Type ] : Void Function [ None ]
         [ Inherited Function ] : - erase
                                  - remove
                                  - substr
@@ -754,7 +754,7 @@ void parse( string line, string &variableName, string &operationLine, bool &verb
 /*
 
         [ Function Name ] : execute(vector<CMatrix>& matrices, vector<AssociativeNumber>& associateValues, string variableName, string operationLine, bool verbose)
-        [ Function Return Type ] : Void Function [ None ] 
+        [ Function Return Type ] : Void Function [ None ]
         [ Inherited Function ] : - isInsideMatrix
                                  - isInsideAssociate
                                  - replaceMatrixOperator
@@ -856,8 +856,6 @@ int main(int argc, char* argv[]){
 
   bool verbose; // for (not) showing variable value
 
-
-
   if (argc > 1) {
 
     content = readjustingNewLines(argv[1]); // no '\n' after last line
@@ -871,7 +869,57 @@ int main(int argc, char* argv[]){
     }
 
   }
-                      else {
+
+  else {
+    while(1){
+      while(getline(cin, line)){
+
+
+        if( std::count(line.begin(),line.end(),'[') == std::count(line.begin(),line.end(),']') ){ // one line operation/instantiation
+          // cout<< line<<"end of line."<<endl;
+
+          parse(line, variableName, operationLine, verbose);
+          if(variableName == "" && operationLine == "") // skipping empty lines in the file
+            continue;
+
+          execute(matrices, associateValues, variableName, operationLine, verbose);
+
+          continue; // skipping the next while loop
+        }
+
+
+        string subLine; // stores multilines for concatenation and multiline-matrix instantiation
+
+        while( std::count(line.begin(),line.end(),'[') != std::count(line.begin(),line.end(),']') ){ // one bracket was opened but not closed,
+                                                                                                    // keep getting the rest of the line
+          getline(cin, subLine);
+
+          while( subLine[0] == ' ' ){
+            subLine = subLine.substr(1, subLine.length() - 1);
+          }
+
+          line += subLine;
+        }
+        // cout<< line<<"end of line."<<endl;
+
+        parse(line, variableName, operationLine, verbose);
+        if(variableName == "" && operationLine == "") // skipping empty lines in the file
+          continue;
+
+        execute(matrices, associateValues, variableName, operationLine, verbose);
+      }
+
+
+    } // end of while(1)
+
+
+
+
+
+
+
+
+
 
 
 
