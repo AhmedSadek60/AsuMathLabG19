@@ -570,7 +570,7 @@ while ((pos = content.find(" ")) != std::string::npos )
                                         - back() from <vector>
                                         - pop_back() from <vector>
                                         - getnC() , getnR() , setName() From CMatrix.cpp File
-        [ Functionality ] : Concatenate the Matrices
+        [ Functionality ] : Concatenate the Matrices ==> Depends on the ExpConcat Matrix
 */
 
 CMatrix concatMatrices(string content,string name,vector<CMatrix> matricesArray,vector<AssociativeNumber> associateValuesArray) {
@@ -772,10 +772,12 @@ void execute(  vector<CMatrix>& matrices, vector<AssociativeNumber>& associateVa
       if( matrixIndex != -1 ){
         cout<<variableName<<" ="<<endl;
         cout<<matrices[matrixIndex]<<endl;
+        cout << "###################################################################" << endl;
       }
       else if( associativeNumberIndex != -1 ){
         cout<<variableName<<" ="<<endl;
         cout<<associateValues[associativeNumberIndex].getValue()<<endl;
+        cout << "###################################################################" << endl;
       }
   }
   else{ // operation lines
@@ -790,6 +792,7 @@ void execute(  vector<CMatrix>& matrices, vector<AssociativeNumber>& associateVa
         if(verbose){
           cout << finalMatrix.getName() << " = " << endl;
           cout << finalMatrix;
+          cout << "###################################################################" << endl;
         }
     }
     else if(countBracketsForConcatenation == 1) {  // case of constructing a matrix
@@ -797,12 +800,14 @@ void execute(  vector<CMatrix>& matrices, vector<AssociativeNumber>& associateVa
         CMatrix normalMatrix(operationLine);
         if(normalMatrix.getName() == "Error Dimension") {
                 cout << "Error Dimension" << endl;
+                cout << "###################################################################" << endl;
         } else {
                 normalMatrix.setName(variableName);
                 matrices.push_back(normalMatrix);
                 if(verbose){
                 cout << normalMatrix.getName() << " = " << endl;
                 cout << normalMatrix;
+                cout << "###################################################################" << endl;
                 }
         }
     }
@@ -816,16 +821,19 @@ void execute(  vector<CMatrix>& matrices, vector<AssociativeNumber>& associateVa
         if(verbose){
           cout << temp.getName() << " = " << endl;
           cout << temp;
+          cout << "###################################################################" << endl;
         }
       } else {
         double answer = getEvaluation(operationLine);
         if(answer == 184467440737.12345657) {
                 cout << "Expression is Wrong!" << endl;
+                cout << "###################################################################" << endl;
         } else {
                 AssociativeNumber temp(variableName, getEvaluation(operationLine));
                 associateValues.push_back(temp);
                 if(verbose)
                         cout << temp.getName() << " = " << temp.getValue() << endl;
+                        cout << "###################################################################" << endl;
 
         }
       }

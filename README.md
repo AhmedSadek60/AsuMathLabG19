@@ -7,8 +7,9 @@ works on linux os, tested on ubuntu 16.04 LTS
 
 ## Project phases
 - [x] creating the C/C++ matrix class, and support basic operations
-- adding more complex operations, and supporting concatenation
-- ???
+- [x] adding more complex operations, and supporting concatenation
+- [x] adding Concatenation for Matrices
+- [x] adding Expression Evaluation For Both only Numbers and Matrix operations
 
 
 ## Installation & Setup
@@ -146,6 +147,10 @@ C =
 - mult ( * )
 - div ( / )
 - elementWiseDiv ( ./ )
+- elmentWisePow  ( .^ )
+- elmentWiseAdd  ( .+ )
+- elmentWiseSubtract  ( .- )
+- elmentWiseMultiply  ( .* )
 
 ## debugging and enhancements
 
@@ -156,6 +161,9 @@ C =
 - profilingexamplefile.txt
 - profilingbigexamplefile.txt
 - profilingbigexample2file.txt
+- profilingadvexamplefile.txt
+- profilingtrickyexamplefile.txt
+- profilingerrorexamplefile.txt
 ```
 
 ### Outputs Form Files
@@ -164,6 +172,9 @@ C =
 - outputexamplefile.txt
 - outputbigexamplefile.txt
 - outputbigexample2file.txt
+- outputadvexamplefile.txt
+- outputtrickyexamplefile.txt
+- outputerrorexamplefile.txt
 ```
 
 ### Code Style 
