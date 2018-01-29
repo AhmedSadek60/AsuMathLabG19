@@ -794,12 +794,16 @@ void execute(  vector<CMatrix>& matrices, vector<AssociativeNumber>& associateVa
     }
     else if(countBracketsForConcatenation == 1) {  // case of constructing a matrix
         operationLine  = tokenizingMatrix(operationLine, matrices,associateValues);
-        CMatrix normalMatrix(operationLine) ;
-        normalMatrix.setName(variableName);
-        matrices.push_back(normalMatrix);
-        if(verbose){
-          cout << normalMatrix.getName() << " = " << endl;
-          cout << normalMatrix;
+        CMatrix normalMatrix(operationLine);
+        if(normalMatrix.getName() == "Error Dimension") {
+                cout << "Error Dimension" << endl;
+        } else {
+                normalMatrix.setName(variableName);
+                matrices.push_back(normalMatrix);
+                if(verbose){
+                cout << normalMatrix.getName() << " = " << endl;
+                cout << normalMatrix;
+                }
         }
     }
     else if(countBracketsForConcatenation == 0) { // case of operations

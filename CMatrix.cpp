@@ -265,9 +265,11 @@ void CMatrix::copy(string s) {
 				s += line[i];
 			}
 		}
-
-		if(row.nC > 0 && (row.nC == nC || nR == 0))
+		if(row.nC > 0 && (row.nC == nC || nR == 0)) {
 			addRow(row);
+		} else {
+			this->name = "Error Dimension";
+		}
 		line = strtok(NULL, lineSeparators);
 	}
 	delete[] buffer;
@@ -995,7 +997,7 @@ CMatrix CMatrix ::getCofactor(int r, int c) {
 
 /*
 
-[ function name] : getDeterminant
+[ function name] : getDeterminant [ Another Technique ]
 [ return type] : double
 [ inherited function/operation ] : none
 [ functionality ] : returns the determinant of the caller matrix.
