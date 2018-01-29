@@ -56,6 +56,12 @@ public:
     ~Node(){
     }
     string print(){
+        string l_expValue = l_exp->print();
+        string r_expValue = r_exp->print();
+        if(l_expValue == "Wrong" || r_expValue == "Wrong") {
+            string errorString = "Expression is Wrong";
+            return errorString;
+        }
         string operationName = "";
         operationName += op;
         string ta = operationName + " " +  l_exp->print() + " " + r_exp->print();
@@ -147,27 +153,7 @@ Exp* strToExp(string &str){
     } else
     //case value
         return new Term(str);
-// cout << "Error: never execute point" << endl;
-    return NULL;//never
+// cerr << "Error: Expression is Wrong" << endl;
+    return new Term("Wrong");//never
 }
 
-// int main(){
-//     clock_t tStart = clock();
-//     // string exp("5.5 + 12 * sin(0.4) + 2.2^4 - cos(0.6) + 10 * sqrt(0.2) - tan(0.8)");
-//     string exp("(1.2 + 3.4 - 5.6)/(2.1*3.2 + 4.6) - 12.1*3.1 + (1.2 + 5.2)^(4/(3.2+5.6))");
-//     //remove space character
-
-//     exp.erase(remove_if(exp.begin(), exp.end(), ::isspace), exp.end());
-//     cout << exp << endl;
-//     Exp *tree = strToExp(exp);
-//     string s;
-//     s += tree->print();
-//     cout << s << endl;
-//     tree->release();
-//     delete tree;
-//     cout << endl;
-//     // cout << "#################### Execution Time ###################" << endl;
-//     // cout << ((double)(clock() - tStart)/CLOCKS_PER_SEC) * 1000 << "ms" << endl;
-
-//     return 0;
-// }

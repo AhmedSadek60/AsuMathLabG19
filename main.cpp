@@ -302,44 +302,6 @@ CMatrix transposeOperation(vector<CMatrix> &matricesArray,int a,string target) {
 
 /* ############################################################################# */
 
-/*
-
-[ function name] : randFunction
-[ return type] : CMatrix
-[ inherited function/operation ] : -CMatrix Constructor [CMatrix.cpp, line: 22]
-[ functionality ] : Initializes a matrix of Random-value elements with given number of rows & columns  User input ex: rand(4, 4)
-
-*/
-
-CMatrix randFunction(string rowsNumber, string columnsNumber, string target)
-{
-        int numR= atof(rowsNumber.c_str());
-        int numC = atof(columnsNumber.c_str());
-        CMatrix returnedResult = CMatrix(target, numR, numC, CMatrix::MI_RAND, 0.0);
-        return returnedResult;
-}
-
-/* ############################################################################# */
-
-/*
-
-[ function name] : eyeFunction
-[ return type] : CMatrix
-[ inherited function/operation ] : -CMatrix Constructor [CMatrix.cpp, line: 22]
-[ functionality ] : Initializes a matrix of UNITY with given number of rows & columns  User input ex: eye(4, 4)
-
-*/
-
-CMatrix eyeFunction(string rowsNumber, string columnsNumber, string target)
-{
-        int numR= atof(rowsNumber.c_str());
-        int numC = atof(columnsNumber.c_str());
-        CMatrix returnedResult = CMatrix(target, numR, numC, CMatrix::MI_EYE, 0.0);
-        return returnedResult;
-}
-
-
-/* ############################################################################# */
 
 /*
 
@@ -352,23 +314,6 @@ CMatrix eyeFunction(string rowsNumber, string columnsNumber, string target)
 [ functionality ] : converts the first parameter (that is number) of type string to float and constructs a full matrix with it,
                     then performs element wise division with the second parameter (that is a matrix given by the user)
 
-/*#################################################################################*/
-
-CMatrix ZEROSFunction(string rowsNumber, string columnsNumber, string target)
-{
-        int numR= atof(rowsNumber.c_str());
-        int numC = atof(columnsNumber.c_str());
-        CMatrix returnedResult = CMatrix(target, numR, numC, CMatrix::MI_ZEROS, 0.0);
-        return returnedResult;
-}
-/*#################################################################################*/
-
-CMatrix ONESFunction(string rowsNumber, string columnsNumber, string target)
-{
-        CMatrix temp;
-        CMatrix returnedResult(target,atof(rowsNumber.c_str()),atof(columnsNumber.c_str()),CMatrix::MI_ONES, 0.0);
-        return returnedResult;
-}
 /*#################################################################################*/
 
 
@@ -407,36 +352,6 @@ CMatrix elmentWiseDivOperationNormal(vector<CMatrix> &matricesArray,int a,int b,
 
 /* ############################################################################# */
 
-/*
-[ function name] : logOperation
-[ return type] : CMatrix
-[ inherited function/operation ] : getLog() [CMatrix.cpp, line: ]
-[ functionality ] : Performs Log operation on Matrices
-*/
-
-CMatrix logOperation(vector<CMatrix> &matricesArray,int a,string target)
-{
-        CMatrix returnedResult = matricesArray[a].getLog();
-        returnedResult.setName(target);
-        return returnedResult;
-}
-
-/* ############################################################################# */
-
-/*
-[ function name] : lnOperation
-[ return type] : CMatrix
-[ inherited function/operation ] : getLn() [CMatrix.cpp, line: ]
-[ functionality ] : Performs Log operation on Matrices
-*/
-
-CMatrix lnOperation(vector<CMatrix> &matricesArray,int a,string target)
-{
-        CMatrix returnedResult = matricesArray[a].getLn();
-        returnedResult.setName(target);
-        return returnedResult;
-}
-
 /* ############################################################################# */
 
 /*
@@ -461,48 +376,19 @@ bool checkNumeric(const string &str) {
 
 
 
-/*
-        [ Function Name ] : replaceMatrixOperator(string x)
-        [ Function Return Type ] : string
-        [ Function Inherited Function ] :
-                                        - size() from <string>
-                                        - replace() from <string>
-        [ Functionality ] : Replace Matrix Operators [ .+ , .- , .* , ./ , .^ ] to [ @ , ? , # , $ , & ]
-*/
-
-
-
-CMatrix getEvaluationForMatrix(string token,vector<CMatrix> matricesArray) {
-
-        token.erase(remove_if(token.begin(), token.end(), ::isspace), token.end());
-        // token = replaceTriagomtric(token);
-        token = replaceNegativeNumbersForMatrix(token);
-
-
-
-        Exp *finalResult = strToExp(token);
-        string tempFinal;
-        tempFinal += finalResult->print();
-            cout << tempFinal << endl;
-        vector<string> tokens;
-        tokens.clear();
-        tokenizeForMatrix(tempFinal, tokens);
-        if(tokens.size()) {
-                CMatrix resultFromEval = evalPrefixForMatrix(tokens,matricesArray);
-                return resultFromEval;
-        }
-
-
-}
 
 
 
 
 /*
-        [ Function Name ] :
-        [ Function Returned Type ] :
-        [ Function Inherited Function ] :
-        [ Functionality ] :
+        [ Function Name ] : getEvaluation(string token)
+        [ Function Returned Type ] : double
+        [ Function Inherited Function ] : - erase
+                                          - strToExp() -> Class Exp in testexp.cpp file
+                                          - print() -> Class Exp in testexp.cpp file
+                                          - tokenize() -> Prefixevaluator.cpp
+                                          - evalPrefix() -> Prefixevaluator.cpp
+        [ Functionality ] : Get the Evaluation of any Expression
 */
 
 double getEvaluation(string token) {
@@ -516,12 +402,16 @@ double getEvaluation(string token) {
         Exp *finalResult = strToExp(token);
         string tempFinal;
         tempFinal += finalResult->print();
+        if(tempFinal.find("Expression is Wrong") != std::string::npos) {
+                return 184467440737.12345657;
+        }
         vector<string> tokens;
         tokens.clear();
         tokenize(tempFinal, tokens);
         if(tokens.size()) {
                 return evalPrefix(tokens);
         }
+
 
 }
 
@@ -583,10 +473,15 @@ string tokenizingexpression(string expression , vector<CMatrix> matrices,vector<
 
 /* ############################################################################# */
 /*
-        [ Function Name ] :
-        [ Function Return Type ] :
-        [ Function Inherited Function ] :
-        [ Functionality ] :
+        [ Function Name ] : tokenizingMatrix(string data,vector<CMatrix> matricesArray,vector<AssociativeNumber> associateValuesArray)
+        [ Function Return Type ] : string
+        [ Function Inherited Function ] : - erase
+                                          - remove
+                                          - substr
+                                          - regex_search
+                                          - to_string
+                                          - IsInsideAssociateArray
+        [ Functionality ] : tokenize Matrix if it has any Matrix inside it or any variables or any operations or expressions ==> and Return a string containing the result matrix 
 */
 
 string tokenizingMatrix(string data,vector<CMatrix> matricesArray,vector<AssociativeNumber> associateValuesArray) {
@@ -679,70 +574,6 @@ while ((pos = content.find(" ")) != std::string::npos )
 */
 
 CMatrix concatMatrices(string content,string name,vector<CMatrix> matricesArray,vector<AssociativeNumber> associateValuesArray) {
-//         CMatrix matrixConcat;
-// //     content.erase(0,1);
-// //     content.erase(content.length() - 1);
-//     for(int i = 0 ; i < content.length() - 1;i++) {
-//         if(content[i] == '[' && i != 0) {
-//             for(int j = i + 1;j < i - content.find(']',i);j++) {
-//                 if(content[j] == ']') {
-//                     break;
-//                 }
-//                 if(content[j] == ';') {
-//                     content[j] = '%';
-//                 }
-
-//             }
-//         }
-
-//     }
-
-//     // Start the Concatentation
-
-
-
-//     regex re("[;\\n]+");
-//     string tempTest = content;
-//     sregex_token_iterator it(tempTest.begin(), tempTest.end(), re, -1);
-//     sregex_token_iterator reg_end;
-//     for (; it != reg_end; ++it) {
-//             string tempTokenizing = it->str();
-//             if(std::count(tempTokenizing.begin() , tempTokenizing.end() , '[') > 1) {
-//                 vector<CMatrix> matrixConcatCols;
-//                 regex re2("[\\[\\],]+");
-//                 sregex_token_iterator it2(tempTokenizing.begin(), tempTokenizing.end(), re2, -1);
-//                 sregex_token_iterator reg_end2;
-//                 for(;it2 != reg_end2;++it2) {
-//                     string testString = it2->str();
-//                     string secondTempString = testString;
-//                     secondTempString = tokenizingMatrix(secondTempString,matricesArray,associateValuesArray);
-//                     CMatrix temp(secondTempString);
-//                     if(temp.getnC() != 0 && temp.getnR() != 0) {
-//                         matrixConcatCols.push_back(temp);
-//                     }
-//                 }
-//                 for(int i = 0; i < matrixConcatCols.size();i++) {
-//                         CMatrix first = matrixConcatCols.back();
-//                         matrixConcatCols.pop_back();
-//                         CMatrix second = matrixConcatCols.back();
-//                         matrixConcatCols.pop_back();
-//                         second.addColumn(first);
-//                         matrixConcatCols.push_back(second);
-//                 }
-//                 matrixConcat.addRow(matrixConcatCols[0]);
-//                 matrixConcatCols.pop_back();
-
-//             } else {
-//                     tempTokenizing = tokenizingMatrix(tempTokenizing,matricesArray,associateValuesArray);
-//                     CMatrix temp(tempTokenizing);
-//                     matrixConcat.addRow(temp);
-//             }
-
-//     }
-
-
-//     matrixConcat.setName(name);
-//     return matrixConcat;
 
     vector<CMatrix> matrixConcat;
     vector<string> matricesConcatStrings;
@@ -847,42 +678,18 @@ CMatrix concatMatrices(string content,string name,vector<CMatrix> matricesArray,
 
 }
 /* ############################################################################# */
-string replaceStrChar(string str, const string& replace, char ch) {
 
-  // set our locator equal to the first appearance of any character in replace
-  size_t found = str.find_first_of(replace);
-
-  while (found != string::npos) { // While our position in the sting is in range.
-    str[found] = ch; // Change the character at position.
-    found = str.find_first_of(replace, found+1); // Relocate again.
-  }
-
-  return str; // return our new string.
-}
-
-
-
-string getFileContents(char * fileName) {
-
-        std::ifstream ifs( fileName );
-        std::string content( (std::istreambuf_iterator<char>(ifs) ),
-        (std::istreambuf_iterator<char>()    ) );
-
-
-        return content;
-}
-
-
-
-/* ############################################################################# */
-
-// --------------------------- parsingPhase2 -----------------------------------------------
+// --------------------------- parsingPhase2 -----------------------------------------------//
 
 /*
 
-input: char* filename
-funcion: reassigns '\n' where needed, avoiding (handling) the concatenation case.
-return: string content
+        [ Function Name ] : readjustingNewLines(char* fileName)
+        [ Function Return Type ] : string 
+        [ Inherited Function ] : - length
+                                 - isspace
+                                 - isdigit
+                                 - length
+        [ Functionality ] : - For Case C in advExample File
 
 */
 
@@ -906,10 +713,13 @@ string readjustingNewLines(char* fileName){
 
 /*
 
-input: string line, string &variableName, string &operationLine, bool &verbose
-funcion: parses the variable name on the lhs of the = sign, and the operation line on the rhs of the = sign.
-         checks if the variable value needs printing afterwards.
-return: void
+        [ Function Name ] : parse( string line, string &variableName, string &operationLine, bool &verbose )
+        [ Function Return Type ] : Void Function [ None ] 
+        [ Inherited Function ] : - erase
+                                 - remove
+                                 - substr
+                                 - length
+        [ Functionality ] : - Parse the input string if it ( Expression , Matrix , Matrix Concatenation )
 
 */
 void parse( string line, string &variableName, string &operationLine, bool &verbose ){
@@ -938,26 +748,18 @@ void parse( string line, string &variableName, string &operationLine, bool &verb
   }
 
     variableName.erase(std::remove(variableName.begin(),variableName.end(),' '),variableName.end()); // removing spaces
-    // operationLine.erase(std::remove(operationLine.begin(),operationLine.end(),' '),operationLine.end()); // removing spaces
-
-    // int i = 0;
-    // while(operationLine[i] == ' '){ // removing spaces from the beginning of the line
-    //   cout<<"here"<<endl;
-    //   cout<<operationLine<<endl;
-    //   operationLine = operationLine.substr(i + 1);
-    //   ++i;
-    // }
-
-    // operationLine = operationLine.substr(1);
 
 }
 
 /*
 
-input: vector<CMatrix>& matrices, vector<AssociativeNumber>& associateValues,
-       string variableName, string operationLine, bool verbose
-funcion: executes the operations on the rhs of the = sign, and stores the value in the corresponding vector
-return: void
+        [ Function Name ] : execute(vector<CMatrix>& matrices, vector<AssociativeNumber>& associateValues, string variableName, string operationLine, bool verbose)
+        [ Function Return Type ] : Void Function [ None ] 
+        [ Inherited Function ] : - isInsideMatrix
+                                 - isInsideAssociate
+                                 - replaceMatrixOperator
+                                 - concatMatrices
+        [ Functionality ] : - Executes Every Line in the File ( Expression , Matrix , Concatenated Matrix )
 
 */
 void execute(  vector<CMatrix>& matrices, vector<AssociativeNumber>& associateValues, string variableName, string operationLine, bool verbose ){
@@ -1012,10 +814,16 @@ void execute(  vector<CMatrix>& matrices, vector<AssociativeNumber>& associateVa
           cout << temp;
         }
       } else {
-        AssociativeNumber temp(variableName, getEvaluation(operationLine));
-        associateValues.push_back(temp);
-        if(verbose)
-          cout << temp.getName() << " = " << temp.getValue() << endl;
+        double answer = getEvaluation(operationLine);
+        if(answer == 184467440737.12345657) {
+                cout << "Expression is Wrong!" << endl;
+        } else {
+                AssociativeNumber temp(variableName, getEvaluation(operationLine));
+                associateValues.push_back(temp);
+                if(verbose)
+                        cout << temp.getName() << " = " << temp.getValue() << endl;
+
+        }
       }
 
     }
@@ -1052,452 +860,7 @@ int main(int argc, char* argv[]){
 
   }
                       else {
-                //       vector<CMatrix> matrices;
 
-                //         string s;
-                //         string line;
-                //         string semicolonCheck;
-                //         while(1) {
-                //           getline(cin, s);
-
-                //           if(s.find('[') != string::npos && s.find(']') == string::npos ) {
-                //               getline(cin,line, ']');
-                //               string name = "";
-                //               name += s[0];
-                //               CMatrix temp(name, line);
-                //               matrices.push_back(temp);
-
-
-                //                 getline(cin ,semicolonCheck);
-                //                 if(semicolonCheck == "") {
-                //                         cout << temp.getName() << " = " << endl;
-                //                         cout << temp;
-                //                         cout << "######################################################" << endl;
-
-                //                 } else if(semicolonCheck == ";"){
-                //                         semicolonCheck = "";
-                //                 }
-
-                //           } else if(s.find('[') != string::npos && s.find(']') != string::npos){
-                //               string name = s.substr(0 , s.find('='));
-                //               name.erase(std::remove(name.begin(),name.end(),' '),name.end());
-                //               size_t found = s.find('[');
-                //               string matrixData,matrixName;
-                //               if(found != std::string::npos) {
-                //                 matrixData = s.substr(0,s.find(']') + 1);
-                //                 matrixData.erase(0,matrixData.find('['));
-                //                 matrixData.erase(std::remove(matrixData.begin(), matrixData.end(), '\n'), matrixData.end());
-                //               }
-                //               CMatrix temp(name , matrixData);
-                //               matrices.push_back(temp);
-
-                //                 if(s.find(';' , s.find(']')) != std::string::npos) {
-                //                         semicolonCheck = "";
-                //               } else {
-                //                       cout << temp.getName() << " = " << endl;
-                //                       cout << temp;
-                //                       cout << "######################################################" << endl;
-
-                //               }
-
-
-
-
-                //           } else if(s.find('[') == string::npos && s.find(']') == string::npos && s.find("=") != string::npos) {
-                //             if(s.find('+') != std::string::npos) {
-                //                 s.erase(std::remove(s.begin(), s.end(), ' '), s.end());
-                //                 string firstParameter = s.substr(s.find('=') + 1, s.find('+') - (s.find('=') + 1));
-                //                 string secondParameter = s.substr(s.find('+') + 1);
-                //                 string result = s.substr(0,s.find('='));
-
-                //                 int firstParameterIndex = isInsideMatrix(matrices,firstParameter);
-                //                 CMatrix firstParameterTemp = matrices[firstParameterIndex];
-
-                //                 int secondParameterIndex = isInsideMatrix(matrices,secondParameter);
-                //                 CMatrix secondParameterTemp = matrices[secondParameterIndex];
-
-
-                //                 if(firstParameterTemp.getnR() != secondParameterTemp.getnR() || firstParameterTemp.getnC() != secondParameterTemp.getnC()) {
-                //                                 cout << "This Operation Can't be Made Because Matrices is not in Compatible Shape." << endl;
-                //                                 cout << "######################################################" << endl;
-
-                //                 } else {
-
-                //                         if(s.find(';') == std::string::npos) {
-                //                                 CMatrix resultMatrix = addOperation(matrices,isInsideMatrix(matrices,firstParameter),isInsideMatrix(matrices,secondParameter),result);
-                //                                 matrices.push_back(resultMatrix);
-                //                                 cout << resultMatrix.getName() << " = " << endl;
-                //                                 cout << resultMatrix;
-                //                                 cout << "######################################################" << endl;
-
-
-                //                         } else {
-                //                                 CMatrix resultMatrix = addOperation(matrices,isInsideMatrix(matrices,firstParameter),isInsideMatrix(matrices,secondParameter),result);
-                //                                 matrices.push_back(resultMatrix);
-                //                         }
-
-                //                 }
-
-
-
-
-                //             }
-                //             else if(s.find('-') != std::string::npos) {
-                //             s.erase(std::remove(s.begin(), s.end(), ' '), s.end());
-
-                //                 string firstParameter = s.substr(s.find('=') + 1, s.find('-') - (s.find('=') + 1));
-                //                 string secondParameter = s.substr(s.find('-') + 1);
-                //                 string result = s.substr(0,s.find('='));
-
-                //                 int firstParameterIndex = isInsideMatrix(matrices,firstParameter);
-                //                 CMatrix firstParameterTemp = matrices[firstParameterIndex];
-
-                //                 int secondParameterIndex = isInsideMatrix(matrices,secondParameter);
-                //                 CMatrix secondParameterTemp = matrices[secondParameterIndex];
-
-                //                 if(firstParameterTemp.getnR() != secondParameterTemp.getnR() || firstParameterTemp.getnC() != secondParameterTemp.getnC()) {
-                //                                 cout << "This Operation Can't be Made Because Matrices is not in Compatible Shape." << endl;
-                //                                 cout << "######################################################" << endl;
-
-                //                 } else {
-
-                //                         if(s.find(';') == std::string::npos) {
-                //                                 CMatrix resultMatrix = subOperation(matrices,isInsideMatrix(matrices,firstParameter),isInsideMatrix(matrices,secondParameter),result);
-                //                                 matrices.push_back(resultMatrix);
-                //                                 cout << resultMatrix.getName() << " = " << endl;
-                //                                 cout << resultMatrix;
-                //                                 cout << "######################################################" << endl;
-
-                //                         } else {
-                //                                 CMatrix resultMatrix = subOperation(matrices,isInsideMatrix(matrices,firstParameter),isInsideMatrix(matrices,secondParameter),result);
-                //                                 matrices.push_back(resultMatrix);
-
-                //                         }
-                //                 }
-
-
-
-
-                //             }
-                //             else if(s.find('*') != std::string::npos) {
-                //             s.erase(std::remove(s.begin(), s.end(), ' '), s.end());
-
-                //                 string firstParameter = s.substr(s.find('=') + 1, s.find('*') - (s.find('=') + 1));
-                //                 string secondParameter = s.substr(s.find('*') + 1);
-                //                 string result = s.substr(0,s.find('='));
-
-                //                 int firstParameterIndex = isInsideMatrix(matrices,firstParameter);
-                //                 CMatrix firstParameterTemp = matrices[firstParameterIndex];
-
-                //                 int secondParameterIndex = isInsideMatrix(matrices,secondParameter);
-                //                 CMatrix secondParameterTemp = matrices[secondParameterIndex];
-
-                //                 if( firstParameterTemp.getnC() != secondParameterTemp.getnR() ){
-                //                                 cout << "This Operation Can't be Made Because Matrices is not in Compatible Shape." << endl;
-                //                                 cout << "######################################################" << endl;
-                //                 }else{
-                //                         if(s.find(';') == std::string::npos) {
-                //                                 CMatrix resultMatrix = multiplyOperation(matrices,isInsideMatrix(matrices,firstParameter),isInsideMatrix(matrices,secondParameter),result);
-                //                                 matrices.push_back(resultMatrix);
-                //                                 cout << resultMatrix.getName() << " = " << endl;
-                //                                 cout << resultMatrix;
-                //                                 cout << "######################################################" << endl;
-
-                //                         } else {
-                //                                 CMatrix resultMatrix = multiplyOperation(matrices,isInsideMatrix(matrices,firstParameter),isInsideMatrix(matrices,secondParameter),result);
-                //                                 matrices.push_back(resultMatrix);
-
-                //                         }
-
-                //                       }
-
-                //             }
-
-                //             else if(s.find("./") != std::string::npos) {
-                //               s.erase(std::remove(s.begin(), s.end(), ' '), s.end());
-
-                //               string firstParameter = s.substr(s.find('=') + 1, s.find("./") - (s.find('=') + 1));
-                //               string secondParameter = s.substr(s.find("./") + 2);
-                //               string result = s.substr(0,s.find('='));
-
-                //               if(checkNumeric(firstParameter)) {
-
-                //                 CMatrix resultMatrix = elmentWiseDivOperationNumber(matrices,isInsideMatrix(matrices,secondParameter),firstParameter,result);
-                //                 matrices.push_back(resultMatrix);
-
-                //                 if(s.find(';') == std::string::npos) {
-                //                         cout << resultMatrix.getName() << " = " << endl;
-                //                         cout << resultMatrix;
-                //                         cout << "######################################################" << endl;
-
-                //                 }
-
-                //               } else {
-                //                 CMatrix resultMatrix = elmentWiseDivOperationNormal(matrices,isInsideMatrix(matrices,secondParameter),isInsideMatrix(matrices,firstParameter),result);
-                //                 matrices.push_back(resultMatrix);
-
-                //                 if(s.find(';') == std::string::npos) {
-                //                         cout << resultMatrix.getName() << " = " << endl;
-                //                         cout << resultMatrix;
-                //                         cout << "######################################################" << endl;
-
-                //                 }
-
-                //               }
-
-
-                //             }
-
-                //             else if(s.find('/') != std::string::npos && s.find('.') == std::string::npos) {
-                //                 s.erase(std::remove(s.begin(), s.end(), ' '), s.end());
-
-                //                 string firstParameter = s.substr(s.find('=') + 1, s.find('/') - (s.find('=') + 1));
-                //                 string secondParameter = s.substr(s.find('/') + 1);
-                //                 string result = s.substr(0,s.find('='));
-
-                //                 int firstParameterIndex = isInsideMatrix(matrices,firstParameter);
-                //                 CMatrix firstParameterTemp = matrices[firstParameterIndex];
-
-                //                 int secondParameterIndex = isInsideMatrix(matrices,secondParameter);
-                //                 CMatrix secondParameterTemp = matrices[secondParameterIndex].getInverse();
-                //                 if(secondParameterTemp.getName() == "Invert") {
-                //                         cout << "This Operation Can't Be Made Because [ " << secondParameter << " ] Can't Be Inverted" << endl;
-                //                         cout << "######################################################" << endl;
-
-                //                 } else if(secondParameterTemp.getnC() != secondParameterTemp.getnR()) {
-                //                         cout << "This Operation Can't Be Made Because [ " << secondParameter << " ] not a Square Matrix" << endl;
-                //                         cout << "######################################################" << endl;
-
-                //                 } else if(firstParameterTemp.getnC() != secondParameterTemp.getnR()) {
-                //                         cout << "This Operation Can't be Made Because Matrices is not in Compatible Shape." << endl;
-                //                         cout << "######################################################" << endl;
-
-                //                 } else {
-                //                         if(s.find(';') == std::string::npos) {
-                //                                 CMatrix resultMatrix = divideOperation(matrices,isInsideMatrix(matrices,firstParameter),isInsideMatrix(matrices,secondParameter),result);
-                //                                 matrices.push_back(resultMatrix);
-                //                                 cout << resultMatrix.getName() << " = " << endl;
-                //                                 cout << resultMatrix;
-                //                                 cout << "######################################################" << endl;
-
-                //                         } else {
-                //                                 CMatrix resultMatrix = divideOperation(matrices,isInsideMatrix(matrices,firstParameter),isInsideMatrix(matrices,secondParameter),result);
-                //                                 matrices.push_back(resultMatrix);
-                //                         }
-                //                 }
-
-                //             }
-                //             else if(s.find("'") != std::string::npos) {
-                //                 s.erase(std::remove(s.begin(), s.end(), ' '), s.end());
-                //                 string firstParameter = s.substr(s.find('=') + 1,1);
-                //                 string result = s.substr(0,s.find('='));
-
-                //                 if(s.find(';') == std::string::npos) {
-                //                         CMatrix resultMatrix = transposeOperation(matrices,isInsideMatrix(matrices,firstParameter),result);
-                //                         matrices.push_back(resultMatrix);
-                //                         cout << resultMatrix.getName() << " = " << endl;
-                //                         cout << resultMatrix;
-                //                         cout << "######################################################" << endl;
-
-                //                 } else {
-                //                         CMatrix resultMatrix = transposeOperation(matrices,isInsideMatrix(matrices,firstParameter),result);
-                //                         matrices.push_back(resultMatrix);
-                //                 }
-
-
-
-                //             }
-
-                            // else if(s.find("rand") != std::string::npos)
-                            // {
-                            //     s.erase(std::remove(s.begin(), s.end(), ' '), s.end());
-                            //     string result = s.substr(0,s.find('='));
-                            //     string rowsNumber = s.substr(s.find('(') + 1, s.find(',') - (s.find('(') + 1));
-                            //     string columnsNumber = s.substr(s.find(',') + 1, s.find(')') - (s.find(',') + 1));
-                            //
-                            //
-                            //     if(s.find(';') == std::string::npos)
-                            //     {
-                            //            CMatrix resultMatrix = randFunction(rowsNumber, columnsNumber, result);
-                            //            matrices.push_back(resultMatrix);
-                            //             cout << resultMatrix.getName() << " = " << endl;
-                            //             cout << resultMatrix;
-                            //             cout << "######################################################" << endl;
-                            //     }
-                            //     else
-                            //     {
-                            //             CMatrix resultMatrix = randFunction(rowsNumber, columnsNumber, result);
-                            //             matrices.push_back(resultMatrix);
-                            //     }
-                            // }
-                            //
-                            // else if(s.find("eye") != std::string::npos)
-                            // {
-                            //     s.erase(std::remove(s.begin(), s.end(), ' '), s.end());
-                            //     string result = s.substr(0,s.find('='));
-                            //     string rowsNumber = s.substr(s.find('(') + 1, s.find(',') - (s.find('(') + 1));
-                            //     string columnsNumber = s.substr(s.find(',') + 1, s.find(')') - (s.find(',') + 1));
-                            //
-                            //
-                            //     if(s.find(';') == std::string::npos)
-                            //     {
-                            //            CMatrix resultMatrix = eyeFunction(rowsNumber, columnsNumber, result);
-                            //            matrices.push_back(resultMatrix);
-                            //             cout << resultMatrix.getName() << " = " << endl;
-                            //             cout << resultMatrix;
-                            //             cout << "######################################################" << endl;
-                            //     }
-                            //     else
-                            //     {
-                            //             CMatrix resultMatrix = eyeFunction(rowsNumber, columnsNumber, result);
-                            //             matrices.push_back(resultMatrix);
-                            //     }
-                            // }
-
-                //           } else if(s.find("=") == string::npos && s != "") {
-                //             int matrixIndex = isInsideMatrix(matrices,s);
-                //             if(matrixIndex == -1) {
-                //               cout << "Uninitialized Matrix" << endl;
-
-                //             } else {
-                //               cout << matrices[matrixIndex];
-                //               cout << "###################################" << endl;
-
-                //             }
-
-                //           }          // conflict
-                          // }          // conflict
-
-                //         }
-
-
-                // }
-
-                /* ########################################## */
-                /* Test Cases */
-                //       string s = "[8.9 7.3 4.8 2.4 2.3 6.5 8.9 1.2 4.9 3.8 7.2 7.5 9.8 3.4 7.5 8.9 8.9 7.3 4.8 2.4 2.3 6.5 8.9 1.2 4.9 3.8 7.2 7.5 9.8 3.4 7.5 8.9;8.9 7.3 4.8 2.4 2.3 6.5 8.9 1.2 4.9 3.8 7.2 7.5 9.8 3.4 7.5 8.9 8.9 7.3 4.8 2.4 2.3 6.5 8.9 1.2 4.9 3.8 7.2 7.5 9.8 3.4 7.5 8.9;8.9 7.3 4.8 2.4 2.3 6.5 8.9 1.2 4.9 3.8 7.2 7.5 9.8 3.4 7.5 8.9 8.9 7.3 4.8 2.4 2.3 6.5 8.9 1.2 4.9 3.8 7.2 7.5 9.8 3.4 7.5 8.9;8.9 7.3 4.8 2.4 2.3 6.5 8.9 1.2 4.9 3.8 7.2 7.5 9.8 3.4 7.5 8.9 8.9 7.3 4.8 2.4 2.3 6.5 8.9 1.2 4.9 3.8 7.2 7.5 9.8 3.4 7.5 8.9;8.9 7.3 4.8 2.4 2.3 6.5 8.9 1.2 4.9 3.8 7.2 7.5 9.8 3.4 7.5 8.9 8.9 7.3 4.8 2.4 2.3 6.5 8.9 1.2 4.9 3.8 7.2 7.5 9.8 3.4 7.5 8.9;8.9 7.3 4.8 2.4 2.3 6.5 8.9 1.2 4.9 3.8 7.2 7.5 9.8 3.4 7.5 8.9 8.9 7.3 4.8 2.4 2.3 6.5 8.9 1.2 4.9 3.8 7.2 7.5 9.8 3.4 7.5 8.9;8.9 7.3 4.8 2.4 2.3 6.5 8.9 1.2 4.9 3.8 7.2 7.5 9.8 3.4 7.5 8.9 8.9 7.3 4.8 2.4 2.3 6.5 8.9 1.2 4.9 3.8 7.2 7.5 9.8 3.4 7.5 8.9;8.9 7.3 4.8 2.4 2.3 6.5 8.9 1.2 4.9 3.8 7.2 7.5 9.8 3.4 7.5 8.9 8.9 7.3 4.8 2.4 2.3 6.5 8.9 1.2 4.9 3.8 7.2 7.5 9.8 3.4 7.5 8.9;8.9 7.3 4.8 2.4 2.3 6.5 8.9 1.2 4.9 3.8 7.2 7.5 9.8 3.4 7.5 8.9 8.9 7.3 4.8 2.4 2.3 6.5 8.9 1.2 4.9 3.8 7.2 7.5 9.8 3.4 7.5 8.9;8.9 7.3 4.8 2.4 2.3 6.5 8.9 1.2 4.9 3.8 7.2 7.5 9.8 3.4 7.5 8.9 8.9 7.3 4.8 2.4 2.3 6.5 8.9 1.2 4.9 3.8 7.2 7.5 9.8 3.4 7.5 8.9;8.9 7.3 4.8 2.4 2.3 6.5 8.9 1.2 4.9 3.8 7.2 7.5 9.8 3.4 7.5 8.9 8.9 7.3 4.8 2.4 2.3 6.5 8.9 1.2 4.9 3.8 7.2 7.5 9.8 3.4 7.5 8.9;8.9 7.3 4.8 2.4 2.3 6.5 8.9 1.2 4.9 3.8 7.2 7.5 9.8 3.4 7.5 8.9 8.9 7.3 4.8 2.4 2.3 6.5 8.9 1.2 4.9 3.8 7.2 7.5 9.8 3.4 7.5 8.9;8.9 7.3 4.8 2.4 2.3 6.5 8.9 1.2 4.9 3.8 7.2 7.5 9.8 3.4 7.5 8.9 8.9 7.3 4.8 2.4 2.3 6.5 8.9 1.2 4.9 3.8 7.2 7.5 9.8 3.4 7.5 8.9;8.9 7.3 4.8 2.4 2.3 6.5 8.9 1.2 4.9 3.8 7.2 7.5 9.8 3.4 7.5 8.9 8.9 7.3 4.8 2.4 2.3 6.5 8.9 1.2 4.9 3.8 7.2 7.5 9.8 3.4 7.5 8.9;8.9 7.3 4.8 2.4 2.3 6.5 8.9 1.2 4.9 3.8 7.2 7.5 9.8 3.4 7.5 8.9 8.9 7.3 4.8 2.4 2.3 6.5 8.9 1.2 4.9 3.8 7.2 7.5 9.8 3.4 7.5 8.9;8.9 7.3 4.8 2.4 2.3 6.5 8.9 1.2 4.9 3.8 7.2 7.5 9.8 3.4 7.5 8.9 8.9 7.3 4.8 2.4 2.3 6.5 8.9 1.2 4.9 3.8 7.2 7.5 9.8 3.4 7.5 8.9;8.9 7.3 4.8 2.4 2.3 6.5 8.9 1.2 4.9 3.8 7.2 7.5 9.8 3.4 7.5 8.9 8.9 7.3 4.8 2.4 2.3 6.5 8.9 1.2 4.9 3.8 7.2 7.5 9.8 8.6 7.5 8.9;8.9 7.3 4.8 2.4 2.3 6.5 8.9 1.2 4.9 3.8 7.2 7.5 9.8 3.4 7.5 8.9 8.9 7.3 4.8 2.4 2.3 6.5 8.9 1.2 4.9 3.8 7.2 7.5 9.8 3.4 7.5 8.9;8.9 7.3 4.8 2.4 2.3 6.5 8.9 1.2 4.9 3.8 7.2 7.5 9.8 3.4 7.5 8.9 8.9 7.3 4.8 2.4 2.3 6.5 8.9 1.2 4.9 3.8 7.2 7.5 9.8 3.4 7.5 8.9;8.9 7.3 4.8 2.4 2.3 6.5 8.9 1.2 4.9 3.8 7.2 7.5 9.8 3.4 7.5 8.9 8.9 7.3 4.8 2.4 2.3 6.5 8.9 1.2 4.9 3.8 7.2 7.5 9.8 3.4 7.5 8.9;8.9 7.3 4.8 2.4 2.3 6.5 8.9 1.2 4.9 3.8 7.2 7.5 9.8 3.4 7.5 8.9 8.9 7.3 4.8 2.4 2.3 6.5 8.9 1.2 4.9 3.8 7.2 7.5 9.8 3.4 7.5 8.9;8.9 7.3 4.8 2.4 2.3 6.5 8.9 1.2 4.9 3.8 7.2 7.5 9.8 3.4 7.5 8.9 8.9 7.3 4.8 2.4 2.3 6.5 8.9 1.2 4.9 3.8 7.2 7.5 9.8 3.4 7.5 8.9;8.9 7.3 4.8 2.4 2.3 6.5 8.9 1.2 4.9 3.8 7.2 7.5 9.8 3.4 7.5 8.9 8.9 7.3 4.8 2.4 2.3 6.5 8.9 1.2 4.9 3.8 7.2 7.5 9.8 3.4 7.5 8.9;8.9 7.3 4.8 2.4 2.3 6.5 8.9 1.2 4.9 3.8 7.2 7.5 9.8 3.4 7.5 8.9 8.9 7.3 4.8 2.4 2.3 6.5 8.9 1.2 4.9 3.8 7.2 7.5 9.8 3.4 7.5 8.9;8.9 7.3 4.8 2.4 2.3 6.5 8.9 1.2 4.9 3.8 7.2 7.5 9.8 3.4 7.5 8.9 8.9 7.6 4.8 2.4 2.3 6.5 8.9 1.2 4.9 3.8 7.2 7.5 9.8 3.4 7.5 8.9;8.9 7.3 4.8 2.4 2.3 6.5 8.9 1.2 4.9 3.8 7.2 7.5 9.8 3.4 7.5 8.9 8.9 7.3 4.8 2.4 2.3 6.5 8.9 1.2 4.9 3.8 7.2 7.5 9.8 3.4 7.5 8.9;8.9 7.3 4.8 2.4 2.3 6.5 8.9 1.2 4.9 3.8 7.2 7.5 9.8 3.4 7.5 8.9 8.9 7.3 4.8 2.4 2.3 6.5 8.9 1.2 4.9 3.8 7.2 7.5 9.8 3.4 7.5 8.9;8.9 7.3 4.8 2.4 2.3 6.5 8.9 1.2 4.9 3.8 7.2 7.5 9.8 3.4 7.5 8.9 8.9 7.3 4.8 2.4 2.3 6.5 8.9 1.2 4.9 3.8 7.2 7.5 9.8 3.4 7.5 8.9;8.9 7.3 4.8 2.4 2.3 6.5 8.9 1.2 4.8 3.8 7.2 7.5 9.8 3.4 7.5 8.9 8.9 7.3 4.8 2.4 2.3 6.5 8.9 1.2 4.9 3.8 7.2 7.5 9.8 3.4 7.5 8.9;8.9 7.3 4.8 2.4 2.3 6.5 8.9 1.2 4.9 3.8 7.2 7.5 9.8 3.4 7.5 8.9 8.9 7.3 4.8 2.4 2.3 6.5 8.9 1.2 4.9 3.8 7.2 7.5 9.8 3.4 7.5 8.9;8.9 7.3 4.8 2.4 2.3 6.5 8.9 1.2 4.9 3.8 7.2 7.5 9.8 3.4 7.5 8.9 8.9 7.3 4.8 2.4 2.3 6.5 8.9 1.2 4.9 3.8 7.2 7.5 9.8 3.4 7.5 8.9;8.9 7.3 4.8 2.4 2.3 6.5 8.9 1.2 4.9 3.8 7.2 7.5 9.8 3.4 7.5 8.9 8.9 7.3 4.8 2.4 2.3 6.5 8.9 1.2 4.9 3.8 7.2 7.5 9.8 3.4 7.5 8.8;];";
-                // string s2 = "[1 1 1 1 1 1 1 1 1 1 1 1 1 1 1;1 1 1 1 1 1 1 1 1 1 1 1 1 1 1;1 1 1 1 1 1 1 1 1 1 1 1 1 1 1;1 1 1 1 1 1 1 1 1 1 1 1 1 1 1;1 1 1 1 1 1 1 1 1 1 1 1 1 1 1;1 1 1 1 1 1 1 1 1 1 1 1 1 1 1;1 1 1 1 1 1 1 1 1 1 1 1 1 1 1;1 1 1 1 1 1 1 1 1 1 1 1 1 1 1;1 1 1 1 1 1 1 1 1 1 1 1 1 1 1;1 1 1 1 1 1 1 1 1 1 1 1 1 1 1;1 1 1 1 1 1 1 1 1 1 1 1 1 1 1;1 1 1 1 1 1 1 1 1 1 1 1 1 1 1;1 1 1 1 1 1 1 1 1 1 1 1 1 1 1;1 1 1 1 1 1 1 1 1 1 1 1 1 1 1;1 1 1 1 1 1 1 1 1 1 1 1 1 1 1;]";
-                // clock_t tStart = clock();
-                // string s3 = "8.9 7.3 4.0 2.4; 2.3 6.5 8.9 3.1; 4.9 3.8 2 7.5; 9.8 3.4 1 8.9]";
-                // if(s3.find(';',s3.length() - 1) != std::string::npos) {
-                //         cout << "Found" << endl;
-                // } else {
-                //         cout << "Not Found" << endl;
-                // }
-                // string s4 = "[1.2 5.7 4.2 1.4; 6.3 2.5 8.1 3.1; 6.4 2.8 7.1 8.1; 3.2 5.1 7.2 8.9]";
-                //       CMatrix n("D",s3);
-                //       CMatrix t("T",s4);
-
-                //       CMatrix temp = t.getInverse();
-
-                //       cout << "Division in Exampel.m File" << endl;
-
-                //       if(temp.getName() == "Invert") {
-                //               cout << "Matrix Can't Be Invertable" << endl;
-                //       } else {
-                //               cout << "Matrix is invertable" << endl;
-                //               CMatrix result = n * temp;
-                //               result.setName("A");
-                //               cout << "Result of Division of A and B in Example.m : " << endl;
-                //               cout << result;
-
-                //       }
-
-
-                //       cout << "**************************************" << endl;
-                //       cout << "Matrix in bigexample.m" << endl;
-                //       CMatrix y("K",s);
-                //       cout << "Number of Rows : " << y.getnR() << endl;
-                //       cout << "Number of Columns : " << y.getnC() << endl;
-                //       cout << "Value of Determinant : " << y.getDeterminant() << endl;
-
-                //       CMatrix temp2 = y.getInverse();
-
-                //       if(temp2.getName() == "Invert") {
-                //               cout << "Matrix is Not Invertable" << endl;
-                //       } else {
-
-                //               cout << "Matrix is Invertable" << endl;
-
-                //               cout << temp << endl;
-                //       }
-
-
-
-                //       cout << "#################### Execution Time ###################" << endl;
-                //       cout << (double)(clock() - tStart)/CLOCKS_PER_SEC << endl;
-
-                  //
-                  // string m1 = "[ 1 2 3 4; 1 2 2 2; 3 3 3 4; 12 3 4 6]";
-                  // CMatrix a("a",m1);
-                  // cout<< "det of"<<endl<< m1<<endl<<a.getDeterminant()<<endl;
-                  //
-                  // string m2 = "[8.9 7.3 4.0 2.4; 2.3 6.5 8.9 3.1; 4.9 3.8 2 7.5; 9.8 3.4 1 8.9]";
-                  // CMatrix b("b",m2);
-                  // cout<< "det of"<<endl<< m2<<endl<<b.getDeterminant()<<endl;
-                  //
-                  //
-                  // string m3 = "[8.9 7.3 4.8 2.4 2.3 6.5 8.9 1.2 4.9 3.8 7.2 7.5 9.8 3.4 7.5 8.9 8.9 7.3 4.8 2.4 2.3 6.5 8.9 1.2 4.9 3.8 7.2 7.5 9.8 3.4 7.5 8.9; 8.9 7.3 4.8 2.4 2.3 6.5 8.9 1.2 4.9 3.8 7.2 7.5 9.8 3.4 7.5 8.9 8.9 7.3 4.8 2.4 2.3 6.5 8.9 1.2 4.9 3.8 7.2 7.5 9.8 3.4 7.5 8.9; 8.9 7.3 4.8 2.4 2.3 6.5 8.9 1.2 4.9 3.8 7.2 7.5 9.8 3.4 7.5 8.9 8.9 7.3 4.8 2.4 2.3 6.5 8.9 1.2 4.9 3.8 7.2 7.5 9.8 3.4 7.5 8.9; 8.9 7.3 4.8 2.4 2.3 6.5 8.9 1.2 4.9 3.8 7.2 7.5 9.8 3.4 7.5 8.9 8.9 7.3 4.8 2.4 2.3 6.5 8.9 1.2 4.9 3.8 7.2 7.5 9.8 3.4 7.5 8.9; 8.9 7.3 4.8 2.4 2.3 6.5 8.9 1.2 4.9 3.8 7.2 7.5 9.8 3.4 7.5 8.9 8.9 7.3 4.8 2.4 2.3 6.5 8.9 1.2 4.9 3.8 7.2 7.5 9.8 3.4 7.5 8.9; 8.9 7.3 4.8 2.4 2.3 6.5 8.9 1.2 4.9 3.8 7.2 7.5 9.8 3.4 7.5 8.9 8.9 7.3 4.8 2.4 2.3 6.5 8.9 1.2 4.9 3.8 7.2 7.5 9.8 3.4 7.5 8.9; 8.9 7.3 4.8 2.4 2.3 6.5 8.9 1.2 4.9 3.8 7.2 7.5 9.8 3.4 7.5 8.9 8.9 7.3 4.8 2.4 2.3 6.5 8.9 1.2 4.9 3.8 7.2 7.5 9.8 3.4 7.5 8.9; 8.9 7.3 4.8 2.4 2.3 6.5 8.9 1.2 4.9 3.8 7.2 7.5 9.8 3.4 7.5 8.9 8.9 7.3 4.8 2.4 2.3 6.5 8.9 1.2 4.9 3.8 7.2 7.5 9.8 3.4 7.5 8.9; 8.9 7.3 4.8 2.4 2.3 6.5 8.9 1.2 4.9 3.8 7.2 7.5 9.8 3.4 7.5 8.9 8.9 7.3 4.8 2.4 2.3 6.5 8.9 1.2 4.9 3.8 7.2 7.5 9.8 3.4 7.5 8.9; 8.9 7.3 4.8 2.4 2.3 6.5 8.9 1.2 4.9 3.8 7.2 7.5 9.8 3.4 7.5 8.9 8.9 7.3 4.8 2.4 2.3 6.5 8.9 1.2 4.9 3.8 7.2 7.5 9.8 3.4 7.5 8.9; 8.9 7.3 4.8 2.4 2.3 6.5 8.9 1.2 4.9 3.8 7.2 7.5 9.8 3.4 7.5 8.9 8.9 7.3 4.8 2.4 2.3 6.5 8.9 1.2 4.9 3.8 7.2 7.5 9.8 3.4 7.5 8.9; 8.9 7.3 4.8 2.4 2.3 6.5 8.9 1.2 4.9 3.8 7.2 7.5 9.8 3.4 7.5 8.9 8.9 7.3 4.8 2.4 2.3 6.5 8.9 1.2 4.9 3.8 7.2 7.5 9.8 3.4 7.5 8.9; 8.9 7.3 4.8 2.4 2.3 6.5 8.9 1.2 4.9 3.8 7.2 7.5 9.8 3.4 7.5 8.9 8.9 7.3 4.8 2.4 2.3 6.5 8.9 1.2 4.9 3.8 7.2 7.5 9.8 3.4 7.5 8.9; 8.9 7.3 4.8 2.4 2.3 6.5 8.9 1.2 4.9 3.8 7.2 7.5 9.8 3.4 7.5 8.9 8.9 7.3 4.8 2.4 2.3 6.5 8.9 1.2 4.9 3.8 7.2 7.5 9.8 3.4 7.5 8.9; 8.9 7.3 4.8 2.4 2.3 6.5 8.9 1.2 4.9 3.8 7.2 7.5 9.8 3.4 7.5 8.9 8.9 7.3 4.8 2.4 2.3 6.5 8.9 1.2 4.9 3.8 7.2 7.5 9.8 3.4 7.5 8.9; 8.9 7.3 4.8 2.4 2.3 6.5 8.9 1.2 4.9 3.8 7.2 7.5 9.8 3.4 7.5 8.9 8.9 7.3 4.8 2.4 2.3 6.5 8.9 1.2 4.9 3.8 7.2 7.5 9.8 3.4 7.5 8.9; 8.9 7.3 4.8 2.4 2.3 6.5 8.9 1.2 4.9 3.8 7.2 7.5 9.8 3.4 7.5 8.9 8.9 7.3 4.8 2.4 2.3 6.5 8.9 1.2 4.9 3.8 7.2 7.5 9.8 3.4 7.5 8.9; 8.9 7.3 4.8 2.4 2.3 6.5 8.9 1.2 4.9 3.8 7.2 7.5 9.8 3.4 7.5 8.9 8.9 7.3 4.8 2.4 2.3 6.5 8.9 1.2 4.9 3.8 7.2 7.5 9.8 3.4 7.5 8.9; 8.9 7.3 4.8 2.4 2.3 6.5 8.9 1.2 4.9 3.8 7.2 7.5 9.8 3.4 7.5 8.9 8.9 7.3 4.8 2.4 2.3 6.5 8.9 1.2 4.9 3.8 7.2 7.5 9.8 3.4 7.5 8.9; 8.9 7.3 4.8 2.4 2.3 6.5 8.9 1.2 4.9 3.8 7.2 7.5 9.8 3.4 7.5 8.9 8.9 7.3 4.8 2.4 2.3 6.5 8.9 1.2 4.9 3.8 7.2 7.5 9.8 3.4 7.5 8.9; 8.9 7.3 4.8 2.4 2.3 6.5 8.9 1.2 4.9 3.8 7.2 7.5 9.8 3.4 7.5 8.9 8.9 7.3 4.8 2.4 2.3 6.5 8.9 1.2 4.9 3.8 7.2 7.5 9.8 3.4 7.5 8.9; 8.9 7.3 4.8 2.4 2.3 6.5 8.9 1.2 4.9 3.8 7.2 7.5 9.8 3.4 7.5 8.9 8.9 7.3 4.8 2.4 2.3 6.5 8.9 1.2 4.9 3.8 7.2 7.5 9.8 3.4 7.5 8.9; 8.9 7.3 4.8 2.4 2.3 6.5 8.9 1.2 4.9 3.8 7.2 7.5 9.8 3.4 7.5 8.9 8.9 7.3 4.8 2.4 2.3 6.5 8.9 1.2 4.9 3.8 7.2 7.5 9.8 3.4 7.5 8.9; 8.9 7.3 4.8 2.4 2.3 6.5 8.9 1.2 4.9 3.8 7.2 7.5 9.8 3.4 7.5 8.9 8.9 7.3 4.8 2.4 2.3 6.5 8.9 1.2 4.9 3.8 7.2 7.5 9.8 3.4 7.5 8.9; 8.9 7.3 4.8 2.4 2.3 6.5 8.9 1.2 4.9 3.8 7.2 7.5 9.8 3.4 7.5 8.9 8.9 7.3 4.8 2.4 2.3 6.5 8.9 1.2 4.9 3.8 7.2 7.5 9.8 3.4 7.5 8.9; 8.9 7.3 4.8 2.4 2.3 6.5 8.9 1.2 4.9 3.8 7.2 7.5 9.8 3.4 7.5 8.9 8.9 7.3 4.8 2.4 2.3 6.5 8.9 1.2 4.9 3.8 7.2 7.5 9.8 3.4 7.5 8.9; 8.9 7.3 4.8 2.4 2.3 6.5 8.9 1.2 4.9 3.8 7.2 7.5 9.8 3.4 7.5 8.9 8.9 7.3 4.8 2.4 2.3 6.5 8.9 1.2 4.9 3.8 7.2 7.5 9.8 3.4 7.5 8.9; 8.9 7.3 4.8 2.4 2.3 6.5 8.9 1.2 4.9 3.8 7.2 7.5 9.8 3.4 7.5 8.9 8.9 7.3 4.8 2.4 2.3 6.5 8.9 1.2 4.9 3.8 7.2 7.5 9.8 3.4 7.5 8.9; 8.9 7.3 4.8 2.4 2.3 6.5 8.9 1.2 4.9 3.8 7.2 7.5 9.8 3.4 7.5 8.9 8.9 7.3 4.8 2.4 2.3 6.5 8.9 1.2 4.9 3.8 7.2 7.5 9.8 3.4 7.5 8.9; 8.9 7.3 4.8 2.4 2.3 6.5 8.9 1.2 4.9 3.8 7.2 7.5 9.8 3.4 7.5 8.9 8.9 7.3 4.8 2.4 2.3 6.5 8.9 1.2 4.9 3.8 7.2 7.5 9.8 3.4 7.5 8.9; 8.9 7.3 4.8 2.4 2.3 6.5 8.9 1.2 4.9 3.8 7.2 7.5 9.8 3.4 7.5 8.9 8.9 7.3 4.8 2.4 2.3 6.5 8.9 1.2 4.9 3.8 7.2 7.5 9.8 3.4 7.5 8.9; 8.9 7.3 4.8 2.4 2.3 6.5 8.9 1.2 4.9 3.8 7.2 7.5 9.8 3.4 7.5 8.9 8.9 7.3 4.8 2.4 2.3 6.5 8.9 1.2 4.9 3.8 7.2 7.5 9.8 3.4 7.5 8.9]";
-                  // CMatrix c("c",m3);
-                  // cout<< "det of"<<endl<< m3<<endl<<c.getDeterminant()<<endl;
-                  //
-                  //
-                  //
-                //   string m4 = "1.2 3.4 5.6 7.8 1.0 3.2 2.1 2.3 1.4 2.6 2.7 2.2 3.4 5.6 7.8 9.0 2.2 2.1 2.3 2.4 2.6 3.7 1.2 3.4 5.6 7.8 9.0 1.2 2.1 2.3 2.4 1.6; 2.7 1.2 3.4 5.6 7.8 9.0 2.2 2.1 2.3 2.4 2.6 2.7 1.2 3.4 5.6 7.8 9.0 2.2 2.1 2.3 2.4 2.6 2.7 1.2 3.4 5.6 7.8 9.0 2.2 2.1 2.3 2.4; 2.6 2.7 1.2 3.4 5.6 7.8 9.0 2.2 2.1 7.3 2.4 2.6 2.7 1.2 3.4 5.6 7.8 9.0 2.2 2.1 2.3 2.4 2.6 2.7 1.2 3.4 5.6 7.8 9.0 2.2 4.1 2.3; 2.4 2.6 2.7 1.2 3.4 5.6 7.8 9.0 2.2 2.1 2.3 2.4 2.6 2.7 1.2 3.4 5.6 1.8 9.0 2.2 2.1 2.3 2.4 2.6 2.7 1.2 3.4 5.6 7.8 9.0 2.2 2.1; 2.3 2.4 2.6 2.7 1.2 3.4 5.6 7.8 9.0 2.2 2.1 2.3 2.4 2.6 2.7 1.2 3.4 5.6 7.8 9.0 2.2 2.1 2.3 2.4 2.6 2.7 1.2 3.4 5.6 7.8 9.0 2.2; 2.1 2.3 2.4 2.6 2.7 1.2 3.4 5.6 17.8 9.0 2.2 2.1 2.3 2.4 2.6 2.7 1.2 3.4 5.6 7.8 9.0 2.2 2.1 2.3 2.4 2.6 2.7 1.2 3.4 5.6 7.8 9.0; 2.2 2.1 2.3 2.4 2.6 2.7 1.2 3.4 5.6 7.8 9.0 2.2 2.1 2.3 2.4 2.6 2.7 1.2 3.4 5.6 7.8 9.0 2.2 2.1 2.3 2.4 2.6 2.7 1.2 3.4 5.6 7.8; 9.0 2.2 2.1 2.3 2.4 1.6 2.7 1.2 3.4 5.6 7.8 9.0 2.2 2.1 2.3 2.4 2.6 2.7 1.2 3.4 2.6 7.8 9.0 2.2 2.1 2.3 2.4 2.6 2.7 1.2 3.4 5.6; 7.4 9.0 2.2 2.1 2.3 2.4 2.6 2.7 1.2 3.4 5.6 7.8 9.0 2.2 2.1 2.3 2.4 2.6 2.7 1.2 3.4 5.6 7.8 9.0 2.2 2.1 2.3 2.4 2.6 2.7 1.2 3.4; 5.6 7.8 9.0 2.2 4.4 2.3 2.4 2.6 2.7 1.2 3.4 5.6 2.8 9.0 2.2 2.1 2.3 2.4 2.6 2.7 1.2 3.4 5.6 7.8 9.0 2.2 2.1 2.3 2.4 2.6 2.7 1.2; 3.4 5.6 7.8 9.0 2.2 2.1 2.3 2.4 2.6 2.7 1.2 3.4 5.6 1.8 9.0 1.2 2.1 2.3 2.4 8.6 2.7 1.2 3.4 5.6 7.8 9.0 2.2 2.1 2.3 2.4 2.6 2.7; 1.2 3.4 5.6 7.8 9.0 2.2 5.1 4.3 12.4 2.6 2.7 1.2 3.4 5.6 97.8 9.0 2.2 2.1 2.3 2.4 2.6 2.7 1.2 3.4 5.6 7.8 9.0 2.2 2.1 2.3 3.4 2.6; 2.7 1.2 3.4 5.6 7.5 9.0 2.2 2.1 3.3 2.4 2.6 2.7 1.2 3.4 5.6 7.8 9.0 2.2 5.1 2.3 2.4 5.6 2.7 1.2 3.4 5.6 7.8 9.0 2.2 2.1 2.3 2.4; 2.6 2.7 1.2 3.4 5.6 7.8 9.0 2.2 2.1 2.3 2.4 2.6 2.7 1.2 3.4 5.6 7.8 9.0 2.2 2.1 2.3 2.4 2.6 2.7 1.2 3.4 5.6 7.8 9.0 8.2 2.1 2.3; 2.4 2.6 2.7 1.2 3.4 5.6 7.8 9.0 2.2 2.1 2.3 2.4 2.6 2.7 1.2 3.4 5.6 7.8 9.0 2.2 2.1 2.3 2.4 6.6 2.7 1.2 3.4 5.6 2.8 9.0 1.2 2.1; 2.3 2.4 2.6 2.7 1.2 3.4 5.6 7.8 9.0 2.2 5.1 2.3 2.4 0.6 2.7 1.2 3.4 5.6 7.8 9.0 2.2 2.1 2.3 2.4 0.6 2.7 1.2 3.4 5.6 7.8 9.0 2.2; 0.1 2.3 2.4 2.6 2.7 1.2 3.4 5.6 7.8 9.0 2.2 2.1 2.3 2.4 2.6 2.7 1.2 3.4 5.6 7.8 9.0 2.2 2.1 2.3 2.4 2.6 2.7 1.2 3.4 5.6 7.8 9.0; 4.2 2.1 2.3 2.4 2.6 2.7 1.2 3.4 5.6 7.8 9.0 5.2 2.1 2.3 2.4 9.6 2.7 1.2 3.4 5.6 7.8 9.0 2.2 2.1 2.3 2.4 2.6 2.7 1.2 3.4 5.6 7.8; 9.0 2.2 2.1 2.3 2.4 2.6 2.7 1.2 3.4 5.6 7.8 9.0 5.3 2.1 2.3 2.4 2.6 2.7 1.2 3.4 5.6 7.8 9.0 2.2 2.1 2.3 2.4 2.6 2.7 1.2 3.4 5.3; 7.8 9.0 2.2 2.1 2.3 2.4 2.6 2.7 3.2 3.4 5.6 7.8 9.0 2.2 2.1 2.3 3.4 2.6 3.7 1.2 3.4 5.6 7.8 9.0 2.2 2.1 2.3 8.4 2.6 2.7 1.2 3.4; 5.6 7.8 9.0 2.2 2.1 2.3 3.4 2.6 2.7 1.2 3.4 5.6 7.8 9.0 2.2 2.1 1.3 2.4 2.6 2.7 1.2 3.4 5.6 7.8 9.0 2.2 2.1 2.3 2.4 2.6 2.7 1.2; 3.4 1.6 7.8 9.0 2.2 3.1 6.3 2.4 2.6 2.7 1.2 3.4 5.6 7.8 9.0 2.2 2.1 2.3 2.4 2.6 2.7 1.2 3.4 5.6 7.8 9.0 2.2 2.1 2.3 2.4 2.6 2.7; 1.2 3.4 5.6 7.8 9.0 2.2 2.1 2.3 2.4 2.6 2.7 1.2 3.4 5.6 7.8 9.0 2.2 4.1 2.3 2.4 2.6 2.7 1.2 3.4 5.6 7.8 9.0 2.2 2.1 2.3 2.4 1.6; 2.7 1.2 3.4 5.6 7.8 9.0 2.2 2.1 2.3 2.4 2.6 2.7 1.2 3.4 5.6 7.8 9.0 2.2 2.1 2.3 1.4 2.6 2.7 1.2 3.4 9.6 7.8 9.0 2.2 2.1 2.3 2.4; 2.6 2.7 1.2 3.4 5.6 7.8 9.0 2.2 2.1 2.3 2.4 2.6 2.7 1.2 3.4 5.6 7.8 9.0 2.2 2.1 2.3 1.4 2.6 2.7 2.2 3.4 5.6 7.8 9.0 2.2 2.1 2.3; 2.4 2.6 2.7 1.2 3.4 5.6 7.8 1.0 2.2 2.1 2.3 2.4 2.6 2.7 1.2 3.4 8.6 7.8 9.0 2.2 2.1 2.3 2.4 2.6 2.7 1.2 3.4 2.6 7.8 9.0 2.2 2.1; 7.3 2.4 2.6 2.7 1.2 3.4 5.6 7.8 9.0 2.2 2.1 2.3 2.4 3.6 1.7 1.2 3.4 5.6 7.8 9.0 2.2 2.1 2.3 2.4 2.6 2.7 1.2 3.4 5.6 7.8 9.0 2.2; 2.1 2.3 2.4 2.6 2.7 1.2 3.4 5.6 7.8 9.0 2.2 2.1 2.3 2.4 2.6 2.7 1.2 3.4 5.6 7.8 9.0 2.2 2.1 2.3 2.4 2.6 2.7 7.2 3.4 5.6 7.8 9.0; 2.2 2.1 2.3 2.4 2.6 7.7 9.2 3.4 5.6 7.8 9.0 2.2 2.1 2.3 2.4 2.6 2.7 1.2 3.4 5.6 7.8 9.0 2.2 2.1 2.9 2.4 2.6 2.7 1.2 3.4 5.6 7.8; 9.0 2.2 2.1 2.3 2.4 2.6 7.7 1.2 3.4 5.6 7.8 9.0 2.2 2.1 2.3 2.4 2.6 2.7 1.2 3.4 5.6 7.8 9.0 2.2 2.1 2.3 2.4 2.6 2.7 1.2 3.4 5.6; 7.8 9.0 2.2 2.1 2.3 2.4 2.6 2.7 1.2 3.4 5.6 7.8 9.0 2.2 2.1 2.3 2.4 2.6 2.7 1.2 3.4 5.6 7.8 9.0 2.2 2.1 2.3 2.4 2.6 2.7 1.2 3.4; 5.6 7.8 9.0 2.2 2.1 2.3 2.4 2.6 2.7 1.2 3.4 5.6 7.8 9.0 2.2 2.1 2.3 2.4 2.6 5.7 9.3 3.4 5.6 3.8 9.0 2.2 5.1 2.3 2.4 2.6 2.7 1.2";
-                //   CMatrix d("d",s3);
-                //   cout << d.getName() << " = " << endl;
-                //   cout << d;
-
-                  // CMatrix i = d.getInverse();
-                  // cout<< "det of"<<endl<< m4<<endl<<d.getDeterminant()<<endl;
-                  //
-                  // cout<< "inverse is"<<endl<<i<<endl;
-
-                  /* Test For Parsing New File */
-                  /*
-                    string s5 = "[1.2 2.3 4.7;[1.3 2.4;4.6 1.3],[3.2;7.8]]";
-                int countSquareBracket = count(s5.begin() , s5.end() , '[');
-                string firstMatrix = s5.substr(0,s5.find(';')) + "]";
-                string secondMatrix = s5.substr(s5.find('[' , s5.find(';')),s5.find(']') + 1 - s5.find('[' , s5.find(';')));
-                s5.erase(0,s5.find(']') + 2);
-                s5.erase(s5.length() - 1);
-                string thirdMatrix = s5;
-                CMatrix A("A",firstMatrix);
-                CMatrix B("B",secondMatrix);
-                CMatrix C("C",thirdMatrix);
-                B.addColumn(C);
-                A.addRow(B);
-
-
-
-                // String Parsing Next Level ==> Done
-                // Must Be A New Line to make the Concatentation of the Row
-                string s7 = "[[A [3.4; 2.1; 2]]\n 1 2 10  1.2]";
-                int countBrackets = std::count(s7.begin(),s7.end(),'[');
-                int countCommas = std::count(s7.begin(),s7.end(),',');
-                if(countCommas == 0) {
-                        string firstMatrix = s7.substr(s7.find('[',1) , s7.find(' ',s7.find('[',1)));
-                        string rowMatrix = "[" + s7.substr(s7.find('\n') + 1);
-                        CMatrix B("rowTemp",rowMatrix);
-                        string thirdMatrix = s7.substr(s7.find(' ') + 1,s7.find(']') - s7.find(' '));
-                        CMatrix C("temp2",thirdMatrix);
-                        A.addColumn(C);
-                        A.addRow(rowMatrix);
-                        cout << A;
-                } else {
-                        string firstMatrix = s7.substr(s7.find('[',1) , s7.find(',',s7.find('[',1)));
-                        cout << firstMatrix << endl;
-                        string rowMatrix = "[" + s7.substr(s7.find('\n') + 1);
-                        cout << rowMatrix << endl;
-                        string thirdMatrix = s7.substr(s7.find(',') + 1,s7.find(']') - 1);
-                        cout << thirdMatrix << endl;
-                }
-
-
-
-
-
-                   */
 
 
                    /* Test regex in the Matrix Class */
@@ -1550,8 +913,8 @@ int main(int argc, char* argv[]){
     cout << "Matrix Form : " << endl;
     cout << testcases[i] << endl;
     string content = replaceMatrixOperator(testcases[i]);
-    size_t countBracketsForConcatenation = std::count(content.begin(),content.end(),'[');
     string name = content.substr(0,content.find("="));
+    size_t countBracketsForConcatenation = std::count(content.begin(),content.end(),'[');
     if(countBracketsForConcatenation == 0) {
             content.erase(0,content.find("=") + 1);
     } else {
@@ -1592,204 +955,13 @@ int main(int argc, char* argv[]){
     }
 
 
-} // for loop end
+} // End of For Loop
 
 
 
-    //  if(content.find("ones") != std::string::npos)
-    // {
-//         content.erase(std::remove(content.begin(), content.end(), ' '), content.end());
-//         string rowsNumber = content.substr(content.find('(') + 1, content.find(',') - (content.find('(') + 1));
-//         string columnsNumber = content.substr(content.find(',') + 1, content.find(')') - (content.find(',') + 1));
 
 
-//         if(content.find(';') == std::string::npos)
-//         {
-//                CMatrix resultMatrix = ONESFunction(rowsNumber, columnsNumber, name);
-//                matrices.push_back(resultMatrix);
-//                 cout << resultMatrix.getName() << " = " << endl;
-//                 cout << resultMatrix;
-//                 cout << "######################################################" << endl;
-//         }
-//         else
-//         {
-//                 CMatrix resultMatrix = ONESFunction(rowsNumber, columnsNumber, name);
-//                 matrices.push_back(resultMatrix);
-//         }
-//     }
-//     else if(content.find("eye") != std::string::npos)
-//     {
-//         content.erase(std::remove(content.begin(), content.end(), ' '), content.end());
-//         string rowsNumber = content.substr(content.find('(') + 1, content.find(',') - (content.find('(') + 1));
-//         string columnsNumber = content.substr(content.find(',') + 1, content.find(')') - (content.find(',') + 1));
-
-
-//         if(content.find(';') == std::string::npos)
-//         {
-//                CMatrix resultMatrix = eyeFunction(rowsNumber, columnsNumber, name);
-//                matrices.push_back(resultMatrix);
-//                cout << resultMatrix.getName() << " = " << endl;
-//                cout << resultMatrix;
-//                cout << "######################################################" << endl;
-//         }
-//         else
-//         {
-//                 CMatrix resultMatrix = ZEROSFunction(rowsNumber, columnsNumber, name);
-//                 matrices.push_back(resultMatrix);
-//         }
-//     }
-//         else if(content.find("log") != std::string::npos)
-//         {
-//             content.erase(std::remove(content.begin(), content.end(), ' '), content.end());
-//             string firstParameter = content.substr( content.find('log(') + 1, content.find(')') -  content.find('log(') - 1 ) ;
-//             if(isdigit(firstParameter[0])) {
-//               continue;
-//             } else {
-//                 CMatrix resultMatrix = logOperation(matrices, isInsideMatrix(matrices, firstParameter), name);
-//                 matrices.push_back(resultMatrix);
-
-//                 if(content.find(';') == std::string::npos) {
-//                     cout << resultMatrix.getName() << " = " << endl;
-//                     cout << resultMatrix;
-//                     cout << "######################################################" << endl;
-//                 }
-
-//             }
-
-//       }
-
-//       else if (content.find("^") != std::string::npos){
-//         content.erase(std::remove(content.begin(), content.end(), ' '), content.end());
-//         string firstParameter = content.substr( 0, content.find('^'));
-//         string secondParameter = content.substr(content.find('^') + 1);
-
-//         cout<<firstParameter<<endl;
-//         cout<<secondParameter<<endl;
-//         cout<<name<<endl;
-
-//         CMatrix resultMatrix = powOperation(matrices, isInsideMatrix(matrices, firstParameter), secondParameter, name );
-//         matrices.push_back(resultMatrix);
-
-//         if(content.find(';') == std::string::npos) {
-//             cout << resultMatrix.getName() << " = " << endl;
-//             cout << resultMatrix;
-//             cout << "######################################################" << endl;
-//         }
-
-
-
-//       }
-
-//             else if (content.find("&") != std::string::npos){
-//               content.erase(std::remove(content.begin(), content.end(), ' '), content.end());
-//               string firstParameter = content.substr( 0, content.find('&'));
-//               string secondParameter = content.substr(content.find('&') + 1);
-//               //
-//               // cout<<firstParameter<<endl;
-//               // cout<<secondParameter<<endl;
-//               // cout<<name<<endl;
-
-//               CMatrix resultMatrix = elementWisePower(matrices, isInsideMatrix(matrices, firstParameter), secondParameter, name );
-//               matrices.push_back(resultMatrix);
-
-//               if(content.find(';') == std::string::npos) {
-//                   cout << resultMatrix.getName() << " = " << endl;
-//                   cout << resultMatrix;
-//                   cout << "######################################################" << endl;
-//               }
-
-
-
-//             }
-//             else if (content.find("sqrt") != std::string::npos){
-//               content.erase(std::remove(content.begin(), content.end(), ' '), content.end());
-//               string firstParameter = content.substr( content.find('sqrt(') + 1, content.find(')') -  content.find('log(') - 1 ) ;
-//               if(isdigit(firstParameter[0])) {
-//                 continue;
-//               } else {
-//                   CMatrix resultMatrix = sqrtOperation(matrices, isInsideMatrix(matrices, firstParameter), name);
-//                   matrices.push_back(resultMatrix);
-
-//                   if(content.find(';') == std::string::npos) {
-//                       cout << resultMatrix.getName() << " = " << endl;
-//                       cout << resultMatrix;
-//                       cout << "######################################################" << endl;
-//                   }
-
-//               }  //
-//               // cout<<firstParameter<<endl;
-//               // cout<<secondParameter<<endl;
-//               // cout<<name<<endl;
-
-
-//             }
-
-// }
-
-        // cout << endl;
-        // cout << endl;
-        // cout << endl;
-
-//         cout << "##########################################################" << endl;
-
-
-//         cout << "Test Case For Prefix Matrix File" << endl;
-
-//         string x = "C*H + 4";
-//         x = replaceMatrixOperator(x);
-//         CMatrix tempMatrixValue = getEvaluationForMatrix(x,matrices);
-//         tempMatrixValue.setName("X");
-//         cout << tempMatrixValue.getName() << " = " << endl;
-//         cout << tempMatrixValue;
-
-
-
-        // string content = "[1 2 3;1 2 3]";
-
-
-        // CMatrix c(content);
-        // cout << c << endl;
-        // cout << c.getnC() << endl;
-        // cout << c.getnR() << endl;
-
-
-        // CMatrix d("[1 3 5 9]]");
-        // cout << d << endl;
-        // cout << d.getnC() << endl;
-        // cout << d.getnR() << endl;
-
-
-        // CMatrix data;
-        // cout << data.getnR() << endl;
-        // cout << data.getnC() << endl;
-        // data.addRow(d);
-        // cout << data;
-
-        // string content = "[1 2 3 4;[1 2;1 2],[1;2],[3;4];[1 2 3;1 2 3],[1;5];[1 3 5 9]]";
-        // CMatrix finalMatrix = concatMatrices(content,"I",matrices,associateValues);
-        // cout << finalMatrix.getName() << endl;
-        // cout << finalMatrix;
-
-        // string contentExpression = "( 2.5 * (1.2 + 4.4 / (2.4 + 3.3)) + 12 * sin(0.4) + 2.2^4 / (M.^3 + M.^2 - 5) ).^(-1.4 + 5)";
-        // string result = tokenizingexpression(contentExpression , matrices , associateValues);
-
-
-
-        /* Testing Concatenation in Matrices */
-        // string content = "[[[1 2 3;2 3 4];6 7 8],[6;7;5]]"; // Done
-        // string content = "[1 2 3;[[1;1],[1;2]],[1;3];[4 5 6]]"; // Done
-        // string content = "[1 2 3 4;[1 2;1 2],[1;2] [3;4];[1 2 3;1 2 3],[1;5];[1 3 5 9]]"; // Done
-        // string content = "[[[1.2 2.3 33.55;1.3 2.4 3.2;4.6 1.3 7.8] [3.4; 2.1; 3.5+9.1]];1.2 3 15  1.2]"; // Done
-        // string content = "[[1.2 2.3; 3 2.3;[1.3 2.4;4.6 1.3]], [3.2;-7.8;-3.2; 1.2]]"; // Done
-        // CMatrix finalMatrix = concatMatrices(content,"I",matrices,associateValues);
-        // cout << finalMatrix.getName() << " = " << endl;
-        // cout << finalMatrix << endl;
-
-        // cout << result << endl;
-        // cout << "Execution Program Time :" << endl;
-        // cout << ((double)(clock() - tStart) / CLOCKS_PER_SEC) * 1000 << "ms" << endl;
-
-}
+} // End of Else
 
   return 0;
 }
