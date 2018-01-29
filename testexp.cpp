@@ -34,7 +34,7 @@ public:
     Term(string v):val(v){}
     string print(){
         string te = val;
-        return te;  
+        return te;
     }
     double value() {
         double result = atof(val.c_str());
@@ -147,7 +147,7 @@ Exp* strToExp(string &str){
     } else
     //case value
         return new Term(str);
-cerr << "Error:never execute point" << endl;
+// cout << "Error: never execute point" << endl;
     return NULL;//never
 }
 

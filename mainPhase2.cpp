@@ -458,36 +458,36 @@ bool checkNumeric(const string &str) {
 
 
 
-/*
-        [ Function Name ] : replaceMatrixOperator(string x)
-        [ Function Return Type ] : string
-        [ Function Inherited Function ] :
-                                        - size() from <string>
-                                        - replace() from <string>
-        [ Functionality ] : Replace Matrix Operators [ .+ , .- , .* , ./ , .^ ] to [ @ , ? , # , $ , & ]
-*/
-
-string replaceMatrixOperator(string x) {
-
-
-for(int i = 0 ; i < x.size();i++) {
-        if(x[i] == '.' && x[i + 1] == '+') {
-                x.replace(i,2,"@");
-        } else if(x[i] == '.' && x[i + 1] == '-') {
-                x.replace(i,2,"?");
-        } else if(x[i] == '.' && x[i + 1] == '*') {
-                x.replace(i,2,"#");
-        } else if(x[i] == '.' && x[i + 1] == '/') {
-                x.replace(i,2,"$");
-        } else if(x[i] == '.' && x[i + 1] == '^') {
-                x.replace(i,2,"&");
-        }
-
-}
-
-
-        return x;
-}
+// /*
+//         [ Function Name ] : replaceMatrixOperator(string x)
+//         [ Function Return Type ] : string
+//         [ Function Inherited Function ] :
+//                                         - size() from <string>
+//                                         - replace() from <string>
+//         [ Functionality ] : Replace Matrix Operators [ .+ , .- , .* , ./ , .^ ] to [ @ , ? , # , $ , & ]
+// */
+//
+// string replaceMatrixOperator(string x) {
+//
+//
+// for(int i = 0 ; i < x.size();i++) {
+//         if(x[i] == '.' && x[i + 1] == '+') {
+//                 x.replace(i,2,"@");
+//         } else if(x[i] == '.' && x[i + 1] == '-') {
+//                 x.replace(i,2,"?");
+//         } else if(x[i] == '.' && x[i + 1] == '*') {
+//                 x.replace(i,2,"#");
+//         } else if(x[i] == '.' && x[i + 1] == '/') {
+//                 x.replace(i,2,"$");
+//         } else if(x[i] == '.' && x[i + 1] == '^') {
+//                 x.replace(i,2,"&");
+//         }
+//
+// }
+//
+//
+//         return x;
+// }
 
 
 CMatrix getEvaluationForMatrix(string token,vector<CMatrix> matricesArray) {
