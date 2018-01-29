@@ -876,7 +876,6 @@ int main(int argc, char* argv[]){
 
 
         if( std::count(line.begin(),line.end(),'[') == std::count(line.begin(),line.end(),']') ){ // one line operation/instantiation
-          // cout<< line<<"end of line."<<endl;
 
           parse(line, variableName, operationLine, verbose);
           if(variableName == "" && operationLine == "") // skipping empty lines in the file
@@ -922,100 +921,77 @@ int main(int argc, char* argv[]){
 
 
 
+        /* Test Cases Array For Just Not Using the file or not using the Command Line has the same tests in the ( advexample , trickyexample ) */
+//     clock_t tStart = clock();
+//     string testcases[] = {
+//                 "A = 5.5 + 12 * sin(0.4) + 2.2^4",
+//                 "B = [1.2 2.3 A;[1.3 2.4;4.6 1.3],[3.2;7.8]]",
+//                 "C = [[B [3.4; 2.1; 3.5+9.1]];1.2^3 3+1.2 15/(2.1+10*sin(0.12))  1.2]",
+//                 "D = rand(4,4)",
+//                 "E = eye(4, 4)",
+//                 "F = zeros(2, 3)",
+//                 "G = ones(3, 6)",
+//                 "L = (1.2 + 3.4 - 5.6)/(2.1*3.2 + 4.6) - 12.1*3.1 + (1.2 + 5.2)^(4/(3.2+5.6))",
+//                 "X = ((C*D .+ 4)./2.1 + sqrt(D))./C.^2",
+//                 "Y = C^3 * sin(1./D)",
+//                 "M = 4",
+//                 "A = ( 2.5 * (1.2 + 4.4 / (2.4 + 3.3)) + 12 * sin(0.4) + 2.2^4 / (M.^3 + M.^2 - 5) ).^(-1.4 + 5)",
+//                 "B = [1.3 2.4;4.6 1.3]",
+//                 "B = [[1.2 2.3; A 2.3; B], [3.2;-7.8;-3.2; 1.2]]"
+//     };
 
-                   /* Test regex in the Matrix Class */
-                   clock_t tStart = clock();
-    string testcases[] = {
-        //     "A = 5.5 + 12 * sin(0.4) + 2.2^4",
-        //     "B = [1.2 2.3 A;[1.3 2.4;4.6 1.3],[3.2;7.8]]",
-        //     "C = [[B [3.4; 2.1; 3.5+9.1]];1.2^3 3+1.2 15/(2.1+10*sin(0.12)) 1.2]",
-        //     "D = rand(4,4)",
-        //     "E = [1 2 3 3; 1 2 3 3; 1 2 3 3;1 2 3 3]",
-        //     "F = sqrt(E)",
-        //     "M = 4",
-        //     "I = [[1.2 2.3; 3 2.3;[1.3 2.4;4.6 1.3]], [3.2;-7.8;-3.2; 1.2]]",
-        //     "N = [[B,[3.4; 2.1; 3.5+9.1]];1.2^3 3+1.2 15/(2.1+10*sin(0.12)) 1.2]",
-        //     "K = ( 2.5 * (1.2 + 4.4 / (2.4 + 3.3)) + 12 * sin(0.4) + 2.2^4 / (M.^3 + M.^2 - 5) ).^(-1.4 + 5)",
-        //     "Y = C^3 * sin(E)",
-        //     "U = eye(4,4)",
-        //     "O = ones(4,4)",
-        //     "W = zeros(4,4)"
-        //     "D = [1.2^3 3+1.2 15/(2.1+10*sin(0.12)) 1.2;1.4 1.2 1.6 1.1]",
-        //     "E = [1.2 1.5;1.6 1.8]",
-        //     "F = [1.2+1;1.9*2]",
-        //     "G = [1.6+2]",
-        //     "H = [1.2 5.7 4.2 1.4+2; 6.3 2.5 8.1 3.1; 6.4 2.8 7.1 8.1; 3.2 5.1 7.2 8.9+2]",
-        //     "L = (1.2 + 3.4 - 5.6)/(2.1*3.2 + 4.6) - 12.1*3.1 + (1.2 + 5.2)^(4/(3.2+5.6))",
-        //     "N = -3 + 1",
-        //     "M = 1 + 20 + -25"
-                "A = 5.5 + 12 * sin(0.4) + 2.2^4",
-                "B = [1.2 2.3 A;[1.3 2.4;4.6 1.3],[3.2;7.8]]",
-                "C = [[B [3.4; 2.1; 3.5+9.1]];1.2^3 3+1.2 15/(2.1+10*sin(0.12))  1.2]",
-                "D = rand(4,4)",
-                "E = eye(4, 4)",
-                "F = zeros(2, 3)",
-                "G = ones(3, 6)",
-                "L = (1.2 + 3.4 - 5.6)/(2.1*3.2 + 4.6) - 12.1*3.1 + (1.2 + 5.2)^(4/(3.2+5.6))",
-                "X = ((C*D .+ 4)./2.1 + sqrt(D))./C.^2",
-                "Y = C^3 * sin(1./D)",
-                "M = 4",
-                "A = ( 2.5 * (1.2 + 4.4 / (2.4 + 3.3)) + 12 * sin(0.4) + 2.2^4 / (M.^3 + M.^2 - 5) ).^(-1.4 + 5)",
-                "B = [1.3 2.4;4.6 1.3]",
-                "B = [[1.2 2.3; A 2.3; B], [3.2;-7.8;-3.2; 1.2]]"
-    };
+//     vector<CMatrix> matrices;
+//     vector<AssociativeNumber> associateValues;
 
-    vector<CMatrix> matrices;
-    vector<AssociativeNumber> associateValues;
+//     for(int i = 0;i < sizeof(testcases) / sizeof(testcases[0]);i++) {
 
-    for(int i = 0;i < sizeof(testcases) / sizeof(testcases[0]);i++) {
+//     cout << "############## Test Case : (" << i + 1 << ")" << " ##################" << endl;
+//     cout << "Matrix Form : " << endl;
+//     cout << testcases[i] << endl;
+//     string content = replaceMatrixOperator(testcases[i]);
+//     string name = content.substr(0,content.find("="));
+//     size_t countBracketsForConcatenation = std::count(content.begin(),content.end(),'[');
+//     if(countBracketsForConcatenation == 0) {
+//             content.erase(0,content.find("=") + 1);
+//     } else {
+//         content.erase(0,content.find("["));
+//     }
+//     name.erase(std::remove(name.begin(),name.end(),' '),name.end());
+//     name.erase(std::remove(name.begin(),name.end(),'\n'),name.end());
+//     name.erase(std::remove(name.begin(),name.end(),'='),name.end());
 
-    cout << "############## Test Case : (" << i + 1 << ")" << " ##################" << endl;
-    cout << "Matrix Form : " << endl;
-    cout << testcases[i] << endl;
-    string content = replaceMatrixOperator(testcases[i]);
-    string name = content.substr(0,content.find("="));
-    size_t countBracketsForConcatenation = std::count(content.begin(),content.end(),'[');
-    if(countBracketsForConcatenation == 0) {
-            content.erase(0,content.find("=") + 1);
-    } else {
-        content.erase(0,content.find("["));
-    }
-    name.erase(std::remove(name.begin(),name.end(),' '),name.end());
-    name.erase(std::remove(name.begin(),name.end(),'\n'),name.end());
-    name.erase(std::remove(name.begin(),name.end(),'='),name.end());
-
-    if(countBracketsForConcatenation > 1) {
-        // Case of Concatenation
-        CMatrix finalMatrix = concatMatrices(content,name,matrices,associateValues);
-        matrices.push_back(finalMatrix);
-        cout << finalMatrix.getName() << " = " << endl;
-        cout << finalMatrix;
-    } else if(countBracketsForConcatenation == 1) {
-            // Normal Case Like Phase 1
-        content = tokenizingMatrix(content,matrices,associateValues);
-        CMatrix normalMatrix(content);
-        normalMatrix.setName(name);
-        matrices.push_back(normalMatrix);
-        cout << normalMatrix.getName() << " = " << endl;
-        cout << normalMatrix;
-    } else if(countBracketsForConcatenation == 0) { // Case Of Operation
-    content = tokenizingexpression(content , matrices , associateValues);
-        if(content[0] == '[') { // Case of Matrix Operation
-                cout << "case" << endl;
-                CMatrix temp(content);
-                temp.setName(name);
-                matrices.push_back(temp);
-                cout << temp.getName() << " = " << endl;
-                cout << temp;
-        } else {
-                AssociativeNumber temp(name,getEvaluation(content));
-                associateValues.push_back(temp);
-                cout << temp.getName() << " = " << temp.getValue() << endl;
-        }
-    }
+//     if(countBracketsForConcatenation > 1) {
+//         // Case of Concatenation
+//         CMatrix finalMatrix = concatMatrices(content,name,matrices,associateValues);
+//         matrices.push_back(finalMatrix);
+//         cout << finalMatrix.getName() << " = " << endl;
+//         cout << finalMatrix;
+//     } else if(countBracketsForConcatenation == 1) {
+//             // Normal Case Like Phase 1
+//         content = tokenizingMatrix(content,matrices,associateValues);
+//         CMatrix normalMatrix(content);
+//         normalMatrix.setName(name);
+//         matrices.push_back(normalMatrix);
+//         cout << normalMatrix.getName() << " = " << endl;
+//         cout << normalMatrix;
+//     } else if(countBracketsForConcatenation == 0) { // Case Of Operation
+//     content = tokenizingexpression(content , matrices , associateValues);
+//         if(content[0] == '[') { // Case of Matrix Operation
+//                 cout << "case" << endl;
+//                 CMatrix temp(content);
+//                 temp.setName(name);
+//                 matrices.push_back(temp);
+//                 cout << temp.getName() << " = " << endl;
+//                 cout << temp;
+//         } else {
+//                 AssociativeNumber temp(name,getEvaluation(content));
+//                 associateValues.push_back(temp);
+//                 cout << temp.getName() << " = " << temp.getValue() << endl;
+//         }
+//     }
 
 
-} // End of For Loop
+// } // End of For Loop
 
 
 
